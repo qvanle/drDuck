@@ -19,12 +19,23 @@ void MyWindow::init()
     renderer = SDL_CreateRenderer(
         window,
         -1,
-        0
+        SDL_RENDERER_ACCELERATED | SDL_RENDERER_SOFTWARE 
     );
+}
+
+void MyWindow::Render()
+{
+    SDL_RenderClear(renderer);
+
+
+    SDL_RenderPresent(renderer);
 }
 
 void MyWindow::action()
 {
+
+    Render();
+
     SDL_Event event;
 
     while(SDL_PollEvent(&event))
