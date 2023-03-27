@@ -22,6 +22,7 @@ private:
     void Render();
 
 public:
+    MyWindow();
     void init();
     void action();
     bool isOpen();
