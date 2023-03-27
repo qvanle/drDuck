@@ -15,6 +15,12 @@ void MyWindow::init()
         HEIGHT,
         SDL_WINDOW_SHOWN
     );
+
+    renderer = SDL_CreateRenderer(
+        window,
+        -1,
+        0
+    );
 }
 
 void MyWindow::action()
