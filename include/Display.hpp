@@ -8,10 +8,12 @@ class Display
 {
 private:
     SDL_Texture* background;
-    SDL_Renderer *& renderer;
+    SDL_Renderer * renderer;
 public:
+    Display();
     void init(const char* dir, const char* name);
-    void setRenderer(SDL_Renderer *& ren);
+    void setRenderer(SDL_Renderer* const&  ren);
+    ~Display();
 };
 
 #endif
