@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/qvanle/project/drDuck/build",
-  "command": "/usr/bin/c++ -DIMGDIR=\\\"../img/\\\" -I/home/qvanle/project/drDuck/include -I/usr/include/SDL2 -std=gnu++17 -o CMakeFiles/ShowMePls.dir/src/main.cpp.o -c /home/qvanle/project/drDuck/src/main.cpp",
-  "file": "/home/qvanle/project/drDuck/src/main.cpp"
-}
-]

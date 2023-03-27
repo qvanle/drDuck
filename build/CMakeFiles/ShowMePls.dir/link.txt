@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/ShowMePls.dir/src/main.cpp.o -o ShowMePls  -lSDL2 -ldl 

@@ -1,3 +1,0 @@
-/home/qvanle/project/drDuck/build/CMakeFiles/rebuild_cache.dir
-/home/qvanle/project/drDuck/build/CMakeFiles/edit_cache.dir
-/home/qvanle/project/drDuck/build/CMakeFiles/ShowMePls.dir
