@@ -1,4 +1,15 @@
+#include "SDL_render.h"
 #include <DuckWin.hpp>
+
+MyWindow::MyWindow()
+{
+    status = 0;
+    WIDTH = 0;
+    HEIGHT = 0;
+    window = nullptr;
+    renderer = nullptr;
+}
+
 
 void MyWindow::init()
 {
@@ -15,10 +26,27 @@ void MyWindow::init()
         HEIGHT,
         SDL_WINDOW_SHOWN
     );
+
+    renderer = SDL_CreateRenderer(
+        window,
+        -1,
+        SDL_RENDERER_ACCELERATED | SDL_RENDERER_SOFTWARE 
+    );
+}
+
+void MyWindow::Render()
+{
+    SDL_RenderClear(renderer);
+
+
+    SDL_RenderPresent(renderer);
 }
 
 void MyWindow::action()
 {
+
+    Render();
+
     SDL_Event event;
 
     while(SDL_PollEvent(&event))
@@ -36,7 +64,8 @@ void MyWindow::shutdown()
     if(window == nullptr) return ;
     SDL_DestroyWindow(window);
     window = nullptr;
-
+    SDL_DestroyRenderer(renderer);
+    renderer = nullptr;
     SDL_Quit();
     status = 0;
     WIDTH = 0;
@@ -51,4 +80,9 @@ bool MyWindow::isOpen()
 bool MyWindow::isClose()
 {
     return status == 0;
+}
+
+MyWindow::~MyWindow()
+{
+    shutdown();
 }
