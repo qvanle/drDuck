@@ -1,5 +1,15 @@
 #include <DuckWin.hpp>
 
+MyWindow::~MyWindow()
+{
+    status = 0;
+    WIDTH = 0;
+    HEIGHT = 0;
+    window = nullptr;
+    renderer = nullptr;
+}
+
+
 void MyWindow::init()
 {
     status = 1;
