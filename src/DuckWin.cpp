@@ -1,6 +1,7 @@
+#include "SDL_render.h"
 #include <DuckWin.hpp>
 
-MyWindow::~MyWindow()
+MyWindow::MyWindow()
 {
     status = 0;
     WIDTH = 0;
@@ -63,7 +64,8 @@ void MyWindow::shutdown()
     if(window == nullptr) return ;
     SDL_DestroyWindow(window);
     window = nullptr;
-
+    SDL_DestroyRenderer(renderer);
+    renderer = nullptr;
     SDL_Quit();
     status = 0;
     WIDTH = 0;
@@ -78,4 +80,9 @@ bool MyWindow::isOpen()
 bool MyWindow::isClose()
 {
     return status == 0;
+}
+
+MyWindow::~MyWindow()
+{
+    shutdown();
 }
