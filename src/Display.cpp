@@ -25,12 +25,15 @@ void Display::init(const char *dir, const char *name)
 
 void Display::loadBackground(json mem)
 {
-    char* name = new char[512];
-    strcpy(name, mem["name"].get<std::string>().c_str());
-    strcat(name, ".");
-    strcat(name, mem["type"].get<std::string>().c_str());
+    char* name = combineName(
+        mem["name"].get<std::string>().c_str(),
+        mem["type"].get<std::string>().c_str()    
+    );
 
-    char* link = combineLink(GLOBAL::BackgroundFolder, name);
+    char* link = combineLink(
+        GLOBAL::BackgroundFolder, 
+        name
+    );
 
     delete [] name;
     SDL_Surface* surf = SDL_LoadBMP(link);
