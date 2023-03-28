@@ -1,3 +1,4 @@
+#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -86,13 +87,10 @@ bool MyWindow::isClose()
 void MyWindow::push(const char *name)
 {
     ScreenFlow.push(nullptr);
-    ScreenFlow.top() = new Display;
+    top() = new Display;
+    top()->setRenderer(renderer);
+    top()->init(GLOBAL::AtrbScreens, name);
 
-    ScreenFlow.top()->setRenderer(renderer);
-
-    const char* link = combineLink("screens/", name);
-    ScreenFlow.top()->init(GLOBAL::AttributeFolder, link);
-    delete [] link;
 }
 
 void MyWindow::pop()
