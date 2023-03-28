@@ -1,3 +1,4 @@
+#include "Display.hpp"
 #include "SDL_render.h"
 #include <DuckWin.hpp>
 
@@ -80,6 +81,24 @@ bool MyWindow::isOpen()
 bool MyWindow::isClose()
 {
     return status == 0;
+}
+
+void MyWindow::push(const char *name)
+{
+    ScreenFlow.push(nullptr);
+    ScreenFlow.top() = new Display;
+    ScreenFlow.top()->init(name);
+}
+
+void MyWindow::pop()
+{
+    delete ScreenFlow.top();
+    ScreenFlow.pop();
+}
+
+Display *& top()
+{
+    return ScreenFlow.top();
 }
 
 MyWindow::~MyWindow()

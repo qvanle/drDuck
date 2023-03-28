@@ -8,6 +8,8 @@
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_events.h>
 
+#include <Display.hpp>
+
 class MyWindow
 {
 private:
@@ -17,6 +19,7 @@ private:
 
     SDL_Window* window;
     SDL_Renderer* renderer;
+    stack<Display*> ScreenFlow;
 
     void shutdown();
     void Render();
@@ -27,6 +30,10 @@ public:
     void action();
     bool isOpen();
     bool isClose();
+
+    void push(const char* name);
+    void pop();
+
     ~MyWindow();
 };
 
