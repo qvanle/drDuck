@@ -12,6 +12,6 @@ namespace GLOBAL
     extern const char* AttributeFolder;
 }
 
-char *& combineLink(const char *dir, const char *name);
+char * combineLink(const char *dir, const char *name);
 
 #endif
