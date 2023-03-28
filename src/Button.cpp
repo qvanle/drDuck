@@ -1,5 +1,3 @@
-#include "SDL_render.h"
-#include "SYSTEM.hpp"
 #include <Button.hpp>
 
 Button::Button()
@@ -16,7 +14,10 @@ Button::Button()
 
 void Button::init(const char* name)
 {
-    init(GLOBAL::AtrbButtons, name);
+    const char* fullname = combineName(name, "json");
+    init(GLOBAL::AtrbButtons, fullname);
+
+    delete [] fullname;
 }
 int Button::size()
 {
@@ -31,7 +32,6 @@ void Button::init(const char* dir, const char* name)
     json mem; 
 
     fin >> mem;
-
     fin.close();
     delete [] link;
 
@@ -43,13 +43,23 @@ void Button::setTextures(const json& mem)
     clearTextures();
 
     SizeOfGrains = mem["textures"].size();
+    grains = new SDL_Texture*[SizeOfGrains];
 
+    char* FolderName = new char [256];
+    strcpy(FolderName, mem["name"].get<std::string>().c_str());
     for(int i = 0 ; i < size(); i++)
     {
-        const char* name = combineName(
+        const char* fullname = combineName(
             mem["textures"][i]["name"].get<std::string>().c_str(),
             mem["textures"][i]["type"].get<std::string>().c_str()
         );
+        const char* name = combineLink( 
+            FolderName,
+            fullname
+        );
+        
+        delete []fullname;
+
         const char* link = combineLink(
             GLOBAL::ButtonFolder, 
             name
@@ -57,11 +67,14 @@ void Button::setTextures(const json& mem)
         delete [] name;
         
         SDL_Surface* surf = SDL_LoadBMP(link);
-
+        
         grains[i] = SDL_CreateTextureFromSurface(renderer, surf);
+        
+        SDL_FreeSurface(surf);
 
         delete [] link;
     }
+    delete [] FolderName;
 }
 
 void Button::init(const json& mem)
@@ -120,6 +133,7 @@ void Button::Delete()
     coor.h = 0;
     coor.w = 0;
 }
+
 Button::~Button()
 {
     Delete();
