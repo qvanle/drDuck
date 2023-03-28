@@ -8,6 +8,7 @@
 #include <nlohmann/json.hpp>
 
 #include <SYSTEM.hpp>
+#include <Button.hpp>
 
 
 using json = nlohmann::json;
@@ -18,10 +19,13 @@ private:
     SDL_Texture* background;
     SDL_Renderer * renderer;
     SDL_Rect coor;
+    Button ** buts;
+    int ButNum;
 public:
     Display();
     void init(const char* dir, const char* name);
     void loadBackground(const json& mem);
+    void loadButton(Button *& but, const json& mem);
     void setRenderer(SDL_Renderer* const&  ren);
     void render();
     ~Display();

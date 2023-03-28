@@ -1,5 +1,6 @@
+#include "Button.hpp"
+#include "SYSTEM.hpp"
 #include <Display.hpp>
-#include <cstring>
 
 Display::Display()
 {
@@ -10,6 +11,8 @@ Display::Display()
     coor.y = 0;
     coor.w = 960;
     coor.h = 540;
+    buts = nullptr;
+    ButNum = 0;
 }
 
 void Display::init(const char *dir, const char *name)
@@ -17,16 +20,30 @@ void Display::init(const char *dir, const char *name)
 
     char* link = combineLink(dir, name);
     std::ifstream fin(link);
-    
+
+    if(!fin.is_open()) return ; 
+
     json mem; 
 
     fin >> mem;
 
     fin.close();
+
     delete [] link;
+
     if(mem.contains("background"))
     {
         loadBackground(mem["background"]);
+    }
+
+    if(mem.contains("buttons"))
+    {
+        ButNum = mem["buttons"].size();
+        buts = new Button*[ButNum];
+        for(int i = 0; i < ButNum; i++)
+        {
+            loadButton(buts[i], mem["buttons"][i]);
+        }
     }
 }
 
@@ -66,7 +83,7 @@ void Display::loadBackground(const json& mem)
     coor.h = mem["rect"]["h"];
 }
 
-void Display::setRenderer(SDL_Renderer* const&  ren)
+void Display::setRenderer(SDL_Renderer* const& ren)
 {
     renderer = ren;
 }
@@ -74,6 +91,9 @@ void Display::setRenderer(SDL_Renderer* const&  ren)
 void Display::render() 
 {
     SDL_RenderCopy(renderer, background, nullptr, &coor);
+
+    for(int i = 0; i < ButNum; i++)
+        buts[i]->render();
 }
 Display::~Display()
 {
@@ -83,5 +103,25 @@ Display::~Display()
     coor.y = 0;
     coor.w = 0;
     coor.h = 0;
+
+    if(buts != nullptr)
+    {
+        for(int i = 0; i < ButNum; i++)
+            delete buts[i];
+        delete [] buts;
+        ButNum = 0;
+    }
 }
 
+
+void Display::loadButton(Button *& but, const json& mem)
+{
+    but = new Button;
+    but->setRenderer(renderer);
+    but->init(
+                GLOBAL::AtrbButtons,
+                mem["name"].get<std::string>().c_str()
+            );
+    but->init(mem);
+    return ;
+}
