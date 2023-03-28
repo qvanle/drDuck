@@ -1,20 +1,35 @@
 {
-    "background": 
+  "background": 
+  {
+    "name": "home",
+    "type": "bmp",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540
+    }
+  },
+  "buttons": 
+  [
     {
-        "name" : "home",
-        "type" : "bmp",
-        "rect": 
+      "name": "start",
+      "textures": 
+      [
         {
-            "x": 0,
-            "y": 0,
-            "w": 960,
-            "h": 540
-    	}
-    },
-    "button":
-    [
+          "name": "0",
+          "type": "bmp"
+        },
         {
-       	    "name": "start"
+          "name": "1",
+          "type": "bmp"
         }
-    ]
+      ],
+      "rect": 
+      {
+        "x": 625,
+        "y": 250
+      }
+    }
+  ]
 }
