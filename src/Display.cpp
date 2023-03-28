@@ -125,3 +125,10 @@ void Display::loadButton(Button *& but, const json& mem)
     but->init(mem);
     return ;
 }
+
+void Display::mouseMove(int x, int y)
+{
+    for(int i = 0; i < ButNum; i++)
+        buts[i]->isChosen(x, y);
+}
+
