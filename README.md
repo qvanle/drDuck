@@ -1,7 +1,7 @@
 # Dr Duck
 This is my CS162 project.
-Although I don't need some libraries and features to pass this course which I already used, I still use thems.
-May be a version of me in future look over this project again, so I want this to be a milestone of my ability.
+Although I don't need some libraries and features to pass this course, I still use thems.
+May be a version of me in future will look over this project again, so I want this to be a milestone of my ability.
 
 ## REQUIRED
 - SDL2
