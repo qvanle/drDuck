@@ -1,4 +1,3 @@
-#include "SDL_render.h"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -34,18 +33,17 @@ void MyWindow::init()
     );
 }
 
-void MyWindow::Render()
+void MyWindow::render()
 {
     SDL_RenderClear(renderer);
-
+    
+    if(!empty()) ScreenFlow.top()->render();
 
     SDL_RenderPresent(renderer);
 }
 
 void MyWindow::action()
 {
-
-    Render();
 
     SDL_Event event;
 
@@ -70,6 +68,9 @@ void MyWindow::shutdown()
     status = 0;
     WIDTH = 0;
     HEIGHT = 0;
+
+    while(!empty())
+        pop();
 } 
 
 bool MyWindow::isOpen()
@@ -80,6 +81,34 @@ bool MyWindow::isOpen()
 bool MyWindow::isClose()
 {
     return status == 0;
+}
+
+void MyWindow::push(const char *name)
+{
+    ScreenFlow.push(nullptr);
+    ScreenFlow.top() = new Display;
+
+    ScreenFlow.top()->setRenderer(renderer);
+
+    const char* link = combineLink("screens/", name);
+    ScreenFlow.top()->init(GLOBAL::AttributeFolder, link);
+    delete [] link;
+}
+
+void MyWindow::pop()
+{
+    delete ScreenFlow.top();
+    ScreenFlow.pop();
+}
+
+Display *& MyWindow::top()
+{
+    return ScreenFlow.top();
+}
+
+bool MyWindow::empty()
+{
+    return ScreenFlow.empty();
 }
 
 MyWindow::~MyWindow()
