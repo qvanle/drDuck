@@ -12,5 +12,6 @@ int main()
         mainWin->action();
     }
 
+    delete mainWin;
     return 0;
 }
