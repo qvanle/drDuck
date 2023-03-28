@@ -3,6 +3,14 @@
 
 #include <SDL2/SDL.h>
 #include <SDL_surface.h>
+#include <SDL_render.h>
+
+#include <nlohmann/json.hpp>
+
+#include <SYSTEM.hpp>
+
+
+using json = nlohmann::json;
 
 class Display
 {
@@ -12,7 +20,9 @@ private:
 public:
     Display();
     void init(const char* dir, const char* name);
+    void loadBackground(json mem);
     void setRenderer(SDL_Renderer* const&  ren);
+    void render();
     ~Display();
 };
 
