@@ -14,10 +14,7 @@ Button::Button()
 
 void Button::init(const char* name)
 {
-    const char* fullname = combineName(name, "json");
-    init(GLOBAL::AtrbButtons, fullname);
-
-    delete [] fullname;
+    init(GLOBAL::AtrbButtons, name);
 }
 int Button::size()
 {
@@ -26,15 +23,18 @@ int Button::size()
 
 void Button::init(const char* dir, const char* name)
 {
-    char* link = combineLink(dir, name);
+    char* fullname = combineName(name, "json");
+    char* link = combineLink(dir, fullname);
+    delete [] fullname;
     std::ifstream fin(link);
+
+    delete [] link;
 
     json mem; 
 
     fin >> mem;
     fin.close();
-    delete [] link;
-
+   
     init(mem);
 }
 
@@ -85,10 +85,14 @@ void Button::init(const json& mem)
     }
     if(mem.contains("rect"))
     {
-        coor.x = mem["rect"]["x"];
-        coor.y = mem["rect"]["y"];
-        coor.w = mem["rect"]["w"];
-        coor.h = mem["rect"]["h"];
+        if(mem["rect"].contains("x")) 
+            coor.x = mem["rect"]["x"];
+        if(mem["rect"].contains(("y")))
+            coor.y = mem["rect"]["y"];
+        if(mem["rect"].contains("w"))
+            coor.w = mem["rect"]["w"];
+        if(mem["rect"].contains("h"))
+            coor.h = mem["rect"]["h"];
     }
 }
 
