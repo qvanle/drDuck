@@ -30,7 +30,7 @@ void MyWindow::init()
     renderer = SDL_CreateRenderer(
         window,
         -1,
-        SDL_RENDERER_ACCELERATED | SDL_RENDERER_SOFTWARE 
+        SDL_RENDERER_ACCELERATED 
     );
 }
 
