@@ -1,11 +1,15 @@
 {
-  "background": 
-  {
-    "name" : "home",
-    "type" : "bmp",
-    "x": 0,
-    "y": 0,
-    "width": 960,
-    "height": 540
-  }
+    "background": 
+    {
+        "name" : "home",
+        "type" : "bmp",
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+    },
+    "button":
+    [
+        "start"
+    ]
 }
