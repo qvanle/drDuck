@@ -10,6 +10,31 @@ Button::Button()
     coor.w = 0;
     coor.h = 0;
     status = 0;
+    visible = false;
+}
+void Button::show()
+{
+    visible = true;
+}
+void Button::hide()
+{
+    visible = false;
+}
+void Button::nxStatus()
+{
+    status = (status + 1) % size();
+}
+void Button ::pvStatus()
+{
+    status = (status + size() - 1) % size();
+}
+
+bool Button::isChosen(int x, int y)
+{
+    if(x < coor.x || coor.x + coor.w <= x) return true;
+    if(y < coor.y || coor.y + coor.h <= y) return false;
+    if(!visible) return false;
+    return true;
 }
 
 void Button::init(const char* name)
@@ -94,6 +119,10 @@ void Button::init(const json& mem)
         if(mem["rect"].contains("h"))
             coor.h = mem["rect"]["h"];
     }
+    if(mem.contains("visible"))
+    {
+        visible = mem["visible"];
+    }
 }
 
 void Button::setRenderer(SDL_Renderer* const& ren)
@@ -103,6 +132,7 @@ void Button::setRenderer(SDL_Renderer* const& ren)
 
 void Button::render()
 {
+    if(!visible) return ;
     SDL_RenderCopy(renderer, grains[status], nullptr, &coor);
     return ;
 }

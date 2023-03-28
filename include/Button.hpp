@@ -17,9 +17,15 @@ private:
     SDL_Renderer* renderer;
     int SizeOfGrains;
     int status;
+    bool visible;
     SDL_Rect coor;
 public:
     Button();
+    void show();
+    void hide();
+    void nxStatus();
+    void pvStatus();
+    bool isChosen(int x, int y);
     void setTextures(const json& mem);
     void init(const char* name);
     void init(const char* dir, const char* name);
