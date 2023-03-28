@@ -55,6 +55,10 @@ void MyWindow::action()
             status = 0;
             shutdown();
         }
+        if(event.type == SDL_MOUSEMOTION)
+        {
+            top()->mouseMove(event.motion.x, event.motion.y);
+        }
     }
 }
 
