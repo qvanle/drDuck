@@ -1,6 +1,8 @@
 #ifndef SYSTEM
 #define SYSTEM
 
+#include <iostream>
+#include <fstream>
 #include <cstring>
 
 namespace GLOBAL
