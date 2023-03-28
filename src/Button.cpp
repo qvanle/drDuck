@@ -31,9 +31,22 @@ void Button ::pvStatus()
 
 bool Button::isChosen(int x, int y)
 {
-    if(x < coor.x || coor.x + coor.w <= x) return true;
-    if(y < coor.y || coor.y + coor.h <= y) return false;
-    if(!visible) return false;
+    if(x < coor.x || coor.x + coor.w <= x) 
+    {
+        status = 0;
+        return false;
+    }
+    if(y < coor.y || coor.y + coor.h <= y) 
+    {
+        status = 0;
+        return false;
+    }
+    if(!visible) 
+    {
+        status = 0;
+        return false;
+    }
+    status = 1;
     return true;
 }
 
