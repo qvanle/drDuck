@@ -17,10 +17,11 @@ class Display
 private:
     SDL_Texture* background;
     SDL_Renderer * renderer;
+    SDL_Rect coor;
 public:
     Display();
     void init(const char* dir, const char* name);
-    void loadBackground(json mem);
+    void loadBackground(const json& mem);
     void setRenderer(SDL_Renderer* const&  ren);
     void render();
     ~Display();

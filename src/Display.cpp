@@ -1,4 +1,3 @@
-#include "SDL_render.h"
 #include <Display.hpp>
 #include <cstring>
 
@@ -6,10 +5,16 @@ Display::Display()
 {
     background = nullptr;
     renderer = nullptr;
+
+    coor.x = 0;
+    coor.y = 0;
+    coor.w = 960;
+    coor.h = 540;
 }
 
 void Display::init(const char *dir, const char *name)
 {
+
     char* link = combineLink(dir, name);
     std::ifstream fin(link);
     
@@ -19,12 +24,19 @@ void Display::init(const char *dir, const char *name)
 
     fin.close();
     delete [] link;
-
-    loadBackground(mem["background"]);
+    if(mem.contains("background"))
+    {
+        loadBackground(mem["background"]);
+    }
 }
 
-void Display::loadBackground(json mem)
+void Display::loadBackground(const json& mem)
 {
+    if(!mem.contains("name") || !mem.contains("type"))
+    {
+        return ;
+    }
+
     char* name = combineName(
         mem["name"].get<std::string>().c_str(),
         mem["type"].get<std::string>().c_str()    
@@ -42,8 +54,16 @@ void Display::loadBackground(json mem)
 
     SDL_FreeSurface(surf);
     delete [] link;
+    
+    if(!mem.contains("rect"))
+    {
+        return ;
+    }
 
-    std::cerr << SDL_GetError() << std::endl;
+    coor.x = mem["rect"]["x"];
+    coor.y = mem["rect"]["y"];
+    coor.w = mem["rect"]["w"];
+    coor.h = mem["rect"]["h"];
 }
 
 void Display::setRenderer(SDL_Renderer* const&  ren)
@@ -53,15 +73,15 @@ void Display::setRenderer(SDL_Renderer* const&  ren)
 
 void Display::render() 
 {
-    SDL_Rect coor; 
-    coor.x = 0;
-    coor.y = 0;
-    coor.h = 540;
-    coor.w = 960;
     SDL_RenderCopy(renderer, background, nullptr, &coor);
 }
 Display::~Display()
 {
     SDL_DestroyTexture(background);
     renderer = nullptr;
+    coor.x = 0;
+    coor.y = 0;
+    coor.w = 0;
+    coor.h = 0;
 }
+

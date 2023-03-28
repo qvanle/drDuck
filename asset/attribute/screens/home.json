@@ -3,13 +3,18 @@
     {
         "name" : "home",
         "type" : "bmp",
-        "x": 0,
-        "y": 0,
-        "width": 960,
-        "height": 540
+        "rect": 
+        {
+            "x": 0,
+            "y": 0,
+            "w": 960,
+            "h": 540
+    	}
     },
     "button":
     [
-        "start"
+        {
+       	    "name": "start"
+        }
     ]
 }
