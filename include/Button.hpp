@@ -19,6 +19,8 @@ private:
     int status;
     bool visible;
     SDL_Rect coor;
+    char* nextScreen;
+
 public:
     Button();
     void show();
