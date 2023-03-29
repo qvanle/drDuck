@@ -1,3 +1,4 @@
+#include "SDL_events.h"
 #include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
@@ -54,11 +55,18 @@ void MyWindow::action()
         {
             status = 0;
             shutdown();
-        }
-        if(event.type == SDL_MOUSEMOTION)
+        }else if(event.type == SDL_MOUSEMOTION)
         {
             top()->mouseMove(event.motion.x, event.motion.y);
+        }else if(event.type == SDL_MOUSEBUTTONDOWN)
+        {
+            char* msg = nullptr;
+            top()->mousePressedButton(event.motion.x, event.motion.y, msg);
+            if(msg == "-1") pop();
+            else push(msg);
+            if(msg != nullptr) delete [] msg;
         }
+
     }
 }
 

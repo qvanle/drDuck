@@ -18,7 +18,9 @@
       {
         "x": 600,
         "y": 275
-      }
+      },
+      "next screen": "choosing.json"
+
     },
     { 
     	"name": "tutorial",
