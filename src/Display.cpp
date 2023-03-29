@@ -133,7 +133,7 @@ void Display::mouseMove(int x, int y)
             break;
 }
 
-void Display::mousePressedButton(int x, int y, char* MSG)
+void Display::mousePressedButton(int x, int y, char*& MSG)
 {
     for(int i = 0; i < ButNum; i++)
         if(buts[i]->isPressed(x, y))
