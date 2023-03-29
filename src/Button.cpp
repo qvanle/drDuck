@@ -46,7 +46,33 @@ bool Button::isChosen(int x, int y)
         status = 0;
         return false;
     }
-    status = 1;
+
+    if(size() >= 1) status = 1;
+    return true;
+}
+
+bool Button::isPressed(int x, int y)
+{
+    
+    if(x < coor.x || coor.x + coor.w <= x) 
+    {
+        status = 0;
+        return false;
+    }
+    if(y < coor.y || coor.y + coor.h <= y) 
+    {
+        status = 0;
+        return false;
+    }
+    if(!visible) 
+    {
+        status = 0;
+        return false;
+    }
+
+    if(size() >= 2) status = 2;
+    else if(size() >= 1) status = 0;
+
     return true;
 }
 

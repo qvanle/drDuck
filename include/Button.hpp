@@ -26,6 +26,7 @@ public:
     void nxStatus();
     void pvStatus();
     bool isChosen(int x, int y);
+    bool isPressed(int x, int y);
     void setTextures(const json& mem);
     void init(const char* name);
     void init(const char* dir, const char* name);
