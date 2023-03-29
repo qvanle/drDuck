@@ -38,6 +38,7 @@ public:
     int size();
     void Delete();
     void clearTextures();
+    char* const& getNextScreen();
     ~Button();
 };
 #endif

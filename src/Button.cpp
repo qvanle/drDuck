@@ -1,4 +1,5 @@
 #include <Button.hpp>
+#include <iterator>
 
 Button::Button()
 {
@@ -197,6 +198,11 @@ void Button::clearTextures()
         SizeOfGrains = 0;
     }
 
+}
+
+char* const& Button::getNextScreen()
+{
+    return nextScreen;
 }
 
 void Button::Delete()
