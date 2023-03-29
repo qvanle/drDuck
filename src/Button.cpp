@@ -47,7 +47,7 @@ bool Button::isChosen(int x, int y)
         return false;
     }
 
-    if(size() >= 1) status = 1;
+    if(size() >= 2) status = 1;
     return true;
 }
 
@@ -70,8 +70,8 @@ bool Button::isPressed(int x, int y)
         return false;
     }
 
-    if(size() >= 2) status = 2;
-    else if(size() >= 1) status = 0;
+    if(size() >= 3) status = 2;
+    else if(size() >= 2) status = 0;
 
     return true;
 }
@@ -162,6 +162,13 @@ void Button::init(const json& mem)
     {
         visible = mem["visible"];
     }
+
+    if(mem.contains("next screen"))
+    {
+        std::string s = mem["next screen"].get<std::string>();
+        nextScreen = new char[s.size() + 1];
+        strcpy(nextScreen, s.c_str());
+    }
 }
 
 void Button::setRenderer(SDL_Renderer* const& ren)
@@ -205,6 +212,7 @@ void Button::Delete()
     coor.y = 0;
     coor.h = 0;
     coor.w = 0;
+    delete [] nextScreen;
 }
 
 Button::~Button()
