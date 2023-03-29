@@ -11,6 +11,7 @@ Button::Button()
     coor.h = 0;
     status = 0;
     visible = false;
+    nextScreen = nullptr;
 }
 void Button::show()
 {
@@ -166,7 +167,7 @@ void Button::init(const json& mem)
     if(mem.contains("next screen"))
     {
         std::string s = mem["next screen"].get<std::string>();
-        nextScreen = new char[s.size() + 1];
+        nextScreen = new char[s.size() + 2];
         strcpy(nextScreen, s.c_str());
     }
 }
@@ -212,7 +213,8 @@ void Button::Delete()
     coor.y = 0;
     coor.h = 0;
     coor.w = 0;
-    delete [] nextScreen;
+    if(nextScreen != nullptr) 
+        delete [] nextScreen;
 }
 
 Button::~Button()
