@@ -1,0 +1,20 @@
+{
+    "name": "previous",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "bmp"
+        },
+        {
+            "name": "1",
+            "type": "bmp"
+        }
+    ],
+    "rect":
+    {
+        "w": 50,
+        "h": 50
+    },
+    "visible": true
+}

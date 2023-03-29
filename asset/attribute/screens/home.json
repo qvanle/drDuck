@@ -21,7 +21,7 @@
       }
     },
     { 
-    	"name": "start",
+    	"name": "tutorial",
     	"rect": 
 		  {
 		    "x": 600,
@@ -29,12 +29,21 @@
 		  }
 	},
 	{ 
-    	"name": "start",
+    	"name": "donate",
     	"rect": 
 		  {
 		    "x": 600,
 		    "y": 425
 		  }
-	}
+	},
+    {
+        "name": "previous",
+        "rect":
+        {
+            "x": 5,
+            "y": 5
+        },
+        "visible": false
+    }
   ]
 }
