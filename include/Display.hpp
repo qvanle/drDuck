@@ -29,6 +29,7 @@ public:
     void setRenderer(SDL_Renderer* const&  ren);
     void render();
     void mouseMove(int x, int y);
+    void mousePressedButton(int x, int y, char* MSG);
     ~Display();
 };
 

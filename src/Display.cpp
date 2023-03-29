@@ -129,6 +129,15 @@ void Display::loadButton(Button *& but, const json& mem)
 void Display::mouseMove(int x, int y)
 {
     for(int i = 0; i < ButNum; i++)
-        buts[i]->isChosen(x, y);
+        if(buts[i]->isChosen(x, y))
+            break;
 }
 
+void Display::mousePressedButton(int x, int y, char* MSG)
+{
+    for(int i = 0; i < ButNum; i++)
+        if(buts[i]->isPressed(x, y))
+        {
+            MSG = buts[i]->getNextScreen();
+        }
+}
