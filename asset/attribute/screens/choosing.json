@@ -1,0 +1,48 @@
+{
+  "background": 
+  {
+    "name": "home",
+    "type": "bmp",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540
+    }
+  },
+  "buttons": 
+  [
+    {
+      "name": "array",
+      "rect": 
+      {
+        "x": 600,
+        "y": 275
+      }
+    },
+    { 
+    	"name": "linked_list",
+    	"rect": 
+		  {
+		    "x": 600,
+		    "y": 350
+		  }
+	},
+	{ 
+    	"name": "InO_order",
+    	"rect": 
+		  {
+		    "x": 600,
+		    "y": 425
+		  }
+	},
+    {
+        "name": "previous",
+        "rect":
+        {
+            "x": 5,
+            "y": 5
+        }
+    }
+  ]
+}

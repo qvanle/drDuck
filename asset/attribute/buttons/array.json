@@ -1,0 +1,16 @@
+{
+    "name": "array",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "bmp"
+        }
+    ],
+    "rect":
+    {
+        "w": 275,
+        "h": 45
+    },
+    "visible": true
+}
