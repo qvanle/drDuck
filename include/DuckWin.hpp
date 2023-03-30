@@ -19,7 +19,7 @@ private:
 
     SDL_Window* window;
     SDL_Renderer* renderer;
-    std::stack<Display*> ScreenFlow;
+    Display* screen;
 
     void shutdown();
 
@@ -31,9 +31,7 @@ public:
     bool isOpen();
     bool isClose();
 
-    void push(const char* name);
-    void pop();
-    bool empty();
+    void changeScreen(const char* const &name);
     Display *& top();
 
     ~MyWindow();

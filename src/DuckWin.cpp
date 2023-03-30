@@ -1,5 +1,4 @@
-#include "SDL_events.h"
-#include "SYSTEM.hpp"
+#include "Display.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -9,6 +8,7 @@ MyWindow::MyWindow()
     HEIGHT = 0;
     window = nullptr;
     renderer = nullptr;
+    screen = nullptr;
 }
 
 
@@ -39,7 +39,7 @@ void MyWindow::render()
 {
     SDL_RenderClear(renderer);
     
-    if(!empty()) ScreenFlow.top()->render();
+    if(top() != nullptr) top()->render();
 
     SDL_RenderPresent(renderer);
 }
@@ -62,11 +62,13 @@ void MyWindow::action()
         {
             char* msg = nullptr;
             top()->mousePressedButton(event.motion.x, event.motion.y, msg);
-            if(msg == "-1") pop();
-            else push(msg);
-            if(msg != nullptr) delete [] msg;
-        }
+            
+            if(msg == nullptr) continue;
 
+            changeScreen(msg);
+
+            delete [] msg;
+        }
     }
 }
 
@@ -81,9 +83,7 @@ void MyWindow::shutdown()
     status = 0;
     WIDTH = 0;
     HEIGHT = 0;
-
-    while(!empty())
-        pop();
+    if(screen != nullptr) delete screen;
 } 
 
 bool MyWindow::isOpen()
@@ -96,29 +96,20 @@ bool MyWindow::isClose()
     return status == 0;
 }
 
-void MyWindow::push(const char *name)
+void MyWindow::changeScreen(const char *const& name)
 {
-    ScreenFlow.push(nullptr);
-    top() = new Display;
-    top()->setRenderer(renderer);
+    if(top() == nullptr)
+    {
+        top() = new Display;
+        top()->setRenderer(renderer);
+    }
     top()->init(GLOBAL::AtrbScreens, name);
 
 }
 
-void MyWindow::pop()
-{
-    delete ScreenFlow.top();
-    ScreenFlow.pop();
-}
-
 Display *& MyWindow::top()
 {
-    return ScreenFlow.top();
-}
-
-bool MyWindow::empty()
-{
-    return ScreenFlow.empty();
+    return screen;
 }
 
 MyWindow::~MyWindow()

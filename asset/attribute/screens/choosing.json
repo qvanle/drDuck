@@ -42,7 +42,8 @@
         {
             "x": 5,
             "y": 5
-        }
+        },
+        "next screen": "home.json"
     }
   ]
 }
