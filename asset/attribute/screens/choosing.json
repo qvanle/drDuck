@@ -16,7 +16,7 @@
             "name": "array",
             "rect": 
             {
-                "x": 600,
+                "x": 620,
                 "y": 275
             }
         },
@@ -24,7 +24,7 @@
             "name": "linked_list",
             "rect": 
             {
-                "x": 600,
+                "x": 620,
                 "y": 350
             },
             "next screen": "linked_list.json"
@@ -33,7 +33,7 @@
             "name": "InO_order",
             "rect": 
             {
-                "x": 600,
+                "x": 620,
                 "y": 425
             },
             "next screen": "InO_order.json"

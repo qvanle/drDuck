@@ -16,7 +16,7 @@
       "name": "start",
       "rect": 
       {
-        "x": 600,
+        "x": 620,
         "y": 275
       },
       "next screen": "choosing.json"
@@ -26,7 +26,7 @@
     	"name": "tutorial",
     	"rect": 
 		  {
-		    "x": 600,
+		    "x": 620,
 		    "y": 350
 		  }
 	},
@@ -34,7 +34,7 @@
     	"name": "donate",
     	"rect": 
 		  {
-		    "x": 600,
+		    "x": 620,
 		    "y": 425
 		  }
 	},

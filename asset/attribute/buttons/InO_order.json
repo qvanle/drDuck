@@ -1,11 +1,14 @@
-
 {
     "name": "InO_order",
     "textures":
     [
         {
             "name": "0",
-            "type": "bmp"
+            "type": "png"
+        },
+        {
+            "name": "1",
+            "type": "png"
         }
     ],
     "rect":

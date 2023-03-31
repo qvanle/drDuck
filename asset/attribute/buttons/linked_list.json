@@ -1,11 +1,14 @@
-
 {
     "name": "linked_list",
     "textures":
     [
         {
             "name": "0",
-            "type": "bmp"
+            "type": "png"
+        },
+        {
+            "name": "1",
+            "type": "png"
         }
     ],
     "rect":
@@ -13,5 +16,6 @@
         "w": 275,
         "h": 45
     },
-    "visible": true
+    "visible": true,
+    "next screen": "linked_list.json"
 }
