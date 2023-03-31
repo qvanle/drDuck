@@ -5,6 +5,7 @@ May be a version of me in future will look over this project again, so I want th
 
 ## REQUIRED
 - SDL2
+- SDL\_image
 - https://github.com/nlohmann/json
 - CMAKE 3.12+
 - makefile

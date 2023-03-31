@@ -132,8 +132,15 @@ void Button::setTextures(const json& mem)
         ); 
         delete [] name;
         
-        SDL_Surface* surf = SDL_LoadBMP(link);
-        
+        SDL_Surface* surf;
+
+        std::string type = mem["textures"][i]["type"].get<std::string>();
+        if(type == "bmp")  
+            surf = SDL_LoadBMP(link);
+        else if(type == "png")
+            surf = IMG_Load(link);
+
+
         grains[i] = SDL_CreateTextureFromSurface(renderer, surf);
         
         SDL_FreeSurface(surf);
