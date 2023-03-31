@@ -1,5 +1,3 @@
-#include "Button.hpp"
-#include "SYSTEM.hpp"
 #include <Display.hpp>
 
 Display::Display()
@@ -53,10 +51,11 @@ void Display::loadBackground(const json& mem)
     {
         return ;
     }
+    std::string type = mem["type"].get<std::string>();    
 
     char* name = combineName(
         mem["name"].get<std::string>().c_str(),
-        mem["type"].get<std::string>().c_str()    
+        type.c_str()
     );
 
     char* link = combineLink(
@@ -65,7 +64,12 @@ void Display::loadBackground(const json& mem)
     );
 
     delete [] name;
-    SDL_Surface* surf = SDL_LoadBMP(link);
+
+    SDL_Surface* surf;
+
+    if(type == "bmp")
+        surf = SDL_LoadBMP(link);
+    else surf = IMG_Load(link);
 
     background = SDL_CreateTextureFromSurface(renderer, surf);
 
