@@ -18,7 +18,8 @@
             {
                 "x": 620,
                 "y": 295
-            }
+            },
+            "next screen": "working.json"
         },
         { 
             "name": "dynamic",

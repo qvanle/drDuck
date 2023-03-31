@@ -9,5 +9,17 @@
       "w": 960,
       "h": 540
     }
-  }
+  },
+  "button": 
+  [
+      {
+          "name": "previous",
+          "coor":
+          {
+              "x": 5,
+              "y": 5
+          },
+          "previous": "home.json"
+      }
+  ]
 }
