@@ -1,5 +1,5 @@
 {
-    "name": "array",
+    "name": "dynamic",
     "textures":
     [
         {
@@ -12,6 +12,5 @@
         "w": 275,
         "h": 45
     },
-    "visible": true,
-    "next screen": "array.json"
+    "visible": true
 }
