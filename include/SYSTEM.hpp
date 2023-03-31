@@ -5,6 +5,7 @@
 #include <fstream>
 #include <cstring>
 #include <stack>
+#include <string>
 
 namespace GLOBAL
 {
