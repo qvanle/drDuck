@@ -5,6 +5,7 @@ Button::Button()
 {
     grains = nullptr;
     renderer = nullptr;
+    nextScreen = nullptr;
     SizeOfGrains = 0;
     coor.x = 0;
     coor.y = 0;
@@ -12,7 +13,6 @@ Button::Button()
     coor.h = 0;
     status = 0;
     visible = false;
-    nextScreen = nullptr;
 }
 void Button::show()
 {
@@ -91,10 +91,8 @@ void Button::init(const char* dir, const char* name)
 {
     char* fullname = combineName(name, "json");
     char* link = combineLink(dir, fullname);
-    delete [] fullname;
     std::ifstream fin(link);
 
-    delete [] link;
 
     json mem; 
 
@@ -102,6 +100,9 @@ void Button::init(const char* dir, const char* name)
     fin.close();
    
     init(mem);
+
+    delete [] fullname;
+    delete [] link;
 }
 
 void Button::setTextures(const json& mem)
@@ -113,6 +114,7 @@ void Button::setTextures(const json& mem)
 
     char* FolderName = new char [256];
     strcpy(FolderName, mem["name"].get<std::string>().c_str());
+
     for(int i = 0 ; i < size(); i++)
     {
         const char* fullname = combineName(
@@ -123,14 +125,10 @@ void Button::setTextures(const json& mem)
             FolderName,
             fullname
         );
-        
-        delete []fullname;
-
         const char* link = combineLink(
             GLOBAL::ButtonFolder, 
             name
         ); 
-        delete [] name;
         
         SDL_Surface* surf;
 
@@ -140,12 +138,12 @@ void Button::setTextures(const json& mem)
         else if(type == "png")
             surf = IMG_Load(link);
 
-
         grains[i] = SDL_CreateTextureFromSurface(renderer, surf);
-        
-        SDL_FreeSurface(surf);
 
         delete [] link;
+        delete [] name;
+        delete []fullname;
+        SDL_FreeSurface(surf);
     }
     delete [] FolderName;
 }
@@ -177,6 +175,8 @@ void Button::init(const json& mem)
         std::string s = mem["next screen"].get<std::string>();
         nextScreen = new char[s.size() + 2];
         strcpy(nextScreen, s.c_str());
+
+        s.clear();
     }
 }
 
@@ -216,11 +216,7 @@ char* const& Button::getNextScreen()
 void Button::Delete()
 {
     clearTextures();
-    if(renderer != nullptr)
-    {
-        SDL_DestroyRenderer(renderer);
-        renderer = nullptr;
-    }
+    renderer = nullptr;
     
     coor.x = 0;
     coor.y = 0;
