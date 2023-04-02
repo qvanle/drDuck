@@ -19,6 +19,8 @@ void Display::init(const char *dir, const char *name)
     char* link = combineLink(dir, name);
     std::ifstream fin(link);
 
+    delete [] link;
+
     if(!fin.is_open()) return ; 
 
     json mem; 
@@ -26,9 +28,7 @@ void Display::init(const char *dir, const char *name)
     fin >> mem;
 
     fin.close();
-
-    delete [] link;
-
+   
     if(mem.contains("background"))
     {
         loadBackground(mem["background"]);
@@ -36,13 +36,18 @@ void Display::init(const char *dir, const char *name)
 
     if(mem.contains("buttons"))
     {
+        DeleteButs();
+
         ButNum = mem["buttons"].size();
+
         buts = new Button*[ButNum];
         for(int i = 0; i < ButNum; i++)
         {
+            buts[i] = nullptr;
             loadButton(buts[i], mem["buttons"][i]);
-        }
+        }            
     }
+
 }
 
 void Display::loadBackground(const json& mem)
@@ -51,6 +56,7 @@ void Display::loadBackground(const json& mem)
     {
         return ;
     }
+
     std::string type = mem["type"].get<std::string>();    
 
     char* name = combineName(
@@ -63,28 +69,33 @@ void Display::loadBackground(const json& mem)
         name
     );
 
-    delete [] name;
-
     SDL_Surface* surf;
 
     if(type == "bmp")
         surf = SDL_LoadBMP(link);
     else surf = IMG_Load(link);
 
-    background = SDL_CreateTextureFromSurface(renderer, surf);
-
-    SDL_FreeSurface(surf);
-    delete [] link;
-    
-    if(!mem.contains("rect"))
+    if(background != nullptr)
     {
-        return ;
+        SDL_DestroyTexture(background);
+        background = nullptr;
     }
-
-    coor.x = mem["rect"]["x"];
-    coor.y = mem["rect"]["y"];
-    coor.w = mem["rect"]["w"];
-    coor.h = mem["rect"]["h"];
+    background = SDL_CreateTextureFromSurface(renderer, surf);
+    
+    if(mem.contains("rect")) 
+    {
+        if(mem["rect"].contains("x"))
+            coor.x = mem["rect"]["x"];
+        if(mem["rect"].contains("y"))
+            coor.y = mem["rect"]["y"];
+        if(mem["rect"].contains("w"))
+            coor.w = mem["rect"]["w"];
+        if(mem["rect"].contains("h"))
+            coor.h = mem["rect"]["h"];
+    }
+    SDL_FreeSurface(surf);
+    delete [] name;
+    type.clear();
 }
 
 void Display::setRenderer(SDL_Renderer* const& ren)
@@ -99,27 +110,49 @@ void Display::render()
     for(int i = 0; i < ButNum; i++)
         buts[i]->render();
 }
-Display::~Display()
-{
-    SDL_DestroyTexture(background);
-    renderer = nullptr;
-    coor.x = 0;
-    coor.y = 0;
-    coor.w = 0;
-    coor.h = 0;
 
-    if(buts != nullptr)
+void Display::DeleteButs()
+{
+
+    if(ButNum != 0)
     {
         for(int i = 0; i < ButNum; i++)
-            delete buts[i];
+            if(buts[i] != nullptr)
+                delete buts[i];
         delete [] buts;
         ButNum = 0;
     }
 }
 
+Display::~Display()
+{
+
+    if(background != nullptr )
+    {    
+        SDL_DestroyTexture(background);
+        background = nullptr;
+    }
+
+    renderer = nullptr;
+
+    coor.x = 0;
+    coor.y = 0;
+    coor.w = 0;
+    coor.h = 0;
+
+    DeleteButs();
+}
+
 
 void Display::loadButton(Button *& but, const json& mem)
 {
+
+    if(but != nullptr)
+    {
+        delete but;
+        but = nullptr;
+    }
+
     but = new Button;
     but->setRenderer(renderer);
     but->init(

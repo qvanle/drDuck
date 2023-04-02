@@ -31,6 +31,7 @@ public:
     void render();
     void mouseMove(int x, int y);
     void mousePressedButton(int x, int y, char*& MSG);
+    void DeleteButs();
     ~Display();
 };
 
