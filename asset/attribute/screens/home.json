@@ -19,7 +19,7 @@
         "x": 620,
         "y": 275
       },
-      "next screen": "choosing.json"
+      "next screen": "init.json"
 
     },
     { 
@@ -37,15 +37,6 @@
 		    "x": 620,
 		    "y": 425
 		  }
-	},
-    {
-        "name": "previous",
-        "rect":
-        {
-            "x": 5,
-            "y": 5
-        },
-        "visible": false
-    }
+	}
   ]
 }

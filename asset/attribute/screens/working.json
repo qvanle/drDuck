@@ -14,12 +14,12 @@
   [
       {
           "name": "previous",
-          "coor":
+          "rect":
           {
               "x": 5,
               "y": 5
           },
-          "previous": "home.json"
+          "next screen": "home.json"
       }
   ]
 }

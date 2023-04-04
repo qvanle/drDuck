@@ -1,0 +1,21 @@
+{
+    "name": "new",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        },
+        {
+            "name": "1",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "w": 275,
+        "h": 45
+    },
+    "visible": true
+}
+
