@@ -4,11 +4,11 @@
     [
         {
             "name": "0",
-            "type": "bmp"
+            "type": "png"
         },
         {
             "name": "1",
-            "type": "bmp"
+            "type": "png"
         }
     ],
     "rect":

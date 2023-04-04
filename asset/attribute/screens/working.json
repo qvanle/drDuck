@@ -10,7 +10,7 @@
       "h": 540
     }
   },
-  "button": 
+  "buttons": 
   [
       {
           "name": "previous",
@@ -19,8 +19,7 @@
               "x": 5,
               "y": 5
           },
-          "previous": "home.json",
-          "visible": true
+          "previous": "home.json"
       }
   ]
 }
