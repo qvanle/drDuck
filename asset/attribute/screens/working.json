@@ -19,7 +19,8 @@
               "x": 5,
               "y": 5
           },
-          "previous": "home.json"
+          "previous": "home.json",
+          "visible": true
       }
   ]
 }
