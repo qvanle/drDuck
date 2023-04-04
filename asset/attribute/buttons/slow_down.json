@@ -1,0 +1,24 @@
+{
+    "name": "slow_down",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        },
+        {
+            "name": "1",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "w": 50,
+        "h": 50
+    },
+    "visible": true
+}
+
+
+
+

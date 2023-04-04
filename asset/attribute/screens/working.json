@@ -1,25 +1,82 @@
 {
-  "background": 
-  {
-    "name": "working",
-    "type": "jpg",
-    "rect": {
-      "x": 0,
-      "y": 0,
-      "w": 960,
-      "h": 540
-    }
-  },
-  "buttons": 
-  [
-      {
-          "name": "previous",
-          "rect":
-          {
-              "x": 5,
-              "y": 5
-          },
-          "next screen": "home.json"
-      }
-  ]
+    "background": 
+    {
+        "name": "working",
+        "type": "jpg",
+        "rect": 
+        {
+            "x": 0,
+            "y": 0,
+            "w": 960,
+            "h": 540
+        }
+    },
+    "buttons": 
+    [
+        {
+            "name": "play_bar",
+            "rect":
+            {
+                "x": 280,
+                "y": 440
+            }
+        },
+        {
+            "name": "previous",
+            "rect":
+            {
+                "x": 900,
+                "y": 470
+            },
+            "next screen": "home.json"
+        },
+        {
+            "name": "pause",
+            "rect":
+            {
+                "x": 455,
+                "y": 470
+            }
+        }, 
+        {
+            "name": "play",
+            "rect":
+            {
+                "x": 455,
+                "y": 470
+            }
+        },
+        {
+            "name": "left_arrow",
+            "rect":
+            {
+                "x": 385,
+                "y": 470
+            }
+        },
+        {
+            "name": "right_arrow",
+            "rect":
+            {
+                "x": 525,
+                "y": 470
+            }
+        },
+        {
+            "name": "speed_up",
+            "rect":
+            {
+                "x": 595,
+                "y": 470
+            }
+        },
+        {
+            "name": "slow_down",
+            "rect":
+            {
+                "x": 315,
+                "y": 470
+            }
+        }
+    ]
 }
