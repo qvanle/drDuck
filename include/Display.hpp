@@ -22,7 +22,10 @@ private:
     SDL_Rect coor;
     Button ** buts;
     int ButNum;
+    bool status;
 public:
+    bool isFocus();
+    bool changeFocus(int x, int y);
     Display();
     void init(const char* dir, const char* name);
     void loadBackground(const json& mem);

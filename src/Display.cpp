@@ -11,6 +11,20 @@ Display::Display()
     coor.h = 540;
     buts = nullptr;
     ButNum = 0;
+    status = 1;
+}
+
+bool Display::isFocus()
+{
+    return status;
+}
+
+bool Display::changeFocus(int x, int y)
+{
+    if(x < coor.x || coor.x + coor.w <= x) return false;
+    if(y < coor.y || coor.y + coor.h <= y) return false;
+    status = 1;
+    return true;
 }
 
 void Display::init(const char *dir, const char *name)
@@ -165,6 +179,8 @@ void Display::loadButton(Button *& but, const json& mem)
 
 void Display::mouseMove(int x, int y)
 {
+    if(!isFocus()) return ;
+
     for(int i = 0; i < ButNum; i++)
         if(buts[i]->isChosen(x, y))
             break;
@@ -172,6 +188,7 @@ void Display::mouseMove(int x, int y)
 
 void Display::mousePressedButton(int x, int y, char*& MSG)
 {
+    if(!isFocus()) return ;
     for(int i = 0; i < ButNum; i++)
         if(buts[i]->isPressed(x, y))
         {
