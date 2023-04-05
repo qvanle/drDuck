@@ -11,7 +11,7 @@ Display::Display()
     coor.h = 540;
     buts = nullptr;
     ButNum = 0;
-    status = 1;
+    status = 0;
 }
 
 bool Display::isFocus()
