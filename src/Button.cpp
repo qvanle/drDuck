@@ -216,11 +216,7 @@ char* const& Button::getNextScreen()
 void Button::Delete()
 {
     clearTextures();
-    if(renderer != nullptr)
-    {
-        SDL_DestroyRenderer(renderer);
-        renderer = nullptr;
-    }
+    renderer = nullptr;
     
     coor.x = 0;
     coor.y = 0;

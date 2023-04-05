@@ -1,3 +1,4 @@
+#include "SDL_image.h"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -67,7 +68,6 @@ void MyWindow::action()
             if(msg == nullptr) continue;
 
             changeScreen(msg);
-
             delete [] msg;
         }
     }
@@ -75,16 +75,28 @@ void MyWindow::action()
 
 void MyWindow::shutdown()
 {
-    if(window == nullptr) return ;
-    SDL_DestroyWindow(window);
-    window = nullptr;
-    SDL_DestroyRenderer(renderer);
-    renderer = nullptr;
-    SDL_Quit();
+    if(window != nullptr)
+    {
+        SDL_DestroyWindow(window);
+        window = nullptr;
+        SDL_Quit();
+    }
+    if(renderer != nullptr)
+    {
+
+        SDL_DestroyRenderer(renderer);
+        renderer= nullptr;
+    }
     status = 0;
     WIDTH = 0;
     HEIGHT = 0;
-    if(screen != nullptr) delete screen;
+    if(screen != nullptr) 
+    {
+        delete screen;
+        screen = nullptr;
+    }
+
+    IMG_Quit();
 } 
 
 bool MyWindow::isOpen()
@@ -99,13 +111,14 @@ bool MyWindow::isClose()
 
 void MyWindow::changeScreen(const char *const& name)
 {
-    if(top() == nullptr)
+    if(top() != nullptr)
     {
-        top() = new Display;
-        top()->setRenderer(renderer);
+        delete top();
+        top() = nullptr;
     }
+    top() = new Display;
+    top()->setRenderer(renderer);
     top()->init(GLOBAL::AtrbScreens, name);
-
 }
 
 Display *& MyWindow::top()

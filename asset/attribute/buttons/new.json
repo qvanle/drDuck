@@ -1,5 +1,5 @@
 {
-    "name": "previous",
+    "name": "new",
     "textures":
     [
         {
@@ -13,9 +13,9 @@
     ],
     "rect":
     {
-        "w": 50,
-        "h": 50
+        "w": 275,
+        "h": 45
     },
-    "next screen": "-1",
     "visible": true
 }
+

@@ -1,0 +1,19 @@
+
+{
+    "name": "play_bar",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "w": 400,
+        "h": 100
+    },
+    "visible": true
+}
+
+

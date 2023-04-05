@@ -1,5 +1,5 @@
 {
-    "name": "previous",
+    "name": "left_arrow",
     "textures":
     [
         {
@@ -16,6 +16,7 @@
         "w": 50,
         "h": 50
     },
-    "next screen": "-1",
     "visible": true
 }
+
+

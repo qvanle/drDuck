@@ -130,9 +130,6 @@ void Display::DeleteButs()
 
     if(ButNum != 0)
     {
-        for(int i = 0; i < ButNum; i++)
-            if(buts[i] != nullptr)
-                delete buts[i];
         delete [] buts;
         ButNum = 0;
     }
