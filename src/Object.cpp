@@ -1,4 +1,3 @@
-#include "SYSTEM.hpp"
 #include <Object.hpp>
 
 Object::Object()
@@ -121,7 +120,7 @@ void Object::setTextures(const json &mem)
         std::string type = mem["textures"][i]["type"].get<std::string>();
         if(type == "bmp")
             surf = SDL_LoadBMP(link);
-        else if(type == "png")
+        else if(type == "png" || type == "jpg")
             surf = IMG_Load(link);
 
         tes[i] = SDL_CreateTextureFromSurface(ren, surf);
