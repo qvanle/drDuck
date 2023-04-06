@@ -1,16 +1,20 @@
 [
     {
-        "background": 
-        {
-            "name": "home",
-            "type": "bmp",
-            "rect": {
-                "x": 0,
-                "y": 0,
-                "w": 960,
-                "h": 540
+        "name": "home",
+        "textures": 
+        [
+            {
+                "name": "0",
+                "type": "bmp"
             }
+        ],
+        "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 960,
+            "h": 540
         },
+        "visible": true,
         "buttons": 
         [
             {

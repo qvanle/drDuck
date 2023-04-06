@@ -1,15 +1,10 @@
-#include <SYSTEM.hpp>
 #include <Display.hpp>
 
 Display::Display()
 {
-    background = nullptr;
-    renderer = nullptr;
+    ren = nullptr;
+    Object::setCoor(0, 0, 960, 540);
 
-    coor.x = 0;
-    coor.y = 0;
-    coor.w = 960;
-    coor.h = 540;
     buts = nullptr;
     ButNum = 0;
     status = 0;
@@ -22,29 +17,27 @@ bool Display::isFocus()
 
 bool Display::changeFocus(int x, int y)
 {
-    if(x < coor.x || coor.x + coor.w <= x) return false;
-    if(y < coor.y || coor.y + coor.h <= y) return false;
-    status = 1;
-    return true;
+    if(isLiesInside(x, y))
+    {
+        status = 1;
+        return true;
+    }
+    status = 0;
+    return false;
 }
 
 void Display::init(const char *dir, const char *name)
 {
-
     json mem; 
 
     readjson(dir, name, mem);
 
-    init(mem);
+    init(mem[0]);
 }
 
 void Display::init(const json& mem)
 {
-    
-    if(mem.contains("background"))
-    {
-        loadBackground(mem["background"]);
-    }
+    Object::init(mem, ren);   
 
     if(mem.contains("buttons"))
     {
@@ -66,62 +59,14 @@ void Display::loadButtons(const json &mem)
     }            
 }
 
-void Display::loadBackground(const json& mem)
+void Display::setRenderer(SDL_Renderer* const& r)
 {
-    if(!mem.contains("name") || !mem.contains("type"))
-    {
-        return ;
-    }
-
-    std::string type = mem["type"].get<std::string>();    
-
-    char* name = combineName(
-            mem["name"].get<std::string>().c_str(),
-            type.c_str()
-            );
-
-    char* link = combineLink(
-            GLOBAL::BackgroundFolder, 
-            name
-            );
-
-    SDL_Surface* surf;
-
-    if(type == "bmp")
-        surf = SDL_LoadBMP(link);
-    else surf = IMG_Load(link);
-
-    if(background != nullptr)
-    {
-        SDL_DestroyTexture(background);
-        background = nullptr;
-    }
-    background = SDL_CreateTextureFromSurface(renderer, surf);
-
-    if(mem.contains("rect")) 
-    {
-        if(mem["rect"].contains("x"))
-            coor.x = mem["rect"]["x"];
-        if(mem["rect"].contains("y"))
-            coor.y = mem["rect"]["y"];
-        if(mem["rect"].contains("w"))
-            coor.w = mem["rect"]["w"];
-        if(mem["rect"].contains("h"))
-            coor.h = mem["rect"]["h"];
-    }
-    SDL_FreeSurface(surf);
-    delete [] name;
-    type.clear();
-}
-
-void Display::setRenderer(SDL_Renderer* const& ren)
-{
-    renderer = ren;
+    ren = r;
 }
 
 void Display::render() 
 {
-    SDL_RenderCopy(renderer, background, nullptr, &coor);
+    Object::render(0);
 
     for(int i = 0; i < ButNum; i++)
         buts[i]->render();
@@ -129,7 +74,7 @@ void Display::render()
 
 void Display::DeleteButs()
 {
-
+    if(!isVisible()) return ;
     if(ButNum != 0)
     {
         delete [] buts;
@@ -140,19 +85,8 @@ void Display::DeleteButs()
 Display::~Display()
 {
 
-    if(background != nullptr )
-    {    
-        SDL_DestroyTexture(background);
-        background = nullptr;
-    }
-
-    renderer = nullptr;
-
-    coor.x = 0;
-    coor.y = 0;
-    coor.w = 0;
-    coor.h = 0;
-
+    ren = nullptr;
+    Object::~Object();
     DeleteButs();
 }
 
@@ -167,7 +101,7 @@ void Display::loadButton(Button *& but, const json& mem)
     }
 
     but = new Button;
-    but->setRenderer(renderer);
+    but->setRenderer(ren);
     but->init(
             GLOBAL::AtrbButtons,
             mem["name"].get<std::string>().c_str()
@@ -189,7 +123,7 @@ void Display::mousePressedButton(int x, int y, char*& MSG)
 {
     if(!isFocus()) return ;
     for(int i = 0; i < ButNum; i++)
-        if(buts[i]->isPressed(x, y))
+        if(buts[i]->isChosen(x, y))
         {
             MSG = buts[i]->getNextScreen();
         }

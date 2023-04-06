@@ -1,6 +1,7 @@
 #ifndef BUTTON
 #define BUTTON
 
+#include <Object.hpp>
 #include <SYSTEM.hpp>
 
 #include <SDL2/SDL.h>
@@ -11,32 +12,20 @@
 
 using json = nlohmann::json;
 
-class Button 
+class Button : Object
 {
 private:
-    SDL_Texture** grains;
-    SDL_Renderer* renderer;
-    int SizeOfGrains;
-    int status;
-    bool visible;
-    SDL_Rect coor;
+    SDL_Renderer* ren;
     char* nextScreen;
 
 public:
     Button();
-    void show();
-    void hide();
-    void nxStatus();
-    void pvStatus();
     bool isChosen(int x, int y);
-    bool isPressed(int x, int y);
-    void setTextures(const json& mem);
     void init(const char* name);
     void init(const char* dir, const char* name);
     void init(const json& mem);
-    void setRenderer(SDL_Renderer* const& ren);
+    void setRenderer(SDL_Renderer* const& r);
     void render();
-    int size();
     void Delete();
     void clearTextures();
     char* const& getNextScreen();
