@@ -44,15 +44,19 @@ void MyWindow::render()
 {
     SDL_RenderClear(renderer);
     
-    if(top() != nullptr) top()->render();
+    for(int i = 0; i < ScreenNum; i++)
+        screen[i]->render();
 
     SDL_RenderPresent(renderer);
 }
 
 void MyWindow::changeFocus(int x, int y)
 {
-    top()->changeFocus(x, y);
-    top()->mouseMove(x, y);
+    for(int i = 0; i < ScreenNum; i++)
+    {
+        screen[i]->changeFocus(x, y);
+        screen[i]->mouseMove(x, y);
+    }
 }
 
 void MyWindow::action()
@@ -77,6 +81,8 @@ void MyWindow::action()
             if(msg == nullptr) continue;
 
             changeScreens(msg);
+            changeFocus(event.motion.x, event.motion.y);
+
             delete [] msg;
         }
     }
