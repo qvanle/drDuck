@@ -2,8 +2,8 @@
 
 const char* GLOBAL::GraphicsFolder = "asset/graphics/";
 
-const char* GLOBAL::BackgroundFolder = "asset/background/";
-const char* GLOBAL::ButtonFolder = "asset/buttons/";
+const char* GLOBAL::BackgroundFolder = "asset/graphics/";
+const char* GLOBAL::ButtonFolder = "asset/graphics/";
 const char* GLOBAL::AttributeFolder = "asset/attribute/";
 const char* GLOBAL::AtrbScreens = "asset/attribute/screens/";
 const char* GLOBAL::AtrbButtons = "asset/attribute/buttons/";
