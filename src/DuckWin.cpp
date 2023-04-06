@@ -1,4 +1,5 @@
 #include "Display.hpp"
+#include "SDL_image.h"
 #include "SDL_mutex.h"
 #include <DuckWin.hpp>
 

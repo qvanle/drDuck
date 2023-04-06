@@ -6,20 +6,16 @@
 #include <SDL_render.h>
 #include <SDL2/SDL_image.h>
 
-#include <nlohmann/json.hpp>
-
 #include <SYSTEM.hpp>
 #include <Button.hpp>
+#include <Object.hpp>
 
 
-using json = nlohmann::json;
 
-class Display
+class Display : Object
 {
 private:
-    SDL_Texture* background;
-    SDL_Renderer * renderer;
-    SDL_Rect coor;
+    SDL_Renderer * ren;
     Button ** buts;
     int ButNum;
     bool status;
@@ -29,7 +25,6 @@ public:
     Display();
     void init(const char* dir, const char* name);
     void init(const json& mem);
-    void loadBackground(const json& mem);
     void loadButtons(const json& mem);
     void loadButton(Button *& but, const json& mem);
     void setRenderer(SDL_Renderer* const&  ren);
