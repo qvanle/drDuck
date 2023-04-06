@@ -1,51 +1,53 @@
-{
-    "background": 
+[
     {
-        "name": "home",
-        "type": "bmp",
-        "rect": {
-            "x": 0,
-            "y": 0,
-            "w": 960,
-            "h": 540
-        }
-    },
-    "buttons": 
-    [
+        "background": 
         {
-            "name": "static",
-            "rect": 
-            {
-                "x": 620,
-                "y": 295
-            },
-            "next screen": "working.json"
-        },
-        { 
-            "name": "dynamic",
-            "rect": 
-            {
-                "x": 620,
-                "y": 385
+            "name": "home",
+            "type": "bmp",
+            "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 960,
+                "h": 540
             }
         },
-        { 
-            "name": "donate",
-            "rect": 
+        "buttons": 
+        [
             {
-                "x": 600,
-                "y": 425
+                "name": "static",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 295
+                },
+                "next screen": "working.json"
             },
-            "visible": false
-        },
-        {
-            "name": "previous",
-            "rect":
+            { 
+                "name": "dynamic",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 385
+                }
+            },
+            { 
+                "name": "donate",
+                "rect": 
+                {
+                    "x": 600,
+                    "y": 425
+                },
+                "visible": false
+            },
             {
-                "x": 5,
-                "y": 5
-            },
-            "next screen": "choosing.json"
-        }
-    ]
-}
+                "name": "previous",
+                "rect":
+                {
+                    "x": 5,
+                    "y": 5
+                },
+                "next screen": "choosing.json"
+            }
+        ]
+    }
+]

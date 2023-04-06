@@ -1,42 +1,44 @@
-{
-  "background": 
-  {
-    "name": "home",
-    "type": "bmp",
-    "rect": {
-      "x": 0,
-      "y": 0,
-      "w": 960,
-      "h": 540
-    }
-  },
-  "buttons": 
-  [
+[
     {
-      "name": "start",
-      "rect": 
-      {
-        "x": 620,
-        "y": 275
-      },
-      "next screen": "init.json"
+        "background": 
+        {
+            "name": "home",
+            "type": "bmp",
+            "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 960,
+                "h": 540
+            }
+        },
+        "buttons": 
+        [
+            {
+                "name": "start",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 275
+                },
+                "next screen": "init.json"
 
-    },
-    { 
-    	"name": "tutorial",
-    	"rect": 
-		  {
-		    "x": 620,
-		    "y": 350
-		  }
-	},
-	{ 
-    	"name": "donate",
-    	"rect": 
-		  {
-		    "x": 620,
-		    "y": 425
-		  }
-	}
-  ]
-}
+            },
+            { 
+                "name": "tutorial",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 350
+                }
+            },
+            { 
+                "name": "donate",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 425
+                }
+            }
+        ]
+    }
+]

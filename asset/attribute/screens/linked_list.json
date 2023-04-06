@@ -1,49 +1,51 @@
-{
-  "background": 
-  {
-    "name": "home",
-    "type": "bmp",
-    "rect": {
-      "x": 0,
-      "y": 0,
-      "w": 960,
-      "h": 540
-    }
-  },
-  "buttons": 
-  [
+[
     {
-      "name": "singly",
-      "rect": 
-      {
-        "x": 620,
-        "y": 275
-      }
-    },
-    { 
-    	"name": "doubly",
-    	"rect": 
-		  {
-		    "x": 620,
-		    "y": 350
-		  }
-	},
-	{ 
-    	"name": "circular",
-    	"rect": 
-		  {
-		    "x": 620,
-		    "y": 425
-		  }
-	},
-    {
-        "name": "previous",
-        "rect":
+        "background": 
         {
-            "x": 5,
-            "y": 5
+            "name": "home",
+            "type": "bmp",
+            "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 960,
+                "h": 540
+            }
         },
-        "next screen": "choosing.json"
+        "buttons": 
+        [
+            {
+                "name": "singly",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 275
+                }
+            },
+            { 
+                "name": "doubly",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 350
+                }
+            },
+            { 
+                "name": "circular",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 425
+                }
+            },
+            {
+                "name": "previous",
+                "rect":
+                {
+                    "x": 5,
+                    "y": 5
+                },
+                "next screen": "choosing.json"
+            }
+        ]
     }
-  ]
-}
+]

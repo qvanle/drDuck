@@ -1,51 +1,53 @@
-{
-    "background": 
+[
     {
-        "name": "home",
-        "type": "bmp",
-        "rect": {
-            "x": 0,
-            "y": 0,
-            "w": 960,
-            "h": 540
-        }
-    },
-    "buttons": 
-    [
+        "background": 
         {
-            "name": "array",
-            "rect": 
-            {
-                "x": 620,
-                "y": 275
+            "name": "home",
+            "type": "bmp",
+            "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 960,
+                "h": 540
             }
         },
-        { 
-            "name": "linked_list",
-            "rect": 
+        "buttons": 
+        [
             {
-                "x": 620,
-                "y": 350
+                "name": "array",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 275
+                }
             },
-            "next screen": "linked_list.json"
-        },
-        { 
-            "name": "InO_order",
-            "rect": 
+            { 
+                "name": "linked_list",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 350
+                },
+                "next screen": "linked_list.json"
+            },
+            { 
+                "name": "InO_order",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 425
+                },
+                "next screen": "InO_order.json"
+            },
             {
-                "x": 620,
-                "y": 425
-            },
-            "next screen": "InO_order.json"
-        },
-        {
-            "name": "previous",
-            "rect":
-            {
-                "x": 5,
-                "y": 5
-            },
-            "next screen": "init.json"
-        }
-    ]
-}
+                "name": "previous",
+                "rect":
+                {
+                    "x": 5,
+                    "y": 5
+                },
+                "next screen": "init.json"
+            }
+        ]
+    }
+]

@@ -1,82 +1,84 @@
-{
-    "background": 
+[
     {
-        "name": "working",
-        "type": "jpg",
-        "rect": 
+        "background": 
         {
-            "x": 0,
-            "y": 0,
-            "w": 960,
-            "h": 540
-        }
-    },
-    "buttons": 
-    [
-        {
-            "name": "play_bar",
-            "rect":
+            "name": "working",
+            "type": "jpg",
+            "rect": 
             {
-                "x": 280,
-                "y": 440
+                "x": 0,
+                "y": 0,
+                "w": 960,
+                "h": 540
             }
         },
-        {
-            "name": "previous",
-            "rect":
+        "buttons": 
+        [
             {
-                "x": 900,
-                "y": 470
+                "name": "play_bar",
+                "rect":
+                {
+                    "x": 280,
+                    "y": 440
+                }
             },
-            "next screen": "home.json"
-        },
-        {
-            "name": "pause",
-            "rect":
             {
-                "x": 455,
-                "y": 470
-            }
-        }, 
-        {
-            "name": "play",
-            "rect":
+                "name": "previous",
+                "rect":
+                {
+                    "x": 900,
+                    "y": 470
+                },
+                "next screen": "home.json"
+            },
             {
-                "x": 455,
-                "y": 470
-            }
-        },
-        {
-            "name": "left_arrow",
-            "rect":
+                "name": "pause",
+                "rect":
+                {
+                    "x": 455,
+                    "y": 470
+                }
+            }, 
             {
-                "x": 385,
-                "y": 470
-            }
-        },
-        {
-            "name": "right_arrow",
-            "rect":
+                "name": "play",
+                "rect":
+                {
+                    "x": 455,
+                    "y": 470
+                }
+            },
             {
-                "x": 525,
-                "y": 470
-            }
-        },
-        {
-            "name": "speed_up",
-            "rect":
+                "name": "left_arrow",
+                "rect":
+                {
+                    "x": 385,
+                    "y": 470
+                }
+            },
             {
-                "x": 595,
-                "y": 470
-            }
-        },
-        {
-            "name": "slow_down",
-            "rect":
+                "name": "right_arrow",
+                "rect":
+                {
+                    "x": 525,
+                    "y": 470
+                }
+            },
             {
-                "x": 315,
-                "y": 470
+                "name": "speed_up",
+                "rect":
+                {
+                    "x": 595,
+                    "y": 470
+                }
+            },
+            {
+                "name": "slow_down",
+                "rect":
+                {
+                    "x": 315,
+                    "y": 470
+                }
             }
-        }
-    ]
-}
+        ]
+    }
+]

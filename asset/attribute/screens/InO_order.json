@@ -1,50 +1,52 @@
-{
-    "background": 
+[
     {
-        "name": "home",
-        "type": "bmp",
-        "rect": {
-            "x": 0,
-            "y": 0,
-            "w": 960,
-            "h": 540
-        }
-    },
-    "buttons": 
-    [
+        "background": 
         {
-            "name": "stack",
-            "rect": 
-            {
-                "x": 620,
-                "y": 295
+            "name": "home",
+            "type": "bmp",
+            "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 960,
+                "h": 540
             }
         },
-        { 
-            "name": "queue",
-            "rect": 
+        "buttons": 
+        [
             {
-                "x": 620,
-                "y": 385
+                "name": "stack",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 295
+                }
+            },
+            { 
+                "name": "queue",
+                "rect": 
+                {
+                    "x": 620,
+                    "y": 385
+                }
+            },
+            { 
+                "name": "donate",
+                "rect": 
+                {
+                    "x": 600,
+                    "y": 425
+                },
+                "visible": false
+            },
+            {
+                "name": "previous",
+                "rect":
+                {
+                    "x": 5,
+                    "y": 5
+                },
+                "next screen": "choosing.json"
             }
-        },
-        { 
-            "name": "donate",
-            "rect": 
-            {
-                "x": 600,
-                "y": 425
-            },
-            "visible": false
-        },
-        {
-            "name": "previous",
-            "rect":
-            {
-                "x": 5,
-                "y": 5
-            },
-            "next screen": "choosing.json"
-        }
-    ]
-}
+        ]
+    }
+]
