@@ -1,5 +1,7 @@
 #include <SYSTEM.hpp>
 
+const char* GLOBAL::GraphicsFolder = "asset/graphics/";
+
 const char* GLOBAL::BackgroundFolder = "asset/background/";
 const char* GLOBAL::ButtonFolder = "asset/buttons/";
 const char* GLOBAL::AttributeFolder = "asset/attribute/";
