@@ -1,17 +1,20 @@
 [
     {
-        "background": 
-        {
-            "name": "working",
-            "type": "jpg",
-            "rect": 
+        "name": "working",
+        "textures": 
+        [
             {
-                "x": 0,
-                "y": 0,
-                "w": 960,
-                "h": 540
+                "name": "0",
+                "type": "jpg"
             }
+        ],
+        "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 960,
+            "h": 540
         },
+        "visible": true,
         "buttons": 
         [
             {
@@ -26,18 +29,22 @@
         ]
     },
     {
-        "background":
-        {
-            "name": "play_bar",
-            "type": "png",
-            "rect":
+        "name": "play_bar",
+        "textures":
+        [
             {
-                "x": 260,
-                "y": 440,
-                "w": 440,
-                "h": 100
+                "name": "0",
+                "type": "png"
             }
+        ],
+        "rect":
+        {
+            "x": 260,
+            "y": 440,
+            "w": 440,
+            "h": 100
         },
+        "visible": true,
         "buttons":
         [
             {
