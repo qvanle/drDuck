@@ -1,6 +1,4 @@
-#include "Display.hpp"
-#include "SDL_image.h"
-#include "SDL_mutex.h"
+#include "SDL_render.h"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -39,6 +37,14 @@ void MyWindow::init()
     );
 
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
+
+    SDL_Rect rect;
+    rect.x = 0;
+    rect.y = 0;
+    rect.w = WIDTH;
+    rect.h = HEIGHT;
+
+    SDL_RenderSetViewport(renderer, &rect);
 }
 
 void MyWindow::render()
