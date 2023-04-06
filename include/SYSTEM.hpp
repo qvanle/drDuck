@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include <nlohmann/json_fwd.hpp>
 #include <stack>
 #include <string>
 #include <thread>
@@ -15,6 +14,7 @@ using json = nlohmann::json;
 
 namespace GLOBAL
 {
+    extern const char* GraphicsFolder;
     extern const char* BackgroundFolder;
     extern const char* ButtonFolder;
     extern const char* AttributeFolder;

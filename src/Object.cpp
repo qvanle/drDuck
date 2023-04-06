@@ -1,3 +1,4 @@
+#include "SYSTEM.hpp"
 #include <Object.hpp>
 
 Object::Object()
@@ -111,7 +112,7 @@ void Object::setTextures(const json &mem)
             fullname
         );
         const char* link = combineLink(
-            GLOBAL::ButtonFolder, 
+            GLOBAL::GraphicsFolder, 
             name
         ); 
         
