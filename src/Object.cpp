@@ -76,7 +76,7 @@ void Object::setH(int h)
     coor.h = h;
 }
 
-SDL_Rect Object::getCoor()
+const SDL_Rect &Object::getCoor()
 {
     return coor;
 }
