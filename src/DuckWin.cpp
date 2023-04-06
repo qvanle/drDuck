@@ -1,3 +1,4 @@
+#include "Display.hpp"
 #include "SDL_image.h"
 #include <DuckWin.hpp>
 
@@ -8,7 +9,8 @@ MyWindow::MyWindow()
     HEIGHT = 0;
     window = nullptr;
     renderer = nullptr;
-    screen = nullptr;
+    FocusOn = 0;
+    screen = new Display*[1];
 }
 
 
@@ -46,6 +48,12 @@ void MyWindow::render()
     SDL_RenderPresent(renderer);
 }
 
+void MyWindow::changeFocus(int x, int y)
+{
+    top()->changeFocus(x, y);
+    top()->mouseMove(x, y);
+}
+
 void MyWindow::action()
 {
 
@@ -59,7 +67,7 @@ void MyWindow::action()
             shutdown();
         }else if(event.type == SDL_MOUSEMOTION)
         {
-            top()->mouseMove(event.motion.x, event.motion.y);
+            changeFocus(event.motion.x, event.motion.y);
         }else if(event.type == SDL_MOUSEBUTTONDOWN)
         {
             char* msg = nullptr;
@@ -123,7 +131,7 @@ void MyWindow::changeScreen(const char *const& name)
 
 Display *& MyWindow::top()
 {
-    return screen;
+    return screen[FocusOn];
 }
 
 MyWindow::~MyWindow()

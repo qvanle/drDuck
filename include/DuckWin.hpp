@@ -17,15 +17,17 @@ private:
     int status;
     int WIDTH;
     int HEIGHT;
+    int FocusOn;
 
     SDL_Window* window;
     SDL_Renderer* renderer;
-    Display* screen;
+    Display ** screen;
 
     void shutdown();
 
 public:
     MyWindow();
+    void loadScreen(Display *& screen, const json& mem);
     void init();
     void action();
     void render();
@@ -34,6 +36,8 @@ public:
 
     void changeScreen(const char* const &name);
     Display *& top();
+
+    void changeFocus(int x, int y);
 
     ~MyWindow();
 };
