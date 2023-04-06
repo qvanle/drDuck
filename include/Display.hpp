@@ -28,7 +28,9 @@ public:
     bool changeFocus(int x, int y);
     Display();
     void init(const char* dir, const char* name);
+    void init(const json& mem);
     void loadBackground(const json& mem);
+    void loadButtons(const json& mem);
     void loadButton(Button *& but, const json& mem);
     void setRenderer(SDL_Renderer* const&  ren);
     void render();

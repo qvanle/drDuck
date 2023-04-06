@@ -1,3 +1,4 @@
+#include <SYSTEM.hpp>
 #include <Display.hpp>
 
 Display::Display()
@@ -30,19 +31,16 @@ bool Display::changeFocus(int x, int y)
 void Display::init(const char *dir, const char *name)
 {
 
-    char* link = combineLink(dir, name);
-    std::ifstream fin(link);
-
-    delete [] link;
-
-    if(!fin.is_open()) return ; 
-
     json mem; 
 
-    fin >> mem;
+    readjson(dir, name, mem);
 
-    fin.close();
-   
+    init(mem);
+}
+
+void Display::init(const json& mem)
+{
+    
     if(mem.contains("background"))
     {
         loadBackground(mem["background"]);
@@ -50,18 +48,22 @@ void Display::init(const char *dir, const char *name)
 
     if(mem.contains("buttons"))
     {
-        DeleteButs();
-
-        ButNum = mem["buttons"].size();
-
-        buts = new Button*[ButNum];
-        for(int i = 0; i < ButNum; i++)
-        {
-            buts[i] = nullptr;
-            loadButton(buts[i], mem["buttons"][i]);
-        }            
+        loadButtons(mem["buttons"]);
     }
+}
 
+void Display::loadButtons(const json &mem)
+{
+    DeleteButs();
+
+    ButNum = mem.size();
+
+    buts = new Button*[ButNum];
+    for(int i = 0; i < ButNum; i++)
+    {
+        buts[i] = nullptr;
+        loadButton(buts[i], mem[i]);
+    }            
 }
 
 void Display::loadBackground(const json& mem)
@@ -74,14 +76,14 @@ void Display::loadBackground(const json& mem)
     std::string type = mem["type"].get<std::string>();    
 
     char* name = combineName(
-        mem["name"].get<std::string>().c_str(),
-        type.c_str()
-    );
+            mem["name"].get<std::string>().c_str(),
+            type.c_str()
+            );
 
     char* link = combineLink(
-        GLOBAL::BackgroundFolder, 
-        name
-    );
+            GLOBAL::BackgroundFolder, 
+            name
+            );
 
     SDL_Surface* surf;
 
@@ -95,7 +97,7 @@ void Display::loadBackground(const json& mem)
         background = nullptr;
     }
     background = SDL_CreateTextureFromSurface(renderer, surf);
-    
+
     if(mem.contains("rect")) 
     {
         if(mem["rect"].contains("x"))
@@ -167,8 +169,8 @@ void Display::loadButton(Button *& but, const json& mem)
     but = new Button;
     but->setRenderer(renderer);
     but->init(
-                GLOBAL::AtrbButtons,
-                mem["name"].get<std::string>().c_str()
+            GLOBAL::AtrbButtons,
+            mem["name"].get<std::string>().c_str()
             );
     but->init(mem);
     return ;
