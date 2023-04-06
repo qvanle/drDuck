@@ -7,6 +7,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <stack>
 #include <string>
+#include <thread>
 
 #include <nlohmann/json.hpp>
 
