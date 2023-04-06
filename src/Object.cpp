@@ -173,6 +173,8 @@ void Object::render(bool update)
 {
     if(!isVisible()) return ; 
     SDL_RenderCopy(ren, tes[top], nullptr, &coor);
+    if(update == true)
+        SDL_RenderPresent(ren);
     return ;
 }
 
