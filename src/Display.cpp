@@ -189,7 +189,7 @@ void Display::mousePressedButton(int x, int y, char*& MSG)
 {
     if(!isFocus()) return ;
     for(int i = 0; i < ButNum; i++)
-        if(buts[i]->isPressed(x, y))
+        if(buts[i]->isChosen(x, y))
         {
             MSG = buts[i]->getNextScreen();
         }
