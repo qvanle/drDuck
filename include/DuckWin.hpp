@@ -22,8 +22,9 @@ private:
     SDL_Window* window;
     SDL_Renderer* renderer;
     Display ** screen;
-
+    int ScreenNum;
     void shutdown();
+    void deleteScreen();
 
 public:
     MyWindow();
@@ -34,7 +35,7 @@ public:
     bool isOpen();
     bool isClose();
 
-    void changeScreen(const char* const &name);
+    void changeScreens(const char* const &name);
     Display *& top();
 
     void changeFocus(int x, int y);

@@ -6,7 +6,7 @@ int main()
     MyWindow* mainWin = new MyWindow;
 
     mainWin->init();
-    mainWin->changeScreen("home.json");
+    mainWin->changeScreens("home.json");
     
     while(mainWin->isOpen())
     {

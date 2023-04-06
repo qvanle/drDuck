@@ -1,5 +1,5 @@
 #include "Display.hpp"
-#include "SDL_image.h"
+#include "SDL_mutex.h"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -10,7 +10,8 @@ MyWindow::MyWindow()
     window = nullptr;
     renderer = nullptr;
     FocusOn = 0;
-    screen = new Display*[1];
+    screen = nullptr; 
+    ScreenNum = 0;
 }
 
 
@@ -75,14 +76,22 @@ void MyWindow::action()
             
             if(msg == nullptr) continue;
 
-            changeScreen(msg);
+            changeScreens(msg);
             delete [] msg;
         }
     }
 }
 
+void MyWindow::deleteScreen()
+{
+    if(screen == nullptr) return ;
+    delete [] screen;
+    screen = nullptr;
+}
+
 void MyWindow::shutdown()
 {
+    deleteScreen();
     if(window != nullptr)
     {
         SDL_DestroyWindow(window);
@@ -98,11 +107,6 @@ void MyWindow::shutdown()
     status = 0;
     WIDTH = 0;
     HEIGHT = 0;
-    if(screen != nullptr) 
-    {
-        delete screen;
-        screen = nullptr;
-    }
 
     IMG_Quit();
 } 
@@ -117,23 +121,32 @@ bool MyWindow::isClose()
     return status == 0;
 }
 
-void MyWindow::changeScreen(const char *const& name)
+void MyWindow::changeScreens(const char *const& name)
 {
-    if(top() != nullptr)
+    deleteScreen();
+
+    json mem; 
+
+    readjson(GLOBAL::AtrbScreens, name, mem);
+
+    ScreenNum = mem.size();
+
+    screen = new Display*[ScreenNum];
+
+    for(int i = 0; i < ScreenNum; i++)
     {
-        delete top();
-        top() = nullptr;
+        FocusOn = i;
+        top() = new Display;
+        top()->setRenderer(renderer);
+        top()->init(mem[i]);
     }
-    top() = new Display;
-    top()->setRenderer(renderer);
-    top()->init(GLOBAL::AtrbScreens, name);
+    FocusOn = 0;
 }
 
 Display *& MyWindow::top()
 {
     return screen[FocusOn];
 }
-
 MyWindow::~MyWindow()
 {
     shutdown();
