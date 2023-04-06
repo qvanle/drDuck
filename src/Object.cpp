@@ -1,3 +1,4 @@
+#include "SYSTEM.hpp"
 #include <Object.hpp>
 
 Object::Object()
@@ -75,7 +76,7 @@ void Object::setH(int h)
     coor.h = h;
 }
 
-SDL_Rect Object::getCoor()
+const SDL_Rect &Object::getCoor()
 {
     return coor;
 }
@@ -111,7 +112,7 @@ void Object::setTextures(const json &mem)
             fullname
         );
         const char* link = combineLink(
-            GLOBAL::ButtonFolder, 
+            GLOBAL::GraphicsFolder, 
             name
         ); 
         

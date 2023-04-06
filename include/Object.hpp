@@ -30,7 +30,7 @@ public:
     void setY(int y);
     void setW(int w);
     void setH(int h);
-    SDL_Rect getCoor();
+    const SDL_Rect &getCoor();
     bool isLiesInside(int x, int y);
     bool isLiesInside(int x, int y, int w, int h);
     bool isLiesInside(SDL_Rect rect);
