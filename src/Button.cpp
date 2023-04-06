@@ -1,80 +1,19 @@
 #include <Button.hpp>
-#include <iterator>
 
 Button::Button()
 {
-    grains = nullptr;
-    renderer = nullptr;
+    ren = nullptr;
     nextScreen = nullptr;
-    SizeOfGrains = 0;
-    coor.x = 0;
-    coor.y = 0;
-    coor.w = 0;
-    coor.h = 0;
-    status = 0;
-    visible = false;
-}
-void Button::show()
-{
-    visible = true;
-}
-void Button::hide()
-{
-    visible = false;
-}
-void Button::nxStatus()
-{
-    status = (status + 1) % size();
-}
-void Button ::pvStatus()
-{
-    status = (status + size() - 1) % size();
 }
 
 bool Button::isChosen(int x, int y)
 {
-    if(x < coor.x || coor.x + coor.w <= x) 
+    if(!isLiesInside(x, y))
     {
-        status = 0;
+        pickTexure(0);
         return false;
     }
-    if(y < coor.y || coor.y + coor.h <= y) 
-    {
-        status = 0;
-        return false;
-    }
-    if(!visible) 
-    {
-        status = 0;
-        return false;
-    }
-
-    if(size() >= 2) status = 1;
-    return true;
-}
-
-bool Button::isPressed(int x, int y)
-{
-    
-    if(x < coor.x || coor.x + coor.w <= x) 
-    {
-        status = 0;
-        return false;
-    }
-    if(y < coor.y || coor.y + coor.h <= y) 
-    {
-        status = 0;
-        return false;
-    }
-    if(!visible) 
-    {
-        status = 0;
-        return false;
-    }
-
-    if(size() >= 3) status = 2;
-    else if(size() >= 2) status = 0;
-
+    pickTexure(1);
     return true;
 }
 
@@ -82,17 +21,12 @@ void Button::init(const char* name)
 {
     init(GLOBAL::AtrbButtons, name);
 }
-int Button::size()
-{
-    return SizeOfGrains;
-}
 
 void Button::init(const char* dir, const char* name)
 {
     char* fullname = combineName(name, "json");
     char* link = combineLink(dir, fullname);
     std::ifstream fin(link);
-
 
     json mem; 
 
@@ -105,70 +39,9 @@ void Button::init(const char* dir, const char* name)
     delete [] link;
 }
 
-void Button::setTextures(const json& mem)
-{
-    clearTextures();
-
-    SizeOfGrains = mem["textures"].size();
-    grains = new SDL_Texture*[SizeOfGrains];
-
-    char* FolderName = new char [256];
-    strcpy(FolderName, mem["name"].get<std::string>().c_str());
-
-    for(int i = 0 ; i < size(); i++)
-    {
-        const char* fullname = combineName(
-            mem["textures"][i]["name"].get<std::string>().c_str(),
-            mem["textures"][i]["type"].get<std::string>().c_str()
-        );
-        const char* name = combineLink( 
-            FolderName,
-            fullname
-        );
-        const char* link = combineLink(
-            GLOBAL::ButtonFolder, 
-            name
-        ); 
-        
-        SDL_Surface* surf;
-
-        std::string type = mem["textures"][i]["type"].get<std::string>();
-        if(type == "bmp")  
-            surf = SDL_LoadBMP(link);
-        else if(type == "png")
-            surf = IMG_Load(link);
-
-        grains[i] = SDL_CreateTextureFromSurface(renderer, surf);
-
-        delete [] link;
-        delete [] name;
-        delete []fullname;
-        SDL_FreeSurface(surf);
-    }
-    delete [] FolderName;
-}
-
 void Button::init(const json& mem)
 {
-    if(mem.contains("textures"))
-    {
-        setTextures(mem);
-    }
-    if(mem.contains("rect"))
-    {
-        if(mem["rect"].contains("x")) 
-            coor.x = mem["rect"]["x"];
-        if(mem["rect"].contains(("y")))
-            coor.y = mem["rect"]["y"];
-        if(mem["rect"].contains("w"))
-            coor.w = mem["rect"]["w"];
-        if(mem["rect"].contains("h"))
-            coor.h = mem["rect"]["h"];
-    }
-    if(mem.contains("visible"))
-    {
-        visible = mem["visible"];
-    }
+    Object::init(mem, ren);
 
     if(mem.contains("next screen"))
     {
@@ -180,32 +53,17 @@ void Button::init(const json& mem)
     }
 }
 
-void Button::setRenderer(SDL_Renderer* const& ren)
+void Button::setRenderer(SDL_Renderer* const& r)
 {
-    renderer = ren;
+    ren = r;
 }
 
 void Button::render()
 {
-    if(!visible) return ;
-    SDL_RenderCopy(renderer, grains[status], nullptr, &coor);
+    if(!isVisible()) return ;
+
+    Object::render(0);
     return ;
-}
-
-void Button::clearTextures()
-{
-    if(grains != nullptr)
-    {
-        for(int i = 0; i < size(); i++)
-        {
-            if(grains[i] != nullptr) 
-                SDL_DestroyTexture(grains[i]);
-        }
-        delete [] grains;
-        grains = nullptr;
-        SizeOfGrains = 0;
-    }
-
 }
 
 char* const& Button::getNextScreen()
@@ -215,13 +73,9 @@ char* const& Button::getNextScreen()
 
 void Button::Delete()
 {
-    clearTextures();
-    renderer = nullptr;
+    ren = nullptr;
+    Object::~Object();
     
-    coor.x = 0;
-    coor.y = 0;
-    coor.h = 0;
-    coor.w = 0;
     if(nextScreen != nullptr) 
         delete [] nextScreen;
 }
