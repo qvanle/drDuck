@@ -47,3 +47,22 @@ char * combineLink(const char *dir, const char *name)
 
     return link;
 }
+
+void readJson(const char * const& link, json &mem)
+{
+    std::ifstream fin(link);
+    
+    fin >> mem;
+
+    fin.close();
+    return ;
+}
+
+void readjson(const char * const& dir, const char * const& name, json &mem)
+{
+    char* link = combineLink(dir, name);
+
+    readJson(link, mem);
+
+    delete [] link;
+}
