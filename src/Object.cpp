@@ -1,4 +1,5 @@
 #include <Object.hpp>
+#include <clocale>
 
 Object::Object()
 {
@@ -208,4 +209,23 @@ bool Object::isLiesInside(int x, int y, int w, int h)
 bool Object::isLiesInside(SDL_Rect rect)
 {
     return isLiesInside(rect.x, rect.y, rect.w, rect.h);
+}
+
+void Object::move(int x, int y)
+{
+    for(int i = coor.x, j = coor.y; i <= x || j <=  y; i++, j++)
+    {
+        if(i <= x) coor.x++;
+        if(j <= y) coor.y++;
+    }
+}
+
+void Object::appear(int x, int y)
+{
+    if(isVisible()) return ;
+
+}
+void Object::disapear(int x, int y)
+{
+    if(!isVisible()) return ;
 }

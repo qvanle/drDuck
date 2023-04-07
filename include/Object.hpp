@@ -44,6 +44,10 @@ public:
     int size();
 
     void render(bool update);
+
+    void move(int x, int y);
+    void appear(int x, int y);
+    void disapear(int x, int y);
 };
 
 #endif
