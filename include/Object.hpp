@@ -34,6 +34,10 @@ public:
     bool isLiesInside(int x, int y);
     bool isLiesInside(int x, int y, int w, int h);
     bool isLiesInside(SDL_Rect rect);
+    void addX(int k);
+    void addY(int k);
+    void addW(int k);
+    void addH(int k);
 
     void show();
     void hide();

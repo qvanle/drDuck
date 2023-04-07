@@ -229,3 +229,22 @@ void Object::disapear(int x, int y)
 {
     if(!isVisible()) return ;
 }
+
+void Object::addX(int k)
+{
+    coor.x += k;
+}
+
+void Object::addY(int k)
+{
+    coor.y += k;
+}
+
+void Object::addW(int k)
+{
+    coor.w += k;
+}
+void Object::addH(int k)
+{
+    coor.h += k;
+}
