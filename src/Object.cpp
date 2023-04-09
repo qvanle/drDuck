@@ -239,17 +239,6 @@ void Object::addH(int k)
     coor.h += k;
 }
 
-bool diff(double a, double b)
-{
-    return abs(a - b) < 1e-6;
-}
-
-int min(int a, int b)
-{
-    if(a < b) return a;
-    return b;
-}
-
 void Object::moveTo(int x, int y, double time)
 {
     int dx = x - getCoor().x;
@@ -267,7 +256,7 @@ void Object::moveTo(int x, int y, double time)
         velo = dy / time;
     else velo = dx / time;
 
-    int loop = min(60, abs(velo * time));
+    int loop = std::min(80.0, abs(velo * time));
 
     time = time / loop;
 
