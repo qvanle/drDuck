@@ -19,7 +19,9 @@ private:
     Button ** buts;
     int ButNum;
     bool status;
+    bool freeze;
 public:
+    bool isFreezed();
     bool isFocus();
     bool changeFocus(int x, int y);
     Display();
@@ -28,6 +30,7 @@ public:
     void loadButtons(const json& mem);
     void loadButton(Button *& but, const json& mem);
     void setRenderer(SDL_Renderer* const&  ren);
+    void trigger(int x, int y);
     void render();
     void render(bool update);
     void mouseMove(int x, int y);

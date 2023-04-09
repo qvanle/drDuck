@@ -8,6 +8,7 @@ Display::Display()
     buts = nullptr;
     ButNum = 0;
     status = 0;
+    freeze = false;
 }
 
 bool Display::isFocus()
@@ -43,6 +44,8 @@ void Display::init(const json& mem)
     {
         loadButtons(mem["buttons"]);
     }
+    if(mem.contains("freeze"))
+        freeze = mem["freeze"]; 
 }
 
 void Display::loadButtons(const json &mem)
@@ -66,6 +69,7 @@ void Display::setRenderer(SDL_Renderer* const& r)
 
 void Display::render() 
 {
+    if(!isVisible()) return ;
     Object::render(0);
 
     for(int i = 0; i < ButNum; i++)
@@ -74,7 +78,7 @@ void Display::render()
 
 void Display::render(bool update)
 {
-    Object::render(true);
+    Object::render(update);
     for(int i = 0; i < ButNum; i++)
         buts[i]->render(update);
 }
@@ -95,6 +99,7 @@ Display::~Display()
     ren = nullptr;
     Object::~Object();
     DeleteButs();
+    freeze = false;
 }
 
 
@@ -173,14 +178,41 @@ void Display::moveTo(int x, int y, double time)
         addY(-dy * (i - 1) / loop);
         addY(dy * i / loop); 
 
-        for(int i = 0; i < ButNum; i++)
+        for(int j = 0; j < ButNum; j++)
         {
-            buts[i]->addX(-dx * (i - 1) / loop);
-            buts[i]->addX(dx * i / loop);
-            buts[i]->addY(-dy * (i - 1) / loop);
-            buts[i]->addY(dy * i / loop);
+            buts[j]->addX(-dx * (i - 1) / loop);
+            buts[j]->addX(dx * i / loop);
+            buts[j]->addY(-dy * (i - 1) / loop);
+            buts[j]->addY(dy * i / loop);
         }
-        render(true);
+        Uint32 deltatime = SDL_GetTicks() - startTime;
+        SDL_Delay(time * 1000 - deltatime);
     }
 
+}
+
+void Display::trigger(int x, int y)
+{
+    if(isFreezed()) return ;
+    if(!triggerable(x, y)) return ;
+
+    if(!isVisible())
+    {
+        int dy = 100;
+        addY(dy);
+        for(int i = 0; i < ButNum; i++)
+            buts[i]->addY(dy);
+        show();
+        moveTo(260, 440, 0.4);
+    }
+    if(!isFocus() && isVisible())
+    {
+        moveTo(260, 440, 0.4);
+        hide();
+    }
+}
+
+bool Display::isFreezed()
+{
+    return freeze;
 }
