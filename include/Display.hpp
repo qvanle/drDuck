@@ -29,6 +29,7 @@ public:
     void loadButton(Button *& but, const json& mem);
     void setRenderer(SDL_Renderer* const&  ren);
     void render();
+    void render(bool update);
     void mouseMove(int x, int y);
     void mousePressedButton(int x, int y, char*& MSG);
     void DeleteButs();

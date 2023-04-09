@@ -1,3 +1,4 @@
+#include "SDL_timer.h"
 #include <Display.hpp>
 
 Display::Display()
@@ -70,6 +71,13 @@ void Display::render()
 
     for(int i = 0; i < ButNum; i++)
         buts[i]->render();
+}
+
+void Display::render(bool update)
+{
+    Object::render(true);
+    for(int i = 0; i < ButNum; i++)
+        buts[i]->render(update);
 }
 
 void Display::DeleteButs()
@@ -150,4 +158,34 @@ void Display::moveTo(int x, int y, double time)
         }
         return ;
     }
+
+    double velo;
+
+    if(abs(dx) < abs(dy))
+        velo = dy / time;
+    else velo = dx / time; 
+       
+    int loop = min(80, abs(velo * time));
+
+    time = time / loop;  
+
+    for(int i = 1; i <= loop; i++)
+    {
+        Uint32 startTime = SDL_GetTicks();
+
+        addX(-dx * (i - 1) / loop);
+        addX(dx * i / loop);
+        addY(-dy * (i - 1) / loop);
+        addY(dy * i / loop); 
+
+        for(int i = 0; i < ButNum; i++)
+        {
+            buts[i]->addX(-dx * (i - 1) / loop);
+            buts[i]->addX(dx * i / loop);
+            buts[i]->addY(-dy * (i - 1) / loop);
+            buts[i]->addY(dy * i / loop);
+        }
+        render(true);
+    }
+
 }
