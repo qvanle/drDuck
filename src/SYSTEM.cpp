@@ -68,3 +68,8 @@ void readjson(const char * const& dir, const char * const& name, json &mem)
 
     delete [] link;
 }
+
+bool diff(double a, double b)
+{
+    return fabs(a - b) < 1e-6;
+}
