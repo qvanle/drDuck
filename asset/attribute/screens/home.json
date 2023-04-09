@@ -1,6 +1,7 @@
 [
     {
         "name": "home",
+        "freeze": true,
         "textures": 
         [
             {

@@ -1,6 +1,7 @@
 [
     {
         "name": "working",
+        "freeze" : true,
         "textures": 
         [
             {
@@ -44,7 +45,7 @@
             "w": 440,
             "h": 100
         },
-        "visible": true,
+        "visible": false,
         "buttons":
         [
             {

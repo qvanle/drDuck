@@ -1,3 +1,4 @@
+#include "SDL_timer.h"
 #include <Object.hpp>
 
 Object::Object()
@@ -208,4 +209,76 @@ bool Object::isLiesInside(int x, int y, int w, int h)
 bool Object::isLiesInside(SDL_Rect rect)
 {
     return isLiesInside(rect.x, rect.y, rect.w, rect.h);
+}
+
+bool Object::triggerable(int x, int y)
+{
+    if(x < coor.x || coor.x + coor.w <= x)
+        return false;
+    if(y < coor.y || coor.y + coor.h <= y)
+        return false;
+    return true;  
+}
+
+void Object::addX(int k)
+{
+    coor.x += k;
+}
+
+void Object::addY(int k)
+{
+    coor.y += k;
+}
+
+void Object::addW(int k)
+{
+    coor.w += k;
+}
+void Object::addH(int k)
+{
+    coor.h += k;
+}
+
+void Object::moveTo(int x, int y, double time)
+{
+    int dx = x - getCoor().x;
+    int dy = y - getCoor().y;
+
+    if(diff(time, 0))
+    {
+        coor.x = x;
+        coor.y = y;
+        return ;
+    }
+
+    double velo;
+    if(abs(dx) < abs(dy))
+        velo = dy / time;
+    else velo = dx / time;
+
+    int loop = std::min(80.0, abs(velo * time));
+
+    time = time / loop;
+
+
+    for(int i = 1; i <= loop; i++)
+    {
+        Uint32 startTime = SDL_GetTicks();
+
+        addX(-dx * (i - 1) / loop);
+        addX(dx * i / loop);
+        addY(-dy * (i - 1) / loop);
+        addY(dy * i / loop);
+        render(true); 
+        Uint32 deltaTime = SDL_GetTicks() - startTime;
+        startTime = SDL_GetTicks();
+
+        std::cerr << getCoor().x << " " << getCoor().y << "\n";
+
+        if(deltaTime <= time * 1000)
+            SDL_Delay(time * 1000 - deltaTime);
+    }
+    setX(x);
+    setY(y);
+    render(true);
 }

@@ -9,7 +9,7 @@
 class Object
 {
 private:
-    SDL_Rect coor;    
+    SDL_Rect coor;
     bool visable;
     SDL_Texture** tes;
     int tesSize;
@@ -34,6 +34,11 @@ public:
     bool isLiesInside(int x, int y);
     bool isLiesInside(int x, int y, int w, int h);
     bool isLiesInside(SDL_Rect rect);
+    bool triggerable(int x, int y);
+    void addX(int k);
+    void addY(int k);
+    void addW(int k);
+    void addH(int k);
 
     void show();
     void hide();
@@ -44,6 +49,7 @@ public:
     int size();
 
     void render(bool update);
+    void moveTo(int x, int y, double time);
 };
 
 #endif
