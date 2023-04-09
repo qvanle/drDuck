@@ -12,7 +12,7 @@
 
 using json = nlohmann::json;
 
-class Button : Object
+class Button : public Object
 {
 private:
     SDL_Renderer* ren;
