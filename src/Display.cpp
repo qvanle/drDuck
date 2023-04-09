@@ -128,3 +128,26 @@ void Display::mousePressedButton(int x, int y, char*& MSG)
             MSG = buts[i]->getNextScreen();
         }
 }
+
+bool diff(double a, double b)
+{
+    return abs(a - b) < 1e-6;
+}
+void Display::moveTo(int x, int y, double time)
+{
+    int dx = x - getCoor().x;
+    int dy = y - getCoor().y;
+
+    if(diff(time, 0))
+    {
+        addX(dx);
+        addY(dy);
+
+        for(int i = 0; i < ButNum; i++)
+        {
+            buts[i]->addX(dx);
+            buts[i]->addY(dy);
+        }
+        return ;
+    }
+}

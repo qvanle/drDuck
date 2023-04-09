@@ -12,7 +12,7 @@
 
 
 
-class Display : Object
+class Display : public Object
 {
 private:
     SDL_Renderer * ren;
@@ -32,6 +32,10 @@ public:
     void mouseMove(int x, int y);
     void mousePressedButton(int x, int y, char*& MSG);
     void DeleteButs();
+
+    void moveTo(int x, int y, double time);
+    void moveFrom(int x, int y, double time);
+
     ~Display();
 };
 
