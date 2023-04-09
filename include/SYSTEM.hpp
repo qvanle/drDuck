@@ -7,6 +7,7 @@
 #include <stack>
 #include <string>
 #include <thread>
+#include <algorithm>
 
 #include <nlohmann/json.hpp>
 
@@ -27,5 +28,6 @@ char * combineName(const char* name, const char* type);
 void readJson(const char* const& link, json &mem);
 void readjson(const char* const& dir, const char* const& name, json &mem);
 
+bool diff(double a, double b);
 #endif
 
