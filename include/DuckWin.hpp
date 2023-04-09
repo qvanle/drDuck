@@ -18,6 +18,7 @@ private:
     int WIDTH;
     int HEIGHT;
     int FocusOn;
+    bool wait;
 
     SDL_Window* window;
     SDL_Renderer* renderer;
@@ -39,6 +40,7 @@ public:
     Display *& top();
 
     void changeFocus(int x, int y);
+    void run();
 
     ~MyWindow();
 };

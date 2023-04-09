@@ -8,11 +8,7 @@ int main()
     mainWin->init();
     mainWin->changeScreens("home.json");
     
-    while(mainWin->isOpen())
-    {
-        mainWin->render();
-        mainWin->action();
-    }
+    mainWin->run();
 
     delete mainWin;
 

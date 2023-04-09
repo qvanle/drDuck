@@ -1,4 +1,3 @@
-#include "SDL_render.h"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -11,6 +10,7 @@ MyWindow::MyWindow()
     FocusOn = 0;
     screen = nullptr; 
     ScreenNum = 0;
+    wait = false;
 }
 
 
@@ -49,12 +49,17 @@ void MyWindow::init()
 
 void MyWindow::render()
 {
-    SDL_RenderClear(renderer);
-    
-    for(int i = 0; i < ScreenNum; i++)
-        screen[i]->render();
 
-    SDL_RenderPresent(renderer);
+    while(isOpen())
+    {
+        while(wait);
+        SDL_RenderClear(renderer);
+
+        for(int i = 0; i < ScreenNum; i++)
+            screen[i]->render();
+
+        SDL_RenderPresent(renderer);
+    }
 }
 
 void MyWindow::changeFocus(int x, int y)
@@ -68,29 +73,31 @@ void MyWindow::changeFocus(int x, int y)
 
 void MyWindow::action()
 {
-
-    SDL_Event event;
-
-    while(SDL_PollEvent(&event))
+    while(isOpen())
     {
-        if(event.type == SDL_QUIT)
-        {
-            status = 0;
-            shutdown();
-        }else if(event.type == SDL_MOUSEMOTION)
-        {
-            changeFocus(event.motion.x, event.motion.y);
-        }else if(event.type == SDL_MOUSEBUTTONDOWN)
-        {
-            char* msg = nullptr;
-            top()->mousePressedButton(event.motion.x, event.motion.y, msg);
-            
-            if(msg == nullptr) continue;
+        SDL_Event event;
 
-            changeScreens(msg);
-            changeFocus(event.motion.x, event.motion.y);
+        while(SDL_PollEvent(&event))
+        {
+            if(event.type == SDL_QUIT)
+            {
+                status = 0;
+                shutdown();
+            }else if(event.type == SDL_MOUSEMOTION)
+            {
+                changeFocus(event.motion.x, event.motion.y);
+            }else if(event.type == SDL_MOUSEBUTTONDOWN)
+            {
+                char* msg = nullptr;
+                top()->mousePressedButton(event.motion.x, event.motion.y, msg);
+                
+                if(msg == nullptr) continue;
 
-            delete [] msg;
+                changeScreens(msg);
+                changeFocus(event.motion.x, event.motion.y);
+
+                delete [] msg;
+            }
         }
     }
 }
@@ -136,6 +143,7 @@ bool MyWindow::isClose()
 
 void MyWindow::changeScreens(const char *const& name)
 {
+    wait = true;
     deleteScreen();
 
     json mem; 
@@ -154,6 +162,7 @@ void MyWindow::changeScreens(const char *const& name)
         top()->init(mem[i]);
     }
     FocusOn = 0;
+    wait = false;
 }
 
 Display *& MyWindow::top()
@@ -163,4 +172,13 @@ Display *& MyWindow::top()
 MyWindow::~MyWindow()
 {
     shutdown();
+}
+
+void MyWindow::run()
+{
+    std::thread draw(&MyWindow::render, this);
+    std::thread interact(&MyWindow::action, this);
+
+    draw.join();
+    interact.join();
 }
