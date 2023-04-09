@@ -65,6 +65,12 @@ void Button::render()
     Object::render(0);
     return ;
 }
+void Button::render(bool update)
+{
+    if(!isVisible()) return ;
+    Object::render(update);
+    return ;
+}
 
 char* const& Button::getNextScreen()
 {

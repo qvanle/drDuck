@@ -25,6 +25,7 @@ public:
     void init(const char* dir, const char* name);
     void init(const json& mem);
     void setRenderer(SDL_Renderer* const& r);
+    void render(bool update);
     void render();
     void Delete();
     void clearTextures();
