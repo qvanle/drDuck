@@ -1,4 +1,3 @@
-#include "SDL_timer.h"
 #include <Display.hpp>
 
 Display::Display()
@@ -137,10 +136,6 @@ void Display::mousePressedButton(int x, int y, char*& MSG)
         }
 }
 
-bool diff(double a, double b)
-{
-    return abs(a - b) < 1e-6;
-}
 void Display::moveTo(int x, int y, double time)
 {
     int dx = x - getCoor().x;
@@ -165,7 +160,7 @@ void Display::moveTo(int x, int y, double time)
         velo = dy / time;
     else velo = dx / time; 
        
-    int loop = min(80, abs(velo * time));
+    int loop = std::min(80.0, abs(velo * time));
 
     time = time / loop;  
 
