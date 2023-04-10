@@ -52,6 +52,35 @@
             "h": 100
         },
         "visible":  true,
+        "animations":
+        {
+            "focus":
+            {
+                "before":
+                {
+                    "x": 260,
+                    "y": 540
+                },
+                "after":
+                {
+                    "x": 260,
+                    "y": 440
+                }
+            },
+            "lose focus":
+            {
+                "before": 
+                {
+                    "x": 260,
+                    "y": 440
+                },
+                "after": 
+                {
+                    "x": 260,
+                    "y": 540
+                }
+            }
+        },
         "buttons":
         [
             {
