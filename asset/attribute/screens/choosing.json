@@ -24,7 +24,9 @@
                 {
                     "x": 620,
                     "y": 275
-                }
+                },
+                "action": "change screen",
+                "msg": "array.json"
             },
             { 
                 "name": "linked_list",
@@ -33,7 +35,8 @@
                     "x": 620,
                     "y": 350
                 },
-                "next screen": "linked_list.json"
+                "action": "change screen",
+                "msg": "linked_list.json"
             },
             { 
                 "name": "InO_order",
@@ -42,7 +45,8 @@
                     "x": 620,
                     "y": 425
                 },
-                "next screen": "InO_order.json"
+                "action": "change screen",
+                "msg": "InO_order.json"
             },
             {
                 "name": "previous",
@@ -51,7 +55,8 @@
                     "x": 5,
                     "y": 5
                 },
-                "next screen": "init.json"
+                "action": "change screen",
+                "msg": "init.json"
             }
         ]
     }

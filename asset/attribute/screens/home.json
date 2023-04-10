@@ -25,7 +25,8 @@
                     "x": 620,
                     "y": 275
                 },
-                "next screen": "init.json"
+                "action": "change screen",
+                "msg": "init.json"
 
             },
             { 

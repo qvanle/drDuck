@@ -25,7 +25,8 @@
                     "x": 620,
                     "y": 275
                 },
-                "next screen": "choosing.json"
+                "action": "change screen",
+                "msg": "choosing.json"
             },
             {
                 "name": "open",
@@ -42,7 +43,8 @@
                     "x": 5,
                     "y": 5
                 },
-                "next screen": "home.json"
+                "action": "change screen",
+                "msg": "home.json"
             }
         ]
     }

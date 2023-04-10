@@ -16,7 +16,10 @@ class Button : public Object
 {
 private:
     SDL_Renderer* ren;
+    std::string action;
     char* nextScreen;
+    char** argv;
+    int argc;
 
 public:
     Button();

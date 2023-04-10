@@ -25,7 +25,13 @@
                     "x": 900,
                     "y": 470
                 },
-                "next screen": "home.json"
+                "action": "change screen",
+                "msg": "home.json",
+                "arg":
+                [
+                    "array",
+                    "static"
+                ]
             }
         ]
     },
@@ -45,7 +51,7 @@
             "w": 440,
             "h": 100
         },
-        "visible": false,
+        "visible":  true,
         "buttons":
         [
             {

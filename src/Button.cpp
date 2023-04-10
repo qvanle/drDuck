@@ -4,6 +4,8 @@ Button::Button()
 {
     ren = nullptr;
     nextScreen = nullptr;
+    argv = nullptr;
+    argc = 0;
 }
 
 bool Button::isChosen(int x, int y)
@@ -32,7 +34,7 @@ void Button::init(const char* dir, const char* name)
 
     fin >> mem;
     fin.close();
-   
+
     init(mem);
 
     delete [] fullname;
@@ -43,13 +45,28 @@ void Button::init(const json& mem)
 {
     Object::init(mem, ren);
 
-    if(mem.contains("next screen"))
+    if(mem.contains("action"))
     {
-        std::string s = mem["next screen"].get<std::string>();
-        nextScreen = new char[s.size() + 2];
-        strcpy(nextScreen, s.c_str());
-
-        s.clear();
+        action = mem["action"].get<std::string>();
+        if(mem.contains("msg"))
+        {
+            std::string s = mem["msg"].get<std::string>();
+            nextScreen = new char[s.size() + 2];
+            strcpy(nextScreen, s.c_str());
+            s.clear();
+        }
+        if(mem.contains("arg"))
+        {
+            argc = mem["arg"].size();
+            argv = new char*[argc]; 
+            for(int i = 0; i < argc; i++)
+            {
+                std::string s = mem["arg"][i].get<std::string>();
+                argv[i] = new char[s.size() + 2];
+                strcpy(argv[i], s.c_str());
+                s.clear();
+            }
+        }
     }
 }
 
@@ -81,9 +98,17 @@ void Button::Delete()
 {
     ren = nullptr;
     Object::~Object();
-    
+
     if(nextScreen != nullptr) 
         delete [] nextScreen;
+
+    if(argv != nullptr)
+    {
+        for(int i = 0; i < argc; i++)
+            delete [] argv[i];
+        delete [] argv;
+        argc = 0;
+    }
 }
 
 Button::~Button()

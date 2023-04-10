@@ -49,7 +49,9 @@
                     "x": 5,
                     "y": 5
                 },
-                "next screen": "choosing.json"
+                "action": "change screen",
+                "msg": "choosing.json"
+
             }
         ]
     }
