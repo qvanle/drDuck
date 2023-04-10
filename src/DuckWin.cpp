@@ -88,15 +88,15 @@ void MyWindow::action()
                 changeFocus(event.motion.x, event.motion.y);
             }else if(event.type == SDL_MOUSEBUTTONDOWN)
             {
-                char* msg = nullptr;
-                top()->mousePressedButton(event.motion.x, event.motion.y, msg);
+                Button* but = top()->mousePressedButton(event.motion.x, event.motion.y);
                 
-                if(msg == nullptr) continue;
+                if(but == nullptr) continue;
 
-                changeScreens(msg);
-                changeFocus(event.motion.x, event.motion.y);
-
-                delete [] msg;
+                if(but->action == "change screen")
+                {
+                    changeScreens(but->msg);
+                    changeFocus(event.motion.x, event.motion.y);
+                }
             }
         }
     }

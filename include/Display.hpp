@@ -34,7 +34,7 @@ public:
     void render();
     void render(bool update);
     void mouseMove(int x, int y);
-    void mousePressedButton(int x, int y, char*& MSG);
+    Button* mousePressedButton(int x, int y);
     void DeleteButs();
 
     void moveTo(int x, int y, double time);
