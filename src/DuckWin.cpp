@@ -1,4 +1,5 @@
 #include <DuckWin.hpp>
+#include <cinttypes>
 
 MyWindow::MyWindow()
 {
@@ -49,10 +50,9 @@ void MyWindow::init()
 
 void MyWindow::render()
 {
-
     while(isOpen())
     {
-        while(wait);
+        while(wait || isHanging());
         SDL_RenderClear(renderer);
 
         for(int i = 0; i < ScreenNum; i++)
@@ -92,9 +92,9 @@ void MyWindow::action()
                 
                 if(but == nullptr) continue;
 
-                if(but->action == "change screen")
+                if(but->getAction() == "change screen")
                 {
-                    changeScreens(but->msg);
+                    changeScreens(but->getNextScreen());
                     changeFocus(event.motion.x, event.motion.y);
                 }
             }
@@ -134,6 +134,11 @@ void MyWindow::shutdown()
 bool MyWindow::isOpen()
 {
     return status == 1;
+}
+
+bool MyWindow::isHanging()
+{
+    return status == 2;
 }
 
 bool MyWindow::isClose()
