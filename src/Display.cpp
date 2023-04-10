@@ -131,14 +131,15 @@ void Display::mouseMove(int x, int y)
             break;
 }
 
-void Display::mousePressedButton(int x, int y, char*& MSG)
+Button* Display::mousePressedButton(int x, int y)
 {
-    if(!isFocus()) return ;
+    if(!isFocus()) return nullptr;
     for(int i = 0; i < ButNum; i++)
         if(buts[i]->isChosen(x, y))
         {
-            MSG = buts[i]->getNextScreen();
+            return buts[i];
         }
+    return nullptr;
 }
 
 void Display::moveTo(int x, int y, double time)
