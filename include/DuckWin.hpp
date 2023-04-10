@@ -35,6 +35,7 @@ public:
     void render();
     bool isOpen();
     bool isClose();
+    bool isHanging();
 
     void changeScreens(const char* const &name);
     Display *& top();
