@@ -23,19 +23,19 @@ void MyWindow::init()
 
     SDL_Init(SDL_INIT_VIDEO);
     window = SDL_CreateWindow(
-        "Dr Duck",
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        WIDTH,
-        HEIGHT,
-        SDL_WINDOW_SHOWN
-    );
+            "Dr Duck",
+            SDL_WINDOWPOS_CENTERED,
+            SDL_WINDOWPOS_CENTERED,
+            WIDTH,
+            HEIGHT,
+            SDL_WINDOW_SHOWN
+            );
 
     renderer = SDL_CreateRenderer(
-        window,
-        -1,
-        SDL_RENDERER_ACCELERATED 
-    );
+            window,
+            -1,
+            SDL_RENDERER_ACCELERATED 
+            );
 
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
 
@@ -62,12 +62,30 @@ void MyWindow::render()
     }
 }
 
-void MyWindow::changeFocus(int x, int y)
+void MyWindow::mouseMove(int x, int y)
 {
-    for(int i = 0; i < ScreenNum; i++)
+    for(int i = ScreenNum - 1; i >= 0; i--)
     {
-        screen[i]->changeFocus(x, y);
-        screen[i]->mouseMove(x, y);
+        if(screen[i]->isVisible() && screen[i]->isLiesInside(x, y))
+        {
+            FocusOn = i;
+            screen[i]->changeFocus(x, y);
+            screen[i]->mouseMove(x, y);
+        }
+    }
+}
+
+void MyWindow::mousePress(int x, int y)
+{
+
+    Button* but = top()->mousePressedButton(x, y);
+
+    if(but == nullptr) return ;
+
+    if(but->getAction() == "change screen")
+    {
+        changeScreens(but->getNextScreen());
+        mouseMove(x, y);
     }
 }
 
@@ -85,18 +103,10 @@ void MyWindow::action()
                 shutdown();
             }else if(event.type == SDL_MOUSEMOTION)
             {
-                changeFocus(event.motion.x, event.motion.y);
+                mouseMove(event.motion.x, event.motion.y);
             }else if(event.type == SDL_MOUSEBUTTONDOWN)
             {
-                Button* but = top()->mousePressedButton(event.motion.x, event.motion.y);
-                
-                if(but == nullptr) continue;
-
-                if(but->getAction() == "change screen")
-                {
-                    changeScreens(but->getNextScreen());
-                    changeFocus(event.motion.x, event.motion.y);
-                }
+                mousePress(event.motion.x, event.motion.y);
             }
         }
     }

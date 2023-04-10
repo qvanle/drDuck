@@ -40,7 +40,8 @@ public:
     void changeScreens(const char* const &name);
     Display *& top();
 
-    void changeFocus(int x, int y);
+    void mouseMove(int x, int y);
+    void mousePress(int x, int y);
     void run();
 
     ~MyWindow();
