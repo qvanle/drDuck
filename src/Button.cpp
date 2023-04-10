@@ -10,7 +10,7 @@ Button::Button()
 
 bool Button::isChosen(int x, int y)
 {
-    if(!isVisible() && !isLiesInside(x, y))
+    if(!isVisible() || !isLiesInside(x, y))
     {
         pickTexure(0);
         return false;
