@@ -8,7 +8,6 @@ Display::Display()
     buts = nullptr;
     ButNum = 0;
     status = 0;
-    freeze = false;
 }
 
 bool Display::isFocus()
@@ -44,8 +43,6 @@ void Display::init(const json& mem)
     {
         loadButtons(mem["buttons"]);
     }
-    if(mem.contains("freeze"))
-        freeze = mem["freeze"]; 
 }
 
 void Display::loadButtons(const json &mem)
@@ -99,7 +96,6 @@ Display::~Display()
     ren = nullptr;
     Object::~Object();
     DeleteButs();
-    freeze = false;
 }
 
 
@@ -194,8 +190,7 @@ void Display::moveTo(int x, int y, double time)
 
 void Display::trigger(int x, int y)
 {
-    if(isFreezed()) return ;
-    if(!triggerable(x, y)) return ;
+    if(!isLiesInside(x, y)) return ;
 
     if(!isVisible())
     {
@@ -213,7 +208,3 @@ void Display::trigger(int x, int y)
     }
 }
 
-bool Display::isFreezed()
-{
-    return freeze;
-}
