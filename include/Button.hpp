@@ -17,12 +17,13 @@ class Button : public Object
 private:
     SDL_Renderer* ren;
     std::string action;
-    char* nextScreen;
+    char* msg;
     char** argv;
     int argc;
 
 public:
     Button();
+    std::string getAction();
     bool isChosen(int x, int y);
     void init(const char* name);
     void init(const char* dir, const char* name);

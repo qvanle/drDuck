@@ -3,7 +3,7 @@
 Button::Button()
 {
     ren = nullptr;
-    nextScreen = nullptr;
+    msg = nullptr;
     argv = nullptr;
     argc = 0;
 }
@@ -19,6 +19,10 @@ bool Button::isChosen(int x, int y)
     return true;
 }
 
+std::string Button::getAction()
+{
+    return action;
+}
 void Button::init(const char* name)
 {
     init(GLOBAL::AtrbButtons, name);
@@ -51,8 +55,8 @@ void Button::init(const json& mem)
         if(mem.contains("msg"))
         {
             std::string s = mem["msg"].get<std::string>();
-            nextScreen = new char[s.size() + 2];
-            strcpy(nextScreen, s.c_str());
+            msg = new char[s.size() + 2];
+            strcpy(msg, s.c_str());
             s.clear();
         }
         if(mem.contains("arg"))
@@ -91,7 +95,7 @@ void Button::render(bool update)
 
 char* const& Button::getNextScreen()
 {
-    return nextScreen;
+    return msg;
 }
 
 void Button::Delete()
@@ -99,8 +103,8 @@ void Button::Delete()
     ren = nullptr;
     Object::~Object();
 
-    if(nextScreen != nullptr) 
-        delete [] nextScreen;
+    if(msg != nullptr) 
+        delete [] msg;
 
     if(argv != nullptr)
     {
