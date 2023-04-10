@@ -1,4 +1,3 @@
-#include "SDL_timer.h"
 #include <Object.hpp>
 
 Object::Object()
@@ -190,8 +189,6 @@ bool Object::isLiesInside(int x, int y)
         return false;
     if(y < coor.y || coor.y + coor.h <= y)
         return false;
-    if(!isVisible())
-        return  false;
     return true;
 }
 
@@ -201,23 +198,12 @@ bool Object::isLiesInside(int x, int y, int w, int h)
         return false;
     if(y < coor.y || coor.y + coor.h <= y + h)
         return false;
-    if(!isVisible())
-        return false;
     return true;
 }
 
 bool Object::isLiesInside(SDL_Rect rect)
 {
     return isLiesInside(rect.x, rect.y, rect.w, rect.h);
-}
-
-bool Object::triggerable(int x, int y)
-{
-    if(x < coor.x || coor.x + coor.w <= x)
-        return false;
-    if(y < coor.y || coor.y + coor.h <= y)
-        return false;
-    return true;  
 }
 
 void Object::addX(int k)

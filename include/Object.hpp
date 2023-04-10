@@ -34,7 +34,6 @@ public:
     bool isLiesInside(int x, int y);
     bool isLiesInside(int x, int y, int w, int h);
     bool isLiesInside(SDL_Rect rect);
-    bool triggerable(int x, int y);
     void addX(int k);
     void addY(int k);
     void addW(int k);
