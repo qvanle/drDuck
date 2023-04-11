@@ -47,7 +47,7 @@
             "w": 440,
             "h": 100
         },
-        "visible":  true,
+        "visible":  false,
         "buttons":
         [
             {
@@ -117,7 +117,7 @@
             "w": 200,
             "h": 540
         },
-        "visible":  true,
+        "visible":  false,
         "buttons": 
         [
             {
