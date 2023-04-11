@@ -22,16 +22,11 @@
                 "name": "previous",
                 "rect":
                 {
-                    "x": 900,
-                    "y": 470
+                    "x": 10,
+                    "y": 480
                 },
                 "action": "change screen",
-                "msg": "home.json",
-                "arg":
-                [
-                    "array",
-                    "static"
-                ]
+                "msg": "home.json"
             }
         ]
     },
@@ -44,6 +39,7 @@
                 "type": "png"
             }
         ],
+        "appear from": "bottom",
         "rect":
         {
             "x": 260,
@@ -52,35 +48,6 @@
             "h": 100
         },
         "visible":  true,
-        "animations":
-        {
-            "focus":
-            {
-                "before":
-                {
-                    "x": 260,
-                    "y": 540
-                },
-                "after":
-                {
-                    "x": 260,
-                    "y": 440
-                }
-            },
-            "lose focus":
-            {
-                "before": 
-                {
-                    "x": 260,
-                    "y": 440
-                },
-                "after": 
-                {
-                    "x": 260,
-                    "y": 540
-                }
-            }
-        },
         "buttons":
         [
             {
@@ -132,5 +99,48 @@
                 }
             }
         ]
-    } 
+    },
+    {
+        "name": "menu_bar",
+        "appear from": "right",
+        "textures":
+        [
+            {
+                "name": "0",
+                "type": "png"
+            }
+        ],
+        "rect":
+        {
+            "x": 760,
+            "y": 0,
+            "w": 200,
+            "h": 540
+        },
+        "visible":  true,
+        "buttons": 
+        [
+            {
+                "name": "new",
+                "rect":
+                {
+                    "x": 770,
+                    "y": 60,
+                    "w": 180,
+                    "h": 40
+                },
+                "textures": 
+                [
+                    {
+                        "name": "2",
+                        "type": "png" 
+                    },
+                    {
+                        "name": "3",
+                        "type": "png"
+                    }
+                ]
+            }
+        ]
+    }
 ]
