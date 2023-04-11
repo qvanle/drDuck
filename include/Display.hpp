@@ -42,6 +42,7 @@ public:
     void appearFromRight(double time);
     void disappearToBot(double time);
     void disappearToRight(double time);
+    int getAppear();
 
     ~Display();
 };
