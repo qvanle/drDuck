@@ -150,29 +150,42 @@ Button* Display::mousePressedButton(int x, int y)
 
 void Display::appearFromBot(double time)
 {
+    int sy = getCoor().y;
+    int dy = 540 - sy;
+    
+    for(int i = 0; i < ButNum; i++)
+        buts[i]->addY(dy);
+
     setY(540);
     show();
-    moveTo(getCoor().x, getCoor().y, time);
+    moveTo(getCoor().x, sy, time);
 }
 
 void Display::appearFromRight(double time)
 {
+    int sx = getCoor().x;
+    int dx = 960 - sx; 
+
+    for(int i = 0; i < ButNum; i++)
+        buts[i]->addX(dx);
+
     setX(960);
     show();
-    moveTo(getCoor().x, getCoor().y, time);
+    moveTo(sx, getCoor().y, time);
 }
 
 void Display::disappearToBot(double time)
 {
     show();
-    moveTo(540, getCoor().y, time);
+    moveTo(getCoor().x, 540, time);
     hide();
 }
 
 void Display::disappearToRight(double time)
 {
     show();
-    moveTo(getCoor().x, 960, time);
+    moveTo(960, getCoor().y, time);
+    hide();
 }
 
 int Display::getAppear()
