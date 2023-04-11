@@ -150,6 +150,7 @@ Button* Display::mousePressedButton(int x, int y)
 
 void Display::appearFromBot(double time)
 {
+    if(appear != 1) return ;
     setY(540);
     show();
     moveTo(getCoor().x, getCoor().y, time);
@@ -157,6 +158,7 @@ void Display::appearFromBot(double time)
 
 void Display::appearFromRight(double time)
 {
+    if(appear != 2) return ;
     setX(960);
     show();
     moveTo(getCoor().x, getCoor().y, time);
@@ -164,6 +166,7 @@ void Display::appearFromRight(double time)
 
 void Display::disappearToBot(double time)
 {
+    if(appear != 1) return ;
     show();
     moveTo(540, getCoor().y, time);
     hide();
@@ -171,6 +174,7 @@ void Display::disappearToBot(double time)
 
 void Display::disappearToRight(double time)
 {
+    if(appear != 2) return ;
     show();
     moveTo(getCoor().x, 960, time);
 }
