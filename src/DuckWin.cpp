@@ -71,6 +71,19 @@ void MyWindow::mouseMove(int x, int y)
             FocusOn = i;
             screen[i]->changeFocus(x, y);
             screen[i]->mouseMove(x, y);
+        }else if (!screen[i]->isVisible() && screen[i]->isLiesInside(x, y))
+        {
+            if(screen[i]->getAppear() == 0) continue;
+            else if(screen[i]->getAppear() == 1) screen[i]->appearFromBot(0.4);
+            else if(screen[i]->getAppear() == 2) screen[i]->appearFromRight(0.4);
+            FocusOn = i;
+            screen[i]->changeFocus(x, y);
+            screen[i]->mouseMove(x, y);
+        }else if(screen[i]->isVisible() && !screen[i]->isLiesInside(x, y))
+        {
+            if(screen[i]->getAppear() == 0) continue;
+            else if(screen[i]->getAppear() == 1) screen[i]->disappearToBot(0.4);
+            else if(screen[i]->getAppear() == 2) screen[i]->disappearToRight(0.4);
         }
     }
 }
