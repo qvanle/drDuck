@@ -121,6 +121,7 @@ void Display::loadButton(Button *& but, const json& mem)
 void Display::mouseMove(int x, int y)
 {
     if(!isFocus()) return ;
+    if(!isVisible()) return ;
 
     for(int i = 0; i < ButNum; i++)
         if(buts[i]->isChosen(x, y))
@@ -136,6 +137,33 @@ Button* Display::mousePressedButton(int x, int y)
             return buts[i];
         }
     return nullptr;
+}
+
+void Display::appearFromBot(double time)
+{
+    setY(540);
+    show();
+    moveTo(getCoor().x, getCoor().y, time);
+}
+
+void Display::appearFromRight(double time)
+{
+    setX(960);
+    show();
+    moveTo(getCoor().x, getCoor().y, time);
+}
+
+void Display::disappearToBot(double time)
+{
+    show();
+    moveTo(540, getCoor().y, time);
+    hide();
+}
+
+void Display::disappearToRight(double time)
+{
+    show();
+    moveTo(getCoor().x, 960, time);
 }
 
 void Display::moveTo(int x, int y, double time)
@@ -185,7 +213,6 @@ void Display::moveTo(int x, int y, double time)
         Uint32 deltatime = SDL_GetTicks() - startTime;
         SDL_Delay(time * 1000 - deltatime);
     }
-
 }
 
 void Display::trigger(int x, int y)

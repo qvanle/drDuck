@@ -37,7 +37,10 @@ public:
     void DeleteButs();
 
     void moveTo(int x, int y, double time);
-    void moveFrom(int x, int y, double time);
+    void appearFromBot(double time);
+    void appearFromRight(double time);
+    void disappearToBot(double time);
+    void disappearToRight(double time);
 
     ~Display();
 };
