@@ -176,16 +176,26 @@ void Display::appearFromRight(double time)
 
 void Display::disappearToBot(double time)
 {
+    int sy = getCoor().y;
+    int dy = sy - 540;
     show();
     moveTo(getCoor().x, 540, time);
     hide();
+    setY(sy);
+    for(int i = 0; i < ButNum; i++)
+        buts[i]->addY(dy);
 }
 
 void Display::disappearToRight(double time)
 {
+    int sx = getCoor().x;
+    int dx = sx - 960;
     show();
     moveTo(960, getCoor().y, time);
     hide();
+    setX(sx);
+    for(int i = 0; i < ButNum; i++)
+        buts[i]->addX(dx);
 }
 
 int Display::getAppear()

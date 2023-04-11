@@ -1,0 +1,17 @@
+{
+    "name": "quark",
+    "textures":
+    [
+        {
+            "name": "quark",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "w": 120,
+        "h": 120
+    },
+    "visible": true
+}
+

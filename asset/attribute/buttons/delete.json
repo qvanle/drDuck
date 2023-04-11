@@ -1,0 +1,23 @@
+{
+    "name": "delete",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        },
+        {
+            "name": "1",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "w": 140,
+        "h": 40
+    },
+    "visible": true
+}
+
+
+
