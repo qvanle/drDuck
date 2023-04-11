@@ -19,6 +19,7 @@ private:
     Button ** buts;
     int ButNum;
     bool status;
+    int appear;
 public:
     bool isFreezed();
     bool isFocus();

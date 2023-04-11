@@ -8,6 +8,8 @@ Display::Display()
     buts = nullptr;
     ButNum = 0;
     status = 0;
+
+    appear = 0;
 }
 
 bool Display::isFocus()
@@ -42,6 +44,13 @@ void Display::init(const json& mem)
     if(mem.contains("buttons"))
     {
         loadButtons(mem["buttons"]);
+    }
+    if(mem.contains("appear from"))
+    {
+        if(mem["appear from"].get<std::string>() == "bottom")
+            appear = 1;
+        else if(mem["appear from"].get<std::string>() == "right")
+            appear = 2;
     }
 }
 
