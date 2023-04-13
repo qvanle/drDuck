@@ -21,6 +21,7 @@ namespace GLOBAL
     extern const char* AttributeFolder;
     extern const char* AtrbScreens;
     extern const char* AtrbButtons;
+    extern const char* FontsFolder;
 }
 
 char * combineLink(const char* dir, const char* name);

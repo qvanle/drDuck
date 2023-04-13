@@ -7,6 +7,7 @@ const char* GLOBAL::ButtonFolder = "asset/graphics/";
 const char* GLOBAL::AttributeFolder = "asset/attribute/";
 const char* GLOBAL::AtrbScreens = "asset/attribute/screens/";
 const char* GLOBAL::AtrbButtons = "asset/attribute/buttons/";
+const char* GLOBAL::FontsFolder = "asset/fonts";
 
 
 char * combineName(const char *name, const char *type)
