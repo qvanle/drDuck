@@ -1,5 +1,4 @@
 #include <DuckWin.hpp>
-#include <cinttypes>
 
 MyWindow::MyWindow()
 {
@@ -38,6 +37,7 @@ void MyWindow::init()
             );
 
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
+    TTF_Init();
 
     SDL_Rect rect;
     rect.x = 0;
@@ -152,6 +152,7 @@ void MyWindow::shutdown()
     HEIGHT = 0;
 
     IMG_Quit();
+    TTF_Quit();
 } 
 
 bool MyWindow::isOpen()
