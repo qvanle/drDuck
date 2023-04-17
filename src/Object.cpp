@@ -1,3 +1,4 @@
+#include "Sketch.hpp"
 #include <Object.hpp>
 
 Object::Object()
@@ -10,14 +11,16 @@ Object::Object()
     top = 0;
 }
 
-void Object::init(const json& mem, SDL_Renderer *& r)
+void Object::initTextures(const json& mem)
 {
-    ren = r;
     if(mem.contains("textures"))
     {
         setTextures(mem);
     }
+}
 
+void Object::initRect(const json& mem)
+{
     if(mem.contains("rect"))
     {
         if(mem["rect"].contains("x"))
@@ -29,14 +32,27 @@ void Object::init(const json& mem, SDL_Renderer *& r)
         if(mem["rect"].contains("h"))
             setH(mem["rect"]["h"]);
     }
+}
 
+void Object::initVisible(const json& mem)
+{
     if(mem.contains("visible"))
     {
         bool x = mem["visible"];
         if(x == true) show();
         else hide();
     }
+}
 
+void Object::init(const json& mem, SDL_Renderer *& r)
+{
+    ren = r;
+
+    Sketch::init(mem);
+
+    initTextures(mem);
+    initRect(mem);
+    initVisible(mem);
 }
 
 void Object::setCoor(int x, int y, int w, int h)

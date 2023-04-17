@@ -1,12 +1,13 @@
 #ifndef OBJECT
 #define OBJECT
 
+#include <Sketch.hpp>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
 #include <SYSTEM.hpp>
 #include <SDL2/SDL_image.h>
 
-class Object
+class Object : public Sketch
 {
 private:
     SDL_Rect coor;
@@ -15,6 +16,10 @@ private:
     int tesSize;
     SDL_Renderer* ren;
     int top;
+
+    void initTextures(const json& mem);
+    void initRect(const json& mem);
+    void initVisible(const json& mem);
 
 public:
     Object();
