@@ -34,15 +34,6 @@
                     "y": 385
                 }
             },
-            { 
-                "name": "donate",
-                "rect": 
-                {
-                    "x": 600,
-                    "y": 425
-                },
-                "visible": false
-            },
             {
                 "name": "previous",
                 "rect":
