@@ -100,6 +100,9 @@ void MyWindow::mousePress(int x, int y)
     if(but->getAction() == "change screen")
     {
         changeScreens(but->getNextScreen());
+        std::string type = but->getDataStructure();
+        // call data structures init here
+
         mouseMove(x, y);
     }
 }

@@ -34,6 +34,7 @@ public:
     void Delete();
     void clearTextures();
     char* const& getNextScreen();
+    std::string getDataStructure();
     ~Button();
 };
 #endif

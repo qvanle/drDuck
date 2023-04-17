@@ -29,8 +29,7 @@
                 "msg": "working.json",
                 "arg":
                 [
-                    "array",
-                    "static"
+                    "StaticArray.json"
                 ]
             },
             { 

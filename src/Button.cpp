@@ -119,3 +119,11 @@ Button::~Button()
 {
     Delete();
 }
+
+std::string Button::getDataStructure()
+{
+    if(action != "change screen") return "";
+    if((std::string)(msg) != "working.json") return "";
+    if(argc == 0) return "";
+    return argv[0];
+}
