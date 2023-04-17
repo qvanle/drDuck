@@ -5,36 +5,41 @@ Sketch::Sketch()
     font = nullptr;
     text = "";
     color = SDL_Color({0, 0, 0, 255});
-    tes = nullptr;
-    coor = SDL_Rect({0, 0, 0, 0});
+    fontColor = SDL_Color({255, 255, 255, 255});
+
+    tes[0] = nullptr;
+    tes[1] = nullptr;
+    coor[0] = SDL_Rect({0, 0, 0, 0});
+    coor[1] = coor[0];
     ren = nullptr;
 }
 
-void Sketch::clearTexture()
+void Sketch::clearTexture(int k)
 {
-    if(tes == nullptr) return ;
-    SDL_DestroyTexture(tes);
-    tes = nullptr;
+    if(tes[k] == nullptr) return ;
+    SDL_DestroyTexture(tes[k]);
+    tes[k] = nullptr;
 }
 
 Sketch::~Sketch()
 {
     font = nullptr;
     text.clear();
-    clearTexture();
+    clearTexture(0);
+    clearTexture(1);
     ren = nullptr;
 }
 
 void Sketch::addChar(char ch)
 {
     text = text + ch;
-    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), color);
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
     
-    clearTexture();
-    tes = SDL_CreateTextureFromSurface(ren, surface);
+    clearTexture(1);
+    tes[1] = SDL_CreateTextureFromSurface(ren, surface);
     
-    coor.w = surface->w;
-    coor.h = surface->h;
+    coor[1].w = surface->w;
+    coor[1].h = surface->h;
 
     SDL_FreeSurface(surface);
 }
@@ -43,13 +48,13 @@ void Sketch::popChar()
 {
     if(text.empty()) return ;
     text.pop_back();
-    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), color);
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
     
-    clearTexture();
-    tes = SDL_CreateTextureFromSurface(ren, surface);
+    clearTexture(1);
+    tes[1] = SDL_CreateTextureFromSurface(ren, surface);
 
-    coor.w = surface->w;
-    coor.h = surface->h;
+    coor[1].w = surface->w;
+    coor[1].h = surface->h;
 
     SDL_FreeSurface(surface);
 }
@@ -57,13 +62,13 @@ void Sketch::popChar()
 void Sketch::setText(std::string s)
 {
     text = s;
-    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), color);
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
     
-    clearTexture();
-    tes = SDL_CreateTextureFromSurface(ren, surface);
+    clearTexture(1);
+    tes[1] = SDL_CreateTextureFromSurface(ren, surface);
 
-    coor.w = surface->w;
-    coor.h = surface->h;
+    coor[1].w = surface->w;
+    coor[1].h = surface->h;
 
     SDL_FreeSurface(surface);
 }
@@ -83,57 +88,66 @@ void Sketch::setColor(int r, int g, int b, int a)
 
 void Sketch::setCoor(int x, int y, int w, int h)
 {
-    coor = SDL_Rect({x, y, w, h});
+    coor[0] = SDL_Rect({x, y, w, h});
 }
 
 void Sketch::setX(int x)
 {
-    coor.x = x;
+    coor[0].x = x;
 }
 void Sketch::setY(int y)
 {
-    coor.y = y;
+    coor[0].y = y;
 }
 void Sketch::setW(int w)
 {
-    coor.w = w;
+    coor[0].w = w;
 }
 void Sketch::setH(int h)
 {
-    coor.h = h;
+    coor[0].h = h;
 }
-void Sketch::setInCenterX(int x, int w)
+void Sketch::setInCenterX()
 {
-    coor.x = x + (w - coor.w) / 2;
+    int x = coor[0].x;
+    int w = coor[0].w;
+    coor[1].x = x + (w - coor[1].w) / 2;
 }
-void Sketch::setInCenterY(int y, int h)
+void Sketch::setInCenterY()
 {
-    coor.y = y + (h - coor.h) / 2;
-}
-
-void Sketch::setOnLeftSideX(int x, int w)
-{
-    coor.x = x;
-}
-
-void Sketch::setOnRightSideX(int x, int w)
-{
-    coor.x = x + w - coor.w;
+    int y = coor[0].y;
+    int h = coor[0].h;
+    coor[1].y = y + (h - coor[1].h) / 2;
 }
 
-void Sketch::setOnLeftSideY(int y, int h)
+void Sketch::setOnLeftSideX()
 {
-    coor.y = y;
+    coor[1].x = coor[0].x;
 }
 
-void Sketch::setOnRightSideY(int y, int h)
+void Sketch::setOnRightSideX()
 {
-    coor.y = y + h - coor.h;
+    int x = coor[0].x;
+    int w = coor[0].w;
+    coor[1].x = x + w - coor[1].w;
+}
+
+void Sketch::setOnLeftSideY()
+{
+    coor[1].y = coor[0].y;
+}
+
+void Sketch::setOnRightSideY()
+{
+    int y = coor[0].y;
+    int h = coor[0].h;
+    coor[1].y = y + h - coor[1].h;
 }
 
 void Sketch::render()
 {
-    SDL_RenderCopy(ren, tes, nullptr, &coor);
+    if(tes[0] != nullptr) SDL_RenderCopy(ren, tes[0], nullptr, &coor[0]);
+    if(tes[1] != nullptr) SDL_RenderCopy(ren, tes[1], nullptr, &coor[1]);
 }
 
 void Sketch::setRender(SDL_Renderer *&r)
@@ -152,9 +166,11 @@ void Sketch::setBorder(int w, int r, int g, int b, int a)
 
 void Sketch::FillWithColor()
 {
-    clearTexture();
+    int w = coor[0].w;
+    int h = coor[0].h;
+    clearTexture(0);
 
-    SDL_Surface* surf = SDL_CreateRGBSurfaceWithFormat(0, coor.w, coor.h, 32, SDL_PIXELFORMAT_RGBA32);
+    SDL_Surface* surf = SDL_CreateRGBSurfaceWithFormat(0, w, h, 32, SDL_PIXELFORMAT_RGBA32);
     SDL_SetSurfaceBlendMode(surf, SDL_BLENDMODE_BLEND);
 
     SDL_FillRect(surf, nullptr, SDL_MapRGBA(surf->format, color.r, color.g, color.b, color.a));
@@ -162,19 +178,19 @@ void Sketch::FillWithColor()
     SDL_Rect borderRect;
 
     Uint32 c = SDL_MapRGBA(surf->format, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
-    borderRect = SDL_Rect({0, 0, borderWidth, coor.h});
+    borderRect = SDL_Rect({0, 0, borderWidth, h});
     SDL_FillRect(surf, &borderRect, c);
     
-    borderRect = SDL_Rect({0, 0, coor.w, borderWidth});
+    borderRect = SDL_Rect({0, 0, w, borderWidth});
     SDL_FillRect(surf, &borderRect, c);
 
-    borderRect = SDL_Rect({0, coor.h - borderWidth, coor.w, borderWidth});
+    borderRect = SDL_Rect({0, h - borderWidth, w, borderWidth});
     SDL_FillRect(surf, &borderRect, c);
 
-    borderRect = SDL_Rect({coor.w - borderWidth, 0, borderWidth, coor.h});
+    borderRect = SDL_Rect({w - borderWidth, 0, borderWidth, h});
     SDL_FillRect(surf, &borderRect, c);
     
-    tes = SDL_CreateTextureFromSurface(ren, surf);
+    tes[0] = SDL_CreateTextureFromSurface(ren, surf);
 
     SDL_FreeSurface(surf);
 
@@ -186,19 +202,19 @@ void Sketch::initRect(const json& mem)
     {
         if(mem["rect"].contains("x"))
         {
-            coor.x = mem["rect"]["x"];
+            coor[0].x = mem["rect"]["x"];
         }
         if(mem["rect"].contains("y"))
         {
-            coor.y = mem["rect"]["y"];
+            coor[0].y = mem["rect"]["y"];
         }
         if(mem["rect"].contains("w"))
         {
-            coor.w = mem["rect"]["w"];
+            coor[0].w = mem["rect"]["w"];
         }
         if(mem["rect"].contains("h"))
         {
-            coor.h = mem["rect"]["h"];
+            coor[0].h = mem["rect"]["h"];
         }
     }
 }
@@ -220,7 +236,8 @@ void Sketch::initColor(const json& mem)
 
 void Sketch::initFont(const json& mem)
 {
-    if(mem.contains("font") && mem["font"].contains("name") && mem["font"].contains("size"))
+    if(!mem.contains("font")) return ;
+    if(mem["font"].contains("name") && mem["font"].contains("size"))
     {
         char* name = combineLink(GLOBAL::FontsFolder, mem["font"]["name"].get<std::string>().c_str());
         if(font != nullptr) 
@@ -229,6 +246,36 @@ void Sketch::initFont(const json& mem)
             font = nullptr;
         }
         font = TTF_OpenFont(name, mem["font"]["size"]);
+    }
+    if(mem["font"].contains("rect"))
+    {
+        if(mem["font"]["rect"].contains("x"))
+            coor[1].x = mem["font"]["rect"]["x"];
+        if(mem["font"]["rect"].contains("y"))
+            coor[1].y = mem["font"]["rect"]["y"];
+    }
+    if(mem["font"].contains("color"))
+    {
+        if(mem["font"]["color"].contains("r"))
+        {
+            fontColor.r = mem["font"]["color"]["r"];
+        }
+        if(mem["font"]["color"].contains("g"))
+        {
+            fontColor.g = mem["font"]["color"]["g"];
+        }
+        if(mem["font"]["color"].contains("b"))
+        {
+            fontColor.b = mem["font"]["color"]["b"];
+        }
+        if(mem["font"]["color"].contains("a"))
+        {
+            fontColor.a = mem["font"]["color"]["a"];
+        }
+    }
+    if(mem["font"].contains("text"))
+    {
+        setText(mem["font"]["text"].get<std::string>());
     }
 }
 
