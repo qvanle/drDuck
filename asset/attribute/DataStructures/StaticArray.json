@@ -42,6 +42,11 @@
                 "a": 255
             }
         },
+        "font":
+        {
+            "name": "Atomed.ttf",
+            "size": 20
+        },
         "dx": 75,
         "dy": 0
     }
