@@ -1,3 +1,5 @@
+#include "SDL_ttf.h"
+#include "Sketch.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -50,15 +52,26 @@ void MyWindow::init()
 
 void MyWindow::render()
 {
+    TTF_Font* font = TTF_OpenFont("asset/fonts/Atomed.ttf", 20);
+    Sketch* a;
+    a = new Sketch;
+    a->setFont(font);
+    a->setColor(125, 45, 125, 255);
+    a->setX(10);
+    a->setY(10);
+    a->setRender(renderer);
+    a->setText("hehehehehehe");
+    wait = true;
     while(isOpen())
     {
-        while(wait || isHanging());
         SDL_RenderClear(renderer);
 
         for(int i = 0; i < ScreenNum; i++)
             screen[i]->render();
+        a->render();
 
         SDL_RenderPresent(renderer);
+        while(isOpen() && (wait || isHanging()));
     }
 }
 
