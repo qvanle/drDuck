@@ -16,15 +16,15 @@ private:
     int borderWidth;
 
     TTF_Font* font;
+    SDL_Color fontColor;
     std::string text;
-
-    SDL_Color color;
     
-    SDL_Texture* tes;
-    SDL_Rect coor;
+    SDL_Color color;
+    SDL_Texture* tes[2];
+    SDL_Rect coor[2];
     SDL_Renderer* ren;
     
-    void clearTexture();
+    void clearTexture(int k);
 
     void initRect(const json& mem);
     void initColor(const json& mem);
@@ -53,13 +53,13 @@ public:
     void setW(int w);
     void setH(int h);
     
-    void setInCenterX(int x, int w);
-    void setOnLeftSideX(int x, int w);
-    void setOnRightSideX(int x, int w);
+    void setInCenterX();
+    void setOnLeftSideX();
+    void setOnRightSideX();
 
-    void setInCenterY(int y, int h);
-    void setOnLeftSideY(int y, int h);
-    void setOnRightSideY(int y, int h);
+    void setInCenterY();
+    void setOnLeftSideY();
+    void setOnRightSideY();
 
 
     void setBorder(int w, int r, int g, int b, int a);
