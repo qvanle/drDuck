@@ -1,6 +1,3 @@
-#include "SDL_rect.h"
-#include "SDL_render.h"
-#include "SDL_surface.h"
 #include <Sketch.hpp>
 
 Sketch::Sketch()
@@ -26,11 +23,6 @@ Sketch::~Sketch()
     text.clear();
     clearTexture();
     ren = nullptr;
-}
-
-void Sketch::setFont(TTF_Font *& f)
-{
-    font = f;
 }
 
 void Sketch::addChar(char ch)
@@ -186,4 +178,73 @@ void Sketch::FillWithColor()
 
     SDL_FreeSurface(surf);
 
+}
+
+void Sketch::initRect(const json& mem)
+{
+    if(mem.contains("rect"))
+    {
+        if(mem["rect"].contains("x"))
+        {
+            coor.x = mem["rect"]["x"];
+        }
+        if(mem["rect"].contains("y"))
+        {
+            coor.y = mem["rect"]["y"];
+        }
+        if(mem["rect"].contains("w"))
+        {
+            coor.w = mem["rect"]["w"];
+        }
+        if(mem["rect"].contains("h"))
+        {
+            coor.h = mem["rect"]["h"];
+        }
+    }
+}
+
+void Sketch::initColor(const json& mem)
+{
+    if(mem.contains("color"))
+    {
+        if(mem["color"].contains("r"))
+            color.r = mem["color"]["r"];
+        if(mem["color"].contains("g"))
+            color.g = mem["color"]["g"];
+        if(mem["color"].contains("b"))
+            color.b = mem["color"]["b"];
+        if(mem["color"].contains("a"))
+            color.a = mem["color"]["a"];
+    }
+}
+
+void Sketch::initFont(const json& mem)
+{
+    if(mem.contains("font") && mem["font"].contains("name") && mem["font"].contains("size"))
+    {
+        char* name = combineLink(GLOBAL::FontsFolder, mem["font"]["name"].get<std::string>().c_str());
+        if(font != nullptr) 
+        {
+            TTF_CloseFont(font);
+            font = nullptr;
+        }
+        font = TTF_OpenFont(name, mem["font"]["size"]);
+    }
+}
+
+void Sketch::init(const json &mem)
+{
+    
+    initRect(mem);
+    initColor(mem);
+    initFont(mem);
+    
+    if(mem.contains("text"))
+    {
+        setText(mem["text"].get<std::string>());
+    }
+    if(mem.contains("fill with color"))
+    {
+        FillWithColor();
+    }
 }

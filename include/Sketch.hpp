@@ -26,14 +26,20 @@ private:
     
     void clearTexture();
 
+    void initRect(const json& mem);
+    void initColor(const json& mem);
+    void initFont(const json& mem);
+    void intitBorder(const json& mem);
+
 public:
     Sketch();
     ~Sketch();
+
+    void init(const json& mem);
+
     void setRender(SDL_Renderer *& r);
     void render();
 
-    void setFont(TTF_Font *& f);
-    
     void addChar(char ch);
     void popChar();
     void setText(std::string s);
