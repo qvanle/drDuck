@@ -12,6 +12,9 @@ class Sketch
 {
 private: 
 
+    int textAlignX;
+    int textAlignY;
+
     SDL_Color borderColor;
     int borderWidth;
 
@@ -61,6 +64,7 @@ public:
     void setOnLeftSideY();
     void setOnRightSideY();
 
+    void align();
 
     void setBorder(int w, int r, int g, int b, int a);
 

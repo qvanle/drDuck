@@ -253,6 +253,10 @@ void Sketch::initFont(const json& mem)
             coor[1].x = mem["font"]["rect"]["x"];
         if(mem["font"]["rect"].contains("y"))
             coor[1].y = mem["font"]["rect"]["y"];
+        if(mem["font"]["rect"].contains("align X"))
+            textAlignX = mem["font"]["rect"]["align X"];
+        if(mem["font"]["rect"].contains("align Y"))
+            textAlignX = mem["font"]["rect"]["align Y"];
     }
     if(mem["font"].contains("color"))
     {
@@ -294,4 +298,15 @@ void Sketch::init(const json &mem)
     {
         FillWithColor();
     }
+}
+
+void Sketch::align()
+{
+    if(textAlignX == 1) setOnLeftSideX();
+    if(textAlignX == 2) setInCenterX();
+    if(textAlignX == 3) setOnRightSideX();
+
+    if(textAlignY == 1) setOnLeftSideY();
+    if(textAlignY == 2) setInCenterY();
+    if(textAlignY == 3) setOnRightSideY();
 }
