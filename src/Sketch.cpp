@@ -146,9 +146,8 @@ void Sketch::setOnRightSideY()
 
 void Sketch::render()
 {
-    std::cerr << (int) fontColor.a << "\n";
-    SDL_RenderCopy(ren, tes[0], nullptr, &coor[0]);
-    SDL_RenderCopy(ren, tes[1], nullptr, &coor[1]);
+    if(tes[0] != nullptr) SDL_RenderCopy(ren, tes[0], nullptr, &coor[0]);
+    if(tes[1] != nullptr) SDL_RenderCopy(ren, tes[1], nullptr, &coor[1]);
 }
 
 void Sketch::setRender(SDL_Renderer *&r)
