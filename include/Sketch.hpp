@@ -12,6 +12,11 @@ class Sketch
 {
 private: 
 
+    bool visible;
+
+    int textAlignX;
+    int textAlignY;
+
     SDL_Color borderColor;
     int borderWidth;
 
@@ -35,6 +40,11 @@ public:
     Sketch();
     ~Sketch();
 
+    bool isVisible();
+
+    void show();
+    void hide();
+
     void init(const json& mem);
 
     void setRender(SDL_Renderer *& r);
@@ -52,6 +62,8 @@ public:
     void setY(int y);
     void setW(int w);
     void setH(int h);
+    void addX(int x);
+    void addY(int y);
     
     void setInCenterX();
     void setOnLeftSideX();
@@ -61,10 +73,15 @@ public:
     void setOnLeftSideY();
     void setOnRightSideY();
 
+    void align();
+    SDL_Rect getCoor();
 
     void setBorder(int w, int r, int g, int b, int a);
 
     void FillWithColor();
+
+
+    void moveTo(int x, int y, double time);
 };
 
 #endif
