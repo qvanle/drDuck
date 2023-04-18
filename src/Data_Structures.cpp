@@ -84,6 +84,7 @@ void Data_Structures::initStaticArray(const json &mem)
 
 void Data_Structures::render()
 {
+    if(!isVisible()) return ;
     Sketch::render();
     for(int i = 0; i < capacity; i++)
         elements[i]->render();
