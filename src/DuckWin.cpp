@@ -1,3 +1,4 @@
+#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -99,6 +100,8 @@ void MyWindow::mousePress(int x, int y)
             json mem;
             readJson("asset/attribute/DataStructures/StaticArray.json", mem);
             DT->init(mem);
+            readJson("saving/1.json", mem);
+            DT->loadValue(mem);
         }
         UImutex.unlock();
     }

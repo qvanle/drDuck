@@ -12,6 +12,9 @@ Sketch::Sketch()
     coor[0] = SDL_Rect({0, 0, 0, 0});
     coor[1] = coor[0];
     ren = nullptr;
+
+    textAlignX = 2;
+    textAlignY = 2;
 }
 
 void Sketch::clearTexture(int k)
@@ -354,6 +357,7 @@ void Sketch::init(const json &mem)
 
 void Sketch::align()
 {
+
     if(textAlignX == 1) setOnLeftSideX();
     if(textAlignX == 2) setInCenterX();
     if(textAlignX == 3) setOnRightSideX();
