@@ -10,7 +10,6 @@ MyWindow::MyWindow()
     FocusOn = 0;
     screen = nullptr; 
     ScreenNum = 0;
-    wait = false;
     DT = nullptr;
 }
 
@@ -49,22 +48,6 @@ void MyWindow::init()
     SDL_RenderSetViewport(renderer, &rect);
 }
 
-void MyWindow::render()
-{
-    while(isOpen())
-    {
-        SDL_RenderClear(renderer);
-
-        for(int i = 0; i < ScreenNum; i++)
-            screen[i]->render();
-        if(DT != nullptr) 
-        {
-            DT->render();
-        }
-        SDL_RenderPresent(renderer);
-        while(isOpen() && (wait || isHanging()));
-    }
-}
 
 void MyWindow::mouseMove(int x, int y)
 {
@@ -101,8 +84,14 @@ void MyWindow::mousePress(int x, int y)
 
     if(but->getAction() == "change screen")
     {
-        changeScreens(but->getNextScreen());
         std::string type = but->getDataStructure();
+        UImutex.lock();
+        if(DT != nullptr) 
+        {
+            delete DT;
+            DT = nullptr;
+        }
+        changeScreens(but->getNextScreen());
         if(type == "StaticArray.json")
         {
             DT = new Data_Structures;
@@ -111,33 +100,10 @@ void MyWindow::mousePress(int x, int y)
             readJson("asset/attribute/DataStructures/StaticArray.json", mem);
             DT->init(mem);
         }
-
-        mouseMove(x, y);
+        UImutex.unlock();
     }
 }
 
-void MyWindow::action()
-{
-    while(isOpen())
-    {
-        SDL_Event event;
-
-        while(SDL_PollEvent(&event))
-        {
-            if(event.type == SDL_QUIT)
-            {
-                status = 0;
-                shutdown();
-            }else if(event.type == SDL_MOUSEMOTION)
-            {
-                mouseMove(event.motion.x, event.motion.y);
-            }else if(event.type == SDL_MOUSEBUTTONDOWN)
-            {
-                mousePress(event.motion.x, event.motion.y);
-            }
-        }
-    }
-}
 
 void MyWindow::deleteScreen()
 {
@@ -186,7 +152,6 @@ bool MyWindow::isClose()
 
 void MyWindow::changeScreens(const char *const& name)
 {
-    wait = true;
     deleteScreen();
 
     json mem; 
@@ -205,7 +170,6 @@ void MyWindow::changeScreens(const char *const& name)
         top()->init(mem[i]);
     }
     FocusOn = 0;
-    wait = false;
 }
 
 Display *& MyWindow::top()
@@ -220,8 +184,54 @@ MyWindow::~MyWindow()
 void MyWindow::run()
 {
     std::thread draw(&MyWindow::render, this);
-    std::thread interact(&MyWindow::action, this);
+    action();
 
     draw.join();
-    interact.join();
+}
+
+void MyWindow::render()
+{
+    while(isOpen())
+    {
+        if(UImutex.try_lock())
+        {
+            SDL_RenderClear(renderer);
+
+            for(int i = 0; i < ScreenNum; i++)
+            {
+                screen[i]->render();
+                if(i == 0 && DT != nullptr) 
+                {
+                    DT->render();
+                }
+            }
+            SDL_RenderPresent(renderer);
+            UImutex.unlock();
+        }
+    }
+}
+
+void MyWindow::process()
+{
+    if(event.type == SDL_QUIT)
+    {
+        status = 0;
+        shutdown();
+    }else if(event.type == SDL_MOUSEMOTION)
+    {
+        mouseMove(event.motion.x, event.motion.y);
+    }else if(event.type == SDL_MOUSEBUTTONDOWN)
+    {
+        mousePress(event.motion.x, event.motion.y);
+        mouseMove(event.motion.x, event.motion.y);
+    }
+}
+
+void MyWindow::action()
+{
+    while(isOpen())
+    {
+        while(SDL_PollEvent(&event))
+            process();
+    }
 }

@@ -12,6 +12,7 @@
 
 #include <Display.hpp>
 #include <Data_Structures.hpp>
+#include <SYSTEM.hpp>
 
 
 class MyWindow
@@ -21,7 +22,6 @@ private:
     int WIDTH;
     int HEIGHT;
     int FocusOn;
-    bool wait;
 
     Data_Structures* DT;
 
@@ -32,11 +32,15 @@ private:
     void shutdown();
     void deleteScreen();
 
+    SDL_Event event;
+    std::mutex UImutex;
+
 public:
     MyWindow();
     void loadScreen(Display *& screen, const json& mem);
     void init();
     void action();
+    void process();
     void render();
     bool isOpen();
     bool isClose();

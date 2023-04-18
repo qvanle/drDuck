@@ -43,6 +43,7 @@
                 "a": 255
             }
         },
+        "fill with color": true,
         "visible": true,
         "dx": 45,
         "dy": 0
