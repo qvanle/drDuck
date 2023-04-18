@@ -18,6 +18,18 @@
     },
     "element attributes":
     {
+        "font":
+        {
+            "name": "Atomed.ttf",
+            "size": 20,
+            "color": 
+            {
+                "r": 255,
+                "g": 200,
+                "b": 255,
+                "a": 255
+            }
+        },
         "color":
         {
             "r": 139,

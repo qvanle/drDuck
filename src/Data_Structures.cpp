@@ -37,9 +37,16 @@ void Data_Structures::setRender(SDL_Renderer *&r)
 
 void Data_Structures::loadValue(const json &mem)
 {
-    for(int i = 0; i < mem.size(); i++)
+    if(!mem.contains("name")) return ;
+    if(mem["name"] == "StaticArray.json")
     {
-        elements[i]->setText(mem[i].get<std::string>());
+        if(mem.contains("elements"))
+        {
+            for(int i = 0; i < mem["elements"].size() && i < capacity; i++)
+            {
+                elements[i]->setText(mem["elements"][i].get<std::string>());
+            }
+        }
     }
 }
 
