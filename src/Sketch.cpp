@@ -41,6 +41,8 @@ void Sketch::addChar(char ch)
     coor[1].w = surface->w;
     coor[1].h = surface->h;
 
+    align();
+
     SDL_FreeSurface(surface);
 }
 
@@ -49,7 +51,7 @@ void Sketch::popChar()
     if(text.empty()) return ;
     text.pop_back();
     SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
-    
+    align();
     clearTexture(1);
     tes[1] = SDL_CreateTextureFromSurface(ren, surface);
 
@@ -69,7 +71,7 @@ void Sketch::setText(std::string s)
 
     coor[1].w = surface->w;
     coor[1].h = surface->h;
-
+    align();
     SDL_FreeSurface(surface);
 }
 
@@ -89,23 +91,42 @@ void Sketch::setColor(int r, int g, int b, int a)
 void Sketch::setCoor(int x, int y, int w, int h)
 {
     coor[0] = SDL_Rect({x, y, w, h});
+    align();
 }
 
 void Sketch::setX(int x)
 {
     coor[0].x = x;
+    align();
 }
+
+void Sketch::addX(int x)
+{
+    coor[0].x += x;
+    align();
+}
+
+void Sketch::addY(int y)
+{
+    coor[0].y += y;
+    align();
+}
+
+
 void Sketch::setY(int y)
 {
     coor[0].y = y;
+    align();
 }
 void Sketch::setW(int w)
 {
     coor[0].w = w;
+    align();
 }
 void Sketch::setH(int h)
 {
     coor[0].h = h;
+    align();
 }
 void Sketch::setInCenterX()
 {
@@ -146,6 +167,7 @@ void Sketch::setOnRightSideY()
 
 void Sketch::render()
 {
+    if(!isVisible()) return ;
     if(tes[0] != nullptr) SDL_RenderCopy(ren, tes[0], nullptr, &coor[0]);
     if(tes[1] != nullptr) SDL_RenderCopy(ren, tes[1], nullptr, &coor[1]);
 }
@@ -294,6 +316,8 @@ void Sketch::init(const json &mem)
     {
         setText(mem["text"].get<std::string>());
     }
+    if(mem.contains("visible"))
+        visible = mem["visible"];
     if(mem.contains("fill with color"))
     {
         FillWithColor();
@@ -309,4 +333,62 @@ void Sketch::align()
     if(textAlignY == 1) setOnLeftSideY();
     if(textAlignY == 2) setInCenterY();
     if(textAlignY == 3) setOnRightSideY();
+}
+
+SDL_Rect Sketch::getCoor()
+{
+    return coor[0];
+}
+
+bool Sketch::isVisible()
+{
+    return visible;
+}
+
+void Sketch::show()
+{
+    visible = true;
+}
+
+void Sketch::hide()
+{
+    visible = false;
+}
+
+void Sketch::moveTo(int x, int y, double time)
+{
+    int dx = x - getCoor().x;
+    int dy = y - getCoor().y;
+    
+    if(diff(time, 0))
+    {
+        setX(x);
+        setY(y);
+        return ;
+    }
+
+    double velo;
+
+    if(abs(dx) < abs(dy))
+        velo = dy / time;
+    else velo = dx / time;  
+     
+    int loop = std::min(80.0, abs(velo * time));
+
+    time = time / loop; 
+    
+    for(int i = 0; i <= loop; i++)
+    {
+        Uint32 startTime = SDL_GetTicks();
+
+        addX(-dx * (i - 1) / loop);
+        addX(dx * i / loop);
+        addY(-dy * (i - 1) / loop);
+        addY(dy * i / loop);
+        render(); 
+        Uint32 deltaTime = SDL_GetTicks() - startTime;
+        startTime = SDL_GetTicks();
+        if(deltaTime <= time * 1000)
+            SDL_Delay(time * 1000 - deltaTime);
+    }
 }
