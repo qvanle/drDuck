@@ -1,5 +1,3 @@
-#include "SDL_ttf.h"
-#include "Sketch.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -13,6 +11,7 @@ MyWindow::MyWindow()
     screen = nullptr; 
     ScreenNum = 0;
     wait = false;
+    DT = nullptr;
 }
 
 
@@ -58,7 +57,10 @@ void MyWindow::render()
 
         for(int i = 0; i < ScreenNum; i++)
             screen[i]->render();
-
+        if(DT != nullptr) 
+        {
+            DT->render();
+        }
         SDL_RenderPresent(renderer);
         while(isOpen() && (wait || isHanging()));
     }
@@ -101,7 +103,14 @@ void MyWindow::mousePress(int x, int y)
     {
         changeScreens(but->getNextScreen());
         std::string type = but->getDataStructure();
-        // call data structures init here
+        if(type == "StaticArray.json")
+        {
+            DT = new Data_Structures;
+            DT->setRender(renderer);
+            json mem;
+            readJson("asset/attribute/DataStructures/StaticArray.json", mem);
+            DT->init(mem);
+        }
 
         mouseMove(x, y);
     }

@@ -11,6 +11,8 @@
 #include <SDL2/SDL_ttf.h>
 
 #include <Display.hpp>
+#include <Data_Structures.hpp>
+
 
 class MyWindow
 {
@@ -20,6 +22,8 @@ private:
     int HEIGHT;
     int FocusOn;
     bool wait;
+
+    Data_Structures* DT;
 
     SDL_Window* window;
     SDL_Renderer* renderer;
