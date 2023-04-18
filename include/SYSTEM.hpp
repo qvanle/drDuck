@@ -7,6 +7,7 @@
 #include <stack>
 #include <string>
 #include <thread>
+#include <mutex>
 #include <algorithm>
 
 #include <nlohmann/json.hpp>

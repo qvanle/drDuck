@@ -11,6 +11,9 @@
 #include <SDL2/SDL_ttf.h>
 
 #include <Display.hpp>
+#include <Data_Structures.hpp>
+#include <SYSTEM.hpp>
+
 
 class MyWindow
 {
@@ -19,7 +22,8 @@ private:
     int WIDTH;
     int HEIGHT;
     int FocusOn;
-    bool wait;
+
+    Data_Structures* DT;
 
     SDL_Window* window;
     SDL_Renderer* renderer;
@@ -28,11 +32,15 @@ private:
     void shutdown();
     void deleteScreen();
 
+    SDL_Event event;
+    std::mutex UImutex;
+
 public:
     MyWindow();
     void loadScreen(Display *& screen, const json& mem);
     void init();
     void action();
+    void process();
     void render();
     bool isOpen();
     bool isClose();

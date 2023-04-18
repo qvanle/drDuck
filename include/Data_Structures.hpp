@@ -7,11 +7,12 @@
 #include <Display.hpp>
 #include <Object.hpp>
 #include <SYSTEM.hpp>
+#include <Sketch.hpp>
 
-class Data_Structures : public Object
+class Data_Structures : public Sketch
 {
 private: 
-    Object ** elements;
+    Sketch ** elements;
     int capacity;
     int num;
     int type;
@@ -23,6 +24,8 @@ public:
     void setRender(SDL_Renderer *& r);
     void init(const json & mem);
     void initStaticArray(const json & mem);
+    void loadValue(const json& mem);
+    void render();
 };
 
 
