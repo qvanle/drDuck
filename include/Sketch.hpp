@@ -34,7 +34,7 @@ private:
     void initRect(const json& mem);
     void initColor(const json& mem);
     void initFont(const json& mem);
-    void intitBorder(const json& mem);
+    void initBorder(const json& mem);
 
 public:
     Sketch();

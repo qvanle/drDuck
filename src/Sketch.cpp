@@ -305,13 +305,41 @@ void Sketch::initFont(const json& mem)
     }
 }
 
+void Sketch::initBorder(const json& mem)
+{
+    if(!mem.contains("border")) return ;
+    if(mem["border"].contains("width"))
+        borderWidth = mem["border"]["width"];
+
+    if(mem["border"].contains("color"))
+    {
+        if(mem["border"]["color"].contains("r"))
+        {
+            borderColor.r = mem["border"]["color"]["r"];
+        }
+        if(mem["border"]["color"].contains("g"))
+        {
+            borderColor.g = mem["border"]["color"]["g"];
+        }
+        if(mem["border"]["color"].contains("b"))
+        {
+            borderColor.b = mem["border"]["color"]["b"];
+        }
+        if(mem["border"]["color"].contains("a"))
+        {
+            borderColor.a = mem["border"]["color"]["a"];
+        }
+    }
+}
+
 void Sketch::init(const json &mem)
 {
     
     initRect(mem);
     initColor(mem);
     initFont(mem);
-    
+    initBorder(mem);
+
     if(mem.contains("text"))
     {
         setText(mem["text"].get<std::string>());
