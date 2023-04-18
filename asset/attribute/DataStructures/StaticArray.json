@@ -27,10 +27,10 @@
         },
         "rect":
         {
-            "x": 50,
+            "x": 25,
             "y": 25,
-            "w": 80,
-            "h": 60
+            "w": 40,
+            "h": 40
         },
         "border":
         {
@@ -43,16 +43,8 @@
                 "a": 255
             }
         },
-<<<<<<< HEAD
-        "font":
-        {
-            "name": "Atomed.ttf",
-            "size": 20
-        },
-=======
         "visible": true,
->>>>>>> data_structures
-        "dx": 75,
+        "dx": 45,
         "dy": 0
     }
 }

@@ -1,5 +1,3 @@
-#include "SDL_error.h"
-#include "Sketch.hpp"
 #include <Data_Structures.hpp>
 
 Data_Structures::Data_Structures()
@@ -20,6 +18,7 @@ Data_Structures::~Data_Structures()
     ren = nullptr;
     capacity = 0;
     num = 0;
+    Sketch::~Sketch();
 }
 
 void Data_Structures::init(const json & mem)
@@ -46,25 +45,33 @@ void Data_Structures::loadValue(const json &mem)
 
 void Data_Structures::initStaticArray(const json &mem)
 {
+    type = 1;
     Sketch::setRender(ren);
     Sketch::init(mem);
 
+    if(elements != nullptr)
+    {
+        delete [] elements;
+        elements = nullptr;
+    }
+
     capacity = 12;
     elements = new Sketch*[capacity];
+
     for(int i = 0; i < capacity; i++)
     {
         elements[i] = new Sketch;
         elements[i]->setRender(ren);
-        if(mem.contains("elements attributes"))
+        if(mem.contains("element attributes"))
         {    
-            elements[i]->init(mem["elements attributes"]);
+            elements[i]->init(mem["element attributes"]);
             
-            int dx = mem["elements attributes"]["dx"];
-            int dy = mem["elements attributes"]["dy"];
+            int dx = mem["element attributes"]["dx"];
+            int dy = mem["element attributes"]["dy"];
 
             elements[i]->addX(i * dx);
             elements[i]->addY(i * dy);
-        }   
+        }
     }
 }
 
