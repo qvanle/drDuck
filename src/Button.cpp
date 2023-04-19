@@ -4,8 +4,8 @@ Button::Button()
 {
     ren = nullptr;
     msg = nullptr;
-    argv = nullptr;
     argc = 0;
+    argv.clear();
 }
 
 bool Button::isChosen(int x, int y)
@@ -62,7 +62,7 @@ void Button::init(const json& mem)
         if(mem.contains("arg"))
         {
             argc = mem["arg"].size();
-            argv = new char*[argc]; 
+            argv.resize(argc);
             for(int i = 0; i < argc; i++)
             {
                 std::string s = mem["arg"][i].get<std::string>();
@@ -106,11 +106,11 @@ void Button::Delete()
     if(msg != nullptr) 
         delete [] msg;
 
-    if(argv != nullptr)
+    if(!argv.empty())
     {
         for(int i = 0; i < argc; i++)
             delete [] argv[i];
-        delete [] argv;
+        argv.clear();
         argc = 0;
     }
 }

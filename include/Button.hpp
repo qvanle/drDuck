@@ -18,7 +18,7 @@ private:
     SDL_Renderer* ren;
     std::string action;
     char* msg;
-    char** argv;
+    std::vector<char*> argv;
     int argc;
 
 public:
