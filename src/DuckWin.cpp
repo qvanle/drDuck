@@ -1,4 +1,3 @@
-#include "SDL_timer.h"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -9,8 +8,7 @@ MyWindow::MyWindow()
     window = nullptr;
     renderer = nullptr;
     FocusOn = 0;
-    screen = nullptr; 
-    ScreenNum = 0;
+    screen.clear();
     DT = nullptr;
 }
 
@@ -53,7 +51,7 @@ void MyWindow::init()
 
 void MyWindow::mouseMove(int x, int y)
 {
-    for(int i = 0; i < ScreenNum; i++)
+    for(int i = 0; i < (int) screen.size(); i++)
     {
         if(screen[i]->isVisible() && screen[i]->isLiesInside(x, y))
         {
@@ -111,9 +109,10 @@ void MyWindow::mousePress(int x, int y)
 
 void MyWindow::deleteScreen()
 {
-    if(screen == nullptr) return ;
-    delete [] screen;
-    screen = nullptr;
+    if(screen.empty()) return ;
+    //for(int i = 0; i < (int) screen.size(); i++)
+    //    screen[i]->~Display();
+    screen.clear();
 }
 
 void MyWindow::shutdown()
@@ -162,11 +161,10 @@ void MyWindow::changeScreens(const char *const& name)
 
     readjson(GLOBAL::AtrbScreens, name, mem);
 
-    ScreenNum = mem.size();
+    screen.resize(mem.size());
 
-    screen = new Display*[ScreenNum];
 
-    for(int i = 0; i < ScreenNum; i++)
+    for(int i = 0; i < (int) screen.size(); i++)
     {
         FocusOn = i;
         top() = new Display;
@@ -204,7 +202,7 @@ void MyWindow::render()
             Uint32 startTime = SDL_GetTicks();
             SDL_RenderClear(renderer);
 
-            for(int i = 0; i < ScreenNum; i++)
+            for(int i = 0; i < (int) screen.size(); i++)
             {
                 screen[i]->render();
                 if(i == 0 && DT != nullptr) 

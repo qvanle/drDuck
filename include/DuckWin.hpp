@@ -28,8 +28,7 @@ private:
 
     SDL_Window* window;
     SDL_Renderer* renderer;
-    Display ** screen;
-    int ScreenNum;
+    std::vector<Display*> screen;
     void shutdown();
     void deleteScreen();
 
