@@ -89,7 +89,6 @@ void Display::render(bool update)
 
 void Display::DeleteButs()
 {
-    if(!isVisible()) return ;
     if(!buts.empty())
     {
         for(int i = 0; i < (int) buts.size(); i++)
