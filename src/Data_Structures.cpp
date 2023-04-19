@@ -2,7 +2,7 @@
 
 Data_Structures::Data_Structures()
 {
-    elements = nullptr;
+    elements.clear();
     capacity = 0;
     ren = nullptr;
     num = 0;
@@ -10,11 +10,7 @@ Data_Structures::Data_Structures()
 
 Data_Structures::~Data_Structures()
 {
-    if(elements != nullptr)
-    {
-        delete [] elements;
-        elements = nullptr;
-    }
+    elements.clear();
     ren = nullptr;
     capacity = 0;
     num = 0;
@@ -56,14 +52,10 @@ void Data_Structures::initStaticArray(const json &mem)
     Sketch::setRender(ren);
     Sketch::init(mem);
 
-    if(elements != nullptr)
-    {
-        delete [] elements;
-        elements = nullptr;
-    }
+    elements.clear();
 
     capacity = 12;
-    elements = new Sketch*[capacity];
+    elements.resize(12);
 
     for(int i = 0; i < capacity; i++)
     {

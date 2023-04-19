@@ -12,7 +12,7 @@
 class Data_Structures : public Sketch
 {
 private: 
-    Sketch ** elements;
+    std::vector<Sketch*> elements;
     int capacity;
     int num;
     int type;
