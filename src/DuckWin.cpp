@@ -1,4 +1,4 @@
-#include "SYSTEM.hpp"
+#include "SDL_timer.h"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -45,6 +45,7 @@ void MyWindow::init()
     rect.y = 0;
     rect.w = WIDTH;
     rect.h = HEIGHT;
+    fps = 60;
 
     SDL_RenderSetViewport(renderer, &rect);
 }
@@ -52,7 +53,7 @@ void MyWindow::init()
 
 void MyWindow::mouseMove(int x, int y)
 {
-    for(int i = ScreenNum - 1; i >= 0; i--)
+    for(int i = 0; i < ScreenNum; i++)
     {
         if(screen[i]->isVisible() && screen[i]->isLiesInside(x, y))
         {
@@ -194,10 +195,13 @@ void MyWindow::run()
 
 void MyWindow::render()
 {
+
+    double delayTime = 1000.0 / fps;
     while(isOpen())
     {
         if(UImutex.try_lock())
         {
+            Uint32 startTime = SDL_GetTicks();
             SDL_RenderClear(renderer);
 
             for(int i = 0; i < ScreenNum; i++)
@@ -210,6 +214,9 @@ void MyWindow::render()
             }
             SDL_RenderPresent(renderer);
             UImutex.unlock();
+            Uint32 DeltaTime = SDL_GetTicks() - startTime;
+            if(DeltaTime < delayTime)
+                SDL_Delay(delayTime - delayTime);
         }
     }
 }
