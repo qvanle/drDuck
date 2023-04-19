@@ -5,8 +5,7 @@ Display::Display()
     ren = nullptr;
     Object::setCoor(0, 0, 960, 540);
 
-    buts = nullptr;
-    ButNum = 0;
+    buts.clear();
     status = 0;
 
     appear = 0;
@@ -58,10 +57,9 @@ void Display::loadButtons(const json &mem)
 {
     DeleteButs();
 
-    ButNum = mem.size();
+    buts.resize(mem.size());
 
-    buts = new Button*[ButNum];
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
     {
         buts[i] = nullptr;
         loadButton(buts[i], mem[i]);
@@ -78,24 +76,25 @@ void Display::render()
     if(!isVisible()) return ;
     Object::render(0);
 
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->render();
 }
 
 void Display::render(bool update)
 {
     Object::render(update);
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->render(update);
 }
 
 void Display::DeleteButs()
 {
     if(!isVisible()) return ;
-    if(ButNum != 0)
+    if(!buts.empty())
     {
-        delete [] buts;
-        ButNum = 0;
+        for(int i = 0; i < (int) buts.size(); i++)
+            delete buts[i];
+        buts.clear();
     }
 }
 
@@ -132,7 +131,7 @@ void Display::mouseMove(int x, int y)
     if(!isFocus()) return ;
     if(!isVisible()) return ;
 
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
         if(buts[i]->isChosen(x, y))
             break;
 }
@@ -140,7 +139,7 @@ void Display::mouseMove(int x, int y)
 Button* Display::mousePressedButton(int x, int y)
 {
     if(!isFocus()) return nullptr;
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
         if(buts[i]->isChosen(x, y))
         {
             return buts[i];
@@ -153,7 +152,7 @@ void Display::appearFromBot(double time)
     int sy = getCoor().y;
     int dy = 540 - sy;
     
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->addY(dy);
 
     setY(540);
@@ -166,7 +165,7 @@ void Display::appearFromRight(double time)
     int sx = getCoor().x;
     int dx = 960 - sx; 
 
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->addX(dx);
 
     setX(960);
@@ -182,7 +181,7 @@ void Display::disappearToBot(double time)
     moveTo(getCoor().x, 540, time);
     hide();
     setY(sy);
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->addY(dy);
 }
 
@@ -194,7 +193,7 @@ void Display::disappearToRight(double time)
     moveTo(960, getCoor().y, time);
     hide();
     setX(sx);
-    for(int i = 0; i < ButNum; i++)
+    for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->addX(dx);
 }
 
@@ -213,7 +212,7 @@ void Display::moveTo(int x, int y, double time)
         addX(dx);
         addY(dy);
 
-        for(int i = 0; i < ButNum; i++)
+        for(int i = 0; i < (int) buts.size(); i++)
         {
             buts[i]->addX(dx);
             buts[i]->addY(dy);
@@ -240,7 +239,7 @@ void Display::moveTo(int x, int y, double time)
         addY(-dy * (i - 1) / loop);
         addY(dy * i / loop); 
 
-        for(int j = 0; j < ButNum; j++)
+        for(int j = 0; j < (int) buts.size(); j++)
         {
             buts[j]->addX(-dx * (i - 1) / loop);
             buts[j]->addX(dx * i / loop);
@@ -260,7 +259,7 @@ void Display::trigger(int x, int y)
     {
         int dy = 100;
         addY(dy);
-        for(int i = 0; i < ButNum; i++)
+        for(int i = 0; i < buts.size(); i++)
             buts[i]->addY(dy);
         show();
         moveTo(260, 440, 0.4);
