@@ -1,12 +1,10 @@
-#include "Sketch.hpp"
 #include <Object.hpp>
 
 Object::Object()
 {
     setCoor(0, 0, 0, 0);
     hide();
-    tes = nullptr;
-    tesSize = 0;
+    tes.clear();
     ren = nullptr;
     top = 0;
 }
@@ -110,8 +108,7 @@ void Object::setTextures(const json &mem)
 {
     clearTextures();
 
-    tesSize = mem["textures"].size();
-    tes = new SDL_Texture*[size()];
+    tes.resize(mem["textures"].size());
 
     char* FolderName = new char [256];
     strcpy(FolderName, mem["name"].get<std::string>().c_str());
@@ -161,21 +158,19 @@ Object::~Object()
 
 int Object::size()
 {
-    return tesSize;
+    return tes.size();
 }
 
 void Object::clearTextures()
 {
-    if(tes != nullptr)
+    if(!tes.empty())
     {
         for(int i = 0; i < size(); i++)
         {
             if(tes[i] != nullptr) 
                 SDL_DestroyTexture(tes[i]);
         }
-        delete [] tes;
-        tes = nullptr;
-        tesSize = 0;
+        tes.clear();
     }
 }
 

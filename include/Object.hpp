@@ -12,8 +12,7 @@ class Object : public Sketch
 private:
     SDL_Rect coor;
     bool visable;
-    SDL_Texture** tes;
-    int tesSize;
+    std::vector<SDL_Texture*> tes;
     SDL_Renderer* ren;
     int top;
 
