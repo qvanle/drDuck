@@ -9,6 +9,7 @@
 #include <thread>
 #include <mutex>
 #include <algorithm>
+#include <random>
 
 #include <nlohmann/json.hpp>
 
@@ -23,6 +24,14 @@ namespace GLOBAL
     extern const char* AtrbScreens;
     extern const char* AtrbButtons;
     extern const char* FontsFolder;
+}
+
+namespace RANDOM 
+{
+    extern std::mt19937 rng;
+    void init();
+    int getInt(int l, int r);
+    double getDouble(double l, double r);
 }
 
 char * combineLink(const char* dir, const char* name);

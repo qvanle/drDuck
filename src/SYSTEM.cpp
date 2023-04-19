@@ -1,4 +1,5 @@
 #include <SYSTEM.hpp>
+#include <random>
 
 const char* GLOBAL::GraphicsFolder = "asset/graphics/";
 
@@ -9,6 +10,22 @@ const char* GLOBAL::AtrbScreens = "asset/attribute/screens/";
 const char* GLOBAL::AtrbButtons = "asset/attribute/buttons/";
 const char* GLOBAL::FontsFolder = "asset/fonts";
 
+std::mt19937 RANDOM::rng;
+
+void RANDOM::init()
+{
+    rng = std::mt19937(std::chrono::steady_clock::now().time_since_epoch().count());
+}
+
+int RANDOM::getInt(int l, int r)
+{
+    return std::uniform_int_distribution<int> (l, r)(rng);
+}
+
+double RANDOM::getDouble(double l, double r)
+{
+    return std::uniform_real_distribution<double> (l, r)(rng);
+}
 
 char * combineName(const char *name, const char *type)
 {
