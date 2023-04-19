@@ -22,6 +22,7 @@ private:
     int WIDTH;
     int HEIGHT;
     int FocusOn;
+    int fps;
 
     Data_Structures* DT;
 
