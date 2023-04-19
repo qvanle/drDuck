@@ -89,3 +89,50 @@ void Data_Structures::render()
     for(int i = 0; i < capacity; i++)
         elements[i]->render();
 }
+
+bool isdigit(char ch)
+{
+    return '0' <= ch && ch <= '9';
+}
+
+
+void Data_Structures::StaticArrayCreate(std::string s)
+{
+    int *arr;
+    int n = 0;
+    
+    show();
+    for(int i = 0; i < capacity; i++)
+    {
+        elements[i]->show();
+    }
+
+    int ite = 0;
+    num = 0;
+
+    while(ite < (int)s.size())
+    {
+        while(ite < (int)s.size() && s[ite] == ' ') ite++;
+        std::string temp;
+        while(ite < (int)s.size() && isdigit(s[ite]))
+            temp += s[ite++];
+        if(temp.empty()) temp = "0";
+        elements[num++]->setText(temp);
+        ite++;
+    }
+}
+
+void Data_Structures::StaticArrayInsert(int pos, int value)
+{
+
+}
+
+void Data_Structures::create(std::string s)
+{
+    if(type == 1) StaticArrayCreate(s);
+}
+
+void Data_Structures::insert(int pos, int value)
+{
+    if(type == 1) StaticArrayInsert(pos, value);
+}

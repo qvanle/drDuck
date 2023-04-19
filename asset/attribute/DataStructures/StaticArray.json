@@ -7,7 +7,7 @@
         "w": 880,
         "h": 460
     },
-    "visible": true,
+    "visible": false,
     "fill with color": true,
     "color":
     {
@@ -56,7 +56,7 @@
             }
         },
         "fill with color": true,
-        "visible": true,
+        "visible": false,
         "dx": 55,
         "dy": 0
     }

@@ -18,6 +18,13 @@ private:
     int type;
     SDL_Renderer* ren;
 
+    void StaticArrayCreate(std::string a);
+    void StaticArrayInsert(int pos, int value);
+    void StaticArrayErase(int pos); 
+    void StaticArrayUpdate(int pos, int value);
+    void StaticArraySearch(int value);
+
+
 public:
     Data_Structures();
     ~Data_Structures();
@@ -26,6 +33,12 @@ public:
     void initStaticArray(const json & mem);
     void loadValue(const json& mem);
     void render();
+    void create(std::string s);
+    void insert(int pos, int value);
+    void erase(int pos);
+    void update(int pos, int value);
+    void search(int value);
+
 };
 
 

@@ -139,7 +139,8 @@
                         "name": "3",
                         "type": "png"
                     }
-                ]
+                ],
+                "action": "new"
             },
             {
                 "name": "insert",
