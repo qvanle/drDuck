@@ -9,7 +9,7 @@ BUILD:
 	make -C build
 
 DEBUG:
-	cmake -DCMAKE_BUILD_TYPE=DEBUG -B build/ 
+	cmake -DCMAKE_C_FLAGS="-g" -DCMAKE_CXX_FLAGS="-g" -B build/ 
 	make -C build
 
 .PHONY: clearscreen

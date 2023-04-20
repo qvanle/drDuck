@@ -91,7 +91,8 @@ void MyWindow::mousePress(int x, int y)
             delete DT;
             DT = nullptr;
         }
-        changeScreens(but->getNextScreen());
+        std::string screenName = but->getNextScreen();
+        changeScreens(screenName.c_str());
         if(type == "StaticArray.json")
         {
             DT = new Data_Structures;
@@ -110,13 +111,21 @@ void MyWindow::mousePress(int x, int y)
 void MyWindow::deleteScreen()
 {
     if(screen.empty()) return ;
-    //for(int i = 0; i < (int) screen.size(); i++)
-    //    screen[i]->~Display();
+    for(int i = 0; i < (int) screen.size(); i++)
+    {
+        if(screen[i] != nullptr)
+        {
+            delete screen[i];
+            screen[i] = nullptr;
+        }
+    }
     screen.clear();
 }
 
 void MyWindow::shutdown()
 {
+    UImutex.lock();
+
     deleteScreen();
     if(window != nullptr)
     {
@@ -136,6 +145,8 @@ void MyWindow::shutdown()
 
     IMG_Quit();
     TTF_Quit();
+
+    UImutex.unlock();
 } 
 
 bool MyWindow::isOpen()

@@ -14,7 +14,7 @@ Data_Structures::~Data_Structures()
     ren = nullptr;
     capacity = 0;
     num = 0;
-    Sketch::~Sketch();
+    //Sketch::~Sketch();
 }
 
 void Data_Structures::init(const json & mem)

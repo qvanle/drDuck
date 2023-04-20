@@ -101,7 +101,7 @@ char* const& Button::getNextScreen()
 void Button::Delete()
 {
     ren = nullptr;
-    Object::~Object();
+    //Object::~Object();
 
     if(msg != nullptr) 
         delete [] msg;

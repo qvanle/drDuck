@@ -101,7 +101,7 @@ Display::~Display()
 {
 
     ren = nullptr;
-    Object::~Object();
+    //Object::~Object();
     DeleteButs();
 }
 
