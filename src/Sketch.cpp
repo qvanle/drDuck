@@ -37,10 +37,11 @@ Sketch::~Sketch()
 
 void Sketch::createTextTexture()
 {
-    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
-
-    
     clearTexture(1);
+    if(text.empty()) return ;
+
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
+    
     tes[1] = SDL_CreateTextureFromSurface(ren, surface);
     
     coor[1].w = surface->w;
@@ -84,6 +85,11 @@ void Sketch::setText(std::string s)
 {
     text = s;
     createTextTexture();
+}
+
+const std::string& Sketch::getText()
+{
+    return text;
 }
 
 void Sketch::setColor(SDL_Color c)
