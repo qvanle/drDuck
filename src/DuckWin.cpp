@@ -1,3 +1,4 @@
+#include "InputBox.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -10,6 +11,7 @@ MyWindow::MyWindow()
     FocusOn = 0;
     screen.clear();
     DT = nullptr;
+    input = nullptr;
 }
 
 
@@ -91,6 +93,11 @@ void MyWindow::mousePress(int x, int y)
             delete DT;
             DT = nullptr;
         }
+        if(input != nullptr) 
+        {
+            delete input;
+            input = nullptr;
+        }
         std::string screenName = but->getNextScreen();
         changeScreens(screenName.c_str());
         if(type == "StaticArray.json")
@@ -103,6 +110,20 @@ void MyWindow::mousePress(int x, int y)
             readJson("saving/1.json", mem);
             DT->loadValue(mem);
         }
+        UImutex.unlock();
+    }else if(but->getAction() == "new")
+    {
+        UImutex.lock();
+        if(input != nullptr)
+        {
+            delete input;
+            input = nullptr;
+        }
+        json mem;
+        readJson("asset/attribute/InputBox/new.json", mem);
+        input = new InputBox;
+        input->setRender(renderer);
+        input->init(mem);
         UImutex.unlock();
     }
 }
@@ -138,6 +159,11 @@ void MyWindow::shutdown()
 
         SDL_DestroyRenderer(renderer);
         renderer= nullptr;
+    }
+    if(input != nullptr) 
+    {
+        delete input;
+        input = nullptr;
     }
     status = 0;
     WIDTH = 0;
@@ -221,6 +247,7 @@ void MyWindow::render()
                     DT->render();
                 }
             }
+            if(input != nullptr) input->render();
             SDL_RenderPresent(renderer);
             UImutex.unlock();
             Uint32 DeltaTime = SDL_GetTicks() - startTime;
@@ -243,6 +270,10 @@ void MyWindow::process()
     {
         mousePress(event.motion.x, event.motion.y);
         mouseMove(event.motion.x, event.motion.y);
+    } else if(event.type == SDL_KEYDOWN) 
+    {
+         if ((event.key.keysym.mod & KMOD_CTRL) && event.key.keysym.sym == SDLK_s)
+            std::cerr << "hehe\n";
     }
 }
 

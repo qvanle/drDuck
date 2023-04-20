@@ -13,6 +13,7 @@
 #include <Display.hpp>
 #include <Data_Structures.hpp>
 #include <SYSTEM.hpp>
+#include <InputBox.hpp>
 
 
 class MyWindow
@@ -25,6 +26,7 @@ private:
     int fps;
 
     Data_Structures* DT;
+    InputBox* input;
 
     SDL_Window* window;
     SDL_Renderer* renderer;
