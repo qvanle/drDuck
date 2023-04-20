@@ -1,4 +1,3 @@
-#include "Sketch.hpp"
 #include <InputBox.hpp>
 
 InputBox::InputBox()
@@ -8,6 +7,7 @@ InputBox::InputBox()
     input.clear();
     texts.clear();
     buts.clear();
+    focusOn = -1;
 }
 
 InputBox::~InputBox()
@@ -78,4 +78,20 @@ void InputBox::render()
         texts[i]->render();
     for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->render();
+}
+
+void InputBox::setFocus(int k)
+{
+    focusOn = k;
+}
+void InputBox::typing(char ch)
+{
+    if(focusOn == -1) return ;
+    input[focusOn]->addChar(ch);
+}
+
+void InputBox::pop()
+{
+    if(focusOn == -1) return ;
+    input[focusOn]->popChar();
 }

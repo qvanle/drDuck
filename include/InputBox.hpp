@@ -15,12 +15,16 @@ private:
     std::vector<Sketch*> input;
     std::vector<Sketch*> texts;
     std::vector<Button*> buts;
+    int focusOn;
+
+    void setFocus(int k);
 public:
     InputBox();
     ~InputBox();
     void setRender(SDL_Renderer *& r);
     void init(const json& mem);
-
+    void typing(char ch);
+    void pop();
     void render();
 };
 
