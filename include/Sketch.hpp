@@ -56,6 +56,7 @@ public:
     void addChar(char ch);
     void popChar();
     void setText(std::string s);
+    const std::string & getText();
 
     void setColor(SDL_Color c);
     void setColor(int r, int g, int b, int a);
@@ -83,6 +84,7 @@ public:
 
     void FillWithColor();
 
+    bool isLieInside(int x, int y);
 
     void moveTo(int x, int y, double time);
 };

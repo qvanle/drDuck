@@ -1,0 +1,20 @@
+{
+    "name": "done",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        },
+        {
+            "name": "1",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "w": 150,
+        "h": 50
+    },
+    "visible": true
+}

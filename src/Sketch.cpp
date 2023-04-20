@@ -37,10 +37,11 @@ Sketch::~Sketch()
 
 void Sketch::createTextTexture()
 {
-    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
-
-    
     clearTexture(1);
+    if(text.empty()) return ;
+
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
+    
     tes[1] = SDL_CreateTextureFromSurface(ren, surface);
     
     coor[1].w = surface->w;
@@ -84,6 +85,11 @@ void Sketch::setText(std::string s)
 {
     text = s;
     createTextTexture();
+}
+
+const std::string& Sketch::getText()
+{
+    return text;
 }
 
 void Sketch::setColor(SDL_Color c)
@@ -180,10 +186,7 @@ void Sketch::render()
 {
     if(!isVisible()) return ;
     if(tes[0] != nullptr) SDL_RenderCopy(ren, tes[0], nullptr, &coor[0]);
-    if(tes[1] != nullptr) 
-    {
-        SDL_RenderCopy(ren, tes[1], &crop, &coor[1]);
-    }
+    if(tes[1] != nullptr) SDL_RenderCopy(ren, tes[1], &crop, &coor[1]);
 }
 
 void Sketch::setRender(SDL_Renderer *&r)
@@ -396,6 +399,13 @@ void Sketch::show()
 void Sketch::hide()
 {
     visible = false;
+}
+
+bool Sketch::isLieInside(int x, int y)
+{
+    if(y < coor[0].x || coor[0].x + coor[0].w <= x) return false;
+    if(y < coor[0].y || coor[0].y + coor[0].y <= y) return false;
+    return true;
 }
 
 void Sketch::moveTo(int x, int y, double time)
