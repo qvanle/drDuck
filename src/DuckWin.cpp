@@ -1,4 +1,3 @@
-#include "InputBox.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -272,8 +271,15 @@ void MyWindow::process()
         mouseMove(event.motion.x, event.motion.y);
     } else if(event.type == SDL_KEYDOWN) 
     {
-         if ((event.key.keysym.mod & KMOD_CTRL) && event.key.keysym.sym == SDLK_s)
-            std::cerr << "hehe\n";
+        if(input != nullptr)
+        {
+            UImutex.lock();
+            if(event.key.keysym.sym == SDLK_BACKSPACE)
+                input->pop();
+            else if(event.key.keysym.sym >= SDLK_SPACE && event.key.keysym.sym <= SDLK_z)
+                input->typing(event.key.keysym.sym);
+            UImutex.unlock();
+        }
     }
 }
 
