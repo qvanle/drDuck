@@ -13,6 +13,8 @@ Sketch::Sketch()
     coor[1] = coor[0];
     ren = nullptr;
 
+    borderWidth = 0;
+
     textAlignX = 2;
     textAlignY = 2;
 }
@@ -33,10 +35,10 @@ Sketch::~Sketch()
     ren = nullptr;
 }
 
-void Sketch::addChar(char ch)
+void Sketch::createTextTexture()
 {
-    text = text + ch;
     SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
+
     
     clearTexture(1);
     tes[1] = SDL_CreateTextureFromSurface(ren, surface);
@@ -44,38 +46,44 @@ void Sketch::addChar(char ch)
     coor[1].w = surface->w;
     coor[1].h = surface->h;
 
+    crop = coor[1];
+    crop.x = 0;
+    crop.y = 0;
+    
+    if(coor[1].w > coor[0].w || coor[1].h > coor[0].h)
+    {
+        crop = SDL_Rect({
+                std::max(0, coor[1].w - coor[0].w), 
+                std::max(0, coor[1].h - coor[0].h), 
+                coor[0].w, 
+                coor[0].h
+            });
+        coor[1].w = coor[0].w;
+        coor[1].h = coor[0].h;
+    }
+
     align();
 
     SDL_FreeSurface(surface);
+}
+
+void Sketch::addChar(char ch)
+{
+    text = text + ch;
+    createTextTexture();
 }
 
 void Sketch::popChar()
 {
     if(text.empty()) return ;
     text.pop_back();
-    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
-    align();
-    clearTexture(1);
-    tes[1] = SDL_CreateTextureFromSurface(ren, surface);
-
-    coor[1].w = surface->w;
-    coor[1].h = surface->h;
-
-    SDL_FreeSurface(surface);
+    createTextTexture();
 }
 
 void Sketch::setText(std::string s)
 {
     text = s;
-    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
-    
-    clearTexture(1);
-    tes[1] = SDL_CreateTextureFromSurface(ren, surface);
-
-    coor[1].w = surface->w;
-    coor[1].h = surface->h;
-    align();
-    SDL_FreeSurface(surface);
+    createTextTexture();
 }
 
 void Sketch::setColor(SDL_Color c)
@@ -172,7 +180,10 @@ void Sketch::render()
 {
     if(!isVisible()) return ;
     if(tes[0] != nullptr) SDL_RenderCopy(ren, tes[0], nullptr, &coor[0]);
-    if(tes[1] != nullptr) SDL_RenderCopy(ren, tes[1], nullptr, &coor[1]);
+    if(tes[1] != nullptr) 
+    {
+        SDL_RenderCopy(ren, tes[1], &crop, &coor[1]);
+    }
 }
 
 void Sketch::setRender(SDL_Renderer *&r)

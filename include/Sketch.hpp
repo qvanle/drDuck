@@ -23,6 +23,7 @@ private:
     TTF_Font* font;
     SDL_Color fontColor;
     std::string text;
+    SDL_Rect crop;
     
     SDL_Color color;
     SDL_Texture* tes[2];
@@ -35,6 +36,8 @@ private:
     void initColor(const json& mem);
     void initFont(const json& mem);
     void initBorder(const json& mem);
+
+    void createTextTexture();
 
 public:
     Sketch();
