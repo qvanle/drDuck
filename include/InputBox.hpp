@@ -26,6 +26,10 @@ public:
     void typing(char ch);
     void pop();
     void render();
+    void mouseMove(int x, int y);
+    void mousePress(int x, int y);
+    Button* getButtonPressedByMouse(int x, int y);
+    void nextFocus();
 };
 
 #endif 
