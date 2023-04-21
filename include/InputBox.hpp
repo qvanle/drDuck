@@ -24,6 +24,7 @@ public:
     void setRender(SDL_Renderer *& r);
     void init(const json& mem);
     void typing(char ch);
+    void setInput(std::string s);
     void pop();
     void render();
     void mouseMove(int x, int y);

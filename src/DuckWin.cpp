@@ -1,3 +1,4 @@
+#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -19,6 +20,7 @@ void MyWindow::init()
     status = 1;
     WIDTH = 960;
     HEIGHT = 540;
+    RANDOM::init();
 
     SDL_Init(SDL_INIT_VIDEO);
     window = SDL_CreateWindow(
@@ -153,6 +155,18 @@ void MyWindow::mousePress(int x, int y)
         if(input != nullptr) input->hide();
         if(DT != nullptr && input != nullptr) DT->create(input->getText(0));
         if(DT != nullptr) DT->show();
+        UImutex.unlock();
+    }else if(but->getAction() == "random new")
+    {
+        UImutex.lock();
+        int n = RANDOM::getInt(2, 12);
+        std::string temp = "";
+        for(int i = 0; i < n; i++)
+        {
+            temp = temp + std::to_string(RANDOM::getInt(0, 20));
+            if(i + 1 != n) temp = temp + ", ";
+        }
+        input->setInput(temp);
         UImutex.unlock();
     }
 }

@@ -107,6 +107,9 @@ void Data_Structures::StaticArrayCreate(std::string s)
         ite++;
     }
 
+    for(int i = num; i < capacity; i++)
+        elements[i]->setText("");
+
     for(int i = 0; i < capacity; i++)
     {
         elements[i]->show();

@@ -109,6 +109,12 @@ void InputBox::typing(char ch)
     input[focusOn]->addChar(ch);
 }
 
+void InputBox::setInput(std::string s)
+{
+    if(focusOn == 1) return ;
+    input[focusOn]->setText(s);
+}
+
 void InputBox::pop()
 {
     if(!isVisible()) return ;
