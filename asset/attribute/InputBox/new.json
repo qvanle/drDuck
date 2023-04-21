@@ -106,6 +106,15 @@
                 "y": 340
             }, 
             "action": "validate"
+        },
+        {
+            "name": "random",
+            "rect": 
+            {
+                "x": 660,
+                "y": 230 
+            },
+            "action": "random new"
         }
     ],
     "input":
