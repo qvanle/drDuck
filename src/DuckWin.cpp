@@ -79,7 +79,7 @@ void MyWindow::mouseMove(int x, int y)
 
 void MyWindow::mousePress(int x, int y)
 {
-    
+
     if(input != nullptr) input->mousePress(x, y);
 
     Button* but = nullptr;
@@ -88,34 +88,40 @@ void MyWindow::mousePress(int x, int y)
 
     if(but == nullptr) 
         but = top()->mousePressedButton(x, y);
-    
+
     if(but == nullptr) return ;
-    
+
     if(but->getAction() == "change screen")
     {
         UImutex.lock();
 
-        std::string type = but->getDataStructure();
-        std::string screenName = but->getNextScreen();
+        if(DT != nullptr && DT->isVisible())
+        {
+            DT->hide();
+        }else {
 
-        changeScreens(screenName.c_str());
-        if(type == "StaticArray.json")
-        {
-            DT = new Data_Structures;
-            DT->setRender(renderer);
-            json mem;
-            readJson("asset/attribute/DataStructures/StaticArray.json", mem);
-            DT->init(mem);
-        }else if(DT != nullptr) 
-        {
-            delete DT;
-            DT = nullptr;
-        }
-        
-        if(input != nullptr) 
-        {
-            delete input;
-            input = nullptr;
+            std::string type = but->getDataStructure();
+            std::string screenName = but->getNextScreen();
+
+            changeScreens(screenName.c_str());
+            if(type == "StaticArray.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson("asset/attribute/DataStructures/StaticArray.json", mem);
+                DT->init(mem);
+            }else if(DT != nullptr) 
+            {
+                delete DT;
+                DT = nullptr;
+            }
+
+            if(input != nullptr) 
+            {
+                delete input;
+                input = nullptr;
+            }
         }
         UImutex.unlock();
     }else if(but->getAction() == "new")
@@ -143,8 +149,11 @@ void MyWindow::mousePress(int x, int y)
         }
     }else if(but->getAction() == "validate")
     {
-        if(DT != nullptr) DT->show();
+        UImutex.lock();
         if(input != nullptr) input->hide();
+        if(DT != nullptr && input != nullptr) DT->create(input->getText(0));
+        if(DT != nullptr) DT->show();
+        UImutex.unlock();
     }
 }
 
@@ -294,16 +303,21 @@ void MyWindow::process()
     {
         if(input != nullptr)
         {
-            UImutex.lock();
-            if(event.key.keysym.sym == SDLK_BACKSPACE)
-                input->pop();
-            else if(event.key.keysym.sym == SDLK_TAB)
-                input->nextFocus();
-            else if(event.key.keysym.sym >= SDLK_SPACE && event.key.keysym.sym <= SDLK_z)
-                input->typing(event.key.keysym.sym);
-            UImutex.unlock();
+            typing(event.key.keysym);
         }
     }
+}
+
+void MyWindow::typing(SDL_Keysym key)
+{
+    UImutex.lock();
+    if(key.sym == SDLK_BACKSPACE)
+        input->pop();
+    else if(key.sym == SDLK_TAB)
+        input->nextFocus();
+    else if(key.sym >= SDLK_SPACE && key.sym <= SDLK_z)
+        input->typing(key.sym);
+    UImutex.unlock();
 }
 
 void MyWindow::action()

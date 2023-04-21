@@ -270,8 +270,6 @@ void Object::moveTo(int x, int y, double time)
         Uint32 deltaTime = SDL_GetTicks() - startTime;
         startTime = SDL_GetTicks();
 
-        std::cerr << getCoor().x << " " << getCoor().y << "\n";
-
         if(deltaTime <= time * 1000)
             SDL_Delay(time * 1000 - deltaTime);
     }

@@ -92,12 +92,6 @@ void Data_Structures::StaticArrayCreate(std::string s)
 {
     int *arr;
     int n = 0;
-    
-    show();
-    for(int i = 0; i < capacity; i++)
-    {
-        elements[i]->show();
-    }
 
     int ite = 0;
     num = 0;
@@ -111,6 +105,11 @@ void Data_Structures::StaticArrayCreate(std::string s)
         if(temp.empty()) temp = "0";
         elements[num++]->setText(temp);
         ite++;
+    }
+
+    for(int i = 0; i < capacity; i++)
+    {
+        elements[i]->show();
     }
 }
 

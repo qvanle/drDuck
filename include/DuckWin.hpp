@@ -53,6 +53,7 @@ public:
 
     void mouseMove(int x, int y);
     void mousePress(int x, int y);
+    void typing(SDL_Keysym key);
     void run();
 
     ~MyWindow();

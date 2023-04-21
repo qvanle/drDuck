@@ -160,3 +160,8 @@ Button* InputBox::getButtonPressedByMouse(int x, int y)
     return nullptr;
 }
 
+
+std::string InputBox::getText(int k)
+{
+    return input[k]->getText();
+}
