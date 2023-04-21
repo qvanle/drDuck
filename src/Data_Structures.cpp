@@ -96,7 +96,7 @@ void Data_Structures::StaticArrayCreate(std::string s)
     int ite = 0;
     num = 0;
 
-    while(ite < (int)s.size())
+    while(ite < (int)s.size() && num < capacity)
     {
         while(ite < (int)s.size() && s[ite] == ' ') ite++;
         std::string temp;
