@@ -6,6 +6,8 @@ Data_Structures::Data_Structures()
     capacity = 0;
     ren = nullptr;
     num = 0;
+    speed = 1;
+    type = 0;
 }
 
 Data_Structures::~Data_Structures()
@@ -14,7 +16,6 @@ Data_Structures::~Data_Structures()
     ren = nullptr;
     capacity = 0;
     num = 0;
-    //Sketch::~Sketch();
 }
 
 void Data_Structures::init(const json & mem)
@@ -96,7 +97,7 @@ void Data_Structures::StaticArrayCreate(std::string s)
     int ite = 0;
     num = 0;
 
-    while(ite < (int)s.size())
+    while(ite < (int)s.size() && num < capacity)
     {
         while(ite < (int)s.size() && s[ite] == ' ') ite++;
         std::string temp;
@@ -113,7 +114,7 @@ void Data_Structures::StaticArrayCreate(std::string s)
     }
 }
 
-void Data_Structures::StaticArrayInsert(int pos, int value)
+void Data_Structures::StaticArrayInsert(int pos, std::string value)
 {
 
 }
@@ -123,7 +124,7 @@ void Data_Structures::create(std::string s)
     if(type == 1) StaticArrayCreate(s);
 }
 
-void Data_Structures::insert(int pos, int value)
+void Data_Structures::insert(int pos, std::string value)
 {
     if(type == 1) StaticArrayInsert(pos, value);
 }

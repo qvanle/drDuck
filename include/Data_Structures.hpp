@@ -17,9 +17,10 @@ private:
     int num;
     int type;
     SDL_Renderer* ren;
+    double speed;
 
     void StaticArrayCreate(std::string a);
-    void StaticArrayInsert(int pos, int value);
+    void StaticArrayInsert(int pos, std::string value);
     void StaticArrayErase(int pos); 
     void StaticArrayUpdate(int pos, int value);
     void StaticArraySearch(int value);
@@ -34,7 +35,7 @@ public:
     void loadValue(const json& mem);
     void render();
     void create(std::string s);
-    void insert(int pos, int value);
+    void insert(int pos, std::string value);
     void erase(int pos);
     void update(int pos, int value);
     void search(int value);
