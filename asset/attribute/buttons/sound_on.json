@@ -1,5 +1,5 @@
 {
-    "name": "delete",
+    "name": "sound_on",
     "textures":
     [
         {
@@ -13,11 +13,10 @@
     ],
     "rect":
     {
-        "w": 85,
-        "h": 85
+        "w": 50,
+        "h": 50
     },
     "visible": true
 }
-
 
 

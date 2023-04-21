@@ -1,5 +1,5 @@
 {
-    "name": "delete",
+    "name": "exit",
     "textures":
     [
         {
@@ -13,11 +13,13 @@
     ],
     "rect":
     {
-        "w": 85,
-        "h": 85
+        "w": 40,
+        "h": 40
     },
     "visible": true
 }
+
+
 
 
 

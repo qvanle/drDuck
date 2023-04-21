@@ -90,11 +90,11 @@
     "buttons":
     [
         {
-            "name": "previous",
+            "name": "exit",
             "rect": 
             {
-                "x": 703,
-                "y": 83 
+                "x": 708,
+                "y": 88 
             },
             "action": "hide input"
         },
