@@ -237,7 +237,8 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
         decStep();
 
         m.lock();
-        if(std::to_string(value) == elements[i]->getText())
+        bool valid = std::to_string(value) == elements[i]->getText();
+        if(valid)
             elements[i]->FillWithColor(SDL_Color({10, 155, 10, 255}));
         else 
             elements[i]->FillWithColor(SDL_Color({155, 10, 10, 255}));
@@ -255,6 +256,7 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
         elements[i]->unHighlight();
         m.unlock();
         SDL_Delay(100 / speed);
+        if(valid) break;
     }
 }
 
