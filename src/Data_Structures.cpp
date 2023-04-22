@@ -188,7 +188,7 @@ void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
     if(num == capacity) return ;
     int pos = getFirstInt(s1);
     int value = getFirstInt(s2);
-    pos = std::min(pos, num + 1);
+    pos = std::min(pos, num);
     step = -1;
     finish = false;
     if(type == 1) StaticArrayInsert(pos, value, m);
