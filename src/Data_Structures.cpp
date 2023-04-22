@@ -1,3 +1,4 @@
+#include "SDL_mutex.h"
 #include "SDL_pixels.h"
 #include "SDL_timer.h"
 #include "SYSTEM.hpp"
@@ -189,8 +190,6 @@ void Data_Structures::DynamicArrayCreate(std::string s)
     {
         elements[i]->show();
     }
-
-    std::cerr << num << "\n";
 }
 
 void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
@@ -471,6 +470,84 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
         SDL_Delay(100 / speed);
     }
 }
+
+void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
+{
+
+    m.lock();
+    for(int i = 0; i < num; i++)
+        elements[i]->show();
+    for(int i = 0; i < num - 1; i++)
+    {
+        elements[i + capacity]->setText("");
+        elements[i + capacity]->show();
+        
+    }
+    m.unlock();
+    bool deleted = false;
+    SDL_Delay(400 / speed);
+    for(int i = 0; i < num; i++)
+    {
+        if(i == pos)
+        {
+            deleted = true;
+            
+            m.lock();
+            elements[i]->FillWithColor(SDL_Color({175, 20, 20, 255}));
+            m.unlock();
+            SDL_Delay(400 / speed);
+
+            while(getStep() == 0);
+            decStep();
+
+            m.lock();
+            elements[i]->FillWithColor();
+            m.unlock();
+            SDL_Delay(400 / speed);
+        }else 
+        {
+            m.lock();
+            elements[i]->highight();
+            elements[i + capacity - deleted]->highight();
+            m.unlock();
+
+            SDL_Delay(400 / speed);
+
+            while(getStep() == 0);
+            decStep();
+
+            m.lock();
+            elements[i + capacity - deleted]->setText(elements[i]->getText()); 
+            m.unlock();
+            SDL_Delay(500 / speed);
+
+            while(getStep() == 0);
+            decStep();
+
+            m.lock();
+            elements[i]->unHighlight();
+            elements[i + capacity - deleted]->unHighlight();
+            m.unlock();
+        }
+    }
+
+    SDL_Delay(200 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    
+    m.lock();
+    num--;
+    for(int i = 0; i < capacity * 2; i++)
+        elements[i]->hide();
+    for(int i = 0; i < num; i++)
+    {
+        elements[i]->setText(elements[i + capacity]->getText());
+        elements[i]->show();
+    }
+    m.unlock();
+}
+
 void Data_Structures::erase(std::string s1, std::mutex &m)
 {
     if(num == 0) return ;
@@ -479,6 +556,7 @@ void Data_Structures::erase(std::string s1, std::mutex &m)
     step = -1;
     finish = false;
     if(type == 1) StaticArrayErase(pos, m);
+    else if(type == 2) DynamicArrayErase(pos, m);
     finish = true;
 }
 

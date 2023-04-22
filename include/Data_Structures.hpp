@@ -33,6 +33,7 @@ private:
     void initDynamicArray(const json & mem);
     void DynamicArrayCreate(std::string s);
     void DynamicArrayInsert(int pos, int value, std::mutex & m);
+    void DynamicArrayErase(int pos, std::mutex & m);
 
 
 public:
