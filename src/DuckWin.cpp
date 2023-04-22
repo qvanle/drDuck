@@ -1,3 +1,4 @@
+#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -141,6 +142,24 @@ void MyWindow::mousePress(int x, int y)
         screen[1]->showButton(0);
         screen[1]->hideButton(1);
         UImutex.unlock();
+    }else if(DT->isVisible() && DT->isFinish() && but->getAction() == "delete")
+    {
+        UImutex.lock();
+        if(input != nullptr) 
+        {
+            delete input;
+            input = nullptr;
+        }
+
+        json mem;
+        readJson(GLOBAL::AtrbInputBox + "delete.json", mem);
+        input = new InputBox;
+        input->setRender(renderer);
+        input->init(mem);
+
+        screen[1]->showButton(0);
+        screen[1]->hideButton(1);
+        UImutex.unlock();
     }else if(but->getAction() == "hide input")
     {
         if(input != nullptr)
@@ -209,6 +228,14 @@ void MyWindow::mousePress(int x, int y)
         UImutex.unlock();
         std::thread insert(&Data_Structures::insert, DT, s1, s2, std::ref(UImutex));
         insert.detach();
+    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "done delete") 
+    {
+        UImutex.lock();
+        input->hide();
+        std::string s1 = input->getText(0);
+        UImutex.unlock();
+        std::thread erase(&Data_Structures::erase, DT, s1, std::ref(UImutex));
+        erase.detach();
     }else if(DT != nullptr && DT->isVisible() && but->getAction() == "pause") 
     {
         UImutex.lock();

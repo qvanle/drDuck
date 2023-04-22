@@ -195,6 +195,49 @@ void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
     finish = true;
 }
 
+void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
+{
+    for(int i = 0; i < num; i++) elements[i]->show();
+    
+    num--;
+    for(int i = pos; i < num; i++)
+    {
+        m.lock();
+        elements[i]->highight();
+        elements[i + 1]->highight();
+        m.unlock();
+
+        while(getStep() == 0);
+        decStep();
+
+        SDL_Delay(400 / speed);
+
+        m.lock();
+        elements[i]->setText(elements[i + 1]->getText());
+        m.unlock();
+        SDL_Delay(500 / speed);
+
+        while(getStep() == 0);
+
+        m.lock();
+        elements[i]->unHighlight();
+        elements[i + 1]->unHighlight();
+        m.unlock();
+        SDL_Delay(100 / speed);
+    }
+    num--;
+}
+void Data_Structures::erase(std::string s1, std::mutex &m)
+{
+    if(num == 0) return ;
+    int pos = getFirstInt(s1);
+    pos = std::min(pos, num);
+    step = -1;
+    finish = false;
+    if(type == 1) StaticArrayErase(pos, m);
+    finish = true;
+}
+
 void Data_Structures::speedUp()
 {
     if(diff(speed, 3.0)) return ;

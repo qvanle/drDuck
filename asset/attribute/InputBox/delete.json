@@ -67,7 +67,7 @@
             "rect": 
             {
                 "x": 210,
-                "y": 190,
+                "y": 210,
                 "w": 200,
                 "h": 40
             },
@@ -85,30 +85,7 @@
                 }
             },
             "text": "Enter position:"
-        },
-        {
-            "rect": 
-            {
-                "x": 205,
-                "y": 250,
-                "w": 200,
-                "h": 40
-            },
-            "visible": true,
-            "font": 
-            {
-                "name": "Atomed.ttf",
-                "size": 24,
-                "color":
-                {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255,
-                    "a": 255
-                }
-            },
-            "text": "Enter Values:"
-        }
+        }    
     ],
     "buttons":
     [
@@ -128,25 +105,16 @@
                 "x": 405,
                 "y": 340
             }, 
-            "action": "done insert"
+            "action": "done delete"
         },
         {
             "name": "random",
             "rect": 
             {
                 "x": 630,
-                "y": 190 
+                "y": 210 
             },
             "action": "random position"
-        },
-        {
-            "name": "random",
-            "rect": 
-            {
-                "x": 630,
-                "y": 250 
-            },
-            "action": "random value"
         }
     ],
     "input":
@@ -157,39 +125,7 @@
                 "w": 200,
                 "h": 40,
                 "x": 410,
-                "y": 190
-            },
-            "color":
-            {
-                "r": 127,
-                "g": 96,
-                "b": 127,
-                "a": 255
-
-            },
-            "font": 
-            {
-                "name": "Atomed.ttf",
-                "size": 24,
-                "color":
-                {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255,
-                    "a": 255
-                }
-            },
-            "text": "0",
-            "fill with color": true,
-            "visible": true
-        },
-        {
-            "rect": 
-            {
-                "w": 200,
-                "h": 40,
-                "x": 410,
-                "y": 250
+                "y": 210
             },
             "color":
             {
