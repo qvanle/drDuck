@@ -26,7 +26,7 @@ private:
     void StaticArrayInsert(int pos, int value, std::mutex & m);
     void StaticArrayErase(int pos, std::mutex & m); 
     void StaticArrayUpdate(int pos, int value, std::mutex & m);
-    void StaticArraySearch(int value);
+    void StaticArraySearch(int value, std::mutex & m);
 
 
 public:
@@ -53,7 +53,7 @@ public:
     void insert(std::string s1, std::string s2, std::mutex & m);
     void erase(std::string s1, std::mutex & m);
     void update(std::string s1, std::string s2, std::mutex & m);
-    void search(int value);
+    void search(std::string s2, std::mutex & m);
 
 };
 

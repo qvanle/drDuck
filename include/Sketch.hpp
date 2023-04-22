@@ -84,6 +84,7 @@ public:
     void setBorder(int w, int r, int g, int b, int a);
 
     void FillWithColor();
+    void FillWithColor(SDL_Color c);
     void highight();
     void unHighlight();
 

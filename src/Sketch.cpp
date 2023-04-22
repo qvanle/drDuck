@@ -1,3 +1,4 @@
+#include "SDL_pixels.h"
 #include <Sketch.hpp>
 
 Sketch::Sketch()
@@ -201,6 +202,14 @@ void Sketch::setBorder(int w, int r, int g, int b, int a)
     borderColor.g = g;
     borderColor.b = b;
     borderColor.a = a;
+}
+
+void Sketch::FillWithColor(SDL_Color c)
+{
+    SDL_Color temp = color;
+    color = c;
+    FillWithColor();
+    color = temp;
 }
 
 void Sketch::FillWithColor()

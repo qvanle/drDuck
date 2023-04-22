@@ -1,3 +1,4 @@
+#include "SDL_pixels.h"
 #include "SDL_timer.h"
 #include "SYSTEM.hpp"
 #include <Data_Structures.hpp>
@@ -220,6 +221,43 @@ void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
     m.unlock();
 }
 
+void Data_Structures::StaticArraySearch(int value, std::mutex &m)
+{
+    for(int i = 0; i < num; i++) elements[i]->show();
+    
+    for(int i = 0; i < num; i++)
+    {
+        m.lock();
+        elements[i]->highight();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        if(std::to_string(value) == elements[i]->getText())
+            elements[i]->FillWithColor(SDL_Color({10, 155, 10, 255}));
+        else 
+            elements[i]->FillWithColor(SDL_Color({155, 10, 10, 255}));
+        m.unlock();
+
+        SDL_Delay(600 / speed);
+
+        m.lock();
+        elements[i]->FillWithColor();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+
+        m.lock();
+        elements[i]->unHighlight();
+        m.unlock();
+        SDL_Delay(100 / speed);
+    }
+}
+
 void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
 {
     for(int i = 0; i < num; i++) elements[i]->show();
@@ -271,6 +309,16 @@ void Data_Structures::update(std::string s1, std::string s2, std::mutex &m)
     finish = false;
     pos = std::min(pos, num - 1);
     if(type == 1) StaticArrayUpdate(pos, value, m);
+    finish = true;
+}
+
+void Data_Structures::search(std::string s2, std::mutex &m)
+{
+    if(num == 0) return ;
+    int value = getFirstInt(s2);
+    step = -1;
+    finish = false;
+    if(type == 1) StaticArraySearch(value, m);
     finish = true;
 }
 
