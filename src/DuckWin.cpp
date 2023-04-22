@@ -160,6 +160,24 @@ void MyWindow::mousePress(int x, int y)
         screen[1]->showButton(0);
         screen[1]->hideButton(1);
         UImutex.unlock();
+    }else if(DT->isVisible() && DT->isFinish() && but->getAction() == "update")
+    {
+        UImutex.lock();
+        if(input != nullptr) 
+        {
+            delete input;
+            input = nullptr;
+        }
+
+        json mem;
+        readJson(GLOBAL::AtrbInputBox + "update.json", mem);
+        input = new InputBox;
+        input->setRender(renderer);
+        input->init(mem);
+
+        screen[1]->showButton(0);
+        screen[1]->hideButton(1);
+        UImutex.unlock();
     }else if(but->getAction() == "hide input")
     {
         if(input != nullptr)
@@ -236,7 +254,18 @@ void MyWindow::mousePress(int x, int y)
         UImutex.unlock();
         std::thread erase(&Data_Structures::erase, DT, s1, std::ref(UImutex));
         erase.detach();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "pause") 
+    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "done update")
+    {
+        UImutex.lock();
+        input->hide();
+        std::string s1 = input->getText(0);
+        std::string s2 = input->getText(1);
+        UImutex.unlock();
+
+        std::thread update(&Data_Structures::update, DT, s1, s2, std::ref(UImutex));
+        update.detach();
+    }
+    else if(DT != nullptr && DT->isVisible() && but->getAction() == "pause") 
     {
         UImutex.lock();
         DT->setStep(0);

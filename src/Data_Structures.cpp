@@ -1,4 +1,5 @@
 #include "SDL_timer.h"
+#include "SYSTEM.hpp"
 #include <Data_Structures.hpp>
 #include <iterator>
 
@@ -195,6 +196,30 @@ void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
     finish = true;
 }
 
+void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
+{
+    for(int i = 0; i < num; i++) elements[i]->show();
+
+    SDL_Delay(800 / speed);
+
+    m.lock();
+    elements[pos]->highight();
+    m.unlock();
+    while(getStep() == 0);
+    decStep();
+
+    SDL_Delay(400 / speed);
+
+    m.lock();
+    elements[pos]->setText(std::to_string(value));
+    m.unlock();
+    SDL_Delay(100 / speed);
+    while(getStep() == 0);
+    m.lock();
+    elements[pos]->unHighlight();
+    m.unlock();
+}
+
 void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
 {
     for(int i = 0; i < num; i++) elements[i]->show();
@@ -225,7 +250,6 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
         m.unlock();
         SDL_Delay(100 / speed);
     }
-    num--;
 }
 void Data_Structures::erase(std::string s1, std::mutex &m)
 {
@@ -235,6 +259,18 @@ void Data_Structures::erase(std::string s1, std::mutex &m)
     step = -1;
     finish = false;
     if(type == 1) StaticArrayErase(pos, m);
+    finish = true;
+}
+
+void Data_Structures::update(std::string s1, std::string s2, std::mutex &m)
+{
+    if(num == 0) return ;
+    int pos = getFirstInt(s1);
+    int value = getFirstInt(s2);
+    step = -1;
+    finish = false;
+    pos = std::min(pos, num - 1);
+    if(type == 1) StaticArrayUpdate(pos, value, m);
     finish = true;
 }
 
