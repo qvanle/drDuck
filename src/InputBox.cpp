@@ -128,19 +128,15 @@ void InputBox::mouseMove(int x, int y)
     for(int i = 0; i < (int) buts.size(); i++)
         if(buts[i]->isChosen(x, y)) break;
 
-    for(int i = 0; i < (int) input.size(); i++)
-        if(input[i]->isLieInside(x, y))
-            setFocus(i);
 }
 
 void InputBox::mousePress(int x, int y)
 {
     if(!isVisible()) return ;
     for(int i = 0; i < (int) input.size(); i++)
-    {
-        setFocus(i);
-        return ;
-    }
+        if(input[i]->isLieInside(x, y))
+            setFocus(i);
+    return ;
 }
 
 void InputBox::nextFocus()

@@ -17,25 +17,40 @@ private:
     int num;
     int type;
     SDL_Renderer* ren;
+    double speed;
+    int step;
+    bool finish;
+    std::mutex stepMutex;
 
     void StaticArrayCreate(std::string a);
-    void StaticArrayInsert(int pos, int value);
+    void StaticArrayInsert(int pos, int value, std::mutex & m);
     void StaticArrayErase(int pos); 
     void StaticArrayUpdate(int pos, int value);
     void StaticArraySearch(int value);
 
 
 public:
+
+    bool isFinish();
+    void setStep(int k);
+    void decStep();
+    int getStep();
     int size();
     Data_Structures();
     ~Data_Structures();
+
+    void speedUp();
+    void slowDown();
+    void nextStep();
+
     void setRender(SDL_Renderer *& r);
     void init(const json & mem);
     void initStaticArray(const json & mem);
     void loadValue(const json& mem);
     void render();
+    void render(bool update);
     void create(std::string s);
-    void insert(int pos, int value);
+    void insert(std::string s1, std::string s2, std::mutex & m);
     void erase(int pos);
     void update(int pos, int value);
     void search(int value);

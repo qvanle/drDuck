@@ -98,3 +98,18 @@ bool diff(double a, double b)
 {
     return fabs(a - b) < 1e-6;
 }
+
+int getFirstInt(std::string s)
+{
+    int res = 0;
+    int i = 0;
+
+    while(i < (int) s.size() && !isdigit(s[i]))
+        i++;
+    while(i < (int) s.size() && isdigit(s[i]))
+    {
+        res = res * 10 + s[i] - '0';
+        i++;
+    }
+    return res;
+}

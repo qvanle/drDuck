@@ -72,7 +72,9 @@
                 {
                     "x": 455,
                     "y": 480
-                }
+                },
+                "visible": true,
+                "action": "pause"
             }, 
             {
                 "name": "play",
@@ -80,7 +82,9 @@
                 {
                     "x": 455,
                     "y": 480
-                }
+                },
+                "action": "play",
+                "visible": true
             },
             {
                 "name": "left_arrow",
@@ -96,7 +100,8 @@
                 {
                     "x": 525,
                     "y": 480
-                }
+                },
+                "action": "next"
             },
             {
                 "name": "speed_up",
@@ -104,7 +109,8 @@
                 {
                     "x": 595,
                     "y": 480
-                }
+                },
+                "action": "speed up"
             },
             {
                 "name": "slow_down",
@@ -112,7 +118,8 @@
                 {
                     "x": 315,
                     "y": 480
-                }
+                },
+                "action": "slow down"
             }
         ]
     },
@@ -173,7 +180,8 @@
                 {
                     "x": 850, 
                     "y": 227 
-                }
+                },
+                "action": "delete"
             },
             {
                 "name": "update",
@@ -181,7 +189,8 @@
                 {
                     "x": 850, 
                     "y": 331 
-                }
+                },
+                "action": "update"
             },
             {
                 "name": "search",
@@ -189,7 +198,8 @@
                 {
                     "x": 850, 
                     "y": 435
-                }
+                }, 
+                "action": "search"
             }
         ]
     }

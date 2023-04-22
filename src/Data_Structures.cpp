@@ -1,4 +1,6 @@
+#include "SDL_timer.h"
 #include <Data_Structures.hpp>
+#include <iterator>
 
 int Data_Structures::size()
 {
@@ -7,10 +9,12 @@ int Data_Structures::size()
 
 Data_Structures::Data_Structures()
 {
+    finish = true;
     elements.clear();
     capacity = 0;
     ren = nullptr;
     num = 0;
+    speed = 1;
 }
 
 Data_Structures::~Data_Structures()
@@ -69,7 +73,7 @@ void Data_Structures::initStaticArray(const json &mem)
         if(mem.contains("element attributes"))
         {    
             elements[i]->init(mem["element attributes"]);
-            
+
             int dx = mem["element attributes"]["dx"];
             int dy = mem["element attributes"]["dy"];
 
@@ -121,9 +125,57 @@ void Data_Structures::StaticArrayCreate(std::string s)
     }
 }
 
-void Data_Structures::StaticArrayInsert(int pos, int value)
+void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 {
+    num++;
+    for(int i = 0; i < num; i++) elements[i]->show();
 
+    for(int i = num - 1; i > pos; i--)
+    {
+
+
+        m.lock();
+        elements[i]->highight();
+        elements[i - 1]->highight();
+        m.unlock();
+
+        while(getStep() == 0);
+        decStep();
+
+        SDL_Delay(400 / speed);
+
+        m.lock();
+        elements[i]->setText(elements[i - 1]->getText());
+        m.unlock();
+        SDL_Delay(500 / speed);
+
+        while(getStep() == 0);
+
+        m.lock();
+        elements[i]->unHighlight();
+        elements[i - 1]->unHighlight();
+        m.unlock();
+        SDL_Delay(100 / speed);
+    }
+
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    elements[pos]->highight();
+    m.unlock();
+
+    SDL_Delay(500 / speed);
+
+    m.lock();
+    elements[pos]->setText(std::to_string(value));
+    m.unlock();
+    SDL_Delay(500 / speed);
+
+    m.lock();
+    elements[pos]->unHighlight();
+    m.unlock();
+    SDL_Delay(500 / speed);
 }
 
 void Data_Structures::create(std::string s)
@@ -131,7 +183,63 @@ void Data_Structures::create(std::string s)
     if(type == 1) StaticArrayCreate(s);
 }
 
-void Data_Structures::insert(int pos, int value)
+void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
 {
-    if(type == 1) StaticArrayInsert(pos, value);
+    if(num == capacity) return ;
+    int pos = getFirstInt(s1);
+    int value = getFirstInt(s2);
+    pos = std::min(pos, num + 1);
+    step = -1;
+    finish = false;
+    if(type == 1) StaticArrayInsert(pos, value, m);
+    finish = true;
 }
+
+void Data_Structures::speedUp()
+{
+    if(diff(speed, 3.0)) return ;
+    speed += 0.25;
+}
+
+void Data_Structures::slowDown()
+{
+    if(diff(speed, 0.25)) return ;
+    speed -= 0.25;
+}
+
+void Data_Structures::nextStep()
+{
+    stepMutex.lock();
+    step = 1;
+    stepMutex.unlock();
+}
+
+void Data_Structures::setStep(int k)
+{
+    stepMutex.lock();
+    step = k;
+    stepMutex.unlock();
+}
+
+void Data_Structures::decStep()
+{
+    stepMutex.lock();
+    step--;
+    stepMutex.unlock();
+}
+
+int Data_Structures::getStep()
+{
+    int val;
+    stepMutex.lock();
+    val = step;
+    stepMutex.unlock();
+    return val;
+}
+
+
+bool Data_Structures::isFinish()
+{
+    return finish;
+}
+

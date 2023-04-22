@@ -97,6 +97,17 @@ void Display::DeleteButs()
     }
 }
 
+void Display::hideButton(int k)
+{
+    if(k >= (int) buts.size()) return ;
+    buts[k]->hide();
+}
+void Display::showButton(int k)
+{
+    if(k >= (int) buts.size()) return ;
+    buts[k]->show();
+}
+
 Display::~Display()
 {
 

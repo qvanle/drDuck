@@ -40,6 +40,7 @@ char * combineName(const char* name, const char* type);
 void readJson(const char* const& link, json &mem);
 void readjson(const char* const& dir, const char* const& name, json &mem);
 void readJson(std::string s, json &mem);
+int getFirstInt(std::string s);
 
 bool diff(double a, double b);
 #endif

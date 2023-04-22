@@ -26,6 +26,7 @@ private:
     SDL_Rect crop;
     
     SDL_Color color;
+    SDL_Color cache;
     SDL_Texture* tes[2];
     SDL_Rect coor[2];
     SDL_Renderer* ren;
@@ -83,6 +84,8 @@ public:
     void setBorder(int w, int r, int g, int b, int a);
 
     void FillWithColor();
+    void highight();
+    void unHighlight();
 
     bool isLieInside(int x, int y);
 

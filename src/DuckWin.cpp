@@ -1,4 +1,3 @@
-#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -139,6 +138,8 @@ void MyWindow::mousePress(int x, int y)
         input = new InputBox;
         input->setRender(renderer);
         input->init(mem);
+        screen[1]->showButton(0);
+        screen[1]->hideButton(1);
         UImutex.unlock();
     }else if(but->getAction() == "hide input")
     {
@@ -166,9 +167,10 @@ void MyWindow::mousePress(int x, int y)
             temp = temp + std::to_string(RANDOM::getInt(0, 20));
             if(i + 1 != n) temp = temp + ", ";
         }
+        input->setFocus(0);
         input->setInput(temp);
         UImutex.unlock();
-    }else if(but->getAction() == "insert" && DT->isVisible()) 
+    }else if(but->getAction() == "insert" && DT->isVisible() && DT->isFinish()) 
     {
         UImutex.lock();
         if(input != nullptr)
@@ -181,6 +183,10 @@ void MyWindow::mousePress(int x, int y)
         input = new InputBox;
         input->setRender(renderer);
         input->init(mem);
+
+        screen[1]->showButton(0);
+        screen[1]->hideButton(1);
+
         UImutex.unlock();
     }else if(but->getAction() == "random position" && DT != nullptr)
     {
@@ -193,6 +199,44 @@ void MyWindow::mousePress(int x, int y)
         UImutex.lock();
         input->setFocus(1);
         input->setInput(std::to_string(RANDOM::getInt(0, 99)));
+        UImutex.unlock();
+    }else if(but->getAction() == "done insert")
+    {
+        UImutex.lock();
+        input->hide();
+        std::string s1 = input->getText(0);
+        std::string s2 = input->getText(1);
+        UImutex.unlock();
+        std::thread insert(&Data_Structures::insert, DT, s1, s2, std::ref(UImutex));
+        insert.detach();
+    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "pause") 
+    {
+        UImutex.lock();
+        DT->setStep(0);
+        but->hide();
+        screen[1]->showButton(1);
+        UImutex.unlock();
+    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "play")
+    {
+        UImutex.lock();
+        DT->setStep(-1);
+        but->hide();
+        screen[1]->showButton(0);
+        UImutex.unlock();
+    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "slow down")
+    {
+        UImutex.lock();
+        DT->slowDown();
+        UImutex.unlock();
+    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "speed up")
+    {
+        UImutex.lock();
+        DT->speedUp();
+        UImutex.unlock();
+    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "next")
+    {
+        UImutex.lock();
+        DT->nextStep();
         UImutex.unlock();
     }
 }

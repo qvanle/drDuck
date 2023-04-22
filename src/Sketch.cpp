@@ -270,6 +270,7 @@ void Sketch::initColor(const json& mem)
             color.b = mem["color"]["b"];
         if(mem["color"].contains("a"))
             color.a = mem["color"]["a"];
+        cache = color;
     }
 }
 
@@ -403,7 +404,7 @@ void Sketch::hide()
 
 bool Sketch::isLieInside(int x, int y)
 {
-    if(y < coor[0].x || coor[0].x + coor[0].w <= x) return false;
+    if(x < coor[0].x || coor[0].x + coor[0].w <= x) return false;
     if(y < coor[0].y || coor[0].y + coor[0].y <= y) return false;
     return true;
 }
@@ -444,4 +445,24 @@ void Sketch::moveTo(int x, int y, double time)
         if(deltaTime <= time * 1000)
             SDL_Delay(time * 1000 - deltaTime);
     }
+}
+
+void Sketch::highight()
+{
+    color.r = 255 - color.r;
+    color.g = 255 - color.g;
+    color.b = 255 - color.g;
+    if(color.r > 20 && color.g > 20 && color.b > 20)
+    {
+        color.r -= color.r * 0.3;
+        color.g -= color.g * 0.3;
+        color.b -= color.b * 0.3;
+    }
+    FillWithColor();
+}
+
+void Sketch::unHighlight()
+{
+    color = cache;
+    FillWithColor();
 }

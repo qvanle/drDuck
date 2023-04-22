@@ -35,6 +35,8 @@ public:
     void mouseMove(int x, int y);
     Button* mousePressedButton(int x, int y);
     void DeleteButs();
+    void hideButton(int k);
+    void showButton(int k);
 
     void moveTo(int x, int y, double time);
     void appearFromBot(double time);
