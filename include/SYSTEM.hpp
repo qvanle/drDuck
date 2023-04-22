@@ -23,6 +23,7 @@ namespace GLOBAL
     extern const char* AttributeFolder;
     extern const char* AtrbScreens;
     extern const char* AtrbButtons;
+    extern const std::string AtrbDT;
     extern const char* FontsFolder;
     extern const std::string AtrbInputBox;
 }

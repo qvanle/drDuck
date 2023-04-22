@@ -1,6 +1,7 @@
 #include "SDL_pixels.h"
 #include "SDL_timer.h"
 #include "SYSTEM.hpp"
+#include "Sketch.hpp"
 #include <Data_Structures.hpp>
 #include <iterator>
 
@@ -31,9 +32,13 @@ Data_Structures::~Data_Structures()
 void Data_Structures::init(const json & mem)
 {
     if(!mem.contains("name")) return ;
-    if(mem["name"].get<std::string>() == "StaticArray.json")
+    std::string name = mem["name"].get<std::string>();
+    if(name == "StaticArray.json")
     {
         initStaticArray(mem);
+    }else if(name == "DynamicArray.json")
+    {
+        initDynamicArray(mem);
     }
 }
 
@@ -66,7 +71,7 @@ void Data_Structures::initStaticArray(const json &mem)
     elements.clear();
 
     capacity = 12;
-    elements.resize(12);
+    elements.resize(capacity);
 
     for(int i = 0; i < capacity; i++)
     {
@@ -80,9 +85,42 @@ void Data_Structures::initStaticArray(const json &mem)
             int dy = mem["element attributes"]["dy"];
 
             elements[i]->addX(i * dx);
-            elements[i]->addY(i * dy);
         }
     }
+}
+
+void Data_Structures::initDynamicArray(const json & mem)
+{
+    type = 2;
+    Sketch::setRender(ren);
+    Sketch::init(mem);
+
+    capacity = 12;
+    elements.clear();
+    elements.resize(capacity * 2);
+
+    for(int i = 0; i < capacity; i++)
+    {
+        elements[i] = new Sketch;
+        elements[i]->setRender(ren);
+
+        elements[i + capacity] = new Sketch;
+        elements[i + capacity]->setRender(ren); 
+
+        if(mem.contains("element attributes"))
+        {    
+            elements[i]->init(mem["element attributes"]);
+            elements[i + capacity]->init(mem["element attributes"]);
+            int dx = mem["element attributes"]["dx"];
+            int dy = mem["element attributes"]["dy"];
+
+            elements[i]->addX(i * dx);
+
+            elements[i + capacity]->addX(i * dx);
+            elements[i + capacity]->addY(dy);
+        }
+    }
+    
 }
 
 void Data_Structures::render()
@@ -122,6 +160,31 @@ void Data_Structures::StaticArrayCreate(std::string s)
         elements[i]->setText("");
 
     for(int i = 0; i < capacity; i++)
+    {
+        elements[i]->show();
+    }
+}
+
+void Data_Structures::DynamicArrayCreate(std::string s)
+{
+    int *arr;
+    int n = 0;
+
+    int ite = 0;
+    int num = 0;
+
+    while(ite < (int)s.size() && num < capacity)
+    {
+        while(ite < (int)s.size() && s[ite] == ' ') ite++;
+        std::string temp;
+        while(ite < (int)s.size() && isdigit(s[ite]))
+            temp += s[ite++];
+        if(temp.empty()) temp = "0";
+        elements[num++]->setText(temp);
+        ite++;
+    }
+
+    for(int i = 0; i < num; i++)
     {
         elements[i]->show();
     }
@@ -183,6 +246,7 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 void Data_Structures::create(std::string s)
 {
     if(type == 1) StaticArrayCreate(s);
+    else if(type == 2) DynamicArrayCreate(s);
 }
 
 void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)

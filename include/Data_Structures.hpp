@@ -22,12 +22,16 @@ private:
     bool finish;
     std::mutex stepMutex;
 
-    void StaticArrayCreate(std::string a);
+    void initStaticArray(const json & mem);
+    void StaticArrayCreate(std::string s);
     void StaticArrayInsert(int pos, int value, std::mutex & m);
     void StaticArrayErase(int pos, std::mutex & m); 
     void StaticArrayUpdate(int pos, int value, std::mutex & m);
     void StaticArraySearch(int value, std::mutex & m);
 
+
+    void initDynamicArray(const json & mem);
+    void DynamicArrayCreate(std::string s);
 
 public:
 
@@ -45,7 +49,6 @@ public:
 
     void setRender(SDL_Renderer *& r);
     void init(const json & mem);
-    void initStaticArray(const json & mem);
     void loadValue(const json& mem);
     void render();
     void render(bool update);

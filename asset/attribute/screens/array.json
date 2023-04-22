@@ -43,8 +43,7 @@
                 "msg": "working.json",
                 "arg":
                 [
-                    "array",
-                    "dynamic"
+                    "DynamicArray.json"
                 ]
             },
             { 

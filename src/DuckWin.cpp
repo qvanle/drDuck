@@ -1,3 +1,4 @@
+#include "Data_Structures.hpp"
 #include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
@@ -111,7 +112,14 @@ void MyWindow::mousePress(int x, int y)
                 DT = new Data_Structures;
                 DT->setRender(renderer);
                 json mem;
-                readJson("asset/attribute/DataStructures/StaticArray.json", mem);
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "DynamicArray.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
                 DT->init(mem);
             }else if(DT != nullptr) 
             {
