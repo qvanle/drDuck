@@ -135,7 +135,7 @@ void MyWindow::mousePress(int x, int y)
             input = nullptr;
         }
         json mem;
-        readJson("asset/attribute/InputBox/new.json", mem);
+        readJson(GLOBAL::AtrbInputBox + "new.json", mem);
         input = new InputBox;
         input->setRender(renderer);
         input->init(mem);
@@ -149,7 +149,7 @@ void MyWindow::mousePress(int x, int y)
             input = nullptr;
             UImutex.unlock();
         }
-    }else if(but->getAction() == "validate")
+    }else if(but->getAction() == "done new")
     {
         UImutex.lock();
         if(input != nullptr) input->hide();
@@ -167,6 +167,32 @@ void MyWindow::mousePress(int x, int y)
             if(i + 1 != n) temp = temp + ", ";
         }
         input->setInput(temp);
+        UImutex.unlock();
+    }else if(but->getAction() == "insert" && DT->isVisible()) 
+    {
+        UImutex.lock();
+        if(input != nullptr)
+        {
+            delete input;
+            input = nullptr;
+        }
+        json mem;
+        readJson(GLOBAL::AtrbInputBox + "insert.json", mem);
+        input = new InputBox;
+        input->setRender(renderer);
+        input->init(mem);
+        UImutex.unlock();
+    }else if(but->getAction() == "random position" && DT != nullptr)
+    {
+        UImutex.lock();
+        input->setFocus(0);
+        input->setInput(std::to_string(RANDOM::getInt(0, DT->size())));
+        UImutex.unlock();
+    }else if(but->getAction() == "random value")
+    {
+        UImutex.lock();
+        input->setFocus(1);
+        input->setInput(std::to_string(RANDOM::getInt(0, 99)));
         UImutex.unlock();
     }
 }

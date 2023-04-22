@@ -1,5 +1,3 @@
-#include "Button.hpp"
-#include "SYSTEM.hpp"
 #include <InputBox.hpp>
 
 InputBox::InputBox()
@@ -101,6 +99,7 @@ void InputBox::render()
 void InputBox::setFocus(int k)
 {
     if(!isVisible()) return ;
+    if(k >= input.size()) return ;
     focusOn = k;
 }
 void InputBox::typing(char ch)
@@ -111,7 +110,7 @@ void InputBox::typing(char ch)
 
 void InputBox::setInput(std::string s)
 {
-    if(focusOn == 1) return ;
+    if(focusOn == -1) return ;
     input[focusOn]->setText(s);
 }
 

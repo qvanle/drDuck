@@ -164,7 +164,8 @@
                 {
                     "x": 850,
                     "y": 123
-                }
+                },
+                "action": "insert"
             },
             {
                 "name": "delete",

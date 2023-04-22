@@ -24,6 +24,7 @@ namespace GLOBAL
     extern const char* AtrbScreens;
     extern const char* AtrbButtons;
     extern const char* FontsFolder;
+    extern const std::string AtrbInputBox;
 }
 
 namespace RANDOM 
@@ -38,6 +39,7 @@ char * combineLink(const char* dir, const char* name);
 char * combineName(const char* name, const char* type);
 void readJson(const char* const& link, json &mem);
 void readjson(const char* const& dir, const char* const& name, json &mem);
+void readJson(std::string s, json &mem);
 
 bool diff(double a, double b);
 #endif

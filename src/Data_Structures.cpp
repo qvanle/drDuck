@@ -1,5 +1,10 @@
 #include <Data_Structures.hpp>
 
+int Data_Structures::size()
+{
+    return num;
+}
+
 Data_Structures::Data_Structures()
 {
     elements.clear();

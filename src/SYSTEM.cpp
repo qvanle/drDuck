@@ -9,6 +9,7 @@ const char* GLOBAL::AttributeFolder = "asset/attribute/";
 const char* GLOBAL::AtrbScreens = "asset/attribute/screens/";
 const char* GLOBAL::AtrbButtons = "asset/attribute/buttons/";
 const char* GLOBAL::FontsFolder = "asset/fonts";
+const std::string GLOBAL::AtrbInputBox = "asset/attribute/InputBox/";
 
 std::mt19937 RANDOM::rng;
 
@@ -67,6 +68,12 @@ char * combineLink(const char *dir, const char *name)
 
     return link;
 }
+
+void readJson(std::string s, json &mem)
+{
+    readJson(s.c_str(), mem);
+}
+
 
 void readJson(const char * const& link, json &mem)
 {

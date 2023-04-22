@@ -26,6 +26,7 @@ private:
 
 
 public:
+    int size();
     Data_Structures();
     ~Data_Structures();
     void setRender(SDL_Renderer *& r);

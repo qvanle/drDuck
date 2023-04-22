@@ -17,7 +17,6 @@ private:
     std::vector<Button*> buts;
     int focusOn;
 
-    void setFocus(int k);
 public:
     InputBox();
     ~InputBox();
@@ -31,6 +30,7 @@ public:
     void mousePress(int x, int y);
     Button* getButtonPressedByMouse(int x, int y);
     void nextFocus();
+    void setFocus(int k);
     std::string getText(int k);
 };
 
