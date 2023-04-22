@@ -34,6 +34,8 @@ private:
     void DynamicArrayCreate(std::string s);
     void DynamicArrayInsert(int pos, int value, std::mutex & m);
     void DynamicArrayErase(int pos, std::mutex & m);
+    void DynamicArrayUpdate(int pos, int value, std::mutex & m);
+    void DynamicArraySearch(int value, std::mutex & m);
 
 
 public:

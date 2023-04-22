@@ -376,7 +376,7 @@ void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
     finish = true;
 }
 
-void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
+void Data_Structures::DynamicArrayUpdate(int pos, int value, std::mutex &m)
 {
     for(int i = 0; i < num; i++) elements[i]->show();
 
@@ -401,6 +401,69 @@ void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
 }
 
 void Data_Structures::StaticArraySearch(int value, std::mutex &m)
+{
+    for(int i = 0; i < num; i++) elements[i]->show();
+
+    for(int i = 0; i < num; i++)
+    {
+        m.lock();
+        elements[i]->highight();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        bool valid = std::to_string(value) == elements[i]->getText();
+        if(valid)
+            elements[i]->FillWithColor(SDL_Color({10, 155, 10, 255}));
+        else 
+            elements[i]->FillWithColor(SDL_Color({155, 10, 10, 255}));
+        m.unlock();
+
+        SDL_Delay(600 / speed);
+
+        m.lock();
+        elements[i]->FillWithColor();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+
+        m.lock();
+        elements[i]->unHighlight();
+        m.unlock();
+        SDL_Delay(100 / speed);
+        if(valid) break;
+    }
+}
+
+void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
+{
+    for(int i = 0; i < num; i++) elements[i]->show();
+
+    SDL_Delay(800 / speed);
+
+    m.lock();
+    elements[pos]->highight();
+    m.unlock();
+    while(getStep() == 0);
+    decStep();
+
+    SDL_Delay(400 / speed);
+
+    m.lock();
+    elements[pos]->setText(std::to_string(value));
+    m.unlock();
+    SDL_Delay(100 / speed);
+    while(getStep() == 0);
+    m.lock();
+    elements[pos]->unHighlight();
+    m.unlock();
+}
+
+void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
 {
     for(int i = 0; i < num; i++) elements[i]->show();
 
@@ -569,6 +632,7 @@ void Data_Structures::update(std::string s1, std::string s2, std::mutex &m)
     finish = false;
     pos = std::min(pos, num - 1);
     if(type == 1) StaticArrayUpdate(pos, value, m);
+    else if(type == 2) DynamicArrayUpdate(pos, value, m);
     finish = true;
 }
 
@@ -579,6 +643,7 @@ void Data_Structures::search(std::string s2, std::mutex &m)
     step = -1;
     finish = false;
     if(type == 1) StaticArraySearch(value, m);
+    else if(type == 2) DynamicArraySearch(value, m);
     finish = true;
 }
 
