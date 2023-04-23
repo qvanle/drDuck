@@ -2,6 +2,7 @@
 #include "SDL_pixels.h"
 #include "SDL_timer.h"
 #include "SYSTEM.hpp"
+#include "Script.hpp"
 #include "Sketch.hpp"
 #include <Data_Structures.hpp>
 #include <iterator>
@@ -20,6 +21,7 @@ Data_Structures::Data_Structures()
     ren = nullptr;
     num = 0;
     speed = 1;
+    script = nullptr;
 }
 
 Data_Structures::~Data_Structures()
@@ -28,6 +30,8 @@ Data_Structures::~Data_Structures()
     ren = nullptr;
     capacity = 0;
     num = 0;
+    if(script != nullptr) delete script;
+    script = nullptr;
     //Sketch::~Sketch();
 }
 
@@ -35,6 +39,13 @@ void Data_Structures::init(const json & mem)
 {
     if(!mem.contains("name")) return ;
     std::string name = mem["name"].get<std::string>();
+    if(mem.contains("script"))
+    {
+        if(script != nullptr) delete script;
+        script = new Script;
+        script->setRender(ren);
+        script->init(mem["script"]);
+    }
     if(name == "StaticArray.json")
     {
         initStaticArray(mem);
@@ -131,6 +142,10 @@ void Data_Structures::render()
     Sketch::render();
     for(int i = 0; i < elements.size(); i++)
         elements[i]->render();
+    if(script != nullptr)
+    {
+        script->render();
+    }
 }
 
 bool isdigit(char ch)
@@ -215,7 +230,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         if(i == pos)
         {
             m.lock();
-            elements[i + capacity]->highight();
+            elements[i + capacity]->highlight();
             m.unlock();
 
             SDL_Delay(400 / speed);
@@ -241,8 +256,8 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         }
 
         m.lock();
-        elements[i]->highight();
-        elements[i + capacity + inserted]->highight();
+        elements[i]->highlight();
+        elements[i + capacity + inserted]->highlight();
         m.unlock();
 
 
@@ -266,7 +281,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
     if(i == pos)
     {
         m.lock();
-        elements[i + capacity]->highight();
+        elements[i + capacity]->highlight();
         m.unlock();
 
         SDL_Delay(400 / speed);
@@ -316,8 +331,8 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 
 
         m.lock();
-        elements[i]->highight();
-        elements[i - 1]->highight();
+        elements[i]->highlight();
+        elements[i - 1]->highlight();
         m.unlock();
 
         while(getStep() == 0);
@@ -341,7 +356,7 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
     decStep();
 
     m.lock();
-    elements[pos]->highight();
+    elements[pos]->highlight();
     m.unlock();
 
     SDL_Delay(500 / speed);
@@ -383,7 +398,7 @@ void Data_Structures::DynamicArrayUpdate(int pos, int value, std::mutex &m)
     SDL_Delay(800 / speed);
 
     m.lock();
-    elements[pos]->highight();
+    elements[pos]->highlight();
     m.unlock();
     while(getStep() == 0);
     decStep();
@@ -407,7 +422,7 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
     for(int i = 0; i < num; i++)
     {
         m.lock();
-        elements[i]->highight();
+        elements[i]->highlight();
         m.unlock();
 
         SDL_Delay(400 / speed);
@@ -446,7 +461,7 @@ void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
     SDL_Delay(800 / speed);
 
     m.lock();
-    elements[pos]->highight();
+    elements[pos]->highlight();
     m.unlock();
     while(getStep() == 0);
     decStep();
@@ -470,7 +485,7 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
     for(int i = 0; i < num; i++)
     {
         m.lock();
-        elements[i]->highight();
+        elements[i]->highlight();
         m.unlock();
 
         SDL_Delay(400 / speed);
@@ -510,8 +525,8 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
     for(int i = pos; i < num; i++)
     {
         m.lock();
-        elements[i]->highight();
-        elements[i + 1]->highight();
+        elements[i]->highlight();
+        elements[i + 1]->highlight();
         m.unlock();
 
         while(getStep() == 0);
@@ -570,8 +585,8 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
         }else 
         {
             m.lock();
-            elements[i]->highight();
-            elements[i + capacity - deleted]->highight();
+            elements[i]->highlight();
+            elements[i + capacity - deleted]->highlight();
             m.unlock();
 
             SDL_Delay(400 / speed);

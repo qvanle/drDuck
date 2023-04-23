@@ -30,7 +30,7 @@ private:
     SDL_Texture* tes[2];
     SDL_Rect coor[2];
     SDL_Renderer* ren;
-    
+protected: 
     void clearTexture(int k);
 
     void initRect(const json& mem);
@@ -85,7 +85,7 @@ public:
 
     void FillWithColor();
     void FillWithColor(SDL_Color c);
-    void highight();
+    void highlight();
     void unHighlight();
 
     bool isLieInside(int x, int y);

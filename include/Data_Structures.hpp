@@ -8,6 +8,8 @@
 #include <Object.hpp>
 #include <SYSTEM.hpp>
 #include <Sketch.hpp>
+#include <Script.hpp>
+
 
 class Data_Structures : public Sketch
 {
@@ -21,6 +23,8 @@ private:
     int step;
     bool finish;
     std::mutex stepMutex;
+
+    Script* script;
 
     void initStaticArray(const json & mem);
     void StaticArrayCreate(std::string s);

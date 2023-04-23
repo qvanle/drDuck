@@ -11,6 +11,7 @@ const char* GLOBAL::AtrbButtons = "asset/attribute/buttons/";
 const char* GLOBAL::FontsFolder = "asset/fonts";
 const std::string GLOBAL::AtrbInputBox = "asset/attribute/InputBox/";
 const std::string GLOBAL::AtrbDT = "asset/attribute/DataStructures/";
+const std::string GLOBAL::AtrbScript = "asset/attribute/Script/";
 
 std::mt19937 RANDOM::rng;
 

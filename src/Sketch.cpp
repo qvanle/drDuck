@@ -456,7 +456,7 @@ void Sketch::moveTo(int x, int y, double time)
     }
 }
 
-void Sketch::highight()
+void Sketch::highlight()
 {
     color.r = 255 - color.r;
     color.g = 255 - color.g;
