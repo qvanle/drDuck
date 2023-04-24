@@ -1,12 +1,4 @@
-#include "SDL_mutex.h"
-#include "SDL_pixels.h"
-#include "SDL_timer.h"
-#include "SYSTEM.hpp"
-#include "Script.hpp"
-#include "Sketch.hpp"
 #include <Data_Structures.hpp>
-#include <iterator>
-#include <string>
 
 int Data_Structures::size()
 {
@@ -334,7 +326,7 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
     script->show();
     script->highlightLine(4);
     m.unlock();
-    
+
     SDL_Delay(1200);
     m.lock();
     script->unHighlighLine(4);
@@ -453,9 +445,19 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
     json mem;
     readJson(GLOBAL::AtrbScript + "StaticArraySearch.json", mem);
     script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->highlightLine(3);
     script->show();
 
     m.unlock();
+    SDL_Delay(1200 / speed);
+
+    m.lock();
+    script->unHighlighLine(3); 
+    script->highlightLine(5);
+    script->highlightLine(6);
+    m.unlock();
+
     for(int i = 0; i < num; i++)
     {
         m.lock();
@@ -470,12 +472,16 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
         m.lock();
         bool valid = std::to_string(value) == elements[i]->getText();
         if(valid)
+        {
+            script->highlightLine(7);
             elements[i]->FillWithColor(SDL_Color({10, 155, 10, 255}));
-        else 
+        }else
+        {
             elements[i]->FillWithColor(SDL_Color({155, 10, 10, 255}));
+        }
         m.unlock();
 
-        SDL_Delay(600 / speed);
+        SDL_Delay(400 / speed);
 
         m.lock();
         elements[i]->FillWithColor();
@@ -486,9 +492,24 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
         m.lock();
         elements[i]->unHighlight();
         m.unlock();
-        SDL_Delay(100 / speed);
-        if(valid) break;
+        SDL_Delay(200 / speed);
+        if(valid) 
+        {
+            script->unHighlighLine(7);
+            break;
+        }
     }
+    m.lock();
+    script->unHighlighLine(5);
+    script->unHighlighLine(6);
+    script->highlightLine(9);
+    m.unlock();
+
+    SDL_Delay(800 / speed);
+
+    m.lock();
+    script->unHighlighLine(9);
+    m.unlock();
 }
 
 void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
@@ -499,25 +520,32 @@ void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
     json mem;
     readJson(GLOBAL::AtrbScript + "StaticArrayUpdate.json", mem);
     script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
     script->show();
+    script->highlightLine(3);
     m.unlock();
-    SDL_Delay(800 / speed);
+    SDL_Delay(1200 / speed);
 
     m.lock();
     elements[pos]->highlight();
+    script->unHighlighLine(3);
+    script->highlightLine(5);
     m.unlock();
     while(getStep() == 0);
     decStep();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(800 / speed);
 
     m.lock();
+    script->unHighlighLine(5);
+    script->highlightLine(6);
     elements[pos]->setText(std::to_string(value));
     m.unlock();
-    SDL_Delay(100 / speed);
+    SDL_Delay(800 / speed);
     while(getStep() == 0);
     m.lock();
     elements[pos]->unHighlight();
+    script->unHighlighLine(6);
     m.unlock();
 }
 
@@ -607,7 +635,7 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
         m.unlock();
         SDL_Delay(100 / speed);
     }
-    
+
     m.lock();
     script->unHighlighLine(6);
     script->unHighlighLine(7);
@@ -631,7 +659,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
     {
         elements[i + capacity]->setText("");
         elements[i + capacity]->show();
-        
+
     }
     m.unlock();
     bool deleted = false;
@@ -641,7 +669,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
         if(i == pos)
         {
             deleted = true;
-            
+
             m.lock();
             elements[i]->FillWithColor(SDL_Color({175, 20, 20, 255}));
             m.unlock();
@@ -685,7 +713,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
     while(getStep() == 0);
     decStep();
 
-    
+
     m.lock();
     num--;
     for(int i = 0; i < capacity * 2; i++)
