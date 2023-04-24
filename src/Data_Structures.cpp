@@ -1,3 +1,4 @@
+#include "SDL_timer.h"
 #include <Data_Structures.hpp>
 
 int Data_Structures::size()
@@ -14,6 +15,9 @@ Data_Structures::Data_Structures()
     num = 0;
     speed = 1;
     script = nullptr;
+    arrowE = nullptr;
+    depth = 3;
+    lineDepth = 0;
 }
 
 Data_Structures::~Data_Structures()
@@ -24,6 +28,8 @@ Data_Structures::~Data_Structures()
     num = 0;
     if(script != nullptr) delete script;
     script = nullptr;
+    if(arrowE != nullptr) delete arrowE;
+    arrowE = nullptr;
     //Sketch::~Sketch();
 }
 
@@ -44,7 +50,7 @@ void Data_Structures::init(const json & mem)
     }else if(name == "DynamicArray.json")
     {
         initDynamicArray(mem);
-    }else if(name == "initSinglyLinkedList.json")
+    }else if(name == "SinglyLinkedList.json")
     {
         initSinglyLinkedList(mem);
     }
@@ -131,12 +137,179 @@ void Data_Structures::initDynamicArray(const json & mem)
 
 }
 
+void Data_Structures::connect(int i, int j)
+{
+    if(i == -1 || j == -1) return ;
+    if(i == j) return ;
+    if(i + 1 == j && j != capacity)
+    {
+        lineRight(i, 2);
+    }else if(i - 1 == j)
+    {
+        lineLeft(i, 2);
+    }else if (i < capacity && j < capacity) 
+        Circling(i, j, 2);
+    else if(i - capacity == j) lineUp(i, 7);
+    else if(j - capacity == i) lineDown(i, 7);
+    else if(i > capacity && j < capacity) connect(i, j + capacity), connect(j + capacity, j);
+    else if(i < capacity && j > capacity) connect(i, i + capacity), connect(i + capacity, j);
+}
+
+void Data_Structures::Circling(int i, int j, int k)
+{
+    int temp = depth;
+    depth = k;
+    Circling(i, j);
+    depth = temp;
+}
+
+void Data_Structures::lineLeft(int i, int len)
+{
+    arrowW->setX(elements[i]->getCoor().x + arrowW->getCoor().w);
+    arrowW->setY(elements[i]->getCoor().y);
+
+
+    while(len--)
+    {
+        arrowW->addX(-arrowW->getCoor().w);
+        arrowW->render(false);
+    }
+}
+
+void Data_Structures::lineUp(int i, int len)
+{
+    arrowN->setX(elements[i]->getCoor().x);
+    arrowN->setY(elements[i]->getCoor().y);
+    while(len--)
+    {
+        arrowN->addY(-arrowN->getCoor().h);
+        arrowN->render(false);
+    }
+}
+
+void Data_Structures::lineRight(int i, int len)
+{
+    if(len == 0) return ;
+
+    arrowE->setX(elements[i]->getCoor().x - arrowE->getCoor().w + elements[i]->getCoor().w);;
+    arrowE->setY(elements[i]->getCoor().y);
+    arrowE->render(false);
+
+    while(--len)
+    {
+        arrowE->addX(arrowE->getCoor().w);
+        arrowE->render(false);
+    }
+}
+
+void Data_Structures::lineDown(int i, int len)
+{
+    if(len == 0) return ;
+    arrowS->setX(elements[i]->getCoor().x);
+    arrowS->setY(elements[i]->getCoor().y + elements[i]->getCoor().h);
+    arrowS->render(false);
+
+    while(--len)
+    {
+        arrowS->addY(arrowS->getCoor().h);
+        arrowS->render(false);
+    }
+}
+
+void Data_Structures::Circling(int i, int j)
+{
+    if(i >= num || j >= num || i == j) return ;
+
+    if(i < j)
+    {
+        arrowN->setX(elements[i]->getCoor().x);
+        arrowN->setY(elements[i]->getCoor().y - arrowN->getCoor().h);
+        arrowN->render(false);
+        for(int k = 1; k < depth; k++)
+        {
+            arrowN->addY(-arrowN->getCoor().h);
+            arrowN->render(false);
+        }
+
+        arrowS->setY(arrowN->getCoor().y);
+        arrowS->setX(elements[j]->getCoor().x);
+        arrowS->render(false);
+
+        for(int k = 1; k < depth; k++)
+        {
+            arrowS->addY(arrowS->getCoor().h);
+            arrowS->render(false);
+        }
+
+        arrowE->setX(arrowN->getCoor().x + arrowN->getCoor().w / 2);
+        arrowE->setY(arrowN->getCoor().y - arrowN->getCoor().h - 8);
+
+        do 
+        {
+            arrowE->render(false);
+            arrowE->addX(arrowE->getCoor().w);
+        }while(arrowE->getCoor().x - arrowE->getCoor().w < arrowS->getCoor().x);
+        return ;
+    }
+
+    std::swap(i, j);
+
+    arrowS->setX(elements[i]->getCoor().x);
+    arrowS->setY(elements[i]->getCoor().y - arrowN->getCoor().h);
+    arrowS->render(false);
+    for(int k = 1; k < depth; k++)
+    {
+        arrowS->addY(-arrowS->getCoor().h);
+        arrowS->render(false);
+    }
+
+    arrowN->setY(arrowS->getCoor().y);
+    arrowN->setX(elements[j]->getCoor().x);
+    arrowN->render(false);
+
+    for(int k = 1; k < depth; k++)
+    {
+        arrowN->addY(arrowN->getCoor().h);
+        arrowN->render(false);
+    }
+
+    arrowW->setX(arrowS->getCoor().x + arrowS->getCoor().w / 2);
+    arrowW->setY(arrowS->getCoor().y - arrowS->getCoor().h - 8);
+
+    do 
+    {
+        arrowW->render(false);
+        arrowW->addX(arrowW->getCoor().w);
+    }while(arrowW->getCoor().x - arrowW->getCoor().w < arrowN->getCoor().x);
+}
+
+void Data_Structures::Lining()
+{
+    if(arrowE == nullptr) return ;
+
+    for(int i = 0; i + 1 < num; i++)
+    {
+        arrowE->setX(elements[i]->getCoor().x + elements[i]->getCoor().w);
+        arrowE->setY(elements[i]->getCoor().y);
+        arrowE->render(false);
+    }
+}
+
 void Data_Structures::render()
 {
     if(!isVisible()) return ;
     Sketch::render();
+    for(int i = 0; i < num; i++)
+        elements[i]->show();
+    for(int i = 0; i < connection.size(); i++)
+    {
+        if(elements[i]->isVisible() && connection[i] != -1 && elements[connection[i]]->isVisible())
+        connect(i, connection[i]);
+    }
     for(int i = 0; i < elements.size(); i++)
+    {
         elements[i]->render();
+    }
     if(script != nullptr)
     {
         script->render();
@@ -316,6 +489,104 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
     m.unlock();
 }
 
+void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
+{
+    if(num == capacity) return ;
+    m.lock();
+    for(int i = 0; i < num; i++)
+        elements[i]->show();
+    elements[pos + capacity]->show();
+    elements[pos + capacity]->setText(std::to_string(value));
+    m.unlock();
+
+    SDL_Delay(800 / speed);
+
+    if(pos == 0)
+    {
+        m.lock();
+        connection[capacity] = 0;
+        m.unlock();
+
+
+        SDL_Delay(800 / speed);
+        
+        m.lock();
+
+        connection[capacity] = -1;
+
+        for(int i = num; i > 0; i--)
+            elements[i]->setText(elements[i - 1]->getText());
+        
+        elements[0]->setText(std::to_string(value));
+        elements[num]->show();
+        elements[capacity]->hide();
+        connection[num - 1] = num;
+        
+        num++;
+        
+        m.unlock();
+        return ;
+    }
+    if(pos >= num)
+    {
+        m.lock();
+        connection[num - 1] = num + capacity;
+        m.unlock();
+        
+        SDL_Delay(800 / speed);
+
+        m.lock();
+        connection[num - 1] = num;
+        elements[pos + capacity]->hide();
+        connection[num] = -1;
+        connection[pos + capacity] = -1;
+        elements[num]->setText(std::to_string(value));
+        elements[num]->show();
+        num++;
+        m.unlock();
+        
+        return ;
+    }
+
+    for(int i = 0; i < pos && i < num; i++)
+    {
+        m.lock();
+        elements[i]->highlight();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        elements[i]->unHighlight();
+        m.unlock();
+        SDL_Delay(200 / speed);
+    }
+
+    m.lock();
+    connection[pos - 1] = pos + capacity;
+    m.unlock();
+    SDL_Delay(800 / speed);
+
+    m.lock();
+    connection[pos + capacity] = pos;
+    m.unlock();
+    SDL_Delay(800 / speed);
+
+    m.lock();
+    connection[pos - 1] = pos;
+    connection[pos + capacity] = -1;
+
+    for(int i = num + 1; i > pos; i--)
+        elements[i]->setText(elements[i - 1]->getText());
+    elements[pos]->setText(std::to_string(value));
+    elements[pos + capacity]->hide();
+    connection[num - 1] = num;
+    num++;
+    m.unlock();
+}
+
 void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 {
 
@@ -399,6 +670,9 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 
 void Data_Structures::SinglyLinkedListCreate(std::string s)
 {
+
+    connection.clear();
+    connection.resize(capacity * 2, -1);
     int *arr;
     int n = 0;
 
@@ -413,16 +687,18 @@ void Data_Structures::SinglyLinkedListCreate(std::string s)
             temp += s[ite++];
         if(temp.empty()) temp = "0";
         elements[num++]->setText(temp);
-        std::cerr << temp << "\n";
         ite++;
     }
 
-    for(int i = num; i < capacity; i++)
+    for(int i = num; i < 2 * capacity; i++)
+    {
+        elements[i]->hide();
         elements[i]->setText("");
-
-    for(int i = 0; i < capacity; i++)
+    }
+    for(int i = 0; i < num; i++)
     {
         elements[i]->show();
+        connection[i] = (i + 1 == num) ? -1 : i + 1;
     }
 }
 
@@ -445,6 +721,7 @@ void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
     finish = false;
     if(type == 1) StaticArrayInsert(pos, value, m);
     else if(type == 2) DynamicArrayInsert(pos, value, m);
+    else if(type == 3) SinglyLinkedListInsert(pos, value, m);
     finish = true;
 }
 
@@ -853,22 +1130,45 @@ void Data_Structures::initSinglyLinkedList(const json & mem)
 
     elements.clear();
 
-    capacity = 12;
-    elements.resize(capacity);
+    capacity = 9;
+    elements.resize(2 * capacity);
+    connection.resize(2 * capacity, -1);
+
+    if(mem.contains("connect"))
+    {
+        arrowE = new Object;
+        arrowE->init(mem["connect"][0], ren);
+
+        arrowS = new Object;
+        arrowS->init(mem["connect"][1], ren);
+
+        arrowW = new Object;
+        arrowW->init(mem["connect"][2], ren);
+
+        arrowN = new Object;
+        arrowN->init(mem["connect"][3], ren);
+    }
 
     for(int i = 0; i < capacity; i++)
     {
         elements[i] = new Sketch;
         elements[i]->setRender(ren);
+        connection[i] = (i + 1 != capacity) ? i + 1 : -1;
+
+        elements[i + capacity] = new Sketch;
+        elements[i + capacity]->setRender(ren);
+
         if(mem.contains("element attributes"))
         {    
             elements[i]->init(mem["element attributes"]);
+            elements[i + capacity]->init(mem["element attributes"]);
 
             int dx = mem["element attributes"]["dx"];
             int dy = mem["element attributes"]["dy"];
 
             elements[i]->addX(i * dx);
-            elements[i]->addY(i * dy);
+            elements[i + capacity]->addX(i * dx);
+            elements[i + capacity]->addY(dy);
         }
     }
 }

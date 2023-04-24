@@ -23,8 +23,22 @@ private:
     int step;
     bool finish;
     std::mutex stepMutex;
+    int depth;
+
+    int lineFrom, lineDepth;
+    std::vector<int> connection;
 
     Script* script;
+    Object* arrowE,* arrowW,* arrowN,* arrowS;
+
+    void lineDown(int i, int len);
+    void lineUp(int i, int len);
+    void lineLeft(int i, int len);
+    void lineRight(int i, int len);
+    void Lining();
+    void Circling(int i, int j);
+    void Circling(int i, int j, int k);
+    void connect(int i, int j);
 
     void initStaticArray(const json & mem);
     void StaticArrayCreate(std::string s);
@@ -44,6 +58,7 @@ private:
 
     void initSinglyLinkedList(const json & mem);
     void SinglyLinkedListCreate(std::string s);
+    void SinglyLinkedListInsert(int pos, int value, std::mutex & m);
 
 public:
 

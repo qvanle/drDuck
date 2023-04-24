@@ -16,6 +16,85 @@
         "b": 200,
         "a": 100
     },
+    "connect": 
+    [
+        {
+
+            "name": "arrow",
+            "textures": 
+            [
+                {
+                    "name": "0",
+                    "type": "png"
+                }
+            ],
+            "visible": true,
+            "rect": 
+            {
+                "x": 160,
+                "y": 160, 
+                "w": 25,
+                "h": 60
+            }
+        },
+        {
+
+            "name": "arrow",
+            "textures": 
+            [
+                {
+                    "name": "1",
+                    "type": "png"
+                }
+            ],
+            "visible": true,
+            "rect": 
+            {
+                "x": 160,
+                "y": 160, 
+                "w": 60,
+                "h": 25
+            }
+        },
+        {
+
+            "name": "arrow",
+            "textures": 
+            [
+                {
+                    "name": "2",
+                    "type": "png"
+                }
+            ],
+            "visible": true,
+            "rect": 
+            {
+                "x": 160,
+                "y": 160, 
+                "w": 25,
+                "h": 60
+            }
+        },
+        {
+
+            "name": "arrow",
+            "textures": 
+            [
+                {
+                    "name": "3",
+                    "type": "png"
+                }
+            ],
+            "visible": true,
+            "rect": 
+            {
+                "x": 160,
+                "y": 160, 
+                "w": 60,
+                "h": 25
+            }
+        }
+    ],
     "element attributes":
     {
         "font":
@@ -39,7 +118,7 @@
         },
         "rect":
         {
-            "x": 137,
+            "x": 100,
             "y": 160,
             "w": 60,
             "h": 60
@@ -57,8 +136,8 @@
         },
         "fill with color": true,
         "visible": false,
-        "dx": 75,
-        "dy": 0
+        "dx": 85,
+        "dy": 200
     },
     "script":
     {
