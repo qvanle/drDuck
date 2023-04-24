@@ -570,10 +570,20 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
     json mem;
     readJson(GLOBAL::AtrbScript + "StaticArrayDelete.json", mem);
     script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
     script->show();
+    script->highlightLine(3);
     m.unlock();
+    SDL_Delay(1000);
+
+    m.lock();
+    script->unHighlighLine(3);
+    script->highlightLine(6);
+    script->highlightLine(7);
+    m.unlock();
+    SDL_Delay(300);
     num--;
-    for(int i = pos; i < num; i++)
+    for(int i = 0; i < num - 1; i++)
     {
         m.lock();
         elements[i]->highlight();
@@ -584,7 +594,6 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
         decStep();
 
         SDL_Delay(400 / speed);
-
         m.lock();
         elements[i]->setText(elements[i + 1]->getText());
         m.unlock();
@@ -598,6 +607,18 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
         m.unlock();
         SDL_Delay(100 / speed);
     }
+    
+    m.lock();
+    script->unHighlighLine(6);
+    script->unHighlighLine(7);
+    script->highlightLine(8);
+    m.unlock();
+
+    SDL_Delay(1200);
+
+    m.lock();
+    script->unHighlighLine(8);
+    m.unlock();
 }
 
 void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
