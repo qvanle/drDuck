@@ -62,18 +62,7 @@
     },
     "script":
     {
-        "font":
-        {
-            "name": "Atomed.ttf",
-            "size": 30,
-            "color": 
-            {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 255
-            }
-        },
+        "fill with color": true,
         "border":
         {
             "width": 3,
@@ -87,21 +76,17 @@
         },
         "rect": 
         {
-            "x": 520,
-            "y": 270,
-            "w": 400,
-            "h": 230
+            "x": 600,
+            "y": 240,
+            "w": 360,
+            "h": 300
         },
-        "visible": true,
-        "fill with color": true,
         "color":
         {
             "r": 200,
             "g": 155,
             "b": 200,
             "a": 80
-        },
-        "dx": 0,
-        "dy": 50
+        }
     }
 }

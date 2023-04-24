@@ -1,0 +1,31 @@
+{
+    "name":"StaticArrayDelete",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "x": 600,
+        "y": 240,
+        "w": 360,
+        "h": 305
+    },
+    "visible": true,
+    "highlight":
+    [
+        {
+            "rect": 
+            {
+                "x": 7,
+                "y": 95,
+                "w": 285, 
+                "h": 15
+            }
+        }
+    ]
+}
+
