@@ -1,0 +1,19 @@
+{
+    "name": "StaticArrayInsert",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        }
+    ],
+    "rect": 
+    {
+        "x": 550,
+        "y": 270,
+        "w": 290,
+        "h": 270
+    },
+    "visible": true
+}
+
