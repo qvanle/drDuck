@@ -18,45 +18,49 @@
 
 class MyWindow
 {
-private:
-    int status;
-    int WIDTH;
-    int HEIGHT;
-    int FocusOn;
-    int fps;
+    private:
+        int status;
+        int WIDTH;
+        int HEIGHT;
+        int FocusOn;
+        int fps;
 
-    Data_Structures* DT;
-    InputBox* input;
+        Data_Structures* DT;
+        InputBox* input;
 
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    std::vector<Display*> screen;
-    void shutdown();
-    void deleteScreen();
+        SDL_Window* window;
+        SDL_Renderer* renderer;
+        std::vector<Display*> screen;
+        void shutdown();
+        void deleteScreen();
 
-    SDL_Event event;
-    std::mutex UImutex;
+        SDL_Event event;
+        std::mutex UImutex;
 
-public:
-    MyWindow();
-    void loadScreen(Display *& screen, const json& mem);
-    void init();
-    void action();
-    void process();
-    void render();
-    bool isOpen();
-    bool isClose();
-    bool isHanging();
+        bool isChangeScreen(Button *& but);
+        bool isDToperator(Button *& but);
+        bool isInputButton(Button *& but);
+        bool isPlayButton(Button *& but);
+    public:
+            MyWindow();
+            void loadScreen(Display *& screen, const json& mem);
+            void init();
+            void action();
+            void process();
+            void render();
+            bool isOpen();
+            bool isClose();
+            bool isHanging();
 
-    void changeScreens(const char* const &name);
-    Display *& top();
+            void changeScreens(const char* const &name);
+            Display *& top();
 
-    void mouseMove(int x, int y);
-    void mousePress(int x, int y);
-    void typing(SDL_Keysym key);
-    void run();
+            void mouseMove(int x, int y);
+            void mousePress(int x, int y);
+            void typing(SDL_Keysym key);
+            void run();
 
-    ~MyWindow();
+            ~MyWindow();
 };
 
 #endif

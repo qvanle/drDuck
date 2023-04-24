@@ -44,6 +44,9 @@ void Data_Structures::init(const json & mem)
     }else if(name == "DynamicArray.json")
     {
         initDynamicArray(mem);
+    }else if(name == "initSinglyLinkedList.json")
+    {
+        initSinglyLinkedList(mem);
     }
 }
 
@@ -394,11 +397,42 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 
 }
 
+void Data_Structures::SinglyLinkedListCreate(std::string s)
+{
+    int *arr;
+    int n = 0;
+
+    int ite = 0;
+    num = 0;
+
+    while(ite < (int)s.size() && num < capacity)
+    {
+        while(ite < (int)s.size() && s[ite] == ' ') ite++;
+        std::string temp;
+        while(ite < (int)s.size() && isdigit(s[ite]))
+            temp += s[ite++];
+        if(temp.empty()) temp = "0";
+        elements[num++]->setText(temp);
+        std::cerr << temp << "\n";
+        ite++;
+    }
+
+    for(int i = num; i < capacity; i++)
+        elements[i]->setText("");
+
+    for(int i = 0; i < capacity; i++)
+    {
+        elements[i]->show();
+    }
+}
+
+
 void Data_Structures::create(std::string s)
 {
-    script->hide();
+    if(script != nullptr) script->hide();
     if(type == 1) StaticArrayCreate(s);
     else if(type == 2) DynamicArrayCreate(s);
+    else if(type == 3) SinglyLinkedListCreate(s);
 }
 
 void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
@@ -810,3 +844,31 @@ bool Data_Structures::isFinish()
     return finish;
 }
 
+
+void Data_Structures::initSinglyLinkedList(const json & mem)
+{
+    type = 3;
+    Sketch::setRender(ren);
+    Sketch::init(mem);
+
+    elements.clear();
+
+    capacity = 12;
+    elements.resize(capacity);
+
+    for(int i = 0; i < capacity; i++)
+    {
+        elements[i] = new Sketch;
+        elements[i]->setRender(ren);
+        if(mem.contains("element attributes"))
+        {    
+            elements[i]->init(mem["element attributes"]);
+
+            int dx = mem["element attributes"]["dx"];
+            int dy = mem["element attributes"]["dy"];
+
+            elements[i]->addX(i * dx);
+            elements[i]->addY(i * dy);
+        }
+    }
+}

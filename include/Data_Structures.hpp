@@ -42,6 +42,9 @@ private:
     void DynamicArraySearch(int value, std::mutex & m);
 
 
+    void initSinglyLinkedList(const json & mem);
+    void SinglyLinkedListCreate(std::string s);
+
 public:
 
     bool isFinish();

@@ -1,3 +1,4 @@
+#include "Button.hpp"
 #include "Data_Structures.hpp"
 #include "SYSTEM.hpp"
 #include <DuckWin.hpp>
@@ -80,20 +81,8 @@ void MyWindow::mouseMove(int x, int y)
     if(input != nullptr) input->mouseMove(x, y);
 }
 
-void MyWindow::mousePress(int x, int y)
+bool MyWindow::isChangeScreen(Button *& but)
 {
-
-    if(input != nullptr) input->mousePress(x, y);
-
-    Button* but = nullptr;
-
-    if(input != nullptr) but = input->getButtonPressedByMouse(x, y); 
-
-    if(but == nullptr) 
-        but = top()->mousePressedButton(x, y);
-
-    if(but == nullptr) return ;
-
     if(but->getAction() == "change screen")
     {
         UImutex.lock();
@@ -121,6 +110,13 @@ void MyWindow::mousePress(int x, int y)
                 json mem;
                 readJson(GLOBAL::AtrbDT + type, mem);
                 DT->init(mem);
+            }else if(type == "SinglyLinkedList.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
             }else if(DT != nullptr) 
             {
                 delete DT;
@@ -134,8 +130,16 @@ void MyWindow::mousePress(int x, int y)
             }
         }
         UImutex.unlock();
-    }else if(but->getAction() == "new")
+        return true;
+    }
+    return false;
+}
+
+bool MyWindow::isDToperator(Button *& but)
+{
+    if(but->getAction() == "new")
     {
+        if(DT != nullptr && !DT->isFinish()) return false;
         UImutex.lock();
         if(input != nullptr)
         {
@@ -150,7 +154,10 @@ void MyWindow::mousePress(int x, int y)
         screen[1]->showButton(0);
         screen[1]->hideButton(1);
         UImutex.unlock();
-    }else if(DT->isVisible() && DT->isFinish() && but->getAction() == "delete")
+        return true;
+    }
+    if(DT == nullptr || !DT->isVisible() || !DT->isFinish()) return false;
+    if(but->getAction() == "delete")
     {
         UImutex.lock();
         if(input != nullptr) 
@@ -168,7 +175,9 @@ void MyWindow::mousePress(int x, int y)
         screen[1]->showButton(0);
         screen[1]->hideButton(1);
         UImutex.unlock();
-    }else if(DT->isVisible() && DT->isFinish() && but->getAction() == "search")
+        return true;
+    }
+    if(but->getAction() == "search")
     {
         UImutex.lock();
         if(input != nullptr) 
@@ -186,7 +195,9 @@ void MyWindow::mousePress(int x, int y)
         screen[1]->showButton(0);
         screen[1]->hideButton(1);
         UImutex.unlock();
-    }else if(DT->isVisible() && DT->isFinish() && but->getAction() == "update")
+        return true;
+    }
+    if(but->getAction() == "update")
     {
         UImutex.lock();
         if(input != nullptr) 
@@ -204,36 +215,9 @@ void MyWindow::mousePress(int x, int y)
         screen[1]->showButton(0);
         screen[1]->hideButton(1);
         UImutex.unlock();
-    }else if(but->getAction() == "hide input")
-    {
-        if(input != nullptr)
-        {
-            UImutex.lock();
-            delete input;
-            input = nullptr;
-            UImutex.unlock();
-        }
-    }else if(but->getAction() == "done new")
-    {
-        UImutex.lock();
-        if(input != nullptr) input->hide();
-        if(DT != nullptr && input != nullptr) DT->create(input->getText(0));
-        if(DT != nullptr) DT->show();
-        UImutex.unlock();
-    }else if(but->getAction() == "random new")
-    {
-        UImutex.lock();
-        int n = RANDOM::getInt(2, 12);
-        std::string temp = "";
-        for(int i = 0; i < n; i++)
-        {
-            temp = temp + std::to_string(RANDOM::getInt(0, 20));
-            if(i + 1 != n) temp = temp + ", ";
-        }
-        input->setFocus(0);
-        input->setInput(temp);
-        UImutex.unlock();
-    }else if(but->getAction() == "insert" && DT->isVisible() && DT->isFinish()) 
+        return true;
+    }
+    if(but->getAction() == "insert") 
     {
         UImutex.lock();
         if(input != nullptr)
@@ -251,19 +235,63 @@ void MyWindow::mousePress(int x, int y)
         screen[1]->hideButton(1);
 
         UImutex.unlock();
-    }else if(but->getAction() == "random position" && DT != nullptr)
+        return true;
+    }
+    return false;
+}
+
+bool MyWindow::isInputButton(Button *& but)
+{
+    if(input == nullptr) return false;
+    if(but->getAction() == "hide input")
+    {
+        UImutex.lock();
+        delete input;
+        input = nullptr;
+        UImutex.unlock();
+        return true;
+    }
+    if(but->getAction() == "done new")
+    {
+        UImutex.lock();
+        input->hide();
+        DT->create(input->getText(0));
+        DT->show();
+        UImutex.unlock();
+        return true;
+    }
+    if(but->getAction() == "random new")
+    {
+        UImutex.lock();
+        int n = RANDOM::getInt(2, 12);
+        std::string temp = "";
+        for(int i = 0; i < n; i++)
+        {
+            temp = temp + std::to_string(RANDOM::getInt(0, 20));
+            if(i + 1 != n) temp = temp + ", ";
+        }
+        input->setFocus(0);
+        input->setInput(temp);
+        UImutex.unlock();
+        return true;
+    }
+    if(but->getAction() == "random position")
     {
         UImutex.lock();
         input->setFocus(0);
         input->setInput(std::to_string(RANDOM::getInt(0, DT->size())));
         UImutex.unlock();
-    }else if(but->getAction() == "random value")
+        return true;
+    }
+    if(but->getAction() == "random value")
     {
         UImutex.lock();
         input->setFocus(1);
         input->setInput(std::to_string(RANDOM::getInt(0, 99)));
         UImutex.unlock();
-    }else if(but->getAction() == "done insert")
+        return true;
+    }
+    if(but->getAction() == "done insert")
     {
         UImutex.lock();
         input->hide();
@@ -272,7 +300,9 @@ void MyWindow::mousePress(int x, int y)
         UImutex.unlock();
         std::thread insert(&Data_Structures::insert, DT, s1, s2, std::ref(UImutex));
         insert.detach();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "done delete") 
+        return true;
+    }
+    if(but->getAction() == "done delete") 
     {
         UImutex.lock();
         input->hide();
@@ -280,7 +310,9 @@ void MyWindow::mousePress(int x, int y)
         UImutex.unlock();
         std::thread erase(&Data_Structures::erase, DT, s1, std::ref(UImutex));
         erase.detach();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "done update")
+        return true;
+    }
+    if(but->getAction() == "done update")
     {
         UImutex.lock();
         input->hide();
@@ -290,7 +322,9 @@ void MyWindow::mousePress(int x, int y)
 
         std::thread update(&Data_Structures::update, DT, s1, s2, std::ref(UImutex));
         update.detach();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "done search")
+        return true;
+    }
+    if(but->getAction() == "done search")
     {
         UImutex.lock();
         input->hide();
@@ -299,36 +333,72 @@ void MyWindow::mousePress(int x, int y)
 
         std::thread search(&Data_Structures::search, DT, s2, std::ref(UImutex));
         search.detach();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "pause") 
+        return true;
+    }
+    return false;
+}
+
+bool MyWindow::isPlayButton(Button *& but)
+{
+    if(DT != nullptr && DT->isVisible() && but->getAction() == "pause") 
     {
         UImutex.lock();
         DT->setStep(0);
         but->hide();
         screen[1]->showButton(1);
         UImutex.unlock();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "play")
+        return true;
+    }
+    if(DT != nullptr && DT->isVisible() && but->getAction() == "play")
     {
         UImutex.lock();
         DT->setStep(-1);
         but->hide();
         screen[1]->showButton(0);
         UImutex.unlock();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "slow down")
+        return true;
+    }
+    if(DT != nullptr && DT->isVisible() && but->getAction() == "slow down")
     {
         UImutex.lock();
         DT->slowDown();
         UImutex.unlock();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "speed up")
+        return true;
+    }
+    if(DT != nullptr && DT->isVisible() && but->getAction() == "speed up")
     {
         UImutex.lock();
         DT->speedUp();
         UImutex.unlock();
-    }else if(DT != nullptr && DT->isVisible() && but->getAction() == "next")
+        return true;
+    }
+    if(DT != nullptr && DT->isVisible() && but->getAction() == "next")
     {
         UImutex.lock();
         DT->nextStep();
         UImutex.unlock();
+        return true;
     }
+    return false;
+}
+
+void MyWindow::mousePress(int x, int y)
+{
+
+    if(input != nullptr) input->mousePress(x, y);
+
+    Button* but = nullptr;
+
+    if(input != nullptr) but = input->getButtonPressedByMouse(x, y); 
+
+    if(but == nullptr) 
+        but = top()->mousePressedButton(x, y);
+
+    if(but == nullptr) return ;
+    if(isChangeScreen(but)) return ;
+    if(isDToperator(but)) return;
+    if(isInputButton(but)) return ;
+    if(isPlayButton(but)) return ;
 }
 
 

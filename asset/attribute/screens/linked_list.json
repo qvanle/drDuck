@@ -24,7 +24,13 @@
                 {
                     "x": 620,
                     "y": 275
-                }
+                },
+                "action": "change screen",
+                "msg": "working.json",
+                "arg":
+                [
+                    "SinglyLinkedList.json"
+                ]
             },
             { 
                 "name": "doubly",
@@ -32,7 +38,13 @@
                 {
                     "x": 620,
                     "y": 350
-                }
+                },
+                "action": "change screen",
+                "msg": "working.json",
+                "arg":
+                [
+                    "DoublyLinkedList.json"
+                ]
             },
             { 
                 "name": "circular",
@@ -40,7 +52,13 @@
                 {
                     "x": 620,
                     "y": 425
-                }
+                },
+                "action": "change screen",
+                "msg": "working.json",
+                "arg":
+                [
+                    "CircularLinkedList.json"
+                ]
             },
             {
                 "name": "previous",
