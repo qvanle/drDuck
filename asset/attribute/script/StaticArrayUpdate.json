@@ -1,0 +1,32 @@
+{
+    "name":"StaticArrayUpdate",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "x": 600,
+        "y": 250,
+        "w": 360,
+        "h": 285
+    },
+    "visible": true,
+    "highlight":
+    [
+        {
+            "rect": 
+            {
+                "x": 7,
+                "y": 95,
+                "w": 285, 
+                "h": 15
+            }
+        }
+    ]
+}
+
+

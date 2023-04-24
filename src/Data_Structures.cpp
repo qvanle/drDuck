@@ -323,13 +323,26 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
 
 void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 {
+
+    m.lock();
     num++;
     for(int i = 0; i < num; i++) elements[i]->show();
-
+    json mem;
+    readJson(GLOBAL::AtrbScript + "StaticArrayInsert.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(4);
+    m.unlock();
+    
+    SDL_Delay(1200);
+    m.lock();
+    script->unHighlighLine(4);
+    script->highlightLine(8);
+    script->highlightLine(9);
+    m.unlock();
     for(int i = num - 1; i > pos; i--)
     {
-
-
         m.lock();
         elements[i]->highlight();
         elements[i - 1]->highlight();
@@ -356,6 +369,10 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
     decStep();
 
     m.lock();
+    script->unHighlighLine(8);
+    script->unHighlighLine(9);
+    script->highlightLine(11);
+    script->highlightLine(13);
     elements[pos]->highlight();
     m.unlock();
 
@@ -368,12 +385,26 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 
     m.lock();
     elements[pos]->unHighlight();
+    script->unHighlighLine(11);
+    script->unHighlighLine(13);
     m.unlock();
     SDL_Delay(500 / speed);
+
+    m.lock();
+    script->highlightLine(15);
+    m.unlock();
+
+    SDL_Delay(1200);
+
+    m.lock();
+    script->unHighlighLine(15);
+    m.unlock();
+
 }
 
 void Data_Structures::create(std::string s)
 {
+    script->hide();
     if(type == 1) StaticArrayCreate(s);
     else if(type == 2) DynamicArrayCreate(s);
 }
@@ -417,8 +448,14 @@ void Data_Structures::DynamicArrayUpdate(int pos, int value, std::mutex &m)
 
 void Data_Structures::StaticArraySearch(int value, std::mutex &m)
 {
+    m.lock();
     for(int i = 0; i < num; i++) elements[i]->show();
+    json mem;
+    readJson(GLOBAL::AtrbScript + "StaticArraySearch.json", mem);
+    script->loadObject(mem);
+    script->show();
 
+    m.unlock();
     for(int i = 0; i < num; i++)
     {
         m.lock();
@@ -456,8 +493,14 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
 
 void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
 {
-    for(int i = 0; i < num; i++) elements[i]->show();
 
+    m.lock();
+    for(int i = 0; i < num; i++) elements[i]->show();
+    json mem;
+    readJson(GLOBAL::AtrbScript + "StaticArrayUpdate.json", mem);
+    script->loadObject(mem);
+    script->show();
+    m.unlock();
     SDL_Delay(800 / speed);
 
     m.lock();
@@ -480,8 +523,10 @@ void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
 
 void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
 {
-    for(int i = 0; i < num; i++) elements[i]->show();
 
+    m.lock();
+    for(int i = 0; i < num; i++) elements[i]->show();
+    m.unlock();
     for(int i = 0; i < num; i++)
     {
         m.lock();
@@ -519,8 +564,14 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
 
 void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
 {
-    for(int i = 0; i < num; i++) elements[i]->show();
 
+    m.lock();
+    for(int i = 0; i < num; i++) elements[i]->show();
+    json mem;
+    readJson(GLOBAL::AtrbScript + "StaticArrayDelete.json", mem);
+    script->loadObject(mem);
+    script->show();
+    m.unlock();
     num--;
     for(int i = pos; i < num; i++)
     {
