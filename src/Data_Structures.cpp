@@ -552,6 +552,54 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
 
 }
 
+void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
+{
+    m.lock();
+    for(int i = 0; i < num; i++)
+        elements[i]->show();
+    m.unlock();
+    
+    for(int i = 0; i < num; i++)
+    {
+        m.lock();
+        elements[i]->highlight();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        bool valid = std::to_string(value) == elements[i]->getText();
+        if(valid)
+        {
+            elements[i]->FillWithColor(SDL_Color({10, 155, 10, 255}));
+        }else
+        {
+            elements[i]->FillWithColor(SDL_Color({155, 10, 10, 255}));
+        }
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+
+        m.lock();
+        elements[i]->FillWithColor();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+
+        m.lock();
+        elements[i]->unHighlight();
+        m.unlock();
+        SDL_Delay(200 / speed);
+        if(valid) 
+        {
+            break;
+        }
+    }
+}
+
 void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
 {
     if(num == capacity) return ;
@@ -664,7 +712,7 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
     script->highlightLine(4);
     m.unlock();
 
-    SDL_Delay(1200);
+    SDL_Delay(800 / speed);
     m.lock();
     script->unHighlighLine(4);
     script->highlightLine(8);
@@ -723,7 +771,7 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
     script->highlightLine(15);
     m.unlock();
 
-    SDL_Delay(1200);
+    SDL_Delay(800 / speed);
 
     m.lock();
     script->unHighlighLine(15);
@@ -824,7 +872,7 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
     script->show();
 
     m.unlock();
-    SDL_Delay(1200 / speed);
+    SDL_Delay(800 / speed);
 
     m.lock();
     script->unHighlighLine(3); 
@@ -898,7 +946,7 @@ void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
     script->show();
     script->highlightLine(3);
     m.unlock();
-    SDL_Delay(1200 / speed);
+    SDL_Delay(800 / speed);
 
     m.lock();
     elements[pos]->highlight();
@@ -920,6 +968,41 @@ void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
     m.lock();
     elements[pos]->unHighlight();
     script->unHighlighLine(6);
+    m.unlock();
+}
+void Data_Structures::SinglyLinkedListUpdate(int pos, int value, std::mutex & m) 
+{
+    m.lock();
+    for(int i = 0; i <  num; i++)
+        elements[i]->show();
+    m.unlock();
+
+    for(int i = 0; i < pos; i++)
+    {
+        m.lock();
+        elements[i]->highlight();
+        m.unlock();
+
+        SDL_Delay(800 / speed);
+
+        m.lock();
+        elements[i]->unHighlight();
+        m.unlock();
+        SDL_Delay(400 / speed);
+    }
+
+    m.lock();
+    elements[pos]->FillWithColor(SDL_Color{10, 155, 10, 255});
+    m.unlock();
+
+    SDL_Delay(400 / speed);
+    m.lock();
+    elements[pos]->setText(std::to_string(value));
+    m.unlock();
+    SDL_Delay(800 / speed);
+
+    m.lock();
+    elements[pos]->FillWithColor();
     m.unlock();
 }
 
@@ -1016,7 +1099,7 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
     script->highlightLine(8);
     m.unlock();
 
-    SDL_Delay(1200);
+    SDL_Delay(800 / speed);
 
     m.lock();
     script->unHighlighLine(8);
@@ -1123,6 +1206,7 @@ void Data_Structures::update(std::string s1, std::string s2, std::mutex &m)
     pos = std::min(pos, num - 1);
     if(type == 1) StaticArrayUpdate(pos, value, m);
     else if(type == 2) DynamicArrayUpdate(pos, value, m);
+    else if(type == 3) SinglyLinkedListUpdate(pos, value, m);
     finish = true;
 }
 
@@ -1134,6 +1218,7 @@ void Data_Structures::search(std::string s2, std::mutex &m)
     finish = false;
     if(type == 1) StaticArraySearch(value, m);
     else if(type == 2) DynamicArraySearch(value, m);
+    else if(type == 3) SinglyLinkedListSearch(value, m);
     finish = true;
 }
 

@@ -34,7 +34,8 @@
                 {
                     "x": 620,
                     "y": 375
-                }
+                },
+                "action": "open", 
             },
             {
                 "name": "previous",

@@ -61,6 +61,8 @@ private:
     void SinglyLinkedListCreate(std::string s);
     void SinglyLinkedListInsert(int pos, int value, std::mutex & m);
     void SinglyLinkedListErase(int pos, std::mutex & m);
+    void SinglyLinkedListSearch(int value, std::mutex & m);
+    void SinglyLinkedListUpdate(int pos, int value, std::mutex & m);
 
     void initDoublyLinkedList(const json & mem);
 
