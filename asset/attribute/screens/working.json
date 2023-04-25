@@ -37,6 +37,15 @@
                 }
             },
             {
+                "name": "sound_off",
+                "rect": 
+                {
+                    "x": 120,
+                    "y": 480
+                },
+                "visible": false
+            },
+            {
                 "name": "sound_on",
                 "rect": 
                 {
