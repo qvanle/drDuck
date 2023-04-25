@@ -884,25 +884,49 @@ void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
 
 void Data_Structures::DynamicArrayUpdate(int pos, int value, std::mutex &m)
 {
-    for(int i = 0; i < num; i++) elements[i]->show();
-
-    SDL_Delay(800 / speed);
 
     m.lock();
+
+    for(int i = 0; i < num; i++) elements[i]->show();
     elements[pos]->highlight();
+
+    json mem;
+    readJson(GLOBAL::AtrbScript + "DynamicArrayUpdate.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
     m.unlock();
+
+
+    SDL_Delay(400 / speed);
     while(getStep() == 0);
     decStep();
 
-    SDL_Delay(400 / speed);
 
     m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(1);
     elements[pos]->setText(std::to_string(value));
     m.unlock();
-    SDL_Delay(100 / speed);
+
+    SDL_Delay(400 / speed);
     while(getStep() == 0);
+    decStep();
+
     m.lock();
     elements[pos]->unHighlight();
+    script->unHighlighLine(1);
+    script->highlightLine(2);
+    m.unlock();
+
+
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(2);
     m.unlock();
 }
 
@@ -1057,7 +1081,28 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
 
     m.lock();
     for(int i = 0; i < num; i++) elements[i]->show();
+
+    json mem;
+    readJson(GLOBAL::AtrbScript + "DynamicArraySearch.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
     m.unlock();
+    
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(2);
+    m.unlock();
+
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
     for(int i = 0; i < num; i++)
     {
         m.lock();
@@ -1065,32 +1110,50 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
         m.unlock();
 
         SDL_Delay(400 / speed);
-
         while(getStep() == 0);
         decStep();
 
         m.lock();
         bool valid = std::to_string(value) == elements[i]->getText();
         if(valid)
+        {
+            script->highlightLine(4);
+            script->highlightLine(5);
             elements[i]->FillWithColor(SDL_Color({10, 155, 10, 255}));
-        else 
+        }else
+        {
             elements[i]->FillWithColor(SDL_Color({155, 10, 10, 255}));
-        m.unlock();
-
-        SDL_Delay(600 / speed);
-
-        m.lock();
-        elements[i]->FillWithColor();
+        }
         m.unlock();
 
         SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
 
         m.lock();
+        elements[i]->FillWithColor();
         elements[i]->unHighlight();
+        script->unHighlighLine(4);
+        script->unHighlighLine(5);
         m.unlock();
-        SDL_Delay(100 / speed);
         if(valid) break;
     }
+
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+    
+    m.lock();
+    script->highlightLine(6);
+    m.unlock();
+
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(6);
+    m.unlock();
 }
 
 void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
