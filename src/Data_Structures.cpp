@@ -395,7 +395,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
     script->show();
     script->highlightLine(0);
     m.unlock();
-    
+
     SDL_Delay(800 / speed);
 
     while(getStep() == 0);
@@ -403,10 +403,17 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
 
     m.lock();
     script->unHighlighLine(0);
-    script->highlightLine(3);
+    script->highlightLine(1);
     m.unlock();
 
     SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(1);
+    script->highlightLine(3);
+    m.unlock();
 
     for(int i = 0; i < num + 1; i++)
         elements[i + capacity]->show();
@@ -444,7 +451,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
             m.unlock();
             inserted = true;
             SDL_Delay(200 / speed);
-            
+
         }
 
         m.lock();
@@ -1151,6 +1158,23 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
     m.lock();
     for(int i = 0; i < num; i++)
         elements[i]->show();
+    json mem;
+    readJson(GLOBAL::AtrbScript + "DynamicArrayDelete.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
+    m.unlock();
+
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(1);
+    script->highlightLine(2);
+
     for(int i = 0; i < num - 1; i++)
     {
         elements[i + capacity]->setText("");
@@ -1158,8 +1182,18 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
 
     }
     m.unlock();
+
     bool deleted = false;
     SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(1);
+    script->unHighlighLine(2);
+    script->highlightLine(3);
+    m.unlock();
+
     for(int i = 0; i < num; i++)
     {
         if(i == pos)
@@ -1168,40 +1202,54 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
 
             m.lock();
             elements[i]->FillWithColor(SDL_Color({175, 20, 20, 255}));
+            script->highlightLine(5);
             m.unlock();
-            SDL_Delay(400 / speed);
 
+
+            SDL_Delay(400 / speed);
             while(getStep() == 0);
             decStep();
 
             m.lock();
             elements[i]->FillWithColor();
+            script->unHighlighLine(5);
             m.unlock();
+
             SDL_Delay(400 / speed);
+            while(getStep() == 0);
+            decStep();
         }else 
         {
             m.lock();
             elements[i]->highlight();
             elements[i + capacity - deleted]->highlight();
+            script->highlightLine(7);
             m.unlock();
 
-            SDL_Delay(400 / speed);
 
+            SDL_Delay(400 / speed);
             while(getStep() == 0);
             decStep();
+
 
             m.lock();
             elements[i + capacity - deleted]->setText(elements[i]->getText()); 
             m.unlock();
-            SDL_Delay(500 / speed);
 
+            SDL_Delay(400 / speed);
             while(getStep() == 0);
             decStep();
 
             m.lock();
             elements[i]->unHighlight();
             elements[i + capacity - deleted]->unHighlight();
+            script->unHighlighLine(7);
+
             m.unlock();
+
+            SDL_Delay(100 / speed);
+            while(getStep() == 0);
+            decStep();
         }
     }
 
@@ -1211,6 +1259,9 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
 
 
     m.lock();
+    script->unHighlighLine(3);
+    script->highlightLine(8);
+    script->highlightLine(9);
     num--;
     for(int i = 0; i < capacity * 2; i++)
         elements[i]->hide();
@@ -1219,6 +1270,25 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
         elements[i]->setText(elements[i + capacity]->getText());
         elements[i]->show();
     }
+    m.unlock();
+
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    
+    script->unHighlighLine(8);
+    script->unHighlighLine(9);
+    script->highlightLine(10);
+    m.unlock();
+
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(10);
     m.unlock();
 }
 
