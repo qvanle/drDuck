@@ -1,7 +1,9 @@
 #include "SDL_assert.h"
+#include "SDL_scancode.h"
 #include "SDL_timer.h"
 #include "SYSTEM.hpp"
 #include <Data_Structures.hpp>
+#include <memory>
 
 int Data_Structures::size()
 {
@@ -548,14 +550,78 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
     m.lock();
     for(int i = 0; i < num; i++)
         elements[i]->show();
+
+    json mem;
+    readJson(GLOBAL::AtrbScript + "SinglyLinkedListDelete.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+
+    script->highlightLine(0);
     m.unlock();
+
     pos = std::min(pos, num - 1);
 
-    SDL_Delay(800 / speed);
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    m.unlock();
+    if(pos == 0) 
+    {
+        m.lock();
+        elements[0]->FillWithColor({155, 10, 10, 255});
+        script->highlightLine(2);
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(2);
+        connection[pos] = -1;
+        script->highlightLine(3);
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(3);
+        script->highlightLine(4);
+        elements[0]->FillWithColor({10, 155, 10, 255});
+        for(int i = pos; i + 1 < num; i++)
+        {
+            elements[i]->setText(elements[i + 1]->getText());
+            connection[i] = i + 1;
+        }
+        num--;
+        elements[num]->hide();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        elements[0]->FillWithColor();
+        script->unHighlighLine(4);
+        m.unlock();
+        return ;
+    }
+    m.lock();
+    script->highlightLine(6);
+    m.unlock();
 
     for(int i = 0; i < pos; i++)
     {
         m.lock();
+        script->highlightLine(7);
+        script->highlightLine(8);
         elements[i]->highlight();
         m.unlock();
 
@@ -564,6 +630,8 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
         decStep();
 
         m.lock();
+        script->unHighlighLine(7);
+        script->unHighlighLine(8);
         elements[i]->unHighlight();
         m.unlock();
         SDL_Delay(200 / speed);
@@ -571,22 +639,36 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
     }
 
     SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
 
     m.lock();
     elements[pos]->FillWithColor(SDL_Color({155, 10, 10, 255}));
+    script->unHighlighLine(6);
+    script->highlightLine(9);
     m.unlock();
 
     SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
 
     m.lock();
+    script->unHighlighLine(9);
+    script->highlightLine(10);
     elements[pos]->FillWithColor();
-    if(pos != 0) connection[pos - 1] = pos + 1 != num ? pos + 1 : -1;
+    connection[pos - 1] = pos + 1 != num ? pos + 1 : -1;
     connection[pos] = -1;
     m.unlock();
 
-    SDL_Delay(800 / speed);
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
 
     m.lock();
+    script->unHighlighLine(10);
+    script->highlightLine(11);
     if(pos != 0) connection[pos - 1] = pos;
     for(int i = pos; i + 1 < num; i++)
     {
@@ -597,6 +679,13 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
     elements[num]->hide();
     m.unlock();
 
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(11);
+    m.unlock();
 }
 
 void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
@@ -658,7 +747,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     script->loadHighlight(mem["highlight"]);
     script->show();
     script->highlightLine(0);
-    
+
     for(int i = 0; i < num; i++)
         elements[i]->show();
     elements[pos + capacity]->show();
@@ -672,7 +761,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     m.lock();
     script->unHighlighLine(0);
     m.unlock();
-    
+
 
     if(pos == 0)
     {
@@ -687,10 +776,10 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
         SDL_Delay(400 / speed);
         while(getStep() == 0);
         decStep();
-        
+
 
         m.lock();
-        
+
         script->unHighlighLine(2);
         script->unHighlighLine(3);
         script->unHighlighLine(4);
@@ -718,7 +807,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     m.lock();
     script->highlightLine(6);
     m.unlock();
-    
+
     SDL_Delay(400 / speed);
     while(getStep() == 0);
     decStep();
@@ -782,7 +871,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     script->highlightLine(9);
     connection[pos + capacity] = pos;
     m.unlock();
-    
+
     SDL_Delay(400 / speed);
     while(getStep() == 0);
     decStep();
@@ -794,7 +883,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     SDL_Delay(400 / speed);
     while(getStep() == 0);
     decStep();
-    
+
     m.lock();
     script->unHighlighLine(9);
     elements[pos - 1]->FillWithColor();
