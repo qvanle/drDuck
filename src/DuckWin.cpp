@@ -91,7 +91,7 @@ bool MyWindow::isChangeScreen(Button *& but, const json &mem)
         {
             delete input;
         }
-        if(DT != nullptr && DT->isVisible())
+        if(DT != nullptr && DT->isVisible() && DT->isFinish())
         {
             DT->hide();
         }else {
@@ -99,6 +99,11 @@ bool MyWindow::isChangeScreen(Button *& but, const json &mem)
             std::string type = but->getDataStructure();
             std::string screenName = but->getNextScreen();
 
+            if(DT != nullptr && !DT->isFinish()) 
+            {
+                UImutex.unlock();
+                return true;
+            }
             changeScreens(screenName.c_str());
             if(type == "StaticArray.json")
             {
@@ -178,13 +183,18 @@ bool MyWindow::isChangeScreen(Button *& but)
         {
             delete input;
         }
-        if(DT != nullptr && DT->isVisible())
+        if(DT != nullptr && DT->isVisible() && DT->isFinish())
         {
             DT->hide();
         }else {
 
             std::string type = but->getDataStructure();
             std::string screenName = but->getNextScreen();
+            if(DT != nullptr && !DT->isFinish()) 
+            {
+                UImutex.unlock();
+                return true;
+            }
 
             changeScreens(screenName.c_str());
             if(type == "StaticArray.json")

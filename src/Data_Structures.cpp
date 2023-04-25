@@ -42,6 +42,7 @@ Data_Structures::~Data_Structures()
 
 void Data_Structures::init(const json & mem)
 {
+    finish = false;
     if(!mem.contains("name")) return ;
     std::string name = mem["name"].get<std::string>();
     if(mem.contains("script"))
@@ -67,6 +68,7 @@ void Data_Structures::init(const json & mem)
     {
         initCircularLinkedList(mem);
     }
+    finish = true;
 }
 
 void Data_Structures::setRender(SDL_Renderer *&r)
@@ -76,6 +78,7 @@ void Data_Structures::setRender(SDL_Renderer *&r)
 
 void Data_Structures::loadValue(const json &mem)
 {
+    finish = false;
     if(!mem.contains("name")) return ;
     if(mem.contains("elements"))
     {
@@ -89,6 +92,7 @@ void Data_Structures::loadValue(const json &mem)
         if(mem["name"].get<std::string>() == "CircularLinkedList.json")
             connection[num - 1] = 0;
     }
+    finish = true;
 }
 
 void Data_Structures::initStaticArray(const json &mem)
@@ -1382,22 +1386,24 @@ void Data_Structures::SinglyLinkedListCreate(std::string s)
 
 void Data_Structures::create(std::string s)
 {
+    finish = false;
     if(script != nullptr) script->hide();
     if(type == 1) StaticArrayCreate(s);
     else if(type == 2) DynamicArrayCreate(s);
     else if(type == 3) SinglyLinkedListCreate(s);
     else if(type == 4) DoublyLinkedListCreate(s);
     else if(type == 5) CircularLinkedListCreate(s);
+    finish = true;
 }
 
 void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
 {
     if(num == capacity) return ;
+    finish = false;
     int pos = getFirstInt(s1);
     int value = getFirstInt(s2);
     pos = std::min(pos, num);
     step = -1;
-    finish = false;
     if(type == 1) StaticArrayInsert(pos, value, m);
     else if(type == 2) DynamicArrayInsert(pos, value, m);
     else if(type == 3) SinglyLinkedListInsert(pos, value, m);
@@ -1919,10 +1925,10 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
 void Data_Structures::erase(std::string s1, std::mutex &m)
 {
     if(num == 0) return ;
+    finish = false;
     int pos = getFirstInt(s1);
     pos = std::min(pos, num);
     step = -1;
-    finish = false;
     if(type == 1) StaticArrayErase(pos, m);
     else if(type == 2) DynamicArrayErase(pos, m);
     else if(type == 3) SinglyLinkedListErase(pos, m);
@@ -1956,10 +1962,10 @@ void Data_Structures::DoublyLinkedListSearch( int value, std::mutex & m)
 void Data_Structures::update(std::string s1, std::string s2, std::mutex &m)
 {
     if(num == 0) return ;
+    finish = false;
     int pos = getFirstInt(s1);
     int value = getFirstInt(s2);
     step = -1;
-    finish = false;
     pos = std::min(pos, num - 1);
     if(type == 1) StaticArrayUpdate(pos, value, m);
     else if(type == 2) DynamicArrayUpdate(pos, value, m);
