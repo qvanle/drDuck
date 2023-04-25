@@ -155,7 +155,7 @@ void Data_Structures::connect(int i, int j)
     {
         lineLeft(i, 2);
     }else if (i < capacity && j < capacity) 
-        Circling(i, j, 2);
+        Circling(i, j, depth);
     else if(i - capacity == j) lineUp(i, 7);
     else if(j - capacity == i) lineDown(i, 7);
     else if(i > capacity && j < capacity) connect(i, j + capacity), connect(j + capacity, j);
@@ -817,10 +817,19 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
     m.unlock();
 
 }
+void Data_Structures::DoublyLinkedListCreate(std::string s)
+{
+    SinglyLinkedListCreate(s);
+}
+
+void Data_Structures::CircularLinkedListCreate(std::string s)
+{
+    SinglyLinkedListCreate(s);
+    connection[num - 1] = 0;
+}
 
 void Data_Structures::SinglyLinkedListCreate(std::string s)
 {
-
     connection.clear();
     connection.resize(capacity * 2, -1);
     int *arr;
@@ -859,6 +868,8 @@ void Data_Structures::create(std::string s)
     if(type == 1) StaticArrayCreate(s);
     else if(type == 2) DynamicArrayCreate(s);
     else if(type == 3) SinglyLinkedListCreate(s);
+    else if(type == 4) DoublyLinkedListCreate(s);
+    else if(type == 5) CircularLinkedListCreate(s);
 }
 
 void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
@@ -1311,12 +1322,104 @@ bool Data_Structures::isFinish()
 
 void Data_Structures::initDoublyLinkedList(const json &mem)
 {
-    initSinglyLinkedList(mem);
+    type = 4;
+    Sketch::setRender(ren);
+    Sketch::init(mem);
+
+    elements.clear();
+
+    capacity = 9;
+    elements.resize(2 * capacity);
+    connection.resize(2 * capacity, -1);
+
+    if(mem.contains("connect"))
+    {
+        arrowE = new Object;
+        arrowE->init(mem["connect"][0], ren);
+
+        arrowS = new Object;
+        arrowS->init(mem["connect"][1], ren);
+
+        arrowW = new Object;
+        arrowW->init(mem["connect"][2], ren);
+
+        arrowN = new Object;
+        arrowN->init(mem["connect"][3], ren);
+    }
+
+    for(int i = 0; i < capacity; i++)
+    {
+        elements[i] = new Sketch;
+        elements[i]->setRender(ren);
+        connection[i] = (i + 1 != capacity) ? i + 1 : -1;
+
+        elements[i + capacity] = new Sketch;
+        elements[i + capacity]->setRender(ren);
+
+        if(mem.contains("element attributes"))
+        {    
+            elements[i]->init(mem["element attributes"]);
+            elements[i + capacity]->init(mem["element attributes"]);
+
+            int dx = mem["element attributes"]["dx"];
+            int dy = mem["element attributes"]["dy"];
+
+            elements[i]->addX(i * dx);
+            elements[i + capacity]->addX(i * dx);
+            elements[i + capacity]->addY(dy);
+        }
+    }
 }
 
 void Data_Structures::initCircularLinkedList(const json &mem)
 {
-    initCircularLinkedList(mem);
+    type = 5;
+    Sketch::setRender(ren);
+    Sketch::init(mem);
+
+    elements.clear();
+
+    capacity = 9;
+    elements.resize(2 * capacity);
+    connection.resize(2 * capacity, -1);
+
+    if(mem.contains("connect"))
+    {
+        arrowE = new Object;
+        arrowE->init(mem["connect"][0], ren);
+
+        arrowS = new Object;
+        arrowS->init(mem["connect"][1], ren);
+
+        arrowW = new Object;
+        arrowW->init(mem["connect"][2], ren);
+
+        arrowN = new Object;
+        arrowN->init(mem["connect"][3], ren);
+    }
+
+    for(int i = 0; i < capacity; i++)
+    {
+        elements[i] = new Sketch;
+        elements[i]->setRender(ren);
+        connection[i] = (i + 1 != capacity) ? i + 1 : -1;
+
+        elements[i + capacity] = new Sketch;
+        elements[i + capacity]->setRender(ren);
+
+        if(mem.contains("element attributes"))
+        {    
+            elements[i]->init(mem["element attributes"]);
+            elements[i + capacity]->init(mem["element attributes"]);
+
+            int dx = mem["element attributes"]["dx"];
+            int dy = mem["element attributes"]["dy"];
+
+            elements[i]->addX(i * dx);
+            elements[i + capacity]->addX(i * dx);
+            elements[i + capacity]->addY(dy);
+        }
+    }
 }
 
 void Data_Structures::initSinglyLinkedList(const json & mem)
@@ -1330,9 +1433,6 @@ void Data_Structures::initSinglyLinkedList(const json & mem)
     capacity = 9;
     elements.resize(2 * capacity);
     connection.resize(2 * capacity, -1);
-
-    if(mem.contains("circle"))
-        circle = mem["circle"];
 
     if(mem.contains("connect"))
     {

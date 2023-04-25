@@ -65,8 +65,10 @@ private:
     void SinglyLinkedListUpdate(int pos, int value, std::mutex & m);
 
     void initDoublyLinkedList(const json & mem);
+    void DoublyLinkedListCreate(std::string s);
 
     void initCircularLinkedList(const json & mem);
+    void CircularLinkedListCreate(std::string s);
 public:
 
     bool isFinish();
