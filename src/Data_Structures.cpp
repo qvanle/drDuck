@@ -85,6 +85,9 @@ void Data_Structures::loadValue(const json &mem)
             if(mem.contains("visible") && mem["visible"])
                 elements[i]->show();
         }
+        num = mem["elements"].size();
+        if(mem["name"].get<std::string>() == "CircularLinkedList.json")
+            connection[num - 1] = 0;
     }
 }
 
@@ -1334,6 +1337,7 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
 void Data_Structures::DoublyLinkedListCreate(std::string s)
 {
     SinglyLinkedListCreate(s);
+    connection[num - 1] = 0;
 }
 
 void Data_Structures::CircularLinkedListCreate(std::string s)
