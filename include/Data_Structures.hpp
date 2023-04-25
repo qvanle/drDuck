@@ -66,9 +66,18 @@ private:
 
     void initDoublyLinkedList(const json & mem);
     void DoublyLinkedListCreate(std::string s);
+    void DoublyLinkedListInsert(int pos, int value, std::mutex & m);
+    void DoublyLinkedListErase(int pos, std::mutex & m);
+    void DoublyLinkedListSearch(int value, std::mutex & m);
+    void DoublyLinkedListUpdate(int pos, int value, std::mutex & m);
 
     void initCircularLinkedList(const json & mem);
     void CircularLinkedListCreate(std::string s);
+    void CircularLinkedListInsert(int pos, int value, std::mutex & m);
+    void CircularLinkedListErase(int pos, std::mutex & m);
+    void CircularLinkedListUpdate(int pos, int value, std::mutex & m);
+    void CircularLinkedListSearch(int value, std::mutex &m);
+
 public:
 
     bool isFinish();

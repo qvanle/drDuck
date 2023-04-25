@@ -27,6 +27,7 @@ namespace GLOBAL
     extern const char* FontsFolder;
     extern const std::string AtrbInputBox;
     extern const std::string AtrbScript;
+    extern const int WAITING;
 }
 
 namespace RANDOM 

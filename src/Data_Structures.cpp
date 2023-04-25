@@ -4,6 +4,7 @@
 #include "SYSTEM.hpp"
 #include <Data_Structures.hpp>
 #include <ios>
+#include <iterator>
 #include <memory>
 
 int Data_Structures::size()
@@ -410,7 +411,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
     script->highlightLine(1);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -434,7 +435,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
             script->highlightLine(6);
             m.unlock();
 
-            SDL_Delay(400 / speed);
+            SDL_Delay(GLOBAL::WAITING / speed);
 
             while(getStep() == 0);
             decStep();
@@ -465,7 +466,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         m.unlock();
 
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -491,7 +492,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         elements[i + capacity]->highlight();
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
 
         while(getStep() == 0);
         decStep();
@@ -521,7 +522,7 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
     script->highlightLine(13);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -538,12 +539,161 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
     }
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
     m.lock();
     script->unHighlighLine(14);
     m.unlock();
+}
+
+void Data_Structures::DoublyLinkedListErase(int pos, std::mutex & m)
+{
+    m.lock();
+    for(int i = 0; i < num; i++)
+        elements[i]->show();
+
+    json mem;
+    readJson(GLOBAL::AtrbScript + "DoublyLinkedListDelete.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+
+    script->highlightLine(0);
+    m.unlock();
+
+    pos = std::min(pos, num - 1);
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    m.unlock();
+    if(pos == 0) 
+    {
+        m.lock();
+        elements[0]->FillWithColor({155, 10, 10, 255});
+        script->highlightLine(2);
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(2);
+        connection[pos] = -1;
+        script->highlightLine(3);
+        script->highlightLine(4);
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(3);
+        script->unHighlighLine(4);
+        script->highlightLine(5);
+        elements[0]->FillWithColor({10, 155, 10, 255});
+        for(int i = pos; i + 1 < num; i++)
+        {
+            elements[i]->setText(elements[i + 1]->getText());
+            connection[i] = i + 1;
+        }
+        num--;
+        elements[num]->hide();
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        elements[0]->FillWithColor();
+        script->unHighlighLine(5);
+        m.unlock();
+        return ;
+    }
+    m.lock();
+    script->highlightLine(8);
+    m.unlock();
+
+    for(int i = 0; i < pos; i++)
+    {
+        m.lock();
+        script->highlightLine(9);
+        script->highlightLine(10);
+        elements[i]->highlight();
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(9);
+        script->unHighlighLine(10);
+        elements[i]->unHighlight();
+        m.unlock();
+        SDL_Delay(200 / speed);
+
+    }
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+
+    m.lock();
+    elements[pos]->FillWithColor(SDL_Color({155, 10, 10, 255}));
+    script->unHighlighLine(10);
+    script->unHighlighLine(9);
+    script->highlightLine(11);
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(11);
+    script->highlightLine(12);
+    script->highlightLine(13);
+    elements[pos]->FillWithColor();
+    connection[pos - 1] = pos + 1 != num ? pos + 1 : -1;
+    connection[pos] = -1;
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+
+    m.lock();
+    script->unHighlighLine(12);
+    script->unHighlighLine(13);
+    script->highlightLine(14);
+    if(pos != 0) connection[pos - 1] = pos;
+    for(int i = pos; i + 1 < num; i++)
+    {
+        elements[i]->setText(elements[i + 1]->getText());
+        connection[i] = i + 1;
+    }
+    num--;
+    elements[num]->hide();
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(14);
+    m.unlock();
+
 }
 
 void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
@@ -563,7 +713,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
 
     pos = std::min(pos, num - 1);
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -577,7 +727,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
         script->highlightLine(2);
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -587,7 +737,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
         script->highlightLine(3);
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -604,7 +754,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
         elements[num]->hide();
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -626,7 +776,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
         elements[i]->highlight();
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -639,7 +789,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
 
     }
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -650,7 +800,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
     script->highlightLine(9);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -662,7 +812,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
     connection[pos] = -1;
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -680,7 +830,7 @@ void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
     elements[num]->hide();
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -702,7 +852,7 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
     script->highlightLine(0);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
     
@@ -717,7 +867,7 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
         elements[i]->highlight();
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -733,7 +883,7 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
         }
         m.unlock();
         
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -742,7 +892,7 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
         elements[i]->FillWithColor();
         m.unlock();
         
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -753,7 +903,7 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
         elements[i]->unHighlight();
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -771,13 +921,13 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
     m.unlock();
 }
 
-void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
+void Data_Structures::DoublyLinkedListInsert(int pos, int value, std::mutex& m)
 {
     if(num == capacity) return ;
     m.lock();
 
     json mem;
-    readJson(GLOBAL::AtrbScript + "SinglyLinkedListInsert.json", mem);
+    readJson(GLOBAL::AtrbScript + "DoublyLinkedListInsert.json", mem);
     script->loadObject(mem);
     script->loadHighlight(mem["highlight"]);
     script->show();
@@ -789,7 +939,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     elements[pos + capacity]->setText(std::to_string(value));
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -808,7 +958,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
         m.unlock();
 
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -833,7 +983,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
 
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -843,7 +993,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     script->highlightLine(6);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -856,7 +1006,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
         script->highlightLine(8);
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -873,7 +1023,174 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     elements[pos - 1]->FillWithColor({10, 155, 10, 255});
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    if(pos >= num)
+    {
+        m.lock();
+        script->highlightLine(9);
+        script->highlightLine(10);
+        connection[num - 1] = num + capacity;
+        m.unlock();
+
+        SDL_Delay(800 / speed);
+
+        m.lock();
+        connection[num - 1] = num;
+        elements[pos + capacity]->hide();
+        connection[num] = -1;
+        connection[pos + capacity] = -1;
+        elements[num]->setText(std::to_string(value));
+        elements[num]->show();
+        num++;
+        script->unHighlighLine(9);
+        script->unHighlighLine(10);
+        elements[pos - 1]->FillWithColor();
+        m.unlock();
+
+        return ;
+    }
+
+
+    m.lock();
+    script->highlightLine(9);
+    script->highlightLine(10);
+    connection[pos + capacity] = pos;
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    connection[pos - 1] = pos + capacity;
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(9);
+    script->unHighlighLine(10);
+    elements[pos - 1]->FillWithColor();
+    connection[pos - 1] = pos;
+    connection[pos + capacity] = -1;
+
+    for(int i = num + 1; i > pos; i--)
+        elements[i]->setText(elements[i - 1]->getText());
+    elements[pos]->setText(std::to_string(value));
+    elements[pos + capacity]->hide();
+    connection[num - 1] = num;
+    num++;
+    m.unlock();
+}
+
+void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
+{
+    if(num == capacity) return ;
+    m.lock();
+
+    json mem;
+    readJson(GLOBAL::AtrbScript + "SinglyLinkedListInsert.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
+
+    for(int i = 0; i < num; i++)
+        elements[i]->show();
+    elements[pos + capacity]->show();
+    elements[pos + capacity]->setText(std::to_string(value));
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    m.unlock();
+
+
+    if(pos == 0)
+    {
+        m.lock();
+        script->highlightLine(2);
+        script->highlightLine(3);
+        script->highlightLine(4);
+        connection[capacity] = 0;
+        m.unlock();
+
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+
+        m.lock();
+
+        script->unHighlighLine(2);
+        script->unHighlighLine(3);
+        script->unHighlighLine(4);
+
+        connection[capacity] = -1;
+
+        for(int i = num; i > 0; i--)
+            elements[i]->setText(elements[i - 1]->getText());
+
+        elements[0]->setText(std::to_string(value));
+        elements[num]->show();
+        elements[capacity]->hide();
+        connection[num - 1] = num;
+
+        num++;
+
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        return ;
+    }
+    m.lock();
+    script->highlightLine(6);
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+
+    for(int i = 0; i < pos && i < num; i++)
+    {
+        m.lock();
+        elements[i]->highlight();
+        script->highlightLine(7);
+        script->highlightLine(8);
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        elements[i]->unHighlight();
+        script->unHighlighLine(7);
+        script->unHighlighLine(8);
+        m.unlock();
+        SDL_Delay(100 / speed);
+    }
+
+    m.lock();
+    script->unHighlighLine(6);
+    elements[pos - 1]->FillWithColor({10, 155, 10, 255});
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -907,7 +1224,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     connection[pos + capacity] = pos;
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -915,7 +1232,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
     connection[pos - 1] = pos + capacity;
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -964,7 +1281,7 @@ void Data_Structures::StaticArrayInsert(int pos, int value, std::mutex & m)
         while(getStep() == 0);
         decStep();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
 
         m.lock();
         elements[i]->setText(elements[i - 1]->getText());
@@ -1080,6 +1397,8 @@ void Data_Structures::insert(std::string s1, std::string s2, std::mutex & m)
     if(type == 1) StaticArrayInsert(pos, value, m);
     else if(type == 2) DynamicArrayInsert(pos, value, m);
     else if(type == 3) SinglyLinkedListInsert(pos, value, m);
+    else if(type == 4) DoublyLinkedListInsert(pos, value, m);
+    else if(type == 5) CircularLinkedListInsert(pos, value, m);
     finish = true;
 }
 
@@ -1100,7 +1419,7 @@ void Data_Structures::DynamicArrayUpdate(int pos, int value, std::mutex &m)
     m.unlock();
 
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1111,7 +1430,7 @@ void Data_Structures::DynamicArrayUpdate(int pos, int value, std::mutex &m)
     elements[pos]->setText(std::to_string(value));
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1122,7 +1441,7 @@ void Data_Structures::DynamicArrayUpdate(int pos, int value, std::mutex &m)
     m.unlock();
 
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1157,7 +1476,7 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
         elements[i]->highlight();
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
 
         while(getStep() == 0);
         decStep();
@@ -1174,13 +1493,13 @@ void Data_Structures::StaticArraySearch(int value, std::mutex &m)
         }
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
 
         m.lock();
         elements[i]->FillWithColor();
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
 
         m.lock();
         elements[i]->unHighlight();
@@ -1256,7 +1575,7 @@ void Data_Structures::SinglyLinkedListUpdate(int pos, int value, std::mutex & m)
         elements[i]->show();
     m.unlock();
     
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1272,7 +1591,7 @@ void Data_Structures::SinglyLinkedListUpdate(int pos, int value, std::mutex & m)
         script->highlightLine(4);
         m.unlock();
         
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
         
@@ -1282,7 +1601,7 @@ void Data_Structures::SinglyLinkedListUpdate(int pos, int value, std::mutex & m)
         script->unHighlighLine(3);
         script->unHighlighLine(4);
         m.unlock();
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -1293,7 +1612,7 @@ void Data_Structures::SinglyLinkedListUpdate(int pos, int value, std::mutex & m)
     elements[pos]->FillWithColor(SDL_Color{10, 155, 10, 255});
     m.unlock();
     
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1304,7 +1623,7 @@ void Data_Structures::SinglyLinkedListUpdate(int pos, int value, std::mutex & m)
     elements[pos]->setText(std::to_string(value));
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1328,7 +1647,7 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
     script->highlightLine(0);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1337,7 +1656,7 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
     script->highlightLine(2);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1347,7 +1666,7 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
         elements[i]->highlight();
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -1364,7 +1683,7 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
         }
         m.unlock();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         while(getStep() == 0);
         decStep();
 
@@ -1377,7 +1696,7 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
         if(valid) break;
     }
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1385,7 +1704,7 @@ void Data_Structures::DynamicArraySearch(int value, std::mutex &m)
     script->highlightLine(6);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1425,7 +1744,7 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
         while(getStep() == 0);
         decStep();
 
-        SDL_Delay(400 / speed);
+        SDL_Delay(GLOBAL::WAITING / speed);
         m.lock();
         elements[i]->setText(elements[i + 1]->getText());
         m.unlock();
@@ -1467,7 +1786,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
     script->highlightLine(0);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1485,7 +1804,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
     m.unlock();
 
     bool deleted = false;
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1507,7 +1826,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
             m.unlock();
 
 
-            SDL_Delay(400 / speed);
+            SDL_Delay(GLOBAL::WAITING / speed);
             while(getStep() == 0);
             decStep();
 
@@ -1516,7 +1835,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
             script->unHighlighLine(5);
             m.unlock();
 
-            SDL_Delay(400 / speed);
+            SDL_Delay(GLOBAL::WAITING / speed);
             while(getStep() == 0);
             decStep();
         }else 
@@ -1528,7 +1847,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
             m.unlock();
 
 
-            SDL_Delay(400 / speed);
+            SDL_Delay(GLOBAL::WAITING / speed);
             while(getStep() == 0);
             decStep();
 
@@ -1537,7 +1856,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
             elements[i + capacity - deleted]->setText(elements[i]->getText()); 
             m.unlock();
 
-            SDL_Delay(400 / speed);
+            SDL_Delay(GLOBAL::WAITING / speed);
             while(getStep() == 0);
             decStep();
 
@@ -1573,7 +1892,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
     }
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1584,7 +1903,7 @@ void Data_Structures::DynamicArrayErase(int pos, std::mutex & m)
     script->highlightLine(10);
     m.unlock();
 
-    SDL_Delay(400 / speed);
+    SDL_Delay(GLOBAL::WAITING / speed);
     while(getStep() == 0);
     decStep();
 
@@ -1603,7 +1922,31 @@ void Data_Structures::erase(std::string s1, std::mutex &m)
     if(type == 1) StaticArrayErase(pos, m);
     else if(type == 2) DynamicArrayErase(pos, m);
     else if(type == 3) SinglyLinkedListErase(pos, m);
+    else if(type == 4) DoublyLinkedListErase(pos, m);
+    else if(type == 5) CircularLinkedListErase(pos, m);
     finish = true;
+}
+
+void Data_Structures::DoublyLinkedListUpdate(int pos, int value, std::mutex & m)
+{
+    SinglyLinkedListUpdate(pos, value, m);
+}
+
+void Data_Structures::CircularLinkedListUpdate(int pos, int value, std::mutex & m)
+{
+    SinglyLinkedListUpdate(pos, value, m);
+    if(num != 0) connection[num - 1] = 0;
+}
+
+void Data_Structures::CircularLinkedListSearch(int value, std::mutex & m)
+{
+    SinglyLinkedListSearch(value, m);
+    if(num != 0) connection[num - 1] = 0;
+}
+
+void Data_Structures::DoublyLinkedListSearch( int value, std::mutex & m)
+{
+    SinglyLinkedListSearch(value, m);
 }
 
 void Data_Structures::update(std::string s1, std::string s2, std::mutex &m)
@@ -1617,6 +1960,8 @@ void Data_Structures::update(std::string s1, std::string s2, std::mutex &m)
     if(type == 1) StaticArrayUpdate(pos, value, m);
     else if(type == 2) DynamicArrayUpdate(pos, value, m);
     else if(type == 3) SinglyLinkedListUpdate(pos, value, m);
+    else if(type == 4) DoublyLinkedListUpdate(pos, value, m);
+    else if(type == 5) CircularLinkedListUpdate(pos, value, m);
     finish = true;
 }
 
@@ -1629,6 +1974,8 @@ void Data_Structures::search(std::string s2, std::mutex &m)
     if(type == 1) StaticArraySearch(value, m);
     else if(type == 2) DynamicArraySearch(value, m);
     else if(type == 3) SinglyLinkedListSearch(value, m);
+    else if(type == 4) DoublyLinkedListSearch(value, m);
+    else if(type == 5) CircularLinkedListSearch(value, m);
     finish = true;
 }
 
@@ -1729,6 +2076,18 @@ void Data_Structures::initDoublyLinkedList(const json &mem)
             elements[i + capacity]->addY(dy);
         }
     }
+}
+
+void Data_Structures::CircularLinkedListInsert(int pos, int value, std::mutex & m)
+{
+    SinglyLinkedListInsert(pos, value, m);
+    if(num != 0) connection[num - 1] = 0;
+}
+
+void Data_Structures::CircularLinkedListErase(int pos, std::mutex & m)
+{
+    SinglyLinkedListErase(pos, m);
+    if(num != 0) connection[num - 1] = 0;
 }
 
 void Data_Structures::initCircularLinkedList(const json &mem)
