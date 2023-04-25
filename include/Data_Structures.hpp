@@ -24,6 +24,7 @@ private:
     bool finish;
     std::mutex stepMutex;
     int depth;
+    bool circle;
 
     int lineFrom, lineDepth;
     std::vector<int> connection;
@@ -59,7 +60,11 @@ private:
     void initSinglyLinkedList(const json & mem);
     void SinglyLinkedListCreate(std::string s);
     void SinglyLinkedListInsert(int pos, int value, std::mutex & m);
+    void SinglyLinkedListErase(int pos, std::mutex & m);
 
+    void initDoublyLinkedList(const json & mem);
+
+    void initCircularLinkedList(const json & mem);
 public:
 
     bool isFinish();

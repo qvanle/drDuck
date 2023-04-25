@@ -84,6 +84,12 @@ bool MyWindow::isChangeScreen(Button *& but)
     {
         UImutex.lock();
 
+        if(input != nullptr && input->isVisible())
+        {
+            UImutex.lock();
+            delete input;
+            UImutex.unlock();
+        }
         if(DT != nullptr && DT->isVisible())
         {
             DT->hide();
@@ -108,6 +114,20 @@ bool MyWindow::isChangeScreen(Button *& but)
                 readJson(GLOBAL::AtrbDT + type, mem);
                 DT->init(mem);
             }else if(type == "SinglyLinkedList.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "DoublyLinkedList.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "CircularLinkedList.json")
             {
                 DT = new Data_Structures;
                 DT->setRender(renderer);

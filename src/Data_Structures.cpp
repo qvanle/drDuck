@@ -18,6 +18,7 @@ Data_Structures::Data_Structures()
     arrowE = nullptr;
     depth = 3;
     lineDepth = 0;
+    circle = false;
 }
 
 Data_Structures::~Data_Structures()
@@ -53,6 +54,12 @@ void Data_Structures::init(const json & mem)
     }else if(name == "SinglyLinkedList.json")
     {
         initSinglyLinkedList(mem);
+    }else if(name == "DoublyLinkedList.json")
+    {
+        initDoublyLinkedList(mem);
+    }else if(name == "CircularLinkedList.json")
+    {
+        initCircularLinkedList(mem);
     }
 }
 
@@ -487,6 +494,62 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         elements[i + capacity]->hide();
     }
     m.unlock();
+}
+
+void Data_Structures::SinglyLinkedListErase(int pos, std::mutex & m)
+{
+    m.lock();
+    for(int i = 0; i < num; i++)
+        elements[i]->show();
+    m.unlock();
+    pos = std::min(pos, num - 1);
+
+    SDL_Delay(800 / speed);
+
+    for(int i = 0; i < pos; i++)
+    {
+        m.lock();
+        elements[i]->highlight();
+        m.unlock();
+
+        SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        elements[i]->unHighlight();
+        m.unlock();
+        SDL_Delay(200 / speed);
+
+    }
+
+    SDL_Delay(400 / speed);
+
+    m.lock();
+    elements[pos]->FillWithColor(SDL_Color({155, 10, 10, 255}));
+    m.unlock();
+
+    SDL_Delay(400 / speed);
+
+    m.lock();
+    elements[pos]->FillWithColor();
+    if(pos != 0) connection[pos - 1] = pos + 1 != num ? pos + 1 : -1;
+    connection[pos] = -1;
+    m.unlock();
+
+    SDL_Delay(800 / speed);
+
+    m.lock();
+    if(pos != 0) connection[pos - 1] = pos;
+    for(int i = pos; i + 1 < num; i++)
+    {
+        elements[i]->setText(elements[i + 1]->getText());
+        connection[i] = i + 1;
+    }
+    num--;
+    elements[num]->hide();
+    m.unlock();
+
 }
 
 void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
@@ -1046,6 +1109,7 @@ void Data_Structures::erase(std::string s1, std::mutex &m)
     finish = false;
     if(type == 1) StaticArrayErase(pos, m);
     else if(type == 2) DynamicArrayErase(pos, m);
+    else if(type == 3) SinglyLinkedListErase(pos, m);
     finish = true;
 }
 
@@ -1121,6 +1185,15 @@ bool Data_Structures::isFinish()
     return finish;
 }
 
+void Data_Structures::initDoublyLinkedList(const json &mem)
+{
+    initSinglyLinkedList(mem);
+}
+
+void Data_Structures::initCircularLinkedList(const json &mem)
+{
+    initCircularLinkedList(mem);
+}
 
 void Data_Structures::initSinglyLinkedList(const json & mem)
 {
@@ -1133,6 +1206,9 @@ void Data_Structures::initSinglyLinkedList(const json & mem)
     capacity = 9;
     elements.resize(2 * capacity);
     connection.resize(2 * capacity, -1);
+
+    if(mem.contains("circle"))
+        circle = mem["circle"];
 
     if(mem.contains("connect"))
     {
