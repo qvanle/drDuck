@@ -127,3 +127,24 @@ std::string Button::getDataStructure()
     if(argc == 0) return "";
     return argv[0];
 }
+
+void Button::setDataStructure(std::string s)
+{
+    action = "change screen";
+
+    if(msg != nullptr) delete msg;
+    for(int i = 0; i < argv.size(); i++) delete [] argv[i];
+    argv.clear();
+
+    std::string screen = "working.json";
+    msg = new char[screen.size() + 1];
+    for(int i = 0; i < screen.size(); i++)
+        msg[i] = screen[i];
+
+    argv.resize(1);
+    argc = 1;
+    argv[0] = new char [s.size() + 1];
+
+    for(int i = 0; i < s.size(); i++)
+        argv[0][i] = s[i];
+}

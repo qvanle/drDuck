@@ -1,5 +1,6 @@
 {
-    "name": "StaticArray.json",
+    "name": "SinglyLinkedList.json",
+    "visible": true,
     "elements":
     [
         "1",

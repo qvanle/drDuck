@@ -26,6 +26,7 @@ class MyWindow
         int fps;
 
         Data_Structures* DT;
+        std::string type;
         InputBox* input;
 
         SDL_Window* window;
@@ -38,6 +39,7 @@ class MyWindow
         std::mutex UImutex;
 
         bool isChangeScreen(Button *& but);
+        bool isChangeScreen(Button *& but, const json &mem);
         bool isDToperator(Button *& but);
         bool isInputButton(Button *& but);
         bool isPlayButton(Button *& but);

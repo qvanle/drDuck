@@ -1,0 +1,157 @@
+{
+    "rect":
+    {
+        "w": 566,
+        "h": 350,
+        "x": 197,
+        "y": 73
+    },
+    "color":
+    {
+        "r": 60,
+        "g": 60,
+        "b": 60,
+        "a": 230
+    },
+    "border": 
+    {
+        "width": 10,
+        "color": 
+        {
+            "r": 175,
+            "b": 175,
+            "g": 175,
+            "a": 125
+        }
+    },
+    "fill with color": true,
+
+    "visible": true,
+
+    "title":
+    {
+        "text": "OPEN",
+        "rect": 
+        {
+            "w": 220,
+            "h": 52,
+            "x": 370,
+            "y": 95
+        },
+        "color": 
+        {
+            "r": 127,
+            "g": 96,
+            "b": 127,
+            "a": 255
+        },
+        "font": 
+        {
+            "name": "Atomed.ttf",
+            "size": 30,
+            "color":
+            {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+
+        "fill with color": true,
+        "visible": true
+    },
+    "texts":
+    [
+        {
+            "rect": 
+            {
+                "x": 250,
+                "y": 190,
+                "w": 200,
+                "h": 40
+            },
+            "visible": true,
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 24,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "Enter file name:"
+        }
+    ],
+    "buttons":
+    [
+        {
+            "name": "exit",
+            "rect": 
+            {
+                "x": 708,
+                "y": 88 
+            },
+            "action": "hide input"
+        },
+        {
+            "name": "done",
+            "rect": 
+            {
+                "x": 405,
+                "y": 340
+            }, 
+            "action": "done open"
+        },
+        {
+            "name": "random",
+            "rect": 
+            {
+                "x": 660,
+                "y": 230 
+            },
+            "visible": false,
+            "action": "random new"
+        }
+    ],
+    "input":
+    [
+        {
+            "rect": 
+            {
+                "w": 400,
+                "h": 40,
+                "x": 250,
+                "y": 230
+            },
+            "color":
+            {
+                "r": 127,
+                "g": 96,
+                "b": 127,
+                "a": 255
+
+            },
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 24,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "saving1",
+            "fill with color": true,
+            "visible": true
+        }
+    ]
+}
+

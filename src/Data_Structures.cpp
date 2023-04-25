@@ -71,14 +71,13 @@ void Data_Structures::setRender(SDL_Renderer *&r)
 void Data_Structures::loadValue(const json &mem)
 {
     if(!mem.contains("name")) return ;
-    if(mem["name"] == "StaticArray.json")
+    if(mem.contains("elements"))
     {
-        if(mem.contains("elements"))
+        for(int i = 0; i < mem["elements"].size() && i < capacity; i++)
         {
-            for(int i = 0; i < mem["elements"].size() && i < capacity; i++)
-            {
-                elements[i]->setText(mem["elements"][i].get<std::string>());
-            }
+            elements[i]->setText(mem["elements"][i].get<std::string>());
+            if(mem.contains("visible") && mem["visible"])
+                elements[i]->show();
         }
     }
 }
@@ -311,7 +310,7 @@ void Data_Structures::render()
     for(int i = 0; i < connection.size(); i++)
     {
         if(elements[i]->isVisible() && connection[i] != -1 && elements[connection[i]]->isVisible())
-        connect(i, connection[i]);
+            connect(i, connection[i]);
     }
     for(int i = 0; i < elements.size(); i++)
     {
@@ -558,7 +557,7 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
     for(int i = 0; i < num; i++)
         elements[i]->show();
     m.unlock();
-    
+
     for(int i = 0; i < num; i++)
     {
         m.lock();
@@ -620,21 +619,21 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
 
 
         SDL_Delay(800 / speed);
-        
+
         m.lock();
 
         connection[capacity] = -1;
 
         for(int i = num; i > 0; i--)
             elements[i]->setText(elements[i - 1]->getText());
-        
+
         elements[0]->setText(std::to_string(value));
         elements[num]->show();
         elements[capacity]->hide();
         connection[num - 1] = num;
-        
+
         num++;
-        
+
         m.unlock();
         return ;
     }
@@ -643,7 +642,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
         m.lock();
         connection[num - 1] = num + capacity;
         m.unlock();
-        
+
         SDL_Delay(800 / speed);
 
         m.lock();
@@ -655,7 +654,7 @@ void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
         elements[num]->show();
         num++;
         m.unlock();
-        
+
         return ;
     }
 

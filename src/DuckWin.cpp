@@ -1,4 +1,7 @@
+#include "Button.hpp"
+#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
+#include <filesystem>
 
 MyWindow::MyWindow()
 {
@@ -78,7 +81,7 @@ void MyWindow::mouseMove(int x, int y)
     if(input != nullptr) input->mouseMove(x, y);
 }
 
-bool MyWindow::isChangeScreen(Button *& but)
+bool MyWindow::isChangeScreen(Button *& but, const json &mem)
 {
     if(but->getAction() == "change screen")
     {
@@ -86,9 +89,7 @@ bool MyWindow::isChangeScreen(Button *& but)
 
         if(input != nullptr && input->isVisible())
         {
-            UImutex.lock();
             delete input;
-            UImutex.unlock();
         }
         if(DT != nullptr && DT->isVisible())
         {
@@ -146,6 +147,104 @@ bool MyWindow::isChangeScreen(Button *& but)
                 input = nullptr;
             }
         }
+        if(DT != nullptr)
+        {
+            DT->loadValue(mem);
+            DT->show();
+        }
+        UImutex.unlock();
+        return true;
+    }else if(but->getAction() == "open file")
+    {
+        UImutex.lock();
+        if(input != nullptr) delete input;
+        input = new InputBox;
+        json mem;
+        readJson(GLOBAL::AtrbInputBox + "open.json", mem);
+        input->setRender(renderer);
+        input->init(mem);
+        UImutex.unlock();
+        return true;
+    }
+    return false;
+}
+bool MyWindow::isChangeScreen(Button *& but)
+{
+    if(but->getAction() == "change screen")
+    {
+        UImutex.lock();
+
+        if(input != nullptr && input->isVisible())
+        {
+            delete input;
+        }
+        if(DT != nullptr && DT->isVisible())
+        {
+            DT->hide();
+        }else {
+
+            std::string type = but->getDataStructure();
+            std::string screenName = but->getNextScreen();
+
+            changeScreens(screenName.c_str());
+            if(type == "StaticArray.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "DynamicArray.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "SinglyLinkedList.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "DoublyLinkedList.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "CircularLinkedList.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(DT != nullptr) 
+            {
+                delete DT;
+                DT = nullptr;
+            }
+
+            if(input != nullptr) 
+            {
+                delete input;
+                input = nullptr;
+            }
+        }
+        UImutex.unlock();
+        return true;
+    }else if(but->getAction() == "open file")
+    {
+        UImutex.lock();
+        if(input != nullptr) delete input;
+        input = new InputBox;
+        json mem;
+        readJson(GLOBAL::AtrbInputBox + "open.json", mem);
+        input->setRender(renderer);
+        input->init(mem);
         UImutex.unlock();
         return true;
     }
@@ -266,6 +365,26 @@ bool MyWindow::isInputButton(Button *& but)
         delete input;
         input = nullptr;
         UImutex.unlock();
+        return true;
+    }
+    if(but->getAction() == "done open")
+    {
+        UImutex.lock();
+        std::string filename = "saving/" + input->getText(0) + ".json";
+        delete input;
+        input = nullptr;
+        if(DT != nullptr) delete DT;
+        DT = nullptr;
+        UImutex.unlock();
+        if(!std::filesystem::exists(filename)) return true; 
+        json F1;
+        readJson(filename, F1);
+        
+        Button* but = new Button;
+        but->setDataStructure(F1["name"].get<std::string>());
+        isChangeScreen(but, F1);
+
+        delete but;
         return true;
     }
     if(but->getAction() == "done new")
@@ -406,11 +525,14 @@ void MyWindow::mousePress(int x, int y)
 
     Button* but = nullptr;
 
-    if(input != nullptr) but = input->getButtonPressedByMouse(x, y); 
-
+    if(input != nullptr) 
+    {
+        but = input->getButtonPressedByMouse(x, y); 
+    }
     if(but == nullptr) 
+    {
         but = top()->mousePressedButton(x, y);
-
+    }
     if(but == nullptr) return ;
     if(isChangeScreen(but)) return ;
     if(isDToperator(but)) return;

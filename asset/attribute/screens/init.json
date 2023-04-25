@@ -35,7 +35,7 @@
                     "x": 620,
                     "y": 375
                 },
-                "action": "open", 
+                "action": "open file"
             },
             {
                 "name": "previous",
