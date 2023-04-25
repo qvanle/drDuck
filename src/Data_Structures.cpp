@@ -3,6 +3,7 @@
 #include "SDL_timer.h"
 #include "SYSTEM.hpp"
 #include <Data_Structures.hpp>
+#include <ios>
 #include <memory>
 
 int Data_Structures::size()
@@ -693,8 +694,23 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
     m.lock();
     for(int i = 0; i < num; i++)
         elements[i]->show();
+    json mem;
+    readJson(GLOBAL::AtrbScript + "SinglyLinkedListSearch.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
     m.unlock();
 
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+    
+    m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(4);
+    m.unlock();
+    
     for(int i = 0; i < num; i++)
     {
         m.lock();
@@ -702,7 +718,6 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
         m.unlock();
 
         SDL_Delay(400 / speed);
-
         while(getStep() == 0);
         decStep();
 
@@ -710,30 +725,50 @@ void Data_Structures::SinglyLinkedListSearch(int value, std::mutex & m)
         bool valid = std::to_string(value) == elements[i]->getText();
         if(valid)
         {
+            script->highlightLine(6);
             elements[i]->FillWithColor(SDL_Color({10, 155, 10, 255}));
         }else
         {
             elements[i]->FillWithColor(SDL_Color({155, 10, 10, 255}));
         }
         m.unlock();
-
+        
         SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
 
+        
         m.lock();
         elements[i]->FillWithColor();
         m.unlock();
-
+        
         SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
 
         m.lock();
+        script->unHighlighLine(6);
+        script->highlightLine(7);
+        script->highlightLine(8);
         elements[i]->unHighlight();
         m.unlock();
-        SDL_Delay(200 / speed);
+
+        SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(7);
+        script->unHighlighLine(8);
+        m.unlock();
         if(valid) 
         {
             break;
         }
     }
+    m.lock();
+    script->unHighlighLine(4);
+    m.unlock();
 }
 
 void Data_Structures::SinglyLinkedListInsert(int pos, int value, std::mutex & m)
@@ -1198,35 +1233,72 @@ void Data_Structures::StaticArrayUpdate(int pos, int value, std::mutex &m)
 void Data_Structures::SinglyLinkedListUpdate(int pos, int value, std::mutex & m) 
 {
     m.lock();
+
+    json mem;
+    readJson(GLOBAL::AtrbScript + "SinglyLinkedListUpdate.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
+
     for(int i = 0; i <  num; i++)
         elements[i]->show();
+    m.unlock();
+    
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
     m.unlock();
 
     for(int i = 0; i < pos; i++)
     {
         m.lock();
         elements[i]->highlight();
+        script->highlightLine(3);
+        script->highlightLine(4);
         m.unlock();
-
-        SDL_Delay(800 / speed);
+        
+        SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
+        
 
         m.lock();
         elements[i]->unHighlight();
+        script->unHighlighLine(3);
+        script->unHighlighLine(4);
         m.unlock();
         SDL_Delay(400 / speed);
+        while(getStep() == 0);
+        decStep();
+
     }
 
     m.lock();
+    script->highlightLine(5);
     elements[pos]->FillWithColor(SDL_Color{10, 155, 10, 255});
+    m.unlock();
+    
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(5);
+    script->highlightLine(6);
+
+    elements[pos]->setText(std::to_string(value));
     m.unlock();
 
     SDL_Delay(400 / speed);
-    m.lock();
-    elements[pos]->setText(std::to_string(value));
-    m.unlock();
-    SDL_Delay(800 / speed);
+    while(getStep() == 0);
+    decStep();
 
     m.lock();
+    script->unHighlighLine(6);
     elements[pos]->FillWithColor();
     m.unlock();
 }
