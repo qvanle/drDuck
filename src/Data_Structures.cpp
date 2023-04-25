@@ -1,4 +1,5 @@
 #include "SDL_timer.h"
+#include "SYSTEM.hpp"
 #include <Data_Structures.hpp>
 
 int Data_Structures::size()
@@ -386,11 +387,24 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
     m.lock();
     for(int i = 0; i < num + 1; i++)
         elements[i + capacity]->setText("");
-    m.unlock();
 
+    json mem;
+    readJson(GLOBAL::AtrbScript + "DynamicArrayInsert.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
+    m.unlock();
+    
+    SDL_Delay(800 / speed);
 
     while(getStep() == 0);
     decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(3);
+    m.unlock();
 
     SDL_Delay(400 / speed);
 
@@ -405,6 +419,8 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         {
             m.lock();
             elements[i + capacity]->highlight();
+            script->highlightLine(5);
+            script->highlightLine(6);
             m.unlock();
 
             SDL_Delay(400 / speed);
@@ -423,13 +439,16 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
 
             m.lock();
             elements[i + capacity]->unHighlight();
+            script->unHighlighLine(5);
+            script->unHighlighLine(6);
             m.unlock();
             inserted = true;
             SDL_Delay(200 / speed);
-
+            
         }
 
         m.lock();
+        script->highlightLine(8);
         elements[i]->highlight();
         elements[i + capacity + inserted]->highlight();
         m.unlock();
@@ -449,12 +468,15 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         m.lock();
         elements[i]->unHighlight();
         elements[i + capacity + inserted]->unHighlight();
+        script->unHighlighLine(8);
         m.unlock();
     }
     int i = num;
     if(i == pos)
     {
         m.lock();
+        script->highlightLine(9);
+        script->highlightLine(10);
         elements[i + capacity]->highlight();
         m.unlock();
 
@@ -473,6 +495,8 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         decStep();
 
         m.lock();
+        script->unHighlighLine(9);
+        script->unHighlighLine(10);
         elements[i + capacity]->unHighlight();
         m.unlock();
         inserted = true;
@@ -481,10 +505,19 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
     }
     while(getStep() == 0);
     decStep();
+    m.lock();
+    script->highlightLine(11);
+    script->highlightLine(13);
+    m.unlock();
 
-    SDL_Delay(200 / speed);
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
 
     m.lock();
+    script->unHighlighLine(11);
+    script->unHighlighLine(13);
+    script->highlightLine(14);
     num++;
     for(int i = 0; i < num; i++)
     {
@@ -492,6 +525,13 @@ void Data_Structures::DynamicArrayInsert(int pos, int value, std::mutex & m)
         elements[i]->show();
         elements[i + capacity]->hide();
     }
+    m.unlock();
+
+    SDL_Delay(400 / speed);
+    while(getStep() == 0);
+    decStep();
+    m.lock();
+    script->unHighlighLine(14);
     m.unlock();
 }
 
