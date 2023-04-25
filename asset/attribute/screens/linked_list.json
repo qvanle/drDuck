@@ -19,6 +19,23 @@
         "buttons": 
         [
             {
+                "name": "sound_off",
+                "rect": 
+                {
+                    "x": 70,
+                    "y": 5
+                },
+                "visible": false
+            },
+            {
+                "name": "sound_on",
+                "rect": 
+                {
+                    "x": 70,
+                    "y": 5
+                }
+            },
+            {
                 "name": "singly",
                 "rect": 
                 {
@@ -70,23 +87,6 @@
                 "action": "change screen",
                 "msg": "choosing.json"
 
-            },
-            {
-                "name": "sound_off",
-                "rect": 
-                {
-                    "x": 70,
-                    "y": 5
-                },
-                "visible": false
-            },
-            {
-                "name": "sound_on",
-                "rect": 
-                {
-                    "x": 70,
-                    "y": 5
-                }
             }
         ]
     }

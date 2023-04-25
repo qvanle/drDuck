@@ -10,6 +10,7 @@
 #include <mutex>
 #include <algorithm>
 #include <random>
+#include <filesystem>
 
 #include <nlohmann/json.hpp>
 
@@ -28,6 +29,7 @@ namespace GLOBAL
     extern const std::string AtrbInputBox;
     extern const std::string AtrbScript;
     extern const int WAITING;
+    extern const std::string SoundFolder;
 }
 
 namespace RANDOM 

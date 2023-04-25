@@ -37,18 +37,27 @@ class MyWindow
 
         SDL_Event event;
         std::mutex UImutex;
+        std::mutex soundMutex;
 
         bool isChangeScreen(Button *& but);
         bool isChangeScreen(Button *& but, const json &mem);
         bool isDToperator(Button *& but);
         bool isInputButton(Button *& but);
         bool isPlayButton(Button *& but);
+
+        SDL_AudioSpec audioSpec;
+        Uint32 waveLength;
+        Uint8 *waveBuffer;
+        bool soundOn;
+        bool turnOn;
+
     public:
             MyWindow();
             void loadScreen(Display *& screen, const json& mem);
             void init();
             void action();
             void process();
+            void speak();
             void render();
             bool isOpen();
             bool isClose();

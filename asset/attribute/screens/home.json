@@ -19,6 +19,23 @@
         "buttons": 
         [
             {
+                "name": "sound_off",
+                "rect": 
+                {
+                    "x": 5,
+                    "y": 5
+                },
+                "visible": false
+            },
+            {
+                "name": "sound_on",
+                "rect": 
+                {
+                    "x": 5,
+                    "y": 5
+                }
+            },
+            {
                 "name": "start",
                 "rect": 
                 {
@@ -43,23 +60,6 @@
                 {
                     "x": 620,
                     "y": 425
-                }
-            },
-            {
-                "name": "sound_off",
-                "rect": 
-                {
-                    "x": 5,
-                    "y": 5
-                },
-                "visible": false
-            },
-            {
-                "name": "sound_on",
-                "rect": 
-                {
-                    "x": 5,
-                    "y": 5
                 }
             }
         ]

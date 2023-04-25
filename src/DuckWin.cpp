@@ -1,10 +1,8 @@
-#include "Button.hpp"
-#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
-#include <filesystem>
 
 MyWindow::MyWindow()
 {
+    soundMutex.lock();
     status = 0;
     WIDTH = 0;
     HEIGHT = 0;
@@ -14,6 +12,8 @@ MyWindow::MyWindow()
     screen.clear();
     DT = nullptr;
     input = nullptr;
+    turnOn = true;
+    soundOn = true;
 }
 
 
@@ -24,7 +24,7 @@ void MyWindow::init()
     HEIGHT = 540;
     RANDOM::init();
 
-    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     window = SDL_CreateWindow(
             "Dr Duck",
             SDL_WINDOWPOS_CENTERED,
@@ -51,6 +51,15 @@ void MyWindow::init()
     fps = 60;
 
     SDL_RenderSetViewport(renderer, &rect);
+
+
+    audioSpec.freq = 44100; 
+    audioSpec.format = AUDIO_S16SYS; 
+    audioSpec.channels = 2;
+    audioSpec.samples = 1024;
+    SDL_OpenAudio(&audioSpec, NULL);
+    SDL_AudioSpec waveSpec;
+    SDL_LoadWAV((GLOBAL::SoundFolder + "quark.wav").c_str(), &waveSpec, &waveBuffer, &waveLength);
 }
 
 
@@ -389,7 +398,7 @@ bool MyWindow::isInputButton(Button *& but)
         if(!std::filesystem::exists(filename)) return true; 
         json F1;
         readJson(filename, F1);
-        
+
         Button* but = new Button;
         but->setDataStructure(F1["name"].get<std::string>());
         isChangeScreen(but, F1);
@@ -544,6 +553,25 @@ void MyWindow::mousePress(int x, int y)
         but = top()->mousePressedButton(x, y);
     }
     if(but == nullptr) return ;
+    if(but->getAction() == "sound on") 
+    {
+        turnOn = true;
+        screen[0]->hideButton(0);
+        screen[0]->showButton(1);
+        return ;
+    }
+    if(but->getAction() == "sound off") 
+    {
+        turnOn = false;
+        screen[0]->hideButton(1);
+        screen[0]->showButton(0);
+        return ;
+    }
+    soundOn = turnOn;
+    soundMutex.unlock();
+    if(soundOn) SDL_Delay(350);
+    else SDL_Delay(100);
+    soundMutex.lock();
     if(isChangeScreen(but)) return ;
     if(isDToperator(but)) return;
     if(isInputButton(but)) return ;
@@ -595,6 +623,7 @@ void MyWindow::shutdown()
     TTF_Quit();
 
     UImutex.unlock();
+    soundMutex.unlock();
 } 
 
 bool MyWindow::isOpen()
@@ -630,6 +659,15 @@ void MyWindow::changeScreens(const char *const& name)
         top()->setRenderer(renderer);
         top()->init(mem[i]);
     }
+    if(turnOn)
+    {
+        screen[0]->hideButton(0);
+        screen[0]->showButton(1);
+    }else 
+    {
+        screen[0]->hideButton(1);
+        screen[0]->showButton(0);
+    }
     FocusOn = 0;
 }
 
@@ -645,9 +683,11 @@ MyWindow::~MyWindow()
 void MyWindow::run()
 {
     std::thread draw(&MyWindow::render, this);
+    std::thread sound(&MyWindow::speak, this);
     action();
 
     draw.join();
+    sound.join();
 }
 
 void MyWindow::render()
@@ -675,6 +715,23 @@ void MyWindow::render()
             Uint32 DeltaTime = SDL_GetTicks() - startTime;
             if(DeltaTime < delayTime)
                 SDL_Delay(delayTime - delayTime);
+        }
+    }
+}
+
+void MyWindow::speak()
+{
+    while(isOpen())
+    {
+        if(soundMutex.try_lock())
+        {
+            if(soundOn)
+            {
+                SDL_QueueAudio(1, waveBuffer, waveLength);
+                SDL_PauseAudio(0); 
+            }
+            soundOn = false;
+            soundMutex.unlock();
         }
     }
 }

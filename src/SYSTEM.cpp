@@ -13,6 +13,7 @@ const std::string GLOBAL::AtrbInputBox = "asset/attribute/InputBox/";
 const std::string GLOBAL::AtrbDT = "asset/attribute/DataStructures/";
 const std::string GLOBAL::AtrbScript = "asset/attribute/script/";
 const int GLOBAL::WAITING = 800;
+const std::string GLOBAL::SoundFolder = "asset/sound/";
 
 std::mt19937 RANDOM::rng;
 

@@ -16,7 +16,8 @@
         "w": 50,
         "h": 50
     },
-    "visible": true
+    "visible": true,
+    "action": "sound on"
 }
 
 
