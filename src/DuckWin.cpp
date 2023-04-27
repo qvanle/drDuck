@@ -1,5 +1,3 @@
-#include "InputBox.hpp"
-#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -905,8 +903,19 @@ void MyWindow::typing(SDL_Keysym key)
         input->pop();
     else if(key.sym == SDLK_TAB)
         input->nextFocus();
-    else if(key.sym >= SDLK_SPACE && key.sym <= SDLK_z)
-        input->typing(key.sym);
+    else if(key.sym >= SDLK_a && key.sym <= SDLK_z)
+    {
+        char value = key.sym;
+        if(((SDL_GetModState() & KMOD_CAPS) != 0) ^ ((SDL_GetModState() & KMOD_SHIFT) != 0)) 
+            value = 'A' + (value - SDLK_a);
+        input->typing(value);
+    }else if(key.sym >= SDLK_SPACE && key.sym < SDLK_a)
+    {
+        char value = key.sym;
+        if(event.key.keysym.sym == SDLK_MINUS && (SDL_GetModState() & KMOD_SHIFT))
+            value = '_';
+        input->typing(value);
+    }
     UImutex.unlock();
 }
 
