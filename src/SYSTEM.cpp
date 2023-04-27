@@ -1,5 +1,4 @@
 #include <SYSTEM.hpp>
-#include <random>
 
 const char* GLOBAL::GraphicsFolder = "asset/graphics/";
 

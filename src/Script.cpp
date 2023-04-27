@@ -1,7 +1,4 @@
-#include "Object.hpp"
-#include "Sketch.hpp"
 #include <Script.hpp>
-#include <ios>
 
 Script::Script()
 {

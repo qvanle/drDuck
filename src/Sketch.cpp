@@ -1,4 +1,3 @@
-#include "SDL_pixels.h"
 #include <Sketch.hpp>
 
 Sketch::Sketch()

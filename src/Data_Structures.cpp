@@ -1,8 +1,4 @@
-#include "SDL_timer.h"
-#include "SYSTEM.hpp"
 #include <Data_Structures.hpp>
-#include <clocale>
-#include <iterator>
 
 int Data_Structures::size()
 {
