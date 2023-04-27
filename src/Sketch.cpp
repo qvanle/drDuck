@@ -88,6 +88,15 @@ void Sketch::setText(std::string s)
     createTextTexture();
 }
 
+void Sketch::setTextColor(int r, int g, int b)
+{
+    fontColor.r = r;
+    fontColor.g = g;
+    fontColor.b = b;
+    createTextTexture();
+}
+
+
 const std::string& Sketch::getText()
 {
     return text;
@@ -96,6 +105,13 @@ const std::string& Sketch::getText()
 void Sketch::setColor(SDL_Color c)
 {
     color = c;
+}
+
+void Sketch::setColor(int r, int g, int b)
+{
+    color.r = r;
+    color.g = g;
+    color.b = b;
 }
 
 void Sketch::setColor(int r, int g, int b, int a)
@@ -202,6 +218,13 @@ void Sketch::setBorder(int w, int r, int g, int b, int a)
     borderColor.g = g;
     borderColor.b = b;
     borderColor.a = a;
+}
+
+void Sketch::setBorderColor(int r, int g, int b)
+{
+    borderColor.r = r;
+    borderColor.g = g;
+    borderColor.b = b;
 }
 
 void Sketch::FillWithColor(SDL_Color c)

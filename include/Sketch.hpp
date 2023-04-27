@@ -57,9 +57,11 @@ public:
     void addChar(char ch);
     void popChar();
     void setText(std::string s);
+    void setTextColor(int r, int g, int b);
     const std::string & getText();
 
     void setColor(SDL_Color c);
+    void setColor(int r, int g, int b);
     void setColor(int r, int g, int b, int a);
 
     void setCoor(int x, int y, int w, int h);
@@ -82,6 +84,7 @@ public:
     SDL_Rect getCoor();
 
     void setBorder(int w, int r, int g, int b, int a);
+    void setBorderColor(int r, int g, int b);
 
     void FillWithColor();
     void FillWithColor(SDL_Color c);

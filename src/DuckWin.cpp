@@ -1,3 +1,5 @@
+#include "InputBox.hpp"
+#include "SYSTEM.hpp"
 #include <DuckWin.hpp>
 
 MyWindow::MyWindow()
@@ -386,6 +388,15 @@ bool MyWindow::isInputButton(Button *& but)
         UImutex.unlock();
         return true;
     }
+    if(but->getAction() == "done setting")
+    {
+        UImutex.lock();
+        DT->custom(input->getText(0), input->getText(1), input->getText(2), input->getText(3));
+        delete input;
+        input = nullptr;
+        UImutex.unlock();
+        return true;
+    }
     if(but->getAction() == "done open")
     {
         UImutex.lock();
@@ -412,6 +423,50 @@ bool MyWindow::isInputButton(Button *& but)
         input->hide();
         DT->create(input->getText(0));
         DT->show();
+        UImutex.unlock();
+        return true;
+    }
+    if(but->getAction() == "random color 1")
+    {
+        UImutex.lock();
+        std::string r = std::to_string(RANDOM::getInt(0, 255));
+        std::string g = std::to_string(RANDOM::getInt(0, 255));
+        std::string b = std::to_string(RANDOM::getInt(0, 255));
+        input->setFocus(0);
+        input->setInput(r + ", " + g + ", " + b);
+        UImutex.unlock();
+        return true;
+    }
+    if(but->getAction() == "random color 2")
+    {
+        UImutex.lock();
+        std::string r = std::to_string(RANDOM::getInt(0, 255));
+        std::string g = std::to_string(RANDOM::getInt(0, 255));
+        std::string b = std::to_string(RANDOM::getInt(1, 255));
+        input->setFocus(1);
+        input->setInput(r + ", " + g + ", " + b);
+        UImutex.unlock();
+        return true;
+    }
+    if(but->getAction() == "random color 3")
+    {
+        UImutex.lock();
+        std::string r = std::to_string(RANDOM::getInt(0, 255));
+        std::string g = std::to_string(RANDOM::getInt(0, 255));
+        std::string b = std::to_string(RANDOM::getInt(1, 255));
+        input->setFocus(2);
+        input->setInput(r + ", " + g + ", " + b);
+        UImutex.unlock();
+        return true;
+    }
+    if(but->getAction() == "random color 4")
+    {
+        UImutex.lock();
+        std::string r = std::to_string(RANDOM::getInt(0, 255));
+        std::string g = std::to_string(RANDOM::getInt(0, 255));
+        std::string b = std::to_string(RANDOM::getInt(1, 255));
+        input->setFocus(3);
+        input->setInput(r + ", " + g + ", " + b);
         UImutex.unlock();
         return true;
     }
@@ -553,6 +608,20 @@ void MyWindow::mousePress(int x, int y)
         but = top()->mousePressedButton(x, y);
     }
     if(but == nullptr) return ;
+
+    if(but->getAction() == "setting")
+    {
+        UImutex.lock();
+        json mem;
+        readJson(GLOBAL::AtrbInputBox + "setting.json", mem);
+        if(input != nullptr) delete input;
+        input = new InputBox;
+        input->setRender(renderer);
+        input->init(mem);
+        UImutex.unlock();
+        return ;
+    }
+
     if(but->getAction() == "sound on") 
     {
         turnOn = true;
@@ -572,10 +641,22 @@ void MyWindow::mousePress(int x, int y)
     if(soundOn) SDL_Delay(350);
     else SDL_Delay(100);
     soundMutex.lock();
-    if(isChangeScreen(but)) return ;
-    if(isDToperator(but)) return;
-    if(isInputButton(but)) return ;
-    if(isPlayButton(but)) return ;
+    if(isChangeScreen(but)) 
+    {
+        return ;
+    }
+    if(isDToperator(but)) 
+    {
+        return;
+    }
+    if(isInputButton(but)) 
+    {
+        return ;
+    }
+    if(isPlayButton(but))
+    {
+        return ;
+    }
 }
 
 

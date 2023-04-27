@@ -46,6 +46,7 @@ void readJson(const char* const& link, json &mem);
 void readjson(const char* const& dir, const char* const& name, json &mem);
 void readJson(std::string s, json &mem);
 int getFirstInt(std::string s);
+void getColor(std::string s, int &r, int &g, int &b);
 
 bool diff(double a, double b);
 #endif

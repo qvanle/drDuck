@@ -1,0 +1,352 @@
+{
+    "rect":
+    {
+        "w": 646,
+        "h": 410,
+        "x": 157,
+        "y": 43
+    },
+    "color":
+    {
+        "r": 60,
+        "g": 60,
+        "b": 60,
+        "a": 235
+    },
+    "border": 
+    {
+        "width": 5,
+        "color": 
+        {
+            "r": 175,
+            "b": 175,
+            "g": 175,
+            "a": 125
+        }
+    },
+    "fill with color": true,
+
+    "visible": true,
+
+    "title":
+    {
+        "text": "SETTING",
+        "rect": 
+        {
+            "w": 220,
+            "h": 52,
+            "x": 370,
+            "y": 65
+        },
+        "color": 
+        {
+            "r": 127,
+            "g": 96,
+            "b": 127,
+            "a": 255
+        },
+        "font": 
+        {
+            "name": "Atomed.ttf",
+            "size": 30,
+            "color":
+            {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+
+        "fill with color": true,
+        "visible": true
+    },
+    "texts":
+    [
+        {
+            "rect": 
+            {
+                "x": 200,
+                "y": 130,
+                "w": 220,
+                "h": 40
+            },
+            "visible": true,
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 18,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "Background color (R, G, B):"
+        },
+        {
+            "rect": 
+            {
+                "x": 210,
+                "y": 185,
+                "w": 220,
+                "h": 40
+            },
+            "visible": true,
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 18,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "Elements color (R, G, B):"
+        },
+        {
+            "rect": 
+            {
+                "x": 225,
+                "y": 240,
+                "w": 220,
+                "h": 40
+            },
+            "visible": true,
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 18,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "Texts color (R, G, B):"
+        },
+        {
+            "rect": 
+            {
+                "x": 220,
+                "y": 295,
+                "w": 220,
+                "h": 40
+            },
+            "visible": true,
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 18,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "Border color (R, G, B):"
+        }
+
+
+    ],
+    "buttons":
+    [
+        {
+            "name": "exit",
+            "rect": 
+            {
+                "x": 748,
+                "y": 58 
+            },
+            "action": "hide input"
+        },
+        {
+            "name": "done",
+            "rect": 
+            {
+                "x": 405,
+                "y": 370
+            }, 
+            "action": "done setting"
+        },
+        {
+            "name": "random",
+            "rect": 
+            {
+                "x": 680,
+                "y": 128 
+            },
+            "action": "random color 1"
+        },
+        {
+            "name": "random",
+            "rect": 
+            {
+                "x": 680,
+                "y": 183
+            },
+            "action": "random color 2"
+        },
+        {
+            "name": "random",
+            "rect": 
+            {
+                "x": 680,
+                "y": 238
+            },
+            "action": "random color 3"
+        },
+        {
+            "name": "random",
+            "rect": 
+            {
+                "x": 680,
+                "y": 293
+            },
+            "action": "random color 4"
+        }
+    ],
+    "input":
+    [
+        {
+            "rect": 
+            {
+                "w": 200,
+                "h": 40,
+                "x": 450,
+                "y": 128
+            },
+            "color":
+            {
+                "r": 127,
+                "g": 96,
+                "b": 127,
+                "a": 255
+
+            },
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 24,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "200, 155, 200",
+            "fill with color": true,
+            "visible": true
+        },
+        {
+            "rect": 
+            {
+                "w": 200,
+                "h": 40,
+                "x": 450,
+                "y": 183
+            },
+            "color":
+            {
+                "r": 127,
+                "g": 96,
+                "b": 127,
+                "a": 255
+
+            },
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 24,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "125, 122, 220",
+            "fill with color": true,
+            "visible": true
+        },
+        {
+            "rect": 
+            {
+                "w": 200,
+                "h": 40,
+                "x": 450,
+                "y": 238
+            },
+            "color":
+            {
+                "r": 127,
+                "g": 96,
+                "b": 127,
+                "a": 255
+
+            },
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 24,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "255, 255, 255",
+            "fill with color": true,
+            "visible": true
+        },
+        {
+            "rect": 
+            {
+                "w": 200,
+                "h": 40,
+                "x": 450,
+                "y": 293
+            },
+            "color":
+            {
+                "r": 127,
+                "g": 96,
+                "b": 127,
+                "a": 255
+
+            },
+            "font": 
+            {
+                "name": "Atomed.ttf",
+                "size": 24,
+                "color":
+                {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 255
+                }
+            },
+            "text": "200, 200, 225",
+            "fill with color": true,
+            "visible": true
+        }
+    ]
+}
+
+
+

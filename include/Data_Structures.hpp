@@ -103,6 +103,7 @@ public:
     void update(std::string s1, std::string s2, std::mutex & m);
     void search(std::string s2, std::mutex & m);
 
+    void custom(std::string s1, std::string s2, std::string s3, std::string s4);
 };
 
 

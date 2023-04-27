@@ -117,3 +117,26 @@ int getFirstInt(std::string s)
     }
     return res;
 }
+
+void getColor(std::string s, int &r, int &g, int &b)
+{
+    int i = 0;
+    r = 0;
+    g = 0;
+    b = 0;
+
+    while(i < (int)s.size() && !isdigit(s[i]))
+        i++;
+    while(i < (int) s.size() && isdigit(s[i]))
+        r = r * 10 + s[i++] - '0';
+    
+    while(i < (int)s.size() && !isdigit(s[i]))
+        i++;
+    while(i < (int) s.size() && isdigit(s[i]))
+        g = g * 10 + s[i++] - '0';
+
+    while(i < (int)s.size() && !isdigit(s[i]))
+        i++;
+    while(i < (int) s.size() && isdigit(s[i]))
+        b = b * 10 + s[i++] - '0';
+}

@@ -2,6 +2,7 @@
 #include "SDL_scancode.h"
 #include "SDL_timer.h"
 #include "SYSTEM.hpp"
+#include "Sketch.hpp"
 #include <Data_Structures.hpp>
 #include <ios>
 #include <iterator>
@@ -2199,5 +2200,35 @@ void Data_Structures::initSinglyLinkedList(const json & mem)
             elements[i + capacity]->addX(i * dx);
             elements[i + capacity]->addY(dy);
         }
+    }
+}
+
+void Data_Structures::custom(std::string s1, std::string s2, std::string s3, std::string s4)
+{
+    int r, g, b;
+    getColor(s1, r, g, b);
+    Sketch::setColor(r, g, b);
+    Sketch::FillWithColor();
+
+    getColor(s2, r, g, b);
+
+    for(int i = 0; i < elements.size(); i++)
+    {
+        elements[i]->setColor(r, g, b);
+    }
+
+    getColor(s3, r, g, b);
+
+    for(int i = 0; i < elements.size(); i++)
+    {
+        elements[i]->setTextColor(r, g, b);
+    }
+
+    getColor(s4,r, g, b);
+
+    for(int i = 0; i < elements.size(); i++)
+    {
+        elements[i]->setBorderColor(r, g, b);
+        elements[i]->FillWithColor();
     }
 }
