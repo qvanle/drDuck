@@ -1,0 +1,27 @@
+{
+    "name": "all",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        },
+        {
+            "name": "1",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "w": 40,
+        "h": 40
+    },
+    "visible": true
+}
+
+
+
+
+
+
+

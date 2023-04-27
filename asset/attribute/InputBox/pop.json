@@ -111,11 +111,22 @@
             "name": "random",
             "rect": 
             {
-                "x": 630,
+                "x": 680,
                 "y": 210 
             },
             "action": "random position"
+        },
+        {
+            "name": "all",
+            "rect": 
+            {
+                "x": 630,
+                "y": 210 
+            },
+            "visible": true,
+            "action": "all"
         }
+
     ],
     "input":
     [

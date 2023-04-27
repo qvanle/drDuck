@@ -544,6 +544,14 @@ bool MyWindow::isInputButton(Button *& but)
         UImutex.unlock();
         return true;
     }
+    if(but->getAction() == "all")
+    {
+        UImutex.lock();
+        input->setFocus(0);
+        input->setInput(std::to_string(DT->size()));
+        UImutex.unlock();
+        return true;
+    }
     if(but->getAction() == "random value")
     {
         UImutex.lock();

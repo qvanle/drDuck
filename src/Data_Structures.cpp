@@ -2046,6 +2046,7 @@ void Data_Structures::StackPush(int value, std::mutex & m)
         script->unHighlighLine(2);
         script->highlightLine(4);
         elements[0]->setText(std::to_string(value));
+        elements[capacity - 1]->hide();
         num++;
         m.unlock();
 
@@ -2055,7 +2056,6 @@ void Data_Structures::StackPush(int value, std::mutex & m)
 
         m.lock();
         script->unHighlighLine(4);
-        elements[capacity - 1]->hide();
         m.unlock();
         return ;
     }
@@ -2091,6 +2091,83 @@ void Data_Structures::StackPush(int value, std::mutex & m)
 
 void Data_Structures::QueuePush(int value, std::mutex & m)
 {
+    m.lock();
+    for(int i = 0; i < num; i++) elements[i]->show();
+    
+    json mem;
+    readJson(GLOBAL::AtrbScript + "QueueInsert.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(1);
+    script->highlightLine(2);
+    elements[capacity]->show();
+    elements[capacity]->setText(std::to_string(value));
+    m.unlock();
+    
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+    
+    if(num == 0)
+    {
+        m.lock();
+        script->unHighlighLine(1);
+        script->unHighlighLine(2);
+        script->highlightLine(4);
+        elements[0]->setText(std::to_string(value));
+        elements[capacity]->hide();
+        num++;
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(4);
+        m.unlock();
+        return ;
+    }
+
+    m.lock();
+    script->unHighlighLine(1);
+    script->unHighlighLine(2);
+    script->highlightLine(6);
+    connection[capacity] = 0;
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(6);
+    script->highlightLine(7);
+    connection[capacity] = -1;
+    num++;
+    for(int i = num; i > 0; i--)
+        elements[i]->setText(elements[i - 1]->getText());
+    elements[0]->setText(std::to_string(value));
+    elements[capacity]->hide();
+    m.unlock();
+    
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+    
+    m.lock();
+    script->unHighlighLine(7);
+    m.unlock();
 }
 
 
@@ -2107,6 +2184,75 @@ void Data_Structures::pop(std::string s, std::mutex & m)
 
 void Data_Structures::QueuePop(int value, std::mutex & m)
 {
+    m.lock();
+    for(int i = 0; i < num; i++) elements[i]->show();
+    for(int i = num; i < elements.size(); i++)
+        elements[i]->hide();
+
+    json mem;
+    readJson(GLOBAL::AtrbScript + "QueuePop.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(1);
+    m.unlock();
+
+    while(value-- && num > 0)
+    {
+        m.lock();
+        script->highlightLine(2);
+        script->highlightLine(3);
+        elements[0]->FillWithColor({155, 10, 10, 255});
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(2);
+        script->unHighlighLine(3);
+        script->highlightLine(4);
+        elements[1]->FillWithColor({10, 155, 10, 255});
+        connection[0] = -1;
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(4);
+        script->highlightLine(5);
+        connection[0] = 1;
+        elements[0]->FillWithColor();
+        elements[1]->FillWithColor();
+        for(int i = 0; i + 1 < num; i++)
+            elements[i]->setText(elements[i + 1]->getText());
+        elements[num - 1]->hide();
+        num--;
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(5);
+        m.unlock();
+    }
+    m.lock();
+    script->unHighlighLine(1);
+    m.unlock();
 }
 
 void Data_Structures::StackPop(int value, std::mutex & m)
@@ -2429,7 +2575,7 @@ void Data_Structures::initStack(const json& mem)
 
 void Data_Structures::initQueue(const json& mem)
 {
-    initDoublyLinkedList(mem);
+    initSinglyLinkedList(mem);
     type = 7;
 }
 

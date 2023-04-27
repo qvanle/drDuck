@@ -1,5 +1,5 @@
 {
-    "name": "Queue.json",
+    "name": "DynamicArray.json",
     "visible": true,
     "elements":
     [
@@ -11,3 +11,4 @@
         "6"
     ]
 }
+
