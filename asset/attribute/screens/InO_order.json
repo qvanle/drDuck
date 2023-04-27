@@ -41,7 +41,13 @@
                 {
                     "x": 620,
                     "y": 295
-                }
+                },
+                "action": "change screen",
+                "msg": "working.json",
+                "arg":
+                [
+                    "Stack.json"
+                ]
             },
             { 
                 "name": "queue",
@@ -49,7 +55,13 @@
                 {
                     "x": 620,
                     "y": 385
-                }
+                },
+                "action": "change screen",
+                "msg": "working.json",
+                "arg":
+                [
+                    "Queue.json"
+                ]
             },
             {
                 "name": "previous",

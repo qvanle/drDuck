@@ -151,6 +151,20 @@ bool MyWindow::isChangeScreen(Button *& but, const json &mem)
                 json mem;
                 readJson(GLOBAL::AtrbDT + type, mem);
                 DT->init(mem);
+            }else if(type == "Stack.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "Queue.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
             }else if(DT != nullptr) 
             {
                 delete DT;
@@ -243,6 +257,20 @@ bool MyWindow::isChangeScreen(Button *& but)
                 json mem;
                 readJson(GLOBAL::AtrbDT + type, mem);
                 DT->init(mem);
+            }else if(type == "Stack.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
+            }else if(type == "Queue.json")
+            {
+                DT = new Data_Structures;
+                DT->setRender(renderer);
+                json mem;
+                readJson(GLOBAL::AtrbDT + type, mem);
+                DT->init(mem);
             }else if(DT != nullptr) 
             {
                 delete DT;
@@ -304,7 +332,9 @@ bool MyWindow::isDToperator(Button *& but)
         }
 
         json mem;
-        readJson(GLOBAL::AtrbInputBox + "delete.json", mem);
+        if(DT != nullptr && (DT->getType() == 6 || DT->getType() == 7)) 
+            readJson(GLOBAL::AtrbInputBox + "pop.json", mem);
+        else readJson(GLOBAL::AtrbInputBox + "delete.json", mem);
         input = new InputBox;
         input->setRender(renderer);
         input->init(mem);
@@ -363,7 +393,10 @@ bool MyWindow::isDToperator(Button *& but)
             input = nullptr;
         }
         json mem;
-        readJson(GLOBAL::AtrbInputBox + "insert.json", mem);
+        if(DT != nullptr && (DT->getType() == 6 || DT->getType() == 7)) 
+            readJson(GLOBAL::AtrbInputBox + "push.json", mem);
+        else 
+            readJson(GLOBAL::AtrbInputBox + "insert.json", mem);
         input = new InputBox;
         input->setRender(renderer);
         input->init(mem);
@@ -425,6 +458,24 @@ bool MyWindow::isInputButton(Button *& but)
         DT->show();
         UImutex.unlock();
         return true;
+    }
+    if(but->getAction() == "done push")
+    {
+        UImutex.lock();
+        input->hide();
+        std::string s = input->getText(1);
+        UImutex.unlock();
+        std::thread push(&Data_Structures::push, DT, s, std::ref(UImutex));
+        push.detach();
+    }
+    if(but->getAction() == "done pop")
+    {
+        UImutex.lock();
+        std::string s = input->getText(0);
+        input->hide();
+        UImutex.unlock();
+        std::thread pop(&Data_Structures::pop, DT, s, std::ref(UImutex));
+        pop.detach();
     }
     if(but->getAction() == "random color 1")
     {

@@ -1,12 +1,8 @@
-#include "SDL_assert.h"
-#include "SDL_scancode.h"
 #include "SDL_timer.h"
 #include "SYSTEM.hpp"
-#include "Sketch.hpp"
 #include <Data_Structures.hpp>
-#include <ios>
+#include <clocale>
 #include <iterator>
-#include <memory>
 
 int Data_Structures::size()
 {
@@ -68,6 +64,12 @@ void Data_Structures::init(const json & mem)
     }else if(name == "CircularLinkedList.json")
     {
         initCircularLinkedList(mem);
+    }else if(name == "Stack.json")
+    {
+        initStack(mem);
+    }else if(name == "Queue.json") 
+    {
+        initQueue(mem);
     }
     finish = true;
 }
@@ -388,6 +390,9 @@ void Data_Structures::DynamicArrayCreate(std::string s)
         elements[num++]->setText(temp);
         ite++;
     }
+
+    for(int i = num; i < elements.size(); i++)
+        elements[i]->hide();
 
     for(int i = 0; i < num; i++)
     {
@@ -1394,6 +1399,8 @@ void Data_Structures::create(std::string s)
     else if(type == 3) SinglyLinkedListCreate(s);
     else if(type == 4) DoublyLinkedListCreate(s);
     else if(type == 5) CircularLinkedListCreate(s);
+    else if(type == 6) StackCreate(s);
+    else if(type == 7) QueueCreate(s);
     finish = true;
 }
 
@@ -1990,6 +1997,187 @@ void Data_Structures::search(std::string s2, std::mutex &m)
     finish = true;
 }
 
+void Data_Structures::push(std::string s, std::mutex & m)
+{
+    if(num == capacity) return ;
+    finish = false;
+
+    int value = getFirstInt(s);
+    step = -1;
+    if(type == 6) StackPush(value, m);
+    else if(type == 7) QueuePush(value, m);
+    finish = true;
+}
+
+void Data_Structures::StackPush(int value, std::mutex & m)
+{
+    if(num == capacity) return ;
+    m.lock();
+    for(int i = 0; i < num; i++) elements[i]->show();
+    
+    json mem;
+    readJson(GLOBAL::AtrbScript + "StackInsert.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(1);
+    script->highlightLine(2);
+    elements[num - 1 + capacity]->show();
+    elements[num - 1 + capacity]->setText(std::to_string(value));
+    m.unlock();
+    
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+    
+    if(num == 0)
+    {
+        m.lock();
+        script->unHighlighLine(1);
+        script->unHighlighLine(2);
+        script->highlightLine(4);
+        elements[0]->setText(std::to_string(value));
+        num++;
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(4);
+        elements[capacity - 1]->hide();
+        m.unlock();
+        return ;
+    }
+
+    m.lock();
+    script->unHighlighLine(1);
+    script->unHighlighLine(2);
+    script->highlightLine(6);
+    connection[num - 1] = num - 1 + capacity;
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(6);
+    script->highlightLine(7);
+    connection[num - 1] = num;
+    elements[num]->setText(std::to_string(value));
+    elements[num - 1 + capacity]->hide();
+    num++;
+    m.unlock();
+    
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+    
+    m.lock();
+    script->unHighlighLine(7);
+    m.unlock();
+}
+
+void Data_Structures::QueuePush(int value, std::mutex & m)
+{
+}
+
+
+void Data_Structures::pop(std::string s, std::mutex & m)
+{
+    if(num == 0) return ;
+    finish = false;
+    step = -1;
+    int repeat = getFirstInt(s);
+    if(type == 6) StackPop(repeat, m);
+    else if(type == 7) QueuePop(repeat, m);
+    finish = true;
+}
+
+void Data_Structures::QueuePop(int value, std::mutex & m)
+{
+}
+
+void Data_Structures::StackPop(int value, std::mutex & m)
+{
+    m.lock();
+    for(int i = 0; i < num; i++) elements[i]->show();
+    for(int i = num; i < elements.size(); i++)
+        elements[i]->hide();
+
+    json mem;
+    readJson(GLOBAL::AtrbScript + "StackPop.json", mem);
+    script->loadObject(mem);
+    script->loadHighlight(mem["highlight"]);
+    script->show();
+    script->highlightLine(0);
+    m.unlock();
+
+    SDL_Delay(GLOBAL::WAITING / speed);
+    while(getStep() == 0);
+    decStep();
+
+    m.lock();
+    script->unHighlighLine(0);
+    script->highlightLine(1);
+    m.unlock();
+
+    while(value-- && num > 0)
+    {
+        m.lock();
+        script->highlightLine(2);
+        script->highlightLine(3);
+        elements[num - 1]->FillWithColor({155, 10, 10, 255});
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(2);
+        script->unHighlighLine(3);
+        script->highlightLine(4);
+        if(num >= 2) connection[num - 2] = -1;
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(4);
+        script->highlightLine(5);
+        elements[num - 1]->hide();
+        elements[num - 1]->FillWithColor();
+        num--;
+        m.unlock();
+
+        SDL_Delay(GLOBAL::WAITING / speed);
+        while(getStep() == 0);
+        decStep();
+
+        m.lock();
+        script->unHighlighLine(5);
+        m.unlock();
+    }
+    m.lock();
+    script->unHighlighLine(1);
+    m.unlock();
+}
+
+
 void Data_Structures::speedUp()
 {
     if(diff(speed, 3.0)) return ;
@@ -2005,7 +2193,7 @@ void Data_Structures::slowDown()
 void Data_Structures::nextStep()
 {
     stepMutex.lock();
-    step = 1;
+    if(step != -1) step = 1;
     stepMutex.unlock();
 }
 
@@ -2231,4 +2419,31 @@ void Data_Structures::custom(std::string s1, std::string s2, std::string s3, std
         elements[i]->setBorderColor(r, g, b);
         elements[i]->FillWithColor();
     }
+}
+
+void Data_Structures::initStack(const json& mem)
+{
+    initSinglyLinkedList(mem);
+    type = 6;
+}
+
+void Data_Structures::initQueue(const json& mem)
+{
+    initDoublyLinkedList(mem);
+    type = 7;
+}
+
+void Data_Structures::StackCreate(std::string s)
+{
+    DynamicArrayCreate(s);
+}
+
+void Data_Structures::QueueCreate(std::string s)
+{
+    DynamicArrayCreate(s);
+}
+
+int Data_Structures::getType()
+{
+    return type;
 }

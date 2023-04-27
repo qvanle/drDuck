@@ -78,6 +78,16 @@ private:
     void CircularLinkedListUpdate(int pos, int value, std::mutex & m);
     void CircularLinkedListSearch(int value, std::mutex &m);
 
+    void initStack(const json & mem);
+    void StackCreate(std::string s);
+    void StackPush(int value, std::mutex & m);
+    void StackPop(int value, std::mutex & m);
+
+    void initQueue(const json & mem);
+    void QueueCreate(std::string s);
+    void QueuePush(int value, std::mutex & m);
+    void QueuePop(int value, std::mutex & m);
+
 public:
 
     bool isFinish();
@@ -102,6 +112,10 @@ public:
     void erase(std::string s1, std::mutex & m);
     void update(std::string s1, std::string s2, std::mutex & m);
     void search(std::string s2, std::mutex & m);
+    void push(std::string s, std::mutex & m);
+    void pop(std::string s, std::mutex & m);
+
+    int getType();
 
     void custom(std::string s1, std::string s2, std::string s3, std::string s4);
 };

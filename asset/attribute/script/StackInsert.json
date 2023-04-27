@@ -1,0 +1,41 @@
+{
+    "name": "StackInsert",
+    "textures":
+    [
+        {
+            "name": "0",
+            "type": "png"
+        }
+    ],
+    "rect":
+    {
+        "x": 600,
+        "y": 240,
+        "w": 360,
+        "h": 305
+    },
+    "visible": true,
+    "highlight":
+    {
+        "size": 19,
+        "dx": 0,
+        "dy": 21,
+        "rect": 
+        {
+            "x": 612,
+            "y": 303, 
+            "w": 336, 
+            "h": 20
+        },
+        "visible": false,
+        "fill with color": true,
+        "color": 
+        {
+            "r": 220,
+            "g": 220,
+            "b": 220,
+            "a": 50
+        }
+    }
+}
+
