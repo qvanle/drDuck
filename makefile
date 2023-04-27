@@ -1,7 +1,7 @@
 all: clearscreen run
 	
 .PHONY: all run
-run: DEBUG 
+run: BUILD 
 	build/ShowMePls
 
 BUILD:
