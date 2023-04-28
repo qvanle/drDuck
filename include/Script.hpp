@@ -10,7 +10,7 @@
 class Script : public Sketch
 {
 private:
-    std::vector<Sketch*> lines;
+    vector<Sketch*> lines;
     Object* obj;
     SDL_Renderer* ren;
 public: 

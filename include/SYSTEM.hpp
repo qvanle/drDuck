@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <random>
 #include <filesystem>
+#include <vector.hpp>
 
 #include <nlohmann/json.hpp>
 

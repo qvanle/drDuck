@@ -16,7 +16,7 @@ class Display : public Object
 {
 private:
     SDL_Renderer * ren;
-    std::vector<Button*> buts;
+    vector<Button*> buts;
     bool status;
     int appear;
 public:

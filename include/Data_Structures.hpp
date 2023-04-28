@@ -14,7 +14,7 @@
 class Data_Structures : public Sketch
 {
 private: 
-    std::vector<Sketch*> elements;
+    vector<Sketch*> elements;
     int capacity;
     int num;
     int type;
@@ -27,7 +27,7 @@ private:
     bool circle;
 
     int lineFrom, lineDepth;
-    std::vector<int> connection;
+    vector<int> connection;
 
     Script* script;
     Object* arrowE,* arrowW,* arrowN,* arrowS;

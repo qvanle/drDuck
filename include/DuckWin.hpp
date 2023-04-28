@@ -31,7 +31,7 @@ class MyWindow
 
         SDL_Window* window;
         SDL_Renderer* renderer;
-        std::vector<Display*> screen;
+        vector<Display*> screen;
         void shutdown();
         void deleteScreen();
 

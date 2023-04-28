@@ -12,9 +12,9 @@ class InputBox: public Sketch
 private:
     SDL_Renderer* ren;
     Sketch* boxTitle;
-    std::vector<Sketch*> input;
-    std::vector<Sketch*> texts;
-    std::vector<Button*> buts;
+    vector<Sketch*> input;
+    vector<Sketch*> texts;
+    vector<Button*> buts;
     int focusOn;
 
 public:
