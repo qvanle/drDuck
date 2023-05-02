@@ -1748,7 +1748,7 @@ void Data_Structures::StaticArrayErase(int pos, std::mutex &m)
     m.unlock();
     SDL_Delay(300);
     num--;
-    for(int i = 0; i < num - 1; i++)
+    for(int i = pos ; i < num; i++)
     {
         m.lock();
         elements[i]->highlight();
