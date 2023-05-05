@@ -1,20 +1,28 @@
 \hypertarget{namespaceRANDOM}{}\doxysection{RANDOM Namespace Reference}
 \label{namespaceRANDOM}\index{RANDOM@{RANDOM}}
+
+
+store all randomize object  
+
+
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{namespaceRANDOM_a836ff180d736e431dec670026444dd98}{init}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em initialize random number generator \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespaceRANDOM_a8c1725ab3d1c7379cfdaea9fb6d1654d}{get\+Int}} (int l, int r)
-\item 
+\begin{DoxyCompactList}\small\item\em get random integer in range \mbox{[}l, r\mbox{]} \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespaceRANDOM_a240f689cdfbe1de7a847f700dbcb01d0}{get\+Double}} (double l, double r)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em get random double in range \mbox{[}l, r\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 std\+::mt19937 \mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf240}{rng}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em random number generator \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+store all randomize object 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{namespaceRANDOM_a240f689cdfbe1de7a847f700dbcb01d0}\label{namespaceRANDOM_a240f689cdfbe1de7a847f700dbcb01d0}} 
@@ -25,13 +33,24 @@ std\+::mt19937 \mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf24
 
 
 
-Definition at line 29 of file SYSTEM.\+cpp.
+get random double in range \mbox{[}l, r\mbox{]} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & double, left bound \\
+\hline
+{\em r} & double, right bound \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 84 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{30 \{}
-\DoxyCodeLine{31     \textcolor{keywordflow}{return} std::uniform\_real\_distribution<double> (l, r)(\mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf240}{rng}});}
-\DoxyCodeLine{32 \}}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86     \textcolor{keywordflow}{return} std::uniform\_real\_distribution<double> (l, r)(\mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf240}{rng}});}
+\DoxyCodeLine{87 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceRANDOM_a8c1725ab3d1c7379cfdaea9fb6d1654d}\label{namespaceRANDOM_a8c1725ab3d1c7379cfdaea9fb6d1654d}} 
@@ -42,13 +61,24 @@ Definition at line 29 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 24 of file SYSTEM.\+cpp.
+get random integer in range \mbox{[}l, r\mbox{]} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & interger, left bound \\
+\hline
+{\em r} & integer, right bound \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 75 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{25 \{}
-\DoxyCodeLine{26     \textcolor{keywordflow}{return} std::uniform\_int\_distribution<int> (l, r)(\mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf240}{rng}});}
-\DoxyCodeLine{27 \}}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \textcolor{keywordflow}{return} std::uniform\_int\_distribution<int> (l, r)(\mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf240}{rng}});}
+\DoxyCodeLine{78 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceRANDOM_a836ff180d736e431dec670026444dd98}\label{namespaceRANDOM_a836ff180d736e431dec670026444dd98}} 
@@ -59,13 +89,17 @@ Definition at line 24 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 19 of file SYSTEM.\+cpp.
+initialize random number generator 
+
+call this before using random 
+
+Definition at line 66 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{20 \{}
-\DoxyCodeLine{21     \mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf240}{rng}} = std::mt19937(std::chrono::steady\_clock::now().time\_since\_epoch().count());}
-\DoxyCodeLine{22 \}}
+\DoxyCodeLine{67 \{}
+\DoxyCodeLine{68     \mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf240}{rng}} = std::mt19937(std::chrono::steady\_clock::now().time\_since\_epoch().count());}
+\DoxyCodeLine{69 \}}
 
 \end{DoxyCode}
 
@@ -79,5 +113,9 @@ Definition at line 19 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 17 of file SYSTEM.\+cpp.
+random number generator 
+
+
+
+Definition at line 60 of file SYSTEM.\+cpp.
 

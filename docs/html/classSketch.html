@@ -1008,7 +1008,7 @@ Protected Member Functions</h2></td></tr>
 
 <p>init font from json </p>
 <p>if mem is not contain "font" key, do nothing</p>
-<p>get font file and combine with <a class="el" href="namespaceGLOBAL.html#a490a4d88702b315d3fb722da831114b5">GLOBAL::FontsFolder</a> to get full path of font file</p>
+<p>get font file and combine with <a class="el" href="namespaceGLOBAL.html#a490a4d88702b315d3fb722da831114b5" title="path to the folder that store all custom attribute of fonts">GLOBAL::FontsFolder</a> to get full path of font file</p>
 <p>source font from that path and source the size of the font</p>
 <p>if in "font" object contain "rect" key, get rect text</p>
 <p>if in "font" object contain "color" key, get color text</p>
@@ -1101,8 +1101,8 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        <a class="code" href="classSketch.html#ad70db15d37985b1e4e9c72f73aba738e">setText</a>(mem[<span class="stringliteral">&quot;font&quot;</span>][<span class="stringliteral">&quot;text&quot;</span>].get&lt;std::string&gt;());</div>
 <div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    }</div>
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;}</div>
-<div class="ttc" id="aSYSTEM_8hpp_html_a1f81fa7626d87f433f5e1bfe23f7d84a"><div class="ttname"><a href="SYSTEM_8hpp.html#a1f81fa7626d87f433f5e1bfe23f7d84a">combineLink</a></div><div class="ttdeci">char * combineLink(const char *dir, const char *name)</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00054">SYSTEM.cpp:54</a></div></div>
-<div class="ttc" id="anamespaceGLOBAL_html_a490a4d88702b315d3fb722da831114b5"><div class="ttname"><a href="namespaceGLOBAL.html#a490a4d88702b315d3fb722da831114b5">GLOBAL::FontsFolder</a></div><div class="ttdeci">const char * FontsFolder</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00010">SYSTEM.cpp:10</a></div></div>
+<div class="ttc" id="aSYSTEM_8hpp_html_a1f81fa7626d87f433f5e1bfe23f7d84a"><div class="ttname"><a href="SYSTEM_8hpp.html#a1f81fa7626d87f433f5e1bfe23f7d84a">combineLink</a></div><div class="ttdeci">char * combineLink(const char *dir, const char *name)</div><div class="ttdoc">combine a directory and a file to a full file name</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00135">SYSTEM.cpp:135</a></div></div>
+<div class="ttc" id="anamespaceGLOBAL_html_a490a4d88702b315d3fb722da831114b5"><div class="ttname"><a href="namespaceGLOBAL.html#a490a4d88702b315d3fb722da831114b5">GLOBAL::FontsFolder</a></div><div class="ttdeci">const char * FontsFolder</div><div class="ttdoc">path to the folder that store all custom attribute of fonts</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00032">SYSTEM.cpp:32</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1328,7 +1328,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;            SDL_Delay(time * 1000 - deltaTime);</div>
 <div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;    }</div>
 <div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;}</div>
-<div class="ttc" id="aSYSTEM_8hpp_html_a82aa2c691212111c6e0b7362267a9d9f"><div class="ttname"><a href="SYSTEM_8hpp.html#a82aa2c691212111c6e0b7362267a9d9f">diff</a></div><div class="ttdeci">bool diff(double a, double b)</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00100">SYSTEM.cpp:100</a></div></div>
+<div class="ttc" id="aSYSTEM_8hpp_html_a82aa2c691212111c6e0b7362267a9d9f"><div class="ttname"><a href="SYSTEM_8hpp.html#a82aa2c691212111c6e0b7362267a9d9f">diff</a></div><div class="ttdeci">bool diff(double a, double b)</div><div class="ttdoc">determine if a double is equal to another double</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00204">SYSTEM.cpp:204</a></div></div>
 <div class="ttc" id="aclassSketch_html_a52616ab5c6c79bc0e3c1596b4c06ada0"><div class="ttname"><a href="classSketch.html#a52616ab5c6c79bc0e3c1596b4c06ada0">Sketch::addY</a></div><div class="ttdeci">void addY(int y)</div><div class="ttdoc">set coordinate of sketch</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8cpp_source.html#l00229">Sketch.cpp:229</a></div></div>
 <div class="ttc" id="aclassSketch_html_a7b3c64deaabf2d06b41f681b084e8fbb"><div class="ttname"><a href="classSketch.html#a7b3c64deaabf2d06b41f681b084e8fbb">Sketch::setX</a></div><div class="ttdeci">void setX(int x)</div><div class="ttdoc">set coordinate of sketch</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8cpp_source.html#l00208">Sketch.cpp:208</a></div></div>
 <div class="ttc" id="aclassSketch_html_aad41b6dae0bec0ec575b874b8b689d67"><div class="ttname"><a href="classSketch.html#aad41b6dae0bec0ec575b874b8b689d67">Sketch::addX</a></div><div class="ttdeci">void addX(int x)</div><div class="ttdoc">set coordinate of sketch</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8cpp_source.html#l00218">Sketch.cpp:218</a></div></div>

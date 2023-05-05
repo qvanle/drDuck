@@ -14,9 +14,13 @@
 #include <vector.hpp>
 
 #include <nlohmann/json.hpp>
-
+/**
+ * @brief alternative name for nlohmann::json
+*/
 using json = nlohmann::json;
-
+/**
+ * @brief store all global variables
+*/
 namespace GLOBAL
 {
     extern const char* GraphicsFolder;
@@ -32,7 +36,9 @@ namespace GLOBAL
     extern const int WAITING;
     extern const std::string SoundFolder;
 }
-
+/**
+ * @brief store all randomize object
+*/
 namespace RANDOM 
 {
     extern std::mt19937 rng;

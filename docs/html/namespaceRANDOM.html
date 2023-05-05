@@ -90,22 +90,31 @@ $(document).ready(function(){initNavTree('namespaceRANDOM.html',''); initResizab
 <div class="title">RANDOM Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>store all randomize object  
+<a href="namespaceRANDOM.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a836ff180d736e431dec670026444dd98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceRANDOM.html#a836ff180d736e431dec670026444dd98">init</a> ()</td></tr>
+<tr class="memdesc:a836ff180d736e431dec670026444dd98"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize random number generator  <a href="namespaceRANDOM.html#a836ff180d736e431dec670026444dd98">More...</a><br /></td></tr>
 <tr class="separator:a836ff180d736e431dec670026444dd98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c1725ab3d1c7379cfdaea9fb6d1654d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceRANDOM.html#a8c1725ab3d1c7379cfdaea9fb6d1654d">getInt</a> (int l, int r)</td></tr>
+<tr class="memdesc:a8c1725ab3d1c7379cfdaea9fb6d1654d"><td class="mdescLeft">&#160;</td><td class="mdescRight">get random integer in range [l, r]  <a href="namespaceRANDOM.html#a8c1725ab3d1c7379cfdaea9fb6d1654d">More...</a><br /></td></tr>
 <tr class="separator:a8c1725ab3d1c7379cfdaea9fb6d1654d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a240f689cdfbe1de7a847f700dbcb01d0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceRANDOM.html#a240f689cdfbe1de7a847f700dbcb01d0">getDouble</a> (double l, double r)</td></tr>
+<tr class="memdesc:a240f689cdfbe1de7a847f700dbcb01d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">get random double in range [l, r]  <a href="namespaceRANDOM.html#a240f689cdfbe1de7a847f700dbcb01d0">More...</a><br /></td></tr>
 <tr class="separator:a240f689cdfbe1de7a847f700dbcb01d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a2d07c20dabcfb422b1f4f0fc22cdf240"><td class="memItemLeft" align="right" valign="top">std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">rng</a></td></tr>
+<tr class="memdesc:a2d07c20dabcfb422b1f4f0fc22cdf240"><td class="mdescLeft">&#160;</td><td class="mdescRight">random number generator  <a href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">More...</a><br /></td></tr>
 <tr class="separator:a2d07c20dabcfb422b1f4f0fc22cdf240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>store all randomize object </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a240f689cdfbe1de7a847f700dbcb01d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a240f689cdfbe1de7a847f700dbcb01d0">&#9670;&nbsp;</a></span>getDouble()</h2>
 
@@ -132,11 +141,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SYSTEM_8cpp_source.html#l00029">29</a> of file <a class="el" href="SYSTEM_8cpp_source.html">SYSTEM.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> std::uniform_real_distribution&lt;double&gt; (l, r)(<a class="code" href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">rng</a>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="ttc" id="anamespaceRANDOM_html_a2d07c20dabcfb422b1f4f0fc22cdf240"><div class="ttname"><a href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">RANDOM::rng</a></div><div class="ttdeci">std::mt19937 rng</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00017">SYSTEM.cpp:17</a></div></div>
+<p>get random double in range [l, r] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>double, left bound </td></tr>
+    <tr><td class="paramname">r</td><td>double, right bound </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="SYSTEM_8cpp_source.html#l00084">84</a> of file <a class="el" href="SYSTEM_8cpp_source.html">SYSTEM.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> std::uniform_real_distribution&lt;double&gt; (l, r)(<a class="code" href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">rng</a>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="ttc" id="anamespaceRANDOM_html_a2d07c20dabcfb422b1f4f0fc22cdf240"><div class="ttname"><a href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">RANDOM::rng</a></div><div class="ttdeci">std::mt19937 rng</div><div class="ttdoc">random number generator</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00060">SYSTEM.cpp:60</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -166,10 +184,19 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SYSTEM_8cpp_source.html#l00024">24</a> of file <a class="el" href="SYSTEM_8cpp_source.html">SYSTEM.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> std::uniform_int_distribution&lt;int&gt; (l, r)(<a class="code" href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">rng</a>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<p>get random integer in range [l, r] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>interger, left bound </td></tr>
+    <tr><td class="paramname">r</td><td>integer, right bound </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="SYSTEM_8cpp_source.html#l00075">75</a> of file <a class="el" href="SYSTEM_8cpp_source.html">SYSTEM.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> std::uniform_int_distribution&lt;int&gt; (l, r)(<a class="code" href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">rng</a>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -188,10 +215,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SYSTEM_8cpp_source.html#l00019">19</a> of file <a class="el" href="SYSTEM_8cpp_source.html">SYSTEM.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">rng</a> = std::mt19937(std::chrono::steady_clock::now().time_since_epoch().count());</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<p>initialize random number generator </p>
+<p>call this before using random </p>
+
+<p class="definition">Definition at line <a class="el" href="SYSTEM_8cpp_source.html#l00066">66</a> of file <a class="el" href="SYSTEM_8cpp_source.html">SYSTEM.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="namespaceRANDOM.html#a2d07c20dabcfb422b1f4f0fc22cdf240">rng</a> = std::mt19937(std::chrono::steady_clock::now().time_since_epoch().count());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -216,7 +246,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SYSTEM_8cpp_source.html#l00017">17</a> of file <a class="el" href="SYSTEM_8cpp_source.html">SYSTEM.cpp</a>.</p>
+<p>random number generator </p>
+
+<p class="definition">Definition at line <a class="el" href="SYSTEM_8cpp_source.html#l00060">60</a> of file <a class="el" href="SYSTEM_8cpp_source.html">SYSTEM.cpp</a>.</p>
 
 </div>
 </div>

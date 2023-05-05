@@ -1036,8 +1036,8 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">delete</span> [] link;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 <div class="ttc" id="aButton_8hpp_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="Button_8hpp_source.html#l00013">Button.hpp:13</a></div></div>
-<div class="ttc" id="aSYSTEM_8hpp_html_a1f81fa7626d87f433f5e1bfe23f7d84a"><div class="ttname"><a href="SYSTEM_8hpp.html#a1f81fa7626d87f433f5e1bfe23f7d84a">combineLink</a></div><div class="ttdeci">char * combineLink(const char *dir, const char *name)</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00054">SYSTEM.cpp:54</a></div></div>
-<div class="ttc" id="aSYSTEM_8hpp_html_add498b5bd70219e44845487e69eb6daa"><div class="ttname"><a href="SYSTEM_8hpp.html#add498b5bd70219e44845487e69eb6daa">combineName</a></div><div class="ttdeci">char * combineName(const char *name, const char *type)</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00034">SYSTEM.cpp:34</a></div></div>
+<div class="ttc" id="aSYSTEM_8hpp_html_a1f81fa7626d87f433f5e1bfe23f7d84a"><div class="ttname"><a href="SYSTEM_8hpp.html#a1f81fa7626d87f433f5e1bfe23f7d84a">combineLink</a></div><div class="ttdeci">char * combineLink(const char *dir, const char *name)</div><div class="ttdoc">combine a directory and a file to a full file name</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00135">SYSTEM.cpp:135</a></div></div>
+<div class="ttc" id="aSYSTEM_8hpp_html_add498b5bd70219e44845487e69eb6daa"><div class="ttname"><a href="SYSTEM_8hpp.html#add498b5bd70219e44845487e69eb6daa">combineName</a></div><div class="ttdeci">char * combineName(const char *name, const char *type)</div><div class="ttdoc">combine a name and a extension to a full file name</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00102">SYSTEM.cpp:102</a></div></div>
 <div class="ttc" id="aclassButton_html_ad84a76b2601593c76ff6c2c079d166e9"><div class="ttname"><a href="classButton.html#ad84a76b2601593c76ff6c2c079d166e9">Button::init</a></div><div class="ttdeci">void init(const char *name)</div><div class="ttdef"><b>Definition:</b> <a href="Button_8cpp_source.html#l00026">Button.cpp:26</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -1062,7 +1062,7 @@ Protected Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classButton.html#ad84a76b2601593c76ff6c2c079d166e9">init</a>(<a class="code" href="namespaceGLOBAL.html#a5df186de50f9aaf1e4e6de2edcc5d60c">GLOBAL::AtrbButtons</a>, name);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="ttc" id="anamespaceGLOBAL_html_a5df186de50f9aaf1e4e6de2edcc5d60c"><div class="ttname"><a href="namespaceGLOBAL.html#a5df186de50f9aaf1e4e6de2edcc5d60c">GLOBAL::AtrbButtons</a></div><div class="ttdeci">const char * AtrbButtons</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00009">SYSTEM.cpp:9</a></div></div>
+<div class="ttc" id="anamespaceGLOBAL_html_a5df186de50f9aaf1e4e6de2edcc5d60c"><div class="ttname"><a href="namespaceGLOBAL.html#a5df186de50f9aaf1e4e6de2edcc5d60c">GLOBAL::AtrbButtons</a></div><div class="ttdeci">const char * AtrbButtons</div><div class="ttdoc">path to the folder that store all custom attribute of buttons</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00028">SYSTEM.cpp:28</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1336,7 +1336,7 @@ Protected Member Functions</h2></td></tr>
 
 <p>init font from json </p>
 <p>if mem is not contain "font" key, do nothing</p>
-<p>get font file and combine with <a class="el" href="namespaceGLOBAL.html#a490a4d88702b315d3fb722da831114b5">GLOBAL::FontsFolder</a> to get full path of font file</p>
+<p>get font file and combine with <a class="el" href="namespaceGLOBAL.html#a490a4d88702b315d3fb722da831114b5" title="path to the folder that store all custom attribute of fonts">GLOBAL::FontsFolder</a> to get full path of font file</p>
 <p>source font from that path and source the size of the font</p>
 <p>if in "font" object contain "rect" key, get rect text</p>
 <p>if in "font" object contain "color" key, get color text</p>
@@ -1430,7 +1430,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    }</div>
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;}</div>
 <div class="ttc" id="aclassSketch_html_ad70db15d37985b1e4e9c72f73aba738e"><div class="ttname"><a href="classSketch.html#ad70db15d37985b1e4e9c72f73aba738e">Sketch::setText</a></div><div class="ttdeci">void setText(std::string s)</div><div class="ttdoc">set text to be s</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8cpp_source.html#l00124">Sketch.cpp:124</a></div></div>
-<div class="ttc" id="anamespaceGLOBAL_html_a490a4d88702b315d3fb722da831114b5"><div class="ttname"><a href="namespaceGLOBAL.html#a490a4d88702b315d3fb722da831114b5">GLOBAL::FontsFolder</a></div><div class="ttdeci">const char * FontsFolder</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00010">SYSTEM.cpp:10</a></div></div>
+<div class="ttc" id="anamespaceGLOBAL_html_a490a4d88702b315d3fb722da831114b5"><div class="ttname"><a href="namespaceGLOBAL.html#a490a4d88702b315d3fb722da831114b5">GLOBAL::FontsFolder</a></div><div class="ttdeci">const char * FontsFolder</div><div class="ttdoc">path to the folder that store all custom attribute of fonts</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00032">SYSTEM.cpp:32</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1773,7 +1773,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <a class="code" href="classObject.html#a95816b2bfea04b5322378b48c866c140">setY</a>(y);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <a class="code" href="classSketch.html#aee998636e2f64fea8020cc53983754d2">render</a>(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
-<div class="ttc" id="aSYSTEM_8hpp_html_a82aa2c691212111c6e0b7362267a9d9f"><div class="ttname"><a href="SYSTEM_8hpp.html#a82aa2c691212111c6e0b7362267a9d9f">diff</a></div><div class="ttdeci">bool diff(double a, double b)</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00100">SYSTEM.cpp:100</a></div></div>
+<div class="ttc" id="aSYSTEM_8hpp_html_a82aa2c691212111c6e0b7362267a9d9f"><div class="ttname"><a href="SYSTEM_8hpp.html#a82aa2c691212111c6e0b7362267a9d9f">diff</a></div><div class="ttdeci">bool diff(double a, double b)</div><div class="ttdoc">determine if a double is equal to another double</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00204">SYSTEM.cpp:204</a></div></div>
 <div class="ttc" id="aclassObject_html_a2788cb89a69545981a55959bc8003c1d"><div class="ttname"><a href="classObject.html#a2788cb89a69545981a55959bc8003c1d">Object::setX</a></div><div class="ttdeci">void setX(int x)</div><div class="ttdef"><b>Definition:</b> <a href="Object_8cpp_source.html#l00072">Object.cpp:72</a></div></div>
 <div class="ttc" id="aclassObject_html_a2b95a422d8af3ba3e8a24e3d0b1b1052"><div class="ttname"><a href="classObject.html#a2b95a422d8af3ba3e8a24e3d0b1b1052">Object::addY</a></div><div class="ttdeci">void addY(int k)</div><div class="ttdef"><b>Definition:</b> <a href="Object_8cpp_source.html#l00225">Object.cpp:225</a></div></div>
 <div class="ttc" id="aclassObject_html_a4e60a9d57998ae3257dd22d646a47691"><div class="ttname"><a href="classObject.html#a4e60a9d57998ae3257dd22d646a47691">Object::addX</a></div><div class="ttdeci">void addX(int k)</div><div class="ttdef"><b>Definition:</b> <a href="Object_8cpp_source.html#l00220">Object.cpp:220</a></div></div>
@@ -2789,7 +2789,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">delete</span> [] FolderName;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
 <div class="ttc" id="aclassObject_html_a739c8034c25e913916390bceed2ceb40"><div class="ttname"><a href="classObject.html#a739c8034c25e913916390bceed2ceb40">Object::clearTextures</a></div><div class="ttdeci">void clearTextures()</div><div class="ttdef"><b>Definition:</b> <a href="Object_8cpp_source.html#l00164">Object.cpp:164</a></div></div>
-<div class="ttc" id="anamespaceGLOBAL_html_ad75dd09e451ef5558589a16318a45e73"><div class="ttname"><a href="namespaceGLOBAL.html#ad75dd09e451ef5558589a16318a45e73">GLOBAL::GraphicsFolder</a></div><div class="ttdeci">const char * GraphicsFolder</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00003">SYSTEM.cpp:3</a></div></div>
+<div class="ttc" id="anamespaceGLOBAL_html_ad75dd09e451ef5558589a16318a45e73"><div class="ttname"><a href="namespaceGLOBAL.html#ad75dd09e451ef5558589a16318a45e73">GLOBAL::GraphicsFolder</a></div><div class="ttdeci">const char * GraphicsFolder</div><div class="ttdoc">path to the folder that store all graphics</div><div class="ttdef"><b>Definition:</b> <a href="SYSTEM_8cpp_source.html#l00006">SYSTEM.cpp:6</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

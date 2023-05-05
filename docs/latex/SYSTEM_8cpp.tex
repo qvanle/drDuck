@@ -5,21 +5,21 @@
 \begin{DoxyCompactItemize}
 \item 
 char $\ast$ \mbox{\hyperlink{SYSTEM_8cpp_add498b5bd70219e44845487e69eb6daa}{combine\+Name}} (const char $\ast$name, const char $\ast$type)
-\item 
+\begin{DoxyCompactList}\small\item\em combine a name and a extension to a full file name \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{SYSTEM_8cpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combine\+Link}} (const char $\ast$dir, const char $\ast$name)
-\item 
+\begin{DoxyCompactList}\small\item\em combine a directory and a file to a full file name \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}{read\+Json}} (std\+::string s, \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
-\item 
+\begin{DoxyCompactList}\small\item\em opean a json file which path is string s and store it in mem \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{SYSTEM_8cpp_a16fb2008390acdb451a7587c3c61fe84}{read\+Json}} (const char $\ast$const \&link, \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
-\item 
+\begin{DoxyCompactList}\small\item\em opean a json file which path is string s and store it in mem \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{SYSTEM_8cpp_aa0ab0bb9519f44724cabe0ff96673bde}{readjson}} (const char $\ast$const \&dir, const char $\ast$const \&name, \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
-\item 
+\begin{DoxyCompactList}\small\item\em opean a json file which path is string dir and file name is name. Store it in mem \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{SYSTEM_8cpp_a82aa2c691212111c6e0b7362267a9d9f}{diff}} (double a, double b)
-\item 
+\begin{DoxyCompactList}\small\item\em determine if a double is equal to another double \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{SYSTEM_8cpp_af09e9ad706ff80cd8cf9aa6cca4456ed}{get\+First\+Int}} (std\+::string s)
-\item 
+\begin{DoxyCompactList}\small\item\em get the first interger in a string \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{SYSTEM_8cpp_ad289b166b061766c8269fd7ec9d69d5e}{get\+Color}} (std\+::string s, int \&r, int \&g, int \&b)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em get the first 3 number in a string \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -31,29 +31,48 @@ void \mbox{\hyperlink{SYSTEM_8cpp_ad289b166b061766c8269fd7ec9d69d5e}{get\+Color}
 
 
 
-Definition at line 54 of file SYSTEM.\+cpp.
+combine a directory and a file to a full file name 
+
+exam 1\+: combine \char`\"{}asd\char`\"{} and \char`\"{}bcs\char`\"{} in to \char`\"{}asd/bcs\char`\"{}
+
+exam 2\+: combine \char`\"{}asd/\char`\"{} and \char`\"{}bsc\char`\"{} into \char`\"{}asd/bsc\char`\"{}
+
+exam 3\+: combine \char`\"{}asd\char`\"{} and \char`\"{}/bcs\char`\"{} into \char`\"{}asd/bcs\char`\"{}
+
+exam 4\+: combine \char`\"{}asd/\char`\"{} and \char`\"{}/bcs\char`\"{} into \char`\"{}asd/bcs\char`\"{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & cstring, the directory \\
+\hline
+{\em name} & cstring, the file name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 135 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{55 \{}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{57     \textcolor{keywordtype}{int} n = strlen(dir);}
-\DoxyCodeLine{58     \textcolor{keywordtype}{int} m = strlen(name);}
-\DoxyCodeLine{59     \textcolor{keywordtype}{char}* link = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[n + m + 5];}
-\DoxyCodeLine{60 }
-\DoxyCodeLine{61     strcpy(link, dir);}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63     \textcolor{keywordflow}{if}(dir[n -\/ 1] == \textcolor{charliteral}{'/'} \&\& name[0] == \textcolor{charliteral}{'/'})}
-\DoxyCodeLine{64         link[n -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
-\DoxyCodeLine{65     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(dir[n -\/ 1] != \textcolor{charliteral}{'/'} \&\& name[0] != \textcolor{charliteral}{'/'})}
-\DoxyCodeLine{66     \{}
-\DoxyCodeLine{67         strcat(link, \textcolor{stringliteral}{"{}/"{}});}
-\DoxyCodeLine{68     \}}
-\DoxyCodeLine{69 }
-\DoxyCodeLine{70     strcat(link, name);}
-\DoxyCodeLine{71 }
-\DoxyCodeLine{72     \textcolor{keywordflow}{return} link;}
-\DoxyCodeLine{73 \}}
+\DoxyCodeLine{136 \{}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     \textcolor{keywordtype}{int} n = strlen(dir);}
+\DoxyCodeLine{139     \textcolor{keywordtype}{int} m = strlen(name);}
+\DoxyCodeLine{140     \textcolor{keywordtype}{char}* link = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[n + m + 5];}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     strcpy(link, dir);}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \textcolor{keywordflow}{if}(dir[n -\/ 1] == \textcolor{charliteral}{'/'} \&\& name[0] == \textcolor{charliteral}{'/'})}
+\DoxyCodeLine{145         link[n -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{146     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(dir[n -\/ 1] != \textcolor{charliteral}{'/'} \&\& name[0] != \textcolor{charliteral}{'/'})}
+\DoxyCodeLine{147     \{}
+\DoxyCodeLine{148         strcat(link, \textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{149     \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     strcat(link, name);}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     \textcolor{keywordflow}{return} link;}
+\DoxyCodeLine{154 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{SYSTEM_8cpp_add498b5bd70219e44845487e69eb6daa}\label{SYSTEM_8cpp_add498b5bd70219e44845487e69eb6daa}} 
@@ -64,28 +83,47 @@ Definition at line 54 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 34 of file SYSTEM.\+cpp.
+combine a name and a extension to a full file name 
+
+exam 1\+: combine \char`\"{}asd\char`\"{} and \char`\"{}bcs\char`\"{} in to \char`\"{}asd.\+bcs\char`\"{}
+
+exam 2\+: combine \char`\"{}asd.\char`\"{} and \char`\"{}bsc\char`\"{} into \char`\"{}asd.\+bcs\char`\"{}
+
+exam 3\+: combine \char`\"{}asd\char`\"{} and \char`\"{}.\+bcs\char`\"{} into \char`\"{}asd.\+bcs\char`\"{}
+
+exam 4\+: combine \char`\"{}asd.\char`\"{} and \char`\"{}.\+bcs\char`\"{} into \char`\"{}asd.\+bcs\char`\"{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & cstring, the name \\
+\hline
+{\em type} & cstring, the extension \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 102 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{35 \{}
-\DoxyCodeLine{36     \textcolor{keywordtype}{int} n = strlen(name);}
-\DoxyCodeLine{37     \textcolor{keywordtype}{int} m = strlen(type);}
-\DoxyCodeLine{38     \textcolor{keywordtype}{char}* link = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[n + m + 5];}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40     strcpy(link, name);}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42     \textcolor{keywordflow}{if}(name[n -\/ 1] == \textcolor{charliteral}{'.'} \&\& type[0] == \textcolor{charliteral}{'.'})}
-\DoxyCodeLine{43         link[n -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
-\DoxyCodeLine{44     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(name[n -\/ 1] != \textcolor{charliteral}{'.'} \&\& type[0] != \textcolor{charliteral}{'.'})}
-\DoxyCodeLine{45     \{}
-\DoxyCodeLine{46         strcat(link, \textcolor{stringliteral}{"{}."{}});}
-\DoxyCodeLine{47     \}}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49     strcat(link, type);}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51     \textcolor{keywordflow}{return} link;}
-\DoxyCodeLine{52 \}}
+\DoxyCodeLine{103 \{}
+\DoxyCodeLine{104     \textcolor{keywordtype}{int} n = strlen(name);}
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} m = strlen(type);}
+\DoxyCodeLine{106     \textcolor{keywordtype}{char}* link = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[n + m + 5];}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     strcpy(link, name);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keywordflow}{if}(name[n -\/ 1] == \textcolor{charliteral}{'.'} \&\& type[0] == \textcolor{charliteral}{'.'})}
+\DoxyCodeLine{111         link[n -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{112     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(name[n -\/ 1] != \textcolor{charliteral}{'.'} \&\& type[0] != \textcolor{charliteral}{'.'})}
+\DoxyCodeLine{113     \{}
+\DoxyCodeLine{114         strcat(link, \textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{115     \}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117     strcat(link, type);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} link;}
+\DoxyCodeLine{120 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{SYSTEM_8cpp_a82aa2c691212111c6e0b7362267a9d9f}\label{SYSTEM_8cpp_a82aa2c691212111c6e0b7362267a9d9f}} 
@@ -96,13 +134,27 @@ Definition at line 34 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 100 of file SYSTEM.\+cpp.
+determine if a double is equal to another double 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & double, the first double \\
+\hline
+{\em b} & double, the second double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a == b (error is less than 1e-\/6) 
+\end{DoxyReturn}
+
+
+Definition at line 204 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{101 \{}
-\DoxyCodeLine{102     \textcolor{keywordflow}{return} fabs(a -\/ b) < 1e-\/6;}
-\DoxyCodeLine{103 \}}
+\DoxyCodeLine{205 \{}
+\DoxyCodeLine{206     \textcolor{keywordflow}{return} fabs(a -\/ b) < 1e-\/6;}
+\DoxyCodeLine{207 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{SYSTEM_8cpp_ad289b166b061766c8269fd7ec9d69d5e}\label{SYSTEM_8cpp_ad289b166b061766c8269fd7ec9d69d5e}} 
@@ -113,31 +165,46 @@ Definition at line 100 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 120 of file SYSTEM.\+cpp.
+get the first 3 number in a string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & string, the string to get the first 3 number \\
+\hline
+{\em r} & int\&, the first number \\
+\hline
+{\em g} & int\&, the second number \\
+\hline
+{\em b} & int\&, the third number \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 244 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{121 \{}
-\DoxyCodeLine{122     \textcolor{keywordtype}{int} i = 0;}
-\DoxyCodeLine{123     r = 0;}
-\DoxyCodeLine{124     g = 0;}
-\DoxyCodeLine{125     b = 0;}
-\DoxyCodeLine{126 }
-\DoxyCodeLine{127     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
-\DoxyCodeLine{128         i++;}
-\DoxyCodeLine{129     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
-\DoxyCodeLine{130         r = r * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
-\DoxyCodeLine{131     }
-\DoxyCodeLine{132     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
-\DoxyCodeLine{133         i++;}
-\DoxyCodeLine{134     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
-\DoxyCodeLine{135         g = g * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
-\DoxyCodeLine{136 }
-\DoxyCodeLine{137     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
-\DoxyCodeLine{138         i++;}
-\DoxyCodeLine{139     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
-\DoxyCodeLine{140         b = b * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
-\DoxyCodeLine{141 \}}
+\DoxyCodeLine{245 \{}
+\DoxyCodeLine{246     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{247     r = 0;}
+\DoxyCodeLine{248     g = 0;}
+\DoxyCodeLine{249     b = 0;}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{251     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{252         i++;}
+\DoxyCodeLine{253     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{254         r = r * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{255     }
+\DoxyCodeLine{256     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{257         i++;}
+\DoxyCodeLine{258     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{259         g = g * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{262         i++;}
+\DoxyCodeLine{263     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{264         b = b * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{265 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{SYSTEM_8cpp_af09e9ad706ff80cd8cf9aa6cca4456ed}\label{SYSTEM_8cpp_af09e9ad706ff80cd8cf9aa6cca4456ed}} 
@@ -148,23 +215,42 @@ Definition at line 120 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 105 of file SYSTEM.\+cpp.
+get the first interger in a string 
+
+if the string is \char`\"{}asd123\char`\"{}, return 123
+
+if the string is \char`\"{}123asd\char`\"{}, return 123
+
+if the string is \char`\"{}asd123asd\char`\"{}, return 123
+
+if the string is \char`\"{}asd\char`\"{}, return 0
+
+if the string is \char`\"{}1a2\char`\"{} return 1
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & string, the string to get the first interger \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 223 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{106 \{}
-\DoxyCodeLine{107     \textcolor{keywordtype}{int} res = 0;}
-\DoxyCodeLine{108     \textcolor{keywordtype}{int} i = 0;}
-\DoxyCodeLine{109 }
-\DoxyCodeLine{110     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
-\DoxyCodeLine{111         i++;}
-\DoxyCodeLine{112     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
-\DoxyCodeLine{113     \{}
-\DoxyCodeLine{114         res = res * 10 + s[i] -\/ \textcolor{charliteral}{'0'};}
-\DoxyCodeLine{115         i++;}
-\DoxyCodeLine{116     \}}
-\DoxyCodeLine{117     \textcolor{keywordflow}{return} res;}
-\DoxyCodeLine{118 \}}
+\DoxyCodeLine{224 \{}
+\DoxyCodeLine{225     \textcolor{keywordtype}{int} res = 0;}
+\DoxyCodeLine{226     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{229         i++;}
+\DoxyCodeLine{230     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{231     \{}
+\DoxyCodeLine{232         res = res * 10 + s[i] -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{233         i++;}
+\DoxyCodeLine{234     \}}
+\DoxyCodeLine{235     \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{236 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{SYSTEM_8cpp_aa0ab0bb9519f44724cabe0ff96673bde}\label{SYSTEM_8cpp_aa0ab0bb9519f44724cabe0ff96673bde}} 
@@ -175,17 +261,30 @@ Definition at line 105 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 91 of file SYSTEM.\+cpp.
+opean a json file which path is string dir and file name is name. Store it in mem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & cstring, the path to the directory \\
+\hline
+{\em name} & cstring, the name of the file \\
+\hline
+{\em mem} & json, the json object to store the data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 189 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{92 \{}
-\DoxyCodeLine{93     \textcolor{keywordtype}{char}* link = \mbox{\hyperlink{SYSTEM_8cpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}(dir, name);}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{95     \mbox{\hyperlink{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}{readJson}}(link, mem);}
-\DoxyCodeLine{96 }
-\DoxyCodeLine{97     \textcolor{keyword}{delete} [] link;}
-\DoxyCodeLine{98 \}}
+\DoxyCodeLine{190 \{}
+\DoxyCodeLine{191     \textcolor{keywordtype}{char}* link = \mbox{\hyperlink{SYSTEM_8cpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}(dir, name);}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193     \mbox{\hyperlink{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}{readJson}}(link, mem);}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     \textcolor{keyword}{delete} [] link;}
+\DoxyCodeLine{196 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{SYSTEM_8cpp_a16fb2008390acdb451a7587c3c61fe84}\label{SYSTEM_8cpp_a16fb2008390acdb451a7587c3c61fe84}} 
@@ -196,18 +295,29 @@ Definition at line 91 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 81 of file SYSTEM.\+cpp.
+opean a json file which path is string s and store it in mem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em link} & cstring, the path to the json file \\
+\hline
+{\em mem} & json, the json object to store the data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 172 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{82 \{}
-\DoxyCodeLine{83     std::ifstream fin(link);}
-\DoxyCodeLine{84     }
-\DoxyCodeLine{85     fin >> mem;}
-\DoxyCodeLine{86 }
-\DoxyCodeLine{87     fin.close();}
-\DoxyCodeLine{88     return ;}
-\DoxyCodeLine{89 \}}
+\DoxyCodeLine{173 \{}
+\DoxyCodeLine{174     std::ifstream fin(link);}
+\DoxyCodeLine{175     }
+\DoxyCodeLine{176     fin >> mem;}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178     fin.close();}
+\DoxyCodeLine{179     return ;}
+\DoxyCodeLine{180 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}\label{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}} 
@@ -218,12 +328,23 @@ Definition at line 81 of file SYSTEM.\+cpp.
 
 
 
-Definition at line 75 of file SYSTEM.\+cpp.
+opean a json file which path is string s and store it in mem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & string, the path to the json file \\
+\hline
+{\em mem} & json, the json object to store the data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 161 of file SYSTEM.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{76 \{}
-\DoxyCodeLine{77     \mbox{\hyperlink{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}{readJson}}(s.c\_str(), mem);}
-\DoxyCodeLine{78 \}}
+\DoxyCodeLine{162 \{}
+\DoxyCodeLine{163     \mbox{\hyperlink{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}{readJson}}(s.c\_str(), mem);}
+\DoxyCodeLine{164 \}}
 
 \end{DoxyCode}
