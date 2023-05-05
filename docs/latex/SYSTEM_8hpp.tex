@@ -1,0 +1,300 @@
+\hypertarget{SYSTEM_8hpp}{}\doxysection{include/\+SYSTEM.hpp File Reference}
+\label{SYSTEM_8hpp}\index{include/SYSTEM.hpp@{include/SYSTEM.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$stack$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$vector.\+hpp$>$}\newline
+{\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceGLOBAL}{GLOBAL}}
+\item 
+ \mbox{\hyperlink{namespaceRANDOM}{RANDOM}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{SYSTEM_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} = nlohmann\+::json
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceRANDOM_a836ff180d736e431dec670026444dd98}{RANDOM\+::init}} ()
+\item 
+int \mbox{\hyperlink{namespaceRANDOM_a8c1725ab3d1c7379cfdaea9fb6d1654d}{RANDOM\+::get\+Int}} (int l, int r)
+\item 
+double \mbox{\hyperlink{namespaceRANDOM_a240f689cdfbe1de7a847f700dbcb01d0}{RANDOM\+::get\+Double}} (double l, double r)
+\item 
+char $\ast$ \mbox{\hyperlink{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combine\+Link}} (const char $\ast$dir, const char $\ast$name)
+\item 
+char $\ast$ \mbox{\hyperlink{SYSTEM_8hpp_add498b5bd70219e44845487e69eb6daa}{combine\+Name}} (const char $\ast$name, const char $\ast$type)
+\item 
+void \mbox{\hyperlink{SYSTEM_8hpp_a16fb2008390acdb451a7587c3c61fe84}{read\+Json}} (const char $\ast$const \&link, \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\item 
+void \mbox{\hyperlink{SYSTEM_8hpp_aa0ab0bb9519f44724cabe0ff96673bde}{readjson}} (const char $\ast$const \&dir, const char $\ast$const \&name, \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\item 
+void \mbox{\hyperlink{SYSTEM_8hpp_a95b8882f6007e1a029fe12d7352d0f68}{read\+Json}} (std\+::string s, \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\item 
+int \mbox{\hyperlink{SYSTEM_8hpp_af09e9ad706ff80cd8cf9aa6cca4456ed}{get\+First\+Int}} (std\+::string s)
+\item 
+void \mbox{\hyperlink{SYSTEM_8hpp_ad289b166b061766c8269fd7ec9d69d5e}{get\+Color}} (std\+::string s, int \&r, int \&g, int \&b)
+\item 
+bool \mbox{\hyperlink{SYSTEM_8hpp_a82aa2c691212111c6e0b7362267a9d9f}{diff}} (double a, double b)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{namespaceGLOBAL_ad75dd09e451ef5558589a16318a45e73}{GLOBAL\+::\+Graphics\+Folder}} = \char`\"{}asset/graphics/\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{namespaceGLOBAL_a59cd1de3d2ed1633f2a5cb4d191b98ce}{GLOBAL\+::\+Background\+Folder}} = \char`\"{}asset/graphics/\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{namespaceGLOBAL_ac610e86ccc4c784566c279598a97feaa}{GLOBAL\+::\+Button\+Folder}} = \char`\"{}asset/graphics/\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{namespaceGLOBAL_a7acf6d430fbbddee53498ec26ae94262}{GLOBAL\+::\+Attribute\+Folder}} = \char`\"{}asset/attribute/\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{namespaceGLOBAL_a99a02d159a27de03b9bc46ac36d4d889}{GLOBAL\+::\+Atrb\+Screens}} = \char`\"{}asset/attribute/screens/\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{namespaceGLOBAL_a5df186de50f9aaf1e4e6de2edcc5d60c}{GLOBAL\+::\+Atrb\+Buttons}} = \char`\"{}asset/attribute/buttons/\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespaceGLOBAL_aef71da39d13ab23ba3f2db699882d986}{GLOBAL\+::\+Atrb\+DT}} = \char`\"{}asset/attribute/Data\+Structures/\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{namespaceGLOBAL_a490a4d88702b315d3fb722da831114b5}{GLOBAL\+::\+Fonts\+Folder}} = \char`\"{}asset/fonts\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespaceGLOBAL_a2fa4e642d534694ce32f87c96ffa7bf9}{GLOBAL\+::\+Atrb\+Input\+Box}} = \char`\"{}asset/attribute/\mbox{\hyperlink{classInputBox}{Input\+Box}}/\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespaceGLOBAL_ad1b024b0e5a4da4460205317e49afb38}{GLOBAL\+::\+Atrb\+Script}} = \char`\"{}asset/attribute/script/\char`\"{}
+\item 
+const int \mbox{\hyperlink{namespaceGLOBAL_a806e9ea8ba40c222c1d6310e44e350fc}{GLOBAL\+::\+WAITING}} = 800
+\item 
+const std\+::string \mbox{\hyperlink{namespaceGLOBAL_a0e4244836791a23045e426934a6e83e6}{GLOBAL\+::\+Sound\+Folder}} = \char`\"{}asset/sound/\char`\"{}
+\item 
+std\+::mt19937 \mbox{\hyperlink{namespaceRANDOM_a2d07c20dabcfb422b1f4f0fc22cdf240}{RANDOM\+::rng}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{SYSTEM_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}\label{SYSTEM_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!json@{json}}
+\index{json@{json}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{json}{json}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} =  nlohmann\+::json}
+
+
+
+Definition at line 18 of file SYSTEM.\+hpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}\label{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!combineLink@{combineLink}}
+\index{combineLink@{combineLink}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{combineLink()}{combineLink()}}
+{\footnotesize\ttfamily char$\ast$ combine\+Link (\begin{DoxyParamCaption}\item[{const char $\ast$}]{dir,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file SYSTEM.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordtype}{int} n = strlen(dir);}
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} m = strlen(name);}
+\DoxyCodeLine{59     \textcolor{keywordtype}{char}* link = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[n + m + 5];}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     strcpy(link, dir);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     \textcolor{keywordflow}{if}(dir[n -\/ 1] == \textcolor{charliteral}{'/'} \&\& name[0] == \textcolor{charliteral}{'/'})}
+\DoxyCodeLine{64         link[n -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{65     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(dir[n -\/ 1] != \textcolor{charliteral}{'/'} \&\& name[0] != \textcolor{charliteral}{'/'})}
+\DoxyCodeLine{66     \{}
+\DoxyCodeLine{67         strcat(link, \textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     strcat(link, name);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{keywordflow}{return} link;}
+\DoxyCodeLine{73 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{SYSTEM_8hpp_add498b5bd70219e44845487e69eb6daa}\label{SYSTEM_8hpp_add498b5bd70219e44845487e69eb6daa}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!combineName@{combineName}}
+\index{combineName@{combineName}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{combineName()}{combineName()}}
+{\footnotesize\ttfamily char$\ast$ combine\+Name (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{const char $\ast$}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file SYSTEM.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35 \{}
+\DoxyCodeLine{36     \textcolor{keywordtype}{int} n = strlen(name);}
+\DoxyCodeLine{37     \textcolor{keywordtype}{int} m = strlen(type);}
+\DoxyCodeLine{38     \textcolor{keywordtype}{char}* link = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[n + m + 5];}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     strcpy(link, name);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keywordflow}{if}(name[n -\/ 1] == \textcolor{charliteral}{'.'} \&\& type[0] == \textcolor{charliteral}{'.'})}
+\DoxyCodeLine{43         link[n -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{44     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(name[n -\/ 1] != \textcolor{charliteral}{'.'} \&\& type[0] != \textcolor{charliteral}{'.'})}
+\DoxyCodeLine{45     \{}
+\DoxyCodeLine{46         strcat(link, \textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     strcat(link, type);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \textcolor{keywordflow}{return} link;}
+\DoxyCodeLine{52 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{SYSTEM_8hpp_a82aa2c691212111c6e0b7362267a9d9f}\label{SYSTEM_8hpp_a82aa2c691212111c6e0b7362267a9d9f}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!diff@{diff}}
+\index{diff@{diff}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{diff()}{diff()}}
+{\footnotesize\ttfamily bool diff (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line 100 of file SYSTEM.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{101 \{}
+\DoxyCodeLine{102     \textcolor{keywordflow}{return} fabs(a -\/ b) < 1e-\/6;}
+\DoxyCodeLine{103 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{SYSTEM_8hpp_ad289b166b061766c8269fd7ec9d69d5e}\label{SYSTEM_8hpp_ad289b166b061766c8269fd7ec9d69d5e}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!getColor@{getColor}}
+\index{getColor@{getColor}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily void get\+Color (\begin{DoxyParamCaption}\item[{std\+::string}]{s,  }\item[{int \&}]{r,  }\item[{int \&}]{g,  }\item[{int \&}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line 120 of file SYSTEM.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121 \{}
+\DoxyCodeLine{122     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{123     r = 0;}
+\DoxyCodeLine{124     g = 0;}
+\DoxyCodeLine{125     b = 0;}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{128         i++;}
+\DoxyCodeLine{129     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{130         r = r * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{131     }
+\DoxyCodeLine{132     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{133         i++;}
+\DoxyCodeLine{134     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{135         g = g * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int})s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{138         i++;}
+\DoxyCodeLine{139     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{140         b = b * 10 + s[i++] -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{141 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{SYSTEM_8hpp_af09e9ad706ff80cd8cf9aa6cca4456ed}\label{SYSTEM_8hpp_af09e9ad706ff80cd8cf9aa6cca4456ed}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!getFirstInt@{getFirstInt}}
+\index{getFirstInt@{getFirstInt}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{getFirstInt()}{getFirstInt()}}
+{\footnotesize\ttfamily int get\+First\+Int (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})}
+
+
+
+Definition at line 105 of file SYSTEM.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{106 \{}
+\DoxyCodeLine{107     \textcolor{keywordtype}{int} res = 0;}
+\DoxyCodeLine{108     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& !\mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{111         i++;}
+\DoxyCodeLine{112     \textcolor{keywordflow}{while}(i < (\textcolor{keywordtype}{int}) s.size() \&\& \mbox{\hyperlink{Data__Structures_8cpp_ac75b0dca6f8e49428afbe05f0f98b133}{isdigit}}(s[i]))}
+\DoxyCodeLine{113     \{}
+\DoxyCodeLine{114         res = res * 10 + s[i] -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{115         i++;}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117     \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{118 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{SYSTEM_8hpp_aa0ab0bb9519f44724cabe0ff96673bde}\label{SYSTEM_8hpp_aa0ab0bb9519f44724cabe0ff96673bde}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!readjson@{readjson}}
+\index{readjson@{readjson}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{readjson()}{readjson()}}
+{\footnotesize\ttfamily void readjson (\begin{DoxyParamCaption}\item[{const char $\ast$const \&}]{dir,  }\item[{const char $\ast$const \&}]{name,  }\item[{\mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})}
+
+
+
+Definition at line 91 of file SYSTEM.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{92 \{}
+\DoxyCodeLine{93     \textcolor{keywordtype}{char}* link = \mbox{\hyperlink{SYSTEM_8cpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}(dir, name);}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \mbox{\hyperlink{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}{readJson}}(link, mem);}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{keyword}{delete} [] link;}
+\DoxyCodeLine{98 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{SYSTEM_8hpp_a16fb2008390acdb451a7587c3c61fe84}\label{SYSTEM_8hpp_a16fb2008390acdb451a7587c3c61fe84}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!readJson@{readJson}}
+\index{readJson@{readJson}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{readJson()}{readJson()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void read\+Json (\begin{DoxyParamCaption}\item[{const char $\ast$const \&}]{link,  }\item[{\mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})}
+
+
+
+Definition at line 81 of file SYSTEM.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{82 \{}
+\DoxyCodeLine{83     std::ifstream fin(link);}
+\DoxyCodeLine{84     }
+\DoxyCodeLine{85     fin >> mem;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     fin.close();}
+\DoxyCodeLine{88     return ;}
+\DoxyCodeLine{89 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{SYSTEM_8hpp_a95b8882f6007e1a029fe12d7352d0f68}\label{SYSTEM_8hpp_a95b8882f6007e1a029fe12d7352d0f68}} 
+\index{SYSTEM.hpp@{SYSTEM.hpp}!readJson@{readJson}}
+\index{readJson@{readJson}!SYSTEM.hpp@{SYSTEM.hpp}}
+\doxysubsubsection{\texorpdfstring{readJson()}{readJson()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void read\+Json (\begin{DoxyParamCaption}\item[{std\+::string}]{s,  }\item[{\mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})}
+
+
+
+Definition at line 75 of file SYSTEM.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \mbox{\hyperlink{SYSTEM_8cpp_a95b8882f6007e1a029fe12d7352d0f68}{readJson}}(s.c\_str(), mem);}
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}

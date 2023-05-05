@@ -1,0 +1,1788 @@
+\hypertarget{classObject}{}\doxysection{Object Class Reference}
+\label{classObject}\index{Object@{Object}}
+
+
+{\ttfamily \#include $<$Object.\+hpp$>$}
+
+Inheritance diagram for Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classObject}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_a40860402e64d8008fb42329df7097cdb}{Object}} ()
+\item 
+\mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{$\sim$\+Object}} ()
+\item 
+void \mbox{\hyperlink{classObject_a739c8034c25e913916390bceed2ceb40}{clear\+Textures}} ()
+\item 
+void \mbox{\hyperlink{classObject_a22df77c92a507a5886d2e0cb60d20e6a}{init}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem, SDL\+\_\+\+Renderer $\ast$\&r)
+\item 
+void \mbox{\hyperlink{classObject_a482dfe6078c3ebc8120fb720b8924995}{set\+Coor}} (int x, int y, int w, int h)
+\item 
+void \mbox{\hyperlink{classObject_ad46063e9297907c8e0e6e98727fb5834}{set\+Coor}} (SDL\+\_\+\+Rect key)
+\item 
+void \mbox{\hyperlink{classObject_a2788cb89a69545981a55959bc8003c1d}{setX}} (int x)
+\item 
+void \mbox{\hyperlink{classObject_a95816b2bfea04b5322378b48c866c140}{setY}} (int y)
+\item 
+void \mbox{\hyperlink{classObject_acf47387b83af5aa5aff0d3c96f6a7e0b}{setW}} (int w)
+\item 
+void \mbox{\hyperlink{classObject_a97361d3e51f617fef03a435414cc6962}{setH}} (int h)
+\item 
+const SDL\+\_\+\+Rect \& \mbox{\hyperlink{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}{get\+Coor}} ()
+\item 
+bool \mbox{\hyperlink{classObject_a8ccb3d2835e849a909ff6dab8fc336a4}{is\+Lies\+Inside}} (int x, int y)
+\item 
+bool \mbox{\hyperlink{classObject_a8a1e55d7de5885f3bd0f165d610a2b6b}{is\+Lies\+Inside}} (int x, int y, int w, int h)
+\item 
+bool \mbox{\hyperlink{classObject_a3c3bf200380a391f7991dc00cba1c8bf}{is\+Lies\+Inside}} (SDL\+\_\+\+Rect rect)
+\item 
+void \mbox{\hyperlink{classObject_a4e60a9d57998ae3257dd22d646a47691}{addX}} (int k)
+\item 
+void \mbox{\hyperlink{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}{addY}} (int k)
+\item 
+void \mbox{\hyperlink{classObject_aec21a23987d5ef54a6d9e84e94355fc1}{addW}} (int k)
+\item 
+void \mbox{\hyperlink{classObject_a0c9303fe732f2452204e617d51445c8c}{addH}} (int k)
+\item 
+void \mbox{\hyperlink{classObject_ab6d0594ca9021e45807970c88710b759}{show}} ()
+\item 
+void \mbox{\hyperlink{classObject_adc8b1304393aa4624d90b354547e4417}{hide}} ()
+\item 
+bool \mbox{\hyperlink{classObject_a273d5a6a9a37f5a367c8f7e24148111f}{is\+Visible}} ()
+\item 
+void \mbox{\hyperlink{classObject_ab2c70e366d33ebc15119ac32abe09c1e}{set\+Textures}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\item 
+void \mbox{\hyperlink{classObject_ac6f79e1f58ddf42a351fc03f0bf022aa}{pick\+Texure}} (int k)
+\item 
+int \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}} ()
+\item 
+void \mbox{\hyperlink{classObject_a403bc18560483c4be37a618939d44bea}{render}} (bool update)
+\item 
+void \mbox{\hyperlink{classObject_aa61f9fc990b651532c1a18b190d14e70}{move\+To}} (int x, int y, double time)
+\item 
+void \mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{init}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\begin{DoxyCompactList}\small\item\em init sketch from json \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_aab00f66b334da55a963282da6ed313d8}{set\+Render}} (SDL\+\_\+\+Renderer $\ast$\&r)
+\begin{DoxyCompactList}\small\item\em set render \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}} ()
+\begin{DoxyCompactList}\small\item\em render if sketch is hided, do nothing render sketch if renderer is nullptr, it may cause error, require \mbox{\hyperlink{classSketch_aab00f66b334da55a963282da6ed313d8}{set\+Render()}} before \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render()}} render background fisrt then render text \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_ac98fafc49f432667f2f23e593d2693a9}{add\+Char}} (char ch)
+\begin{DoxyCompactList}\small\item\em typing text \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_aaf8a7e1f834cadefdc707c68a92f0cc9}{pop\+Char}} ()
+\begin{DoxyCompactList}\small\item\em erase a character if text is empty then do nothing pop a character from the end of the text after that new text texture will be create \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_ad70db15d37985b1e4e9c72f73aba738e}{set\+Text}} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em set text to be s \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_af823f58bba1c6b12ba623bac4a84aae9}{set\+Text\+Color}} (int r, int g, int b)
+\begin{DoxyCompactList}\small\item\em set text color to be (r, g, b) \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classSketch_a54634737ea0afcf47bf0d7f0f1cad9b9}{get\+Text}} ()
+\begin{DoxyCompactList}\small\item\em return text \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a06f2fb5b8df56dad239048927d17f2db}{set\+Color}} (SDL\+\_\+\+Color c)
+\begin{DoxyCompactList}\small\item\em set background color to be c \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a207b912a229e0a9c6a127184da176966}{set\+Color}} (int r, int g, int b)
+\begin{DoxyCompactList}\small\item\em set background color to be (r, g, b) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a365b6f9d239e3125cb75094c69489c6d}{set\+Color}} (int r, int g, int b, int a)
+\begin{DoxyCompactList}\small\item\em set background color to be (r, g, b a) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a37f8156e9953f9cfc821ab6b39c72be1}{set\+In\+CenterX}} ()
+\begin{DoxyCompactList}\small\item\em align text texture align x coordinate of text texture to be in the center of the background texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a3803cf567a2e6f5f39318da4f384decb}{set\+On\+Left\+SideX}} ()
+\begin{DoxyCompactList}\small\item\em align text texture align x coordinate of text texture to be in the left side of the background texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a2074bb5655738694be1eb4976a14f4f5}{set\+On\+Right\+SideX}} ()
+\begin{DoxyCompactList}\small\item\em align text texture align x coordinate of text texture to be in the right side of the background texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_aa505abcaeb1647d4211170ac1627fba3}{set\+In\+CenterY}} ()
+\begin{DoxyCompactList}\small\item\em align text texture align y coordinate of text texture to be in the center of the background texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a59c564c5c8e6f275c83185a1b84fc4bf}{set\+On\+Left\+SideY}} ()
+\begin{DoxyCompactList}\small\item\em align text texture align y coordinate of text texture to be in the top side of the background texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_ac6126e3e448627d18e0372694497bedd}{set\+On\+Right\+SideY}} ()
+\begin{DoxyCompactList}\small\item\em align text texture align y coordinate of text texture to be in the bottom side of the background texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_ae9982d949cf45e150dc002ea0af38b89}{align}} ()
+\begin{DoxyCompactList}\small\item\em align text this function will call set\+On\+Left\+SideX, set\+On\+Right\+SideX, set\+In\+CenterX, set\+On\+Left\+SideY, set\+On\+Right\+SideY, set\+In\+CenterY \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_aacef20f4453d1d1a7a1f9c12c5abe260}{set\+Border}} (int w, int r, int g, int b, int a)
+\begin{DoxyCompactList}\small\item\em set border \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_ae426dc96884dadf565df9f588bee553c}{set\+Border\+Color}} (int r, int g, int b)
+\begin{DoxyCompactList}\small\item\em set border color \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_ac9f51685fcc7fa03fbb5cec1818666e1}{Fill\+With\+Color}} ()
+\begin{DoxyCompactList}\small\item\em fill background color with default color, which is set by Set\+Color function fill background color with default color, which is set by Set\+Color function at default color is black ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_ad0dff2994601bb01607730f8ff28924a}{Fill\+With\+Color}} (SDL\+\_\+\+Color c)
+\begin{DoxyCompactList}\small\item\em fill background color with color C \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a891e60a6552b963ab90f42c83c4c28ed}{highlight}} ()
+\begin{DoxyCompactList}\small\item\em hightlight the sketch this function will change color of background to invert color \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a59b0712ea0d65a8e66ee1e3e227d8766}{un\+Highlight}} ()
+\begin{DoxyCompactList}\small\item\em unhightlight the sketch this function will change color of background to normal color \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSketch_a68117865f3bde7c9e3d29106bebdd8a3}{is\+Lie\+Inside}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em determine a point is lie inside sketch or not this function will return true if point (x, y) lie inside sketch \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSketch_a7336eb658c12bc2a5b3a3fa718daeabc}{clear\+Texture}} (int k)
+\begin{DoxyCompactList}\small\item\em clear texture, k = 0 -\/ background, k = 1 -\/ text, anything else will cause segment fault \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_abc5bec3af86a19d73c5ba8fadba3bce4}{init\+Color}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\begin{DoxyCompactList}\small\item\em init color from json \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a26509c690c0bc6429a18d00df0a20d18}{init\+Font}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\begin{DoxyCompactList}\small\item\em init font from json \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_a7430f06316348a8fef6c315510ab9c00}{init\+Border}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\begin{DoxyCompactList}\small\item\em init border from json \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSketch_ad9b674c6a933471fc59492ac5c4697df}{create\+Text\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em create text texture delete old text texture if exist if text is empty then do nothing make sure that font is not nullptr, otherwise it may cause segment fault. if text texture is greater than background texture, crop it, the top left. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 10 of file Object.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classObject_a40860402e64d8008fb42329df7097cdb}\label{classObject_a40860402e64d8008fb42329df7097cdb}} 
+\index{Object@{Object}!Object@{Object}}
+\index{Object@{Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}}
+{\footnotesize\ttfamily Object\+::\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 3 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{4 \{}
+\DoxyCodeLine{5     \mbox{\hyperlink{classObject_a482dfe6078c3ebc8120fb720b8924995}{setCoor}}(0, 0, 0, 0);}
+\DoxyCodeLine{6     \mbox{\hyperlink{classObject_adc8b1304393aa4624d90b354547e4417}{hide}}();}
+\DoxyCodeLine{7     tes.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{8     ren = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{9     top = 0;}
+\DoxyCodeLine{10 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_ae8f5483f459e46687bd01e6f9977afd3}\label{classObject_ae8f5483f459e46687bd01e6f9977afd3}} 
+\index{Object@{Object}!````~Object@{$\sim$Object}}
+\index{````~Object@{$\sim$Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{$\sim$Object()}{~Object()}}
+{\footnotesize\ttfamily Object\+::$\sim$\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 150 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{151 \{}
+\DoxyCodeLine{152     \mbox{\hyperlink{classObject_a739c8034c25e913916390bceed2ceb40}{clearTextures}}();}
+\DoxyCodeLine{153     \mbox{\hyperlink{classObject_a482dfe6078c3ebc8120fb720b8924995}{setCoor}}(0, 0, 0, 0);}
+\DoxyCodeLine{154     \mbox{\hyperlink{classObject_adc8b1304393aa4624d90b354547e4417}{hide}}();}
+\DoxyCodeLine{155     ren = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{156     top = 0;}
+\DoxyCodeLine{157 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSketch_ac98fafc49f432667f2f23e593d2693a9}\label{classSketch_ac98fafc49f432667f2f23e593d2693a9}} 
+\index{Object@{Object}!addChar@{addChar}}
+\index{addChar@{addChar}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{addChar()}{addChar()}}
+{\footnotesize\ttfamily void Sketch\+::add\+Char (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+typing text 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch} & character that will be add to the end of the text add a character to the end of the text after that new text texture will be created \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 101 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{102 \{}
+\DoxyCodeLine{103     text = text + ch;}
+\DoxyCodeLine{104     \mbox{\hyperlink{classSketch_ad9b674c6a933471fc59492ac5c4697df}{createTextTexture}}();}
+\DoxyCodeLine{105 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a0c9303fe732f2452204e617d51445c8c}\label{classObject_a0c9303fe732f2452204e617d51445c8c}} 
+\index{Object@{Object}!addH@{addH}}
+\index{addH@{addH}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{addH()}{addH()}}
+{\footnotesize\ttfamily void Object\+::addH (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 234 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{235 \{}
+\DoxyCodeLine{236     coor.h += k;}
+\DoxyCodeLine{237 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_aec21a23987d5ef54a6d9e84e94355fc1}\label{classObject_aec21a23987d5ef54a6d9e84e94355fc1}} 
+\index{Object@{Object}!addW@{addW}}
+\index{addW@{addW}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{addW()}{addW()}}
+{\footnotesize\ttfamily void Object\+::addW (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 230 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{231 \{}
+\DoxyCodeLine{232     coor.w += k;}
+\DoxyCodeLine{233 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a4e60a9d57998ae3257dd22d646a47691}\label{classObject_a4e60a9d57998ae3257dd22d646a47691}} 
+\index{Object@{Object}!addX@{addX}}
+\index{addX@{addX}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{addX()}{addX()}}
+{\footnotesize\ttfamily void Object\+::addX (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 220 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{221 \{}
+\DoxyCodeLine{222     coor.x += k;}
+\DoxyCodeLine{223 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}\label{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}} 
+\index{Object@{Object}!addY@{addY}}
+\index{addY@{addY}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{addY()}{addY()}}
+{\footnotesize\ttfamily void Object\+::addY (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 225 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{226 \{}
+\DoxyCodeLine{227     coor.y += k;}
+\DoxyCodeLine{228 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_ae9982d949cf45e150dc002ea0af38b89}\label{classSketch_ae9982d949cf45e150dc002ea0af38b89}} 
+\index{Object@{Object}!align@{align}}
+\index{align@{align}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{align()}{align()}}
+{\footnotesize\ttfamily void Sketch\+::align (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+align text this function will call set\+On\+Left\+SideX, set\+On\+Right\+SideX, set\+In\+CenterX, set\+On\+Left\+SideY, set\+On\+Right\+SideY, set\+In\+CenterY 
+
+
+
+Definition at line 761 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{762 \{}
+\DoxyCodeLine{763 }
+\DoxyCodeLine{764     \textcolor{keywordflow}{if}(textAlignX == 1) \mbox{\hyperlink{classSketch_a3803cf567a2e6f5f39318da4f384decb}{setOnLeftSideX}}();}
+\DoxyCodeLine{765     \textcolor{keywordflow}{if}(textAlignX == 2) \mbox{\hyperlink{classSketch_a37f8156e9953f9cfc821ab6b39c72be1}{setInCenterX}}();}
+\DoxyCodeLine{766     \textcolor{keywordflow}{if}(textAlignX == 3) \mbox{\hyperlink{classSketch_a2074bb5655738694be1eb4976a14f4f5}{setOnRightSideX}}();}
+\DoxyCodeLine{767 }
+\DoxyCodeLine{768     \textcolor{keywordflow}{if}(textAlignY == 1) \mbox{\hyperlink{classSketch_a59c564c5c8e6f275c83185a1b84fc4bf}{setOnLeftSideY}}();}
+\DoxyCodeLine{769     \textcolor{keywordflow}{if}(textAlignY == 2) \mbox{\hyperlink{classSketch_aa505abcaeb1647d4211170ac1627fba3}{setInCenterY}}();}
+\DoxyCodeLine{770     \textcolor{keywordflow}{if}(textAlignY == 3) \mbox{\hyperlink{classSketch_ac6126e3e448627d18e0372694497bedd}{setOnRightSideY}}();}
+\DoxyCodeLine{771 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a7336eb658c12bc2a5b3a3fa718daeabc}\label{classSketch_a7336eb658c12bc2a5b3a3fa718daeabc}} 
+\index{Object@{Object}!clearTexture@{clearTexture}}
+\index{clearTexture@{clearTexture}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{clearTexture()}{clearTexture()}}
+{\footnotesize\ttfamily void Sketch\+::clear\+Texture (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+clear texture, k = 0 -\/ background, k = 1 -\/ text, anything else will cause segment fault 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & integer, index of textures, 0 will be background, 1 will be text if tes\mbox{[}k\mbox{]} is nullptr, do nothing call SDL\+\_\+\+Destroy\+Texture and after that set tes\mbox{[}k\mbox{]} to be nullptr \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 37 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39     \textcolor{keywordflow}{if}(tes[k] == \textcolor{keyword}{nullptr}) return ;}
+\DoxyCodeLine{40     SDL\_DestroyTexture(tes[k]);}
+\DoxyCodeLine{41     tes[k] = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a739c8034c25e913916390bceed2ceb40}\label{classObject_a739c8034c25e913916390bceed2ceb40}} 
+\index{Object@{Object}!clearTextures@{clearTextures}}
+\index{clearTextures@{clearTextures}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{clearTextures()}{clearTextures()}}
+{\footnotesize\ttfamily void Object\+::clear\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 164 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{165 \{}
+\DoxyCodeLine{166     \textcolor{keywordflow}{if}(!tes.\mbox{\hyperlink{classvector_a9af39ba556fbaeaa09cff474c6308076}{empty}}())}
+\DoxyCodeLine{167     \{}
+\DoxyCodeLine{168         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}(); i++)}
+\DoxyCodeLine{169         \{}
+\DoxyCodeLine{170             \textcolor{keywordflow}{if}(tes[i] != \textcolor{keyword}{nullptr}) }
+\DoxyCodeLine{171                 SDL\_DestroyTexture(tes[i]);}
+\DoxyCodeLine{172         \}}
+\DoxyCodeLine{173         tes.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_ad9b674c6a933471fc59492ac5c4697df}\label{classSketch_ad9b674c6a933471fc59492ac5c4697df}} 
+\index{Object@{Object}!createTextTexture@{createTextTexture}}
+\index{createTextTexture@{createTextTexture}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{createTextTexture()}{createTextTexture()}}
+{\footnotesize\ttfamily void Sketch\+::create\+Text\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+create text texture delete old text texture if exist if text is empty then do nothing make sure that font is not nullptr, otherwise it may cause segment fault. if text texture is greater than background texture, crop it, the top left. 
+
+
+
+Definition at line 63 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{64 \{}
+\DoxyCodeLine{65     \mbox{\hyperlink{classSketch_a7336eb658c12bc2a5b3a3fa718daeabc}{clearTexture}}(1);}
+\DoxyCodeLine{66     \textcolor{keywordflow}{if}(text.empty()) return ;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     SDL\_Surface* surface = TTF\_RenderText\_Solid(font, text.c\_str(), fontColor);}
+\DoxyCodeLine{69     }
+\DoxyCodeLine{70     tes[1] = SDL\_CreateTextureFromSurface(ren, surface);}
+\DoxyCodeLine{71     }
+\DoxyCodeLine{72     coor[1].w = surface-\/>w;}
+\DoxyCodeLine{73     coor[1].h = surface-\/>h;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     crop = coor[1];}
+\DoxyCodeLine{76     crop.x = 0;}
+\DoxyCodeLine{77     crop.y = 0;}
+\DoxyCodeLine{78     }
+\DoxyCodeLine{79     \textcolor{keywordflow}{if}(coor[1].w > coor[0].w || coor[1].h > coor[0].h)}
+\DoxyCodeLine{80     \{}
+\DoxyCodeLine{81         crop = SDL\_Rect(\{}
+\DoxyCodeLine{82                 std::max(0, coor[1].w -\/ coor[0].w), }
+\DoxyCodeLine{83                 std::max(0, coor[1].h -\/ coor[0].h), }
+\DoxyCodeLine{84                 coor[0].w, }
+\DoxyCodeLine{85                 coor[0].h}
+\DoxyCodeLine{86             \});}
+\DoxyCodeLine{87         coor[1].w = coor[0].w;}
+\DoxyCodeLine{88         coor[1].h = coor[0].h;}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \mbox{\hyperlink{classSketch_ae9982d949cf45e150dc002ea0af38b89}{align}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     SDL\_FreeSurface(surface);}
+\DoxyCodeLine{94 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_ac9f51685fcc7fa03fbb5cec1818666e1}\label{classSketch_ac9f51685fcc7fa03fbb5cec1818666e1}} 
+\index{Object@{Object}!FillWithColor@{FillWithColor}}
+\index{FillWithColor@{FillWithColor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{FillWithColor()}{FillWithColor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sketch\+::\+Fill\+With\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+fill background color with default color, which is set by Set\+Color function fill background color with default color, which is set by Set\+Color function at default color is black ~\newline
+ 
+
+
+
+Definition at line 394 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{395 \{}
+\DoxyCodeLine{396     \textcolor{keywordtype}{int} w = coor[0].w;}
+\DoxyCodeLine{397     \textcolor{keywordtype}{int} h = coor[0].h;}
+\DoxyCodeLine{398     \mbox{\hyperlink{classSketch_a7336eb658c12bc2a5b3a3fa718daeabc}{clearTexture}}(0);}
+\DoxyCodeLine{399 }
+\DoxyCodeLine{400     SDL\_Surface* surf = SDL\_CreateRGBSurfaceWithFormat(0, w, h, 32, SDL\_PIXELFORMAT\_RGBA32);}
+\DoxyCodeLine{401     SDL\_SetSurfaceBlendMode(surf, SDL\_BLENDMODE\_BLEND);}
+\DoxyCodeLine{402 }
+\DoxyCodeLine{403     SDL\_FillRect(surf, \textcolor{keyword}{nullptr}, SDL\_MapRGBA(surf-\/>format, color.r, color.g, color.b, color.a));}
+\DoxyCodeLine{404     }
+\DoxyCodeLine{405     SDL\_Rect borderRect;}
+\DoxyCodeLine{406 }
+\DoxyCodeLine{407     Uint32 c = SDL\_MapRGBA(surf-\/>format, borderColor.r, borderColor.g, borderColor.b, borderColor.a);}
+\DoxyCodeLine{408     borderRect = SDL\_Rect(\{0, 0, borderWidth, h\});}
+\DoxyCodeLine{409     SDL\_FillRect(surf, \&borderRect, c);}
+\DoxyCodeLine{410     }
+\DoxyCodeLine{411     borderRect = SDL\_Rect(\{0, 0, w, borderWidth\});}
+\DoxyCodeLine{412     SDL\_FillRect(surf, \&borderRect, c);}
+\DoxyCodeLine{413 }
+\DoxyCodeLine{414     borderRect = SDL\_Rect(\{0, h -\/ borderWidth, w, borderWidth\});}
+\DoxyCodeLine{415     SDL\_FillRect(surf, \&borderRect, c);}
+\DoxyCodeLine{416 }
+\DoxyCodeLine{417     borderRect = SDL\_Rect(\{w -\/ borderWidth, 0, borderWidth, h\});}
+\DoxyCodeLine{418     SDL\_FillRect(surf, \&borderRect, c);}
+\DoxyCodeLine{419     }
+\DoxyCodeLine{420     tes[0] = SDL\_CreateTextureFromSurface(ren, surf);}
+\DoxyCodeLine{421 }
+\DoxyCodeLine{422     SDL\_FreeSurface(surf);}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{424 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_ad0dff2994601bb01607730f8ff28924a}\label{classSketch_ad0dff2994601bb01607730f8ff28924a}} 
+\index{Object@{Object}!FillWithColor@{FillWithColor}}
+\index{FillWithColor@{FillWithColor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{FillWithColor()}{FillWithColor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Sketch\+::\+Fill\+With\+Color (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Color}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+fill background color with color C 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & SDL\+\_\+\+Color, color to fill fill background color with color C \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 381 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{382 \{}
+\DoxyCodeLine{383     SDL\_Color temp = color;}
+\DoxyCodeLine{384     color = c;}
+\DoxyCodeLine{385     \mbox{\hyperlink{classSketch_ac9f51685fcc7fa03fbb5cec1818666e1}{FillWithColor}}();}
+\DoxyCodeLine{386     color = temp;}
+\DoxyCodeLine{387 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}\label{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}} 
+\index{Object@{Object}!getCoor@{getCoor}}
+\index{getCoor@{getCoor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getCoor()}{getCoor()}}
+{\footnotesize\ttfamily const SDL\+\_\+\+Rect \& Object\+::get\+Coor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 92 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{93 \{}
+\DoxyCodeLine{94     \textcolor{keywordflow}{return} coor;}
+\DoxyCodeLine{95 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a54634737ea0afcf47bf0d7f0f1cad9b9}\label{classSketch_a54634737ea0afcf47bf0d7f0f1cad9b9}} 
+\index{Object@{Object}!getText@{getText}}
+\index{getText@{getText}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getText()}{getText()}}
+{\footnotesize\ttfamily const std\+::string \& Sketch\+::get\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+return text 
+
+
+
+Definition at line 148 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{149 \{}
+\DoxyCodeLine{150     \textcolor{keywordflow}{return} text;}
+\DoxyCodeLine{151 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_adc8b1304393aa4624d90b354547e4417}\label{classObject_adc8b1304393aa4624d90b354547e4417}} 
+\index{Object@{Object}!hide@{hide}}
+\index{hide@{hide}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{hide()}{hide()}}
+{\footnotesize\ttfamily void Object\+::hide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 102 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{103 \{}
+\DoxyCodeLine{104     visable = \textcolor{keyword}{false};}
+\DoxyCodeLine{105 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a891e60a6552b963ab90f42c83c4c28ed}\label{classSketch_a891e60a6552b963ab90f42c83c4c28ed}} 
+\index{Object@{Object}!highlight@{highlight}}
+\index{highlight@{highlight}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{highlight()}{highlight()}}
+{\footnotesize\ttfamily void Sketch\+::highlight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+hightlight the sketch this function will change color of background to invert color 
+
+
+
+Definition at line 867 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{868 \{}
+\DoxyCodeLine{869     color.r = 255 -\/ color.r;}
+\DoxyCodeLine{870     color.g = 255 -\/ color.g;}
+\DoxyCodeLine{871     color.b = 255 -\/ color.g;}
+\DoxyCodeLine{872     \textcolor{keywordflow}{if}(color.r > 20 \&\& color.g > 20 \&\& color.b > 20)}
+\DoxyCodeLine{873     \{}
+\DoxyCodeLine{874         color.r -\/= color.r * 0.3;}
+\DoxyCodeLine{875         color.g -\/= color.g * 0.3;}
+\DoxyCodeLine{876         color.b -\/= color.b * 0.3;}
+\DoxyCodeLine{877     \}}
+\DoxyCodeLine{878     \mbox{\hyperlink{classSketch_ac9f51685fcc7fa03fbb5cec1818666e1}{FillWithColor}}();}
+\DoxyCodeLine{879 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a4a39d2dda0814490931ba3afa09663ee}\label{classSketch_a4a39d2dda0814490931ba3afa09663ee}} 
+\index{Object@{Object}!init@{init}}
+\index{init@{init}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sketch\+::init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+init sketch from json 
+
+this function call init\+Rect, init\+Color, init\+Font, init\+Border this function also change visible, if mem contain \char`\"{}visible\char`\"{} key this function will fill with color, if mem contain \char`\"{}fill with color\char`\"{} key
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & json\\
+\hline
+\end{DoxyParams}
+example of param mem\+:
+
+\{ \begin{DoxyVerb} "rect": 
+
+ {
+
+ },
+
+ "color":
+
+ {
+
+ },
+
+ "font":
+
+ {
+
+ },
+
+ "border":
+
+ {
+
+ },
+
+ "text": "text",
+
+ "visible": true,
+
+"fill with color": true
+\end{DoxyVerb}
+ \} 
+
+Definition at line 738 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{739 \{}
+\DoxyCodeLine{740     }
+\DoxyCodeLine{741     \mbox{\hyperlink{classSketch_aa156dff52ecdb960fad3151e5c1b4dcc}{initRect}}(mem);}
+\DoxyCodeLine{742     \mbox{\hyperlink{classSketch_abc5bec3af86a19d73c5ba8fadba3bce4}{initColor}}(mem);}
+\DoxyCodeLine{743     \mbox{\hyperlink{classSketch_a26509c690c0bc6429a18d00df0a20d18}{initFont}}(mem);}
+\DoxyCodeLine{744     \mbox{\hyperlink{classSketch_a7430f06316348a8fef6c315510ab9c00}{initBorder}}(mem);}
+\DoxyCodeLine{745 }
+\DoxyCodeLine{746     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}text"{}}))}
+\DoxyCodeLine{747     \{}
+\DoxyCodeLine{748         \mbox{\hyperlink{classSketch_ad70db15d37985b1e4e9c72f73aba738e}{setText}}(mem[\textcolor{stringliteral}{"{}text"{}}].get<std::string>());}
+\DoxyCodeLine{749     \}}
+\DoxyCodeLine{750     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}visible"{}}))}
+\DoxyCodeLine{751         visible = mem[\textcolor{stringliteral}{"{}visible"{}}];}
+\DoxyCodeLine{752     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}fill with color"{}}))}
+\DoxyCodeLine{753     \{}
+\DoxyCodeLine{754         \mbox{\hyperlink{classSketch_ac9f51685fcc7fa03fbb5cec1818666e1}{FillWithColor}}();}
+\DoxyCodeLine{755     \}}
+\DoxyCodeLine{756 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a22df77c92a507a5886d2e0cb60d20e6a}\label{classObject_a22df77c92a507a5886d2e0cb60d20e6a}} 
+\index{Object@{Object}!init@{init}}
+\index{init@{init}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Object\+::init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem,  }\item[{SDL\+\_\+\+Renderer $\ast$\&}]{r }\end{DoxyParamCaption})}
+
+
+
+Definition at line 45 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47     ren = r;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{Sketch::init}}(mem);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     initTextures(mem);}
+\DoxyCodeLine{52     initRect(mem);}
+\DoxyCodeLine{53     initVisible(mem);}
+\DoxyCodeLine{54 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a7430f06316348a8fef6c315510ab9c00}\label{classSketch_a7430f06316348a8fef6c315510ab9c00}} 
+\index{Object@{Object}!initBorder@{initBorder}}
+\index{initBorder@{initBorder}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{initBorder()}{initBorder()}}
+{\footnotesize\ttfamily void Sketch\+::init\+Border (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+init border from json 
+
+if mem is not contain \char`\"{}border\char`\"{} key, do nothing
+
+if in \char`\"{}border\char`\"{} object contain \char`\"{}width\char`\"{} key, set width of border to be mem\mbox{[}\char`\"{}border\char`\"{}\mbox{]}\mbox{[}\char`\"{}width\char`\"{}\mbox{]}
+
+if in \char`\"{}border\char`\"{} object contain \char`\"{}color\char`\"{} key, set color of border to be mem\mbox{[}\char`\"{}border\char`\"{}\mbox{]}\mbox{[}\char`\"{}color\char`\"{}\mbox{]}
+
+example of param mem\+:
+
+\{
+
+\char`\"{}border\char`\"{}\+: \{ \begin{DoxyVerb}"width": 0,
+
+"color": {
+
+  "r": 0,
+
+  "g": 0,
+
+  "b": 0,
+
+  "a": 0
+
+}
+\end{DoxyVerb}
+ \}
+
+\}
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & json, contain border of sketch \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 667 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{668 \{}
+\DoxyCodeLine{669     \textcolor{keywordflow}{if}(!mem.contains(\textcolor{stringliteral}{"{}border"{}})) return ;}
+\DoxyCodeLine{670     \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}border"{}}].contains(\textcolor{stringliteral}{"{}width"{}}))}
+\DoxyCodeLine{671         borderWidth = mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}width"{}}];}
+\DoxyCodeLine{672 }
+\DoxyCodeLine{673     \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}border"{}}].contains(\textcolor{stringliteral}{"{}color"{}}))}
+\DoxyCodeLine{674     \{}
+\DoxyCodeLine{675         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}r"{}}))}
+\DoxyCodeLine{676         \{}
+\DoxyCodeLine{677             borderColor.r = mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}r"{}}];}
+\DoxyCodeLine{678         \}}
+\DoxyCodeLine{679         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}g"{}}))}
+\DoxyCodeLine{680         \{}
+\DoxyCodeLine{681             borderColor.g = mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}g"{}}];}
+\DoxyCodeLine{682         \}}
+\DoxyCodeLine{683         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}b"{}}))}
+\DoxyCodeLine{684         \{}
+\DoxyCodeLine{685             borderColor.b = mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}b"{}}];}
+\DoxyCodeLine{686         \}}
+\DoxyCodeLine{687         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}a"{}}))}
+\DoxyCodeLine{688         \{}
+\DoxyCodeLine{689             borderColor.a = mem[\textcolor{stringliteral}{"{}border"{}}][\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}a"{}}];}
+\DoxyCodeLine{690         \}}
+\DoxyCodeLine{691     \}}
+\DoxyCodeLine{692 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_abc5bec3af86a19d73c5ba8fadba3bce4}\label{classSketch_abc5bec3af86a19d73c5ba8fadba3bce4}} 
+\index{Object@{Object}!initColor@{initColor}}
+\index{initColor@{initColor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{initColor()}{initColor()}}
+{\footnotesize\ttfamily void Sketch\+::init\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+init color from json 
+
+if mem is not contain \char`\"{}color\char`\"{} key, do nothing
+
+if in \char`\"{}color\char`\"{} object contain \char`\"{}r\char`\"{} key, set r color of sketch to be mem\mbox{[}\char`\"{}color\char`\"{}\mbox{]}\mbox{[}\char`\"{}r\char`\"{}\mbox{]}
+
+if in \char`\"{}color\char`\"{} object contain \char`\"{}g\char`\"{} key, set g color of sketch to be mem\mbox{[}\char`\"{}color\char`\"{}\mbox{]}\mbox{[}\char`\"{}g\char`\"{}\mbox{]}
+
+if in \char`\"{}color\char`\"{} object contain \char`\"{}b\char`\"{} key, set b color of sketch to be mem\mbox{[}\char`\"{}color\char`\"{}\mbox{]}\mbox{[}\char`\"{}b\char`\"{}\mbox{]}
+
+if in \char`\"{}color\char`\"{} object contain \char`\"{}a\char`\"{} key, set a color of sketch to be mem\mbox{[}\char`\"{}color\char`\"{}\mbox{]}\mbox{[}\char`\"{}a\char`\"{}\mbox{]}
+
+example of param mem\+:
+
+\{
+
+\char`\"{}color\char`\"{}\+: \{ \begin{DoxyVerb} "r": 0,
+
+ "g": 0,
+
+ "b": 0,
+
+ "a": 0
+\end{DoxyVerb}
+ \}
+
+\}
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & json, contain color of sketch \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 512 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{513 \{}
+\DoxyCodeLine{514     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}color"{}}))}
+\DoxyCodeLine{515     \{}
+\DoxyCodeLine{516         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}r"{}}))}
+\DoxyCodeLine{517             color.r = mem[\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}r"{}}];}
+\DoxyCodeLine{518         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}g"{}}))}
+\DoxyCodeLine{519             color.g = mem[\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}g"{}}];}
+\DoxyCodeLine{520         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}b"{}}))}
+\DoxyCodeLine{521             color.b = mem[\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}b"{}}];}
+\DoxyCodeLine{522         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}a"{}}))}
+\DoxyCodeLine{523             color.a = mem[\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}a"{}}];}
+\DoxyCodeLine{524         cache = color;}
+\DoxyCodeLine{525     \}}
+\DoxyCodeLine{526 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a26509c690c0bc6429a18d00df0a20d18}\label{classSketch_a26509c690c0bc6429a18d00df0a20d18}} 
+\index{Object@{Object}!initFont@{initFont}}
+\index{initFont@{initFont}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{initFont()}{initFont()}}
+{\footnotesize\ttfamily void Sketch\+::init\+Font (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+init font from json 
+
+if mem is not contain \char`\"{}font\char`\"{} key, do nothing
+
+get font file and combine with \mbox{\hyperlink{namespaceGLOBAL_a490a4d88702b315d3fb722da831114b5}{GLOBAL\+::\+Fonts\+Folder}} to get full path of font file
+
+source font from that path and source the size of the font
+
+if in \char`\"{}font\char`\"{} object contain \char`\"{}rect\char`\"{} key, get rect text
+
+if in \char`\"{}font\char`\"{} object contain \char`\"{}color\char`\"{} key, get color text
+
+if int \char`\"{}font\char`\"{} object contain \char`\"{}text\char`\"{}, set default text of sketch to be mem\mbox{[}\char`\"{}font\char`\"{}\mbox{]}\mbox{[}\char`\"{}text\char`\"{}\mbox{]}
+
+example of param mem\+:
+
+\{
+
+\char`\"{}font\char`\"{}\+: \{ \begin{DoxyVerb} "name": "font.ttf",
+
+ "size": 0,
+
+ "rect": {
+
+      "x": 0,
+
+      "y": 0,
+
+      "w": 0,
+
+      "h": 0
+
+},
+
+"color": {
+
+      "r": 0,
+
+      "g": 0,
+
+      "b": 0,
+
+      "a": 0
+
+},
+
+"text": "text"
+\end{DoxyVerb}
+ \}
+
+\}
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & json, contain font of sketch \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 584 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{585 \{}
+\DoxyCodeLine{586     \textcolor{keywordflow}{if}(!mem.contains(\textcolor{stringliteral}{"{}font"{}})) return ;}
+\DoxyCodeLine{587     \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}].contains(\textcolor{stringliteral}{"{}name"{}}) \&\& mem[\textcolor{stringliteral}{"{}font"{}}].contains(\textcolor{stringliteral}{"{}size"{}}))}
+\DoxyCodeLine{588     \{}
+\DoxyCodeLine{589         \textcolor{keywordtype}{char}* name = \mbox{\hyperlink{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}(\mbox{\hyperlink{namespaceGLOBAL_a490a4d88702b315d3fb722da831114b5}{GLOBAL::FontsFolder}}, mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str());}
+\DoxyCodeLine{590         \textcolor{keywordflow}{if}(font != \textcolor{keyword}{nullptr}) }
+\DoxyCodeLine{591         \{}
+\DoxyCodeLine{592             TTF\_CloseFont(font);}
+\DoxyCodeLine{593             font = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{594         \}}
+\DoxyCodeLine{595         font = TTF\_OpenFont(name, mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}size"{}}]);}
+\DoxyCodeLine{596     \}}
+\DoxyCodeLine{597     \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}].contains(\textcolor{stringliteral}{"{}rect"{}}))}
+\DoxyCodeLine{598     \{}
+\DoxyCodeLine{599         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}rect"{}}].contains(\textcolor{stringliteral}{"{}x"{}}))}
+\DoxyCodeLine{600             coor[1].x = mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}rect"{}}][\textcolor{stringliteral}{"{}x"{}}];}
+\DoxyCodeLine{601         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}rect"{}}].contains(\textcolor{stringliteral}{"{}y"{}}))}
+\DoxyCodeLine{602             coor[1].y = mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}rect"{}}][\textcolor{stringliteral}{"{}y"{}}];}
+\DoxyCodeLine{603         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}rect"{}}].contains(\textcolor{stringliteral}{"{}align X"{}}))}
+\DoxyCodeLine{604             textAlignX = mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}rect"{}}][\textcolor{stringliteral}{"{}align X"{}}];}
+\DoxyCodeLine{605         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}rect"{}}].contains(\textcolor{stringliteral}{"{}align Y"{}}))}
+\DoxyCodeLine{606             textAlignX = mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}rect"{}}][\textcolor{stringliteral}{"{}align Y"{}}];}
+\DoxyCodeLine{607     \}}
+\DoxyCodeLine{608     \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}].contains(\textcolor{stringliteral}{"{}color"{}}))}
+\DoxyCodeLine{609     \{}
+\DoxyCodeLine{610         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}r"{}}))}
+\DoxyCodeLine{611         \{}
+\DoxyCodeLine{612             fontColor.r = mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}r"{}}];}
+\DoxyCodeLine{613         \}}
+\DoxyCodeLine{614         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}g"{}}))}
+\DoxyCodeLine{615         \{}
+\DoxyCodeLine{616             fontColor.g = mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}g"{}}];}
+\DoxyCodeLine{617         \}}
+\DoxyCodeLine{618         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}b"{}}))}
+\DoxyCodeLine{619         \{}
+\DoxyCodeLine{620             fontColor.b = mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}b"{}}];}
+\DoxyCodeLine{621         \}}
+\DoxyCodeLine{622         \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}color"{}}].contains(\textcolor{stringliteral}{"{}a"{}}))}
+\DoxyCodeLine{623         \{}
+\DoxyCodeLine{624             fontColor.a = mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}color"{}}][\textcolor{stringliteral}{"{}a"{}}];}
+\DoxyCodeLine{625         \}}
+\DoxyCodeLine{626     \}}
+\DoxyCodeLine{627     \textcolor{keywordflow}{if}(mem[\textcolor{stringliteral}{"{}font"{}}].contains(\textcolor{stringliteral}{"{}text"{}}))}
+\DoxyCodeLine{628     \{}
+\DoxyCodeLine{629         \mbox{\hyperlink{classSketch_ad70db15d37985b1e4e9c72f73aba738e}{setText}}(mem[\textcolor{stringliteral}{"{}font"{}}][\textcolor{stringliteral}{"{}text"{}}].get<std::string>());}
+\DoxyCodeLine{630     \}}
+\DoxyCodeLine{631 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a68117865f3bde7c9e3d29106bebdd8a3}\label{classSketch_a68117865f3bde7c9e3d29106bebdd8a3}} 
+\index{Object@{Object}!isLieInside@{isLieInside}}
+\index{isLieInside@{isLieInside}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{isLieInside()}{isLieInside()}}
+{\footnotesize\ttfamily bool Sketch\+::is\+Lie\+Inside (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+determine a point is lie inside sketch or not this function will return true if point (x, y) lie inside sketch 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & int \\
+\hline
+{\em y} & int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 813 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{814 \{}
+\DoxyCodeLine{815     \textcolor{keywordflow}{if}(x < coor[0].x || coor[0].x + coor[0].w <= x) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{816     \textcolor{keywordflow}{if}(y < coor[0].y || coor[0].y + coor[0].y <= y) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{817     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{818 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a8ccb3d2835e849a909ff6dab8fc336a4}\label{classObject_a8ccb3d2835e849a909ff6dab8fc336a4}} 
+\index{Object@{Object}!isLiesInside@{isLiesInside}}
+\index{isLiesInside@{isLiesInside}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{isLiesInside()}{isLiesInside()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Object\+::is\+Lies\+Inside (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line 197 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{198 \{}
+\DoxyCodeLine{199     \textcolor{keywordflow}{if}(x < coor.x || coor.x + coor.w <= x)}
+\DoxyCodeLine{200         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{201     \textcolor{keywordflow}{if}(y < coor.y || coor.y + coor.h <= y)}
+\DoxyCodeLine{202         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{203     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{204 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a8a1e55d7de5885f3bd0f165d610a2b6b}\label{classObject_a8a1e55d7de5885f3bd0f165d610a2b6b}} 
+\index{Object@{Object}!isLiesInside@{isLiesInside}}
+\index{isLiesInside@{isLiesInside}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{isLiesInside()}{isLiesInside()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Object\+::is\+Lies\+Inside (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 206 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{207 \{}
+\DoxyCodeLine{208     \textcolor{keywordflow}{if}(x < coor.x || coor.x + coor.w <= x + w)}
+\DoxyCodeLine{209         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{210     \textcolor{keywordflow}{if}(y < coor.y || coor.y + coor.h <= y + h)}
+\DoxyCodeLine{211         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{212     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{213 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a3c3bf200380a391f7991dc00cba1c8bf}\label{classObject_a3c3bf200380a391f7991dc00cba1c8bf}} 
+\index{Object@{Object}!isLiesInside@{isLiesInside}}
+\index{isLiesInside@{isLiesInside}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{isLiesInside()}{isLiesInside()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Object\+::is\+Lies\+Inside (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect}]{rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line 215 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{216 \{}
+\DoxyCodeLine{217     \textcolor{keywordflow}{return} \mbox{\hyperlink{classObject_a8ccb3d2835e849a909ff6dab8fc336a4}{isLiesInside}}(rect.x, rect.y, rect.w, rect.h);}
+\DoxyCodeLine{218 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a273d5a6a9a37f5a367c8f7e24148111f}\label{classObject_a273d5a6a9a37f5a367c8f7e24148111f}} 
+\index{Object@{Object}!isVisible@{isVisible}}
+\index{isVisible@{isVisible}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{isVisible()}{isVisible()}}
+{\footnotesize\ttfamily bool Object\+::is\+Visible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 192 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{193 \{}
+\DoxyCodeLine{194     \textcolor{keywordflow}{return} visable;}
+\DoxyCodeLine{195 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_aa61f9fc990b651532c1a18b190d14e70}\label{classObject_aa61f9fc990b651532c1a18b190d14e70}} 
+\index{Object@{Object}!moveTo@{moveTo}}
+\index{moveTo@{moveTo}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{moveTo()}{moveTo()}}
+{\footnotesize\ttfamily void Object\+::move\+To (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{double}]{time }\end{DoxyParamCaption})}
+
+
+
+Definition at line 239 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{240 \{}
+\DoxyCodeLine{241     \textcolor{keywordtype}{int} dx = x -\/ \mbox{\hyperlink{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}{getCoor}}().x;}
+\DoxyCodeLine{242     \textcolor{keywordtype}{int} dy = y -\/ \mbox{\hyperlink{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}{getCoor}}().y;}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244     \textcolor{keywordflow}{if}(\mbox{\hyperlink{SYSTEM_8hpp_a82aa2c691212111c6e0b7362267a9d9f}{diff}}(time, 0))}
+\DoxyCodeLine{245     \{}
+\DoxyCodeLine{246         coor.x = x;}
+\DoxyCodeLine{247         coor.y = y;}
+\DoxyCodeLine{248         return ;}
+\DoxyCodeLine{249     \}}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{251     \textcolor{keywordtype}{double} velo;}
+\DoxyCodeLine{252     \textcolor{keywordflow}{if}(abs(dx) < abs(dy))}
+\DoxyCodeLine{253         velo = dy / time;}
+\DoxyCodeLine{254     \textcolor{keywordflow}{else} velo = dx / time;}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256     \textcolor{keywordtype}{int} loop = std::min(80.0, abs(velo * time));}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258     time = time / loop;}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= loop; i++)}
+\DoxyCodeLine{262     \{}
+\DoxyCodeLine{263         Uint32 startTime = SDL\_GetTicks();}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265         \mbox{\hyperlink{classObject_a4e60a9d57998ae3257dd22d646a47691}{addX}}(-\/dx * (i -\/ 1) / loop);}
+\DoxyCodeLine{266         \mbox{\hyperlink{classObject_a4e60a9d57998ae3257dd22d646a47691}{addX}}(dx * i / loop);}
+\DoxyCodeLine{267         \mbox{\hyperlink{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}{addY}}(-\/dy * (i -\/ 1) / loop);}
+\DoxyCodeLine{268         \mbox{\hyperlink{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}{addY}}(dy * i / loop);}
+\DoxyCodeLine{269         \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}}(\textcolor{keyword}{true}); }
+\DoxyCodeLine{270         Uint32 deltaTime = SDL\_GetTicks() -\/ startTime;}
+\DoxyCodeLine{271         startTime = SDL\_GetTicks();}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273         \textcolor{keywordflow}{if}(deltaTime <= time * 1000)}
+\DoxyCodeLine{274             SDL\_Delay(time * 1000 -\/ deltaTime);}
+\DoxyCodeLine{275     \}}
+\DoxyCodeLine{276     \mbox{\hyperlink{classObject_a2788cb89a69545981a55959bc8003c1d}{setX}}(x);}
+\DoxyCodeLine{277     \mbox{\hyperlink{classObject_a95816b2bfea04b5322378b48c866c140}{setY}}(y);}
+\DoxyCodeLine{278     \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{279 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_ac6f79e1f58ddf42a351fc03f0bf022aa}\label{classObject_ac6f79e1f58ddf42a351fc03f0bf022aa}} 
+\index{Object@{Object}!pickTexure@{pickTexure}}
+\index{pickTexure@{pickTexure}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{pickTexure()}{pickTexure()}}
+{\footnotesize\ttfamily void Object\+::pick\+Texure (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 177 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{178 \{}
+\DoxyCodeLine{179     \textcolor{keywordflow}{if}(k >= \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}()) return ;}
+\DoxyCodeLine{180     top = k;}
+\DoxyCodeLine{181 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_aaf8a7e1f834cadefdc707c68a92f0cc9}\label{classSketch_aaf8a7e1f834cadefdc707c68a92f0cc9}} 
+\index{Object@{Object}!popChar@{popChar}}
+\index{popChar@{popChar}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{popChar()}{popChar()}}
+{\footnotesize\ttfamily void Sketch\+::pop\+Char (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+erase a character if text is empty then do nothing pop a character from the end of the text after that new text texture will be create 
+
+
+
+Definition at line 112 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113 \{}
+\DoxyCodeLine{114     \textcolor{keywordflow}{if}(text.empty()) return ;}
+\DoxyCodeLine{115     text.pop\_back();}
+\DoxyCodeLine{116     \mbox{\hyperlink{classSketch_ad9b674c6a933471fc59492ac5c4697df}{createTextTexture}}();}
+\DoxyCodeLine{117 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_aee998636e2f64fea8020cc53983754d2}\label{classSketch_aee998636e2f64fea8020cc53983754d2}} 
+\index{Object@{Object}!render@{render}}
+\index{render@{render}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sketch\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+render if sketch is hided, do nothing render sketch if renderer is nullptr, it may cause error, require \mbox{\hyperlink{classSketch_aab00f66b334da55a963282da6ed313d8}{set\+Render()}} before \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render()}} render background fisrt then render text 
+
+
+
+Definition at line 328 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{329 \{}
+\DoxyCodeLine{330     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
+\DoxyCodeLine{331     \textcolor{keywordflow}{if}(tes[0] != \textcolor{keyword}{nullptr}) SDL\_RenderCopy(ren, tes[0], \textcolor{keyword}{nullptr}, \&coor[0]);}
+\DoxyCodeLine{332     \textcolor{keywordflow}{if}(tes[1] != \textcolor{keyword}{nullptr}) SDL\_RenderCopy(ren, tes[1], \&crop, \&coor[1]);}
+\DoxyCodeLine{333 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a403bc18560483c4be37a618939d44bea}\label{classObject_a403bc18560483c4be37a618939d44bea}} 
+\index{Object@{Object}!render@{render}}
+\index{render@{render}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Object\+::render (\begin{DoxyParamCaption}\item[{bool}]{update }\end{DoxyParamCaption})}
+
+
+
+Definition at line 183 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{184 \{}
+\DoxyCodeLine{185     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classObject_a273d5a6a9a37f5a367c8f7e24148111f}{isVisible}}()) return ; }
+\DoxyCodeLine{186     SDL\_RenderCopy(ren, tes[top], \textcolor{keyword}{nullptr}, \&coor);}
+\DoxyCodeLine{187     \textcolor{keywordflow}{if}(update == \textcolor{keyword}{true})}
+\DoxyCodeLine{188         SDL\_RenderPresent(ren);}
+\DoxyCodeLine{189     return ;}
+\DoxyCodeLine{190 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_aacef20f4453d1d1a7a1f9c12c5abe260}\label{classSketch_aacef20f4453d1d1a7a1f9c12c5abe260}} 
+\index{Object@{Object}!setBorder@{setBorder}}
+\index{setBorder@{setBorder}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setBorder()}{setBorder()}}
+{\footnotesize\ttfamily void Sketch\+::set\+Border (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{r,  }\item[{int}]{g,  }\item[{int}]{b,  }\item[{int}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+set border 
+
+set border of sketch
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & interger, width of border \\
+\hline
+{\em r} & interger, red value of border color, 0 -\/ 255 \\
+\hline
+{\em g} & interger, green value of border color, 0 -\/ 255 \\
+\hline
+{\em b} & interger, blue value of border color, 0 -\/ 255 \\
+\hline
+{\em a} & interger, alpha value of border color, 0 -\/ 255 \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 355 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{356 \{}
+\DoxyCodeLine{357     borderWidth = w;}
+\DoxyCodeLine{358     borderColor.r = r;}
+\DoxyCodeLine{359     borderColor.g = g;}
+\DoxyCodeLine{360     borderColor.b = b;}
+\DoxyCodeLine{361     borderColor.a = a;}
+\DoxyCodeLine{362 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_ae426dc96884dadf565df9f588bee553c}\label{classSketch_ae426dc96884dadf565df9f588bee553c}} 
+\index{Object@{Object}!setBorderColor@{setBorderColor}}
+\index{setBorderColor@{setBorderColor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setBorderColor()}{setBorderColor()}}
+{\footnotesize\ttfamily void Sketch\+::set\+Border\+Color (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{g,  }\item[{int}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+set border color 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & interger, red value of border color, 0 -\/ 255 \\
+\hline
+{\em g} & interger, green value of border color, 0 -\/ 255 \\
+\hline
+{\em b} & interger, blue value of border color, 0 -\/ 255 set border color \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 370 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{371 \{}
+\DoxyCodeLine{372     borderColor.r = r;}
+\DoxyCodeLine{373     borderColor.g = g;}
+\DoxyCodeLine{374     borderColor.b = b;}
+\DoxyCodeLine{375 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a207b912a229e0a9c6a127184da176966}\label{classSketch_a207b912a229e0a9c6a127184da176966}} 
+\index{Object@{Object}!setColor@{setColor}}
+\index{setColor@{setColor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Sketch\+::set\+Color (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{g,  }\item[{int}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+set background color to be (r, g, b) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & interger, red value, 0 -\/ 255 \\
+\hline
+{\em b} & interger, blue value, 0 -\/ 255 \\
+\hline
+{\em g} & interger, green value, 0 -\/ 255 set background color to be (r, g, b) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 167 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{168 \{}
+\DoxyCodeLine{169     color.r = r;}
+\DoxyCodeLine{170     color.g = g;}
+\DoxyCodeLine{171     color.b = b;}
+\DoxyCodeLine{172 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a365b6f9d239e3125cb75094c69489c6d}\label{classSketch_a365b6f9d239e3125cb75094c69489c6d}} 
+\index{Object@{Object}!setColor@{setColor}}
+\index{setColor@{setColor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Sketch\+::set\+Color (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{g,  }\item[{int}]{b,  }\item[{int}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+set background color to be (r, g, b a) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & interger, red value, 0 -\/ 255 \\
+\hline
+{\em b} & interger, blue value, 0 -\/ 255 \\
+\hline
+{\em g} & interger, green value, 0 -\/ 255 \\
+\hline
+{\em a} & interger, alpha value, 0 -\/ 255 set background color to be (r, g, b, a) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 182 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{183 \{}
+\DoxyCodeLine{184     color.r = r;}
+\DoxyCodeLine{185     color.g = g;}
+\DoxyCodeLine{186     color.b = b;}
+\DoxyCodeLine{187     color.a = a;}
+\DoxyCodeLine{188 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a06f2fb5b8df56dad239048927d17f2db}\label{classSketch_a06f2fb5b8df56dad239048927d17f2db}} 
+\index{Object@{Object}!setColor@{setColor}}
+\index{setColor@{setColor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Sketch\+::set\+Color (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Color}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+set background color to be c 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & SDL\+\_\+\+Color, background color \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 156 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{157 \{}
+\DoxyCodeLine{158     color = c;}
+\DoxyCodeLine{159 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a482dfe6078c3ebc8120fb720b8924995}\label{classObject_a482dfe6078c3ebc8120fb720b8924995}} 
+\index{Object@{Object}!setCoor@{setCoor}}
+\index{setCoor@{setCoor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setCoor()}{setCoor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Object\+::set\+Coor (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58     coor.x = x;}
+\DoxyCodeLine{59     coor.y = y;}
+\DoxyCodeLine{60     coor.w = w;}
+\DoxyCodeLine{61     coor.h = h;}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_ad46063e9297907c8e0e6e98727fb5834}\label{classObject_ad46063e9297907c8e0e6e98727fb5834}} 
+\index{Object@{Object}!setCoor@{setCoor}}
+\index{setCoor@{setCoor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setCoor()}{setCoor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Object\+::set\+Coor (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect}]{key }\end{DoxyParamCaption})}
+
+
+
+Definition at line 64 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66     coor.x = key.x;}
+\DoxyCodeLine{67     coor.y = key.y;}
+\DoxyCodeLine{68     coor.w = key.w;}
+\DoxyCodeLine{69     coor.h = key.h;}
+\DoxyCodeLine{70 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a97361d3e51f617fef03a435414cc6962}\label{classObject_a97361d3e51f617fef03a435414cc6962}} 
+\index{Object@{Object}!setH@{setH}}
+\index{setH@{setH}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setH()}{setH()}}
+{\footnotesize\ttfamily void Object\+::setH (\begin{DoxyParamCaption}\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 87 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{88 \{}
+\DoxyCodeLine{89     coor.h = h;}
+\DoxyCodeLine{90 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a37f8156e9953f9cfc821ab6b39c72be1}\label{classSketch_a37f8156e9953f9cfc821ab6b39c72be1}} 
+\index{Object@{Object}!setInCenterX@{setInCenterX}}
+\index{setInCenterX@{setInCenterX}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setInCenterX()}{setInCenterX()}}
+{\footnotesize\ttfamily void Sketch\+::set\+In\+CenterX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+align text texture align x coordinate of text texture to be in the center of the background texture 
+
+
+
+Definition at line 269 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{270 \{}
+\DoxyCodeLine{271     \textcolor{keywordtype}{int} x = coor[0].x;}
+\DoxyCodeLine{272     \textcolor{keywordtype}{int} w = coor[0].w;}
+\DoxyCodeLine{273     coor[1].x = x + (w -\/ coor[1].w) / 2;}
+\DoxyCodeLine{274 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_aa505abcaeb1647d4211170ac1627fba3}\label{classSketch_aa505abcaeb1647d4211170ac1627fba3}} 
+\index{Object@{Object}!setInCenterY@{setInCenterY}}
+\index{setInCenterY@{setInCenterY}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setInCenterY()}{setInCenterY()}}
+{\footnotesize\ttfamily void Sketch\+::set\+In\+CenterY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+align text texture align y coordinate of text texture to be in the center of the background texture 
+
+
+
+Definition at line 279 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{280 \{}
+\DoxyCodeLine{281     \textcolor{keywordtype}{int} y = coor[0].y;}
+\DoxyCodeLine{282     \textcolor{keywordtype}{int} h = coor[0].h;}
+\DoxyCodeLine{283     coor[1].y = y + (h -\/ coor[1].h) / 2;}
+\DoxyCodeLine{284 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a3803cf567a2e6f5f39318da4f384decb}\label{classSketch_a3803cf567a2e6f5f39318da4f384decb}} 
+\index{Object@{Object}!setOnLeftSideX@{setOnLeftSideX}}
+\index{setOnLeftSideX@{setOnLeftSideX}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setOnLeftSideX()}{setOnLeftSideX()}}
+{\footnotesize\ttfamily void Sketch\+::set\+On\+Left\+SideX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+align text texture align x coordinate of text texture to be in the left side of the background texture 
+
+
+
+Definition at line 289 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{290 \{}
+\DoxyCodeLine{291     coor[1].x = coor[0].x;}
+\DoxyCodeLine{292 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a59c564c5c8e6f275c83185a1b84fc4bf}\label{classSketch_a59c564c5c8e6f275c83185a1b84fc4bf}} 
+\index{Object@{Object}!setOnLeftSideY@{setOnLeftSideY}}
+\index{setOnLeftSideY@{setOnLeftSideY}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setOnLeftSideY()}{setOnLeftSideY()}}
+{\footnotesize\ttfamily void Sketch\+::set\+On\+Left\+SideY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+align text texture align y coordinate of text texture to be in the top side of the background texture 
+
+
+
+Definition at line 307 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{308 \{}
+\DoxyCodeLine{309     coor[1].y = coor[0].y;}
+\DoxyCodeLine{310 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a2074bb5655738694be1eb4976a14f4f5}\label{classSketch_a2074bb5655738694be1eb4976a14f4f5}} 
+\index{Object@{Object}!setOnRightSideX@{setOnRightSideX}}
+\index{setOnRightSideX@{setOnRightSideX}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setOnRightSideX()}{setOnRightSideX()}}
+{\footnotesize\ttfamily void Sketch\+::set\+On\+Right\+SideX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+align text texture align x coordinate of text texture to be in the right side of the background texture 
+
+
+
+Definition at line 297 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{298 \{}
+\DoxyCodeLine{299     \textcolor{keywordtype}{int} x = coor[0].x;}
+\DoxyCodeLine{300     \textcolor{keywordtype}{int} w = coor[0].w;}
+\DoxyCodeLine{301     coor[1].x = x + w -\/ coor[1].w;}
+\DoxyCodeLine{302 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_ac6126e3e448627d18e0372694497bedd}\label{classSketch_ac6126e3e448627d18e0372694497bedd}} 
+\index{Object@{Object}!setOnRightSideY@{setOnRightSideY}}
+\index{setOnRightSideY@{setOnRightSideY}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setOnRightSideY()}{setOnRightSideY()}}
+{\footnotesize\ttfamily void Sketch\+::set\+On\+Right\+SideY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+align text texture align y coordinate of text texture to be in the bottom side of the background texture 
+
+
+
+Definition at line 315 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{316 \{}
+\DoxyCodeLine{317     \textcolor{keywordtype}{int} y = coor[0].y;}
+\DoxyCodeLine{318     \textcolor{keywordtype}{int} h = coor[0].h;}
+\DoxyCodeLine{319     coor[1].y = y + h -\/ coor[1].h;}
+\DoxyCodeLine{320 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_aab00f66b334da55a963282da6ed313d8}\label{classSketch_aab00f66b334da55a963282da6ed313d8}} 
+\index{Object@{Object}!setRender@{setRender}}
+\index{setRender@{setRender}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setRender()}{setRender()}}
+{\footnotesize\ttfamily void Sketch\+::set\+Render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$\&}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+set render 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & address of SDL\+\_\+\+Renderer pointer set render of sketch \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 339 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{340 \{}
+\DoxyCodeLine{341     ren = r;}
+\DoxyCodeLine{342 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_ad70db15d37985b1e4e9c72f73aba738e}\label{classSketch_ad70db15d37985b1e4e9c72f73aba738e}} 
+\index{Object@{Object}!setText@{setText}}
+\index{setText@{setText}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setText()}{setText()}}
+{\footnotesize\ttfamily void Sketch\+::set\+Text (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+set text to be s 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & string that will be set to text set text to be s and create new text texture \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 124 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{125 \{}
+\DoxyCodeLine{126     text = s;}
+\DoxyCodeLine{127     \mbox{\hyperlink{classSketch_ad9b674c6a933471fc59492ac5c4697df}{createTextTexture}}();}
+\DoxyCodeLine{128 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_af823f58bba1c6b12ba623bac4a84aae9}\label{classSketch_af823f58bba1c6b12ba623bac4a84aae9}} 
+\index{Object@{Object}!setTextColor@{setTextColor}}
+\index{setTextColor@{setTextColor}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setTextColor()}{setTextColor()}}
+{\footnotesize\ttfamily void Sketch\+::set\+Text\+Color (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{g,  }\item[{int}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+set text color to be (r, g, b) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & interger, red value, 0 -\/ 255 \\
+\hline
+{\em b} & interger, blue value, 0 -\/ 255 \\
+\hline
+{\em g} & interger, green value, 0 -\/ 255 set text color to be (r, g, b) and create new text texture \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 136 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{137 \{}
+\DoxyCodeLine{138     fontColor.r = r;}
+\DoxyCodeLine{139     fontColor.g = g;}
+\DoxyCodeLine{140     fontColor.b = b;}
+\DoxyCodeLine{141     \mbox{\hyperlink{classSketch_ad9b674c6a933471fc59492ac5c4697df}{createTextTexture}}();}
+\DoxyCodeLine{142 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_ab2c70e366d33ebc15119ac32abe09c1e}\label{classObject_ab2c70e366d33ebc15119ac32abe09c1e}} 
+\index{Object@{Object}!setTextures@{setTextures}}
+\index{setTextures@{setTextures}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setTextures()}{setTextures()}}
+{\footnotesize\ttfamily void Object\+::set\+Textures (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})}
+
+
+
+Definition at line 107 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{108 \{}
+\DoxyCodeLine{109     \mbox{\hyperlink{classObject_a739c8034c25e913916390bceed2ceb40}{clearTextures}}();}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     tes.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}textures"{}}].\mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}());}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{keywordtype}{char}* FolderName = \textcolor{keyword}{new} \textcolor{keywordtype}{char} [256];}
+\DoxyCodeLine{114     strcpy(FolderName, mem[\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str());}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0 ; i < \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}(); i++)}
+\DoxyCodeLine{117     \{}
+\DoxyCodeLine{118         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fullname = \mbox{\hyperlink{SYSTEM_8hpp_add498b5bd70219e44845487e69eb6daa}{combineName}}(}
+\DoxyCodeLine{119             mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str(),}
+\DoxyCodeLine{120             mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}type"{}}].get<std::string>().c\_str()}
+\DoxyCodeLine{121         );}
+\DoxyCodeLine{122         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* name = \mbox{\hyperlink{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}( }
+\DoxyCodeLine{123             FolderName,}
+\DoxyCodeLine{124             fullname}
+\DoxyCodeLine{125         );}
+\DoxyCodeLine{126         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* link = \mbox{\hyperlink{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}(}
+\DoxyCodeLine{127             \mbox{\hyperlink{namespaceGLOBAL_ad75dd09e451ef5558589a16318a45e73}{GLOBAL::GraphicsFolder}}, }
+\DoxyCodeLine{128             name}
+\DoxyCodeLine{129         ); }
+\DoxyCodeLine{130         }
+\DoxyCodeLine{131         SDL\_Surface* surf;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133         std::string type = mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}type"{}}].get<std::string>();}
+\DoxyCodeLine{134         \textcolor{keywordflow}{if}(type == \textcolor{stringliteral}{"{}bmp"{}})}
+\DoxyCodeLine{135             surf = SDL\_LoadBMP(link);}
+\DoxyCodeLine{136         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(type == \textcolor{stringliteral}{"{}png"{}} || type == \textcolor{stringliteral}{"{}jpg"{}})}
+\DoxyCodeLine{137             surf = IMG\_Load(link);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139         tes[i] = SDL\_CreateTextureFromSurface(ren, surf);}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141         \textcolor{keyword}{delete} [] link;}
+\DoxyCodeLine{142         \textcolor{keyword}{delete} [] name;}
+\DoxyCodeLine{143         \textcolor{keyword}{delete} []fullname;}
+\DoxyCodeLine{144         SDL\_FreeSurface(surf);}
+\DoxyCodeLine{145     \}}
+\DoxyCodeLine{146     \textcolor{keyword}{delete} [] FolderName;}
+\DoxyCodeLine{147 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_acf47387b83af5aa5aff0d3c96f6a7e0b}\label{classObject_acf47387b83af5aa5aff0d3c96f6a7e0b}} 
+\index{Object@{Object}!setW@{setW}}
+\index{setW@{setW}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setW()}{setW()}}
+{\footnotesize\ttfamily void Object\+::setW (\begin{DoxyParamCaption}\item[{int}]{w }\end{DoxyParamCaption})}
+
+
+
+Definition at line 82 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{83 \{}
+\DoxyCodeLine{84     coor.w = w;}
+\DoxyCodeLine{85 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a2788cb89a69545981a55959bc8003c1d}\label{classObject_a2788cb89a69545981a55959bc8003c1d}} 
+\index{Object@{Object}!setX@{setX}}
+\index{setX@{setX}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily void Object\+::setX (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 72 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73 \{}
+\DoxyCodeLine{74     coor.x = x;}
+\DoxyCodeLine{75 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a95816b2bfea04b5322378b48c866c140}\label{classObject_a95816b2bfea04b5322378b48c866c140}} 
+\index{Object@{Object}!setY@{setY}}
+\index{setY@{setY}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily void Object\+::setY (\begin{DoxyParamCaption}\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line 77 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79     coor.y = y;}
+\DoxyCodeLine{80 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_ab6d0594ca9021e45807970c88710b759}\label{classObject_ab6d0594ca9021e45807970c88710b759}} 
+\index{Object@{Object}!show@{show}}
+\index{show@{show}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{show()}{show()}}
+{\footnotesize\ttfamily void Object\+::show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 97 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{98 \{}
+\DoxyCodeLine{99     visable = \textcolor{keyword}{true};}
+\DoxyCodeLine{100 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}\label{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}} 
+\index{Object@{Object}!size@{size}}
+\index{size@{size}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily int Object\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 159 of file Object.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{160 \{}
+\DoxyCodeLine{161     \textcolor{keywordflow}{return} tes.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}();}
+\DoxyCodeLine{162 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSketch_a59b0712ea0d65a8e66ee1e3e227d8766}\label{classSketch_a59b0712ea0d65a8e66ee1e3e227d8766}} 
+\index{Object@{Object}!unHighlight@{unHighlight}}
+\index{unHighlight@{unHighlight}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{unHighlight()}{unHighlight()}}
+{\footnotesize\ttfamily void Sketch\+::un\+Highlight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+unhightlight the sketch this function will change color of background to normal color 
+
+
+
+Definition at line 884 of file Sketch.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{885 \{}
+\DoxyCodeLine{886     color = cache;}
+\DoxyCodeLine{887     \mbox{\hyperlink{classSketch_ac9f51685fcc7fa03fbb5cec1818666e1}{FillWithColor}}();}
+\DoxyCodeLine{888 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Object_8hpp}{Object.\+hpp}}\item 
+src/\mbox{\hyperlink{Object_8cpp}{Object.\+cpp}}\end{DoxyCompactItemize}

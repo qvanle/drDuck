@@ -1,0 +1,580 @@
+\hypertarget{classMyWindow}{}\doxysection{My\+Window Class Reference}
+\label{classMyWindow}\index{MyWindow@{MyWindow}}
+
+
+{\ttfamily \#include $<$Duck\+Win.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMyWindow_ae0ae4de3a21d55202f428bd6bf5656d9}{My\+Window}} ()
+\item 
+void \mbox{\hyperlink{classMyWindow_a9dad0a3c8db0a1e0cfd2c49550588232}{load\+Screen}} (\mbox{\hyperlink{classDisplay}{Display}} $\ast$\&screen, const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
+\item 
+void \mbox{\hyperlink{classMyWindow_a9893c2ec64ab06d3e785e0189a4e8c35}{init}} ()
+\item 
+void \mbox{\hyperlink{classMyWindow_a1268f3945f965060279b23de8336d78e}{action}} ()
+\item 
+void \mbox{\hyperlink{classMyWindow_a875c2a791e3fd46919a4a611c88cc95c}{process}} ()
+\item 
+void \mbox{\hyperlink{classMyWindow_a2ea5dcbaba02d371fff14c109272d491}{speak}} ()
+\item 
+void \mbox{\hyperlink{classMyWindow_a9ea7b6493c614b574b5a661892ad5297}{render}} ()
+\item 
+bool \mbox{\hyperlink{classMyWindow_a4e2cf4ccdda978aeb0a6e356a60cfdbf}{is\+Open}} ()
+\item 
+bool \mbox{\hyperlink{classMyWindow_aa807f5e5cadd946f78bd9a3ce28d690a}{is\+Close}} ()
+\item 
+bool \mbox{\hyperlink{classMyWindow_ab2d31f4c799a8cdb04964eabfd139ea5}{is\+Hanging}} ()
+\item 
+void \mbox{\hyperlink{classMyWindow_a7c60dba0a20ad3d8a9bd5cfcef178134}{change\+Screens}} (const char $\ast$const \&name)
+\item 
+\mbox{\hyperlink{classDisplay}{Display}} $\ast$\& \mbox{\hyperlink{classMyWindow_af11fd74c86eab330435da6008255d644}{top}} ()
+\item 
+void \mbox{\hyperlink{classMyWindow_afb804429e834ad9b74ae9634b280657e}{mouse\+Move}} (int x, int y)
+\item 
+void \mbox{\hyperlink{classMyWindow_a12f654e50c6800595a5e2eebef37b7d5}{mouse\+Press}} (int x, int y)
+\item 
+void \mbox{\hyperlink{classMyWindow_a97545995a77efcb1827cc47f78b16eb1}{typing}} (SDL\+\_\+\+Keysym key)
+\item 
+void \mbox{\hyperlink{classMyWindow_ad3cdc8d2dfc2758c4d30ba22a6ff8622}{run}} ()
+\item 
+\mbox{\hyperlink{classMyWindow_acc6b33f79cb9f1ee9107beac4c474fd3}{$\sim$\+My\+Window}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 19 of file Duck\+Win.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMyWindow_ae0ae4de3a21d55202f428bd6bf5656d9}\label{classMyWindow_ae0ae4de3a21d55202f428bd6bf5656d9}} 
+\index{MyWindow@{MyWindow}!MyWindow@{MyWindow}}
+\index{MyWindow@{MyWindow}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{MyWindow()}{MyWindow()}}
+{\footnotesize\ttfamily My\+Window\+::\+My\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 3 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{4 \{}
+\DoxyCodeLine{5     soundMutex.lock();}
+\DoxyCodeLine{6     status = 0;}
+\DoxyCodeLine{7     WIDTH = 0;}
+\DoxyCodeLine{8     HEIGHT = 0;}
+\DoxyCodeLine{9     window = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{10     renderer = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{11     FocusOn = 0;}
+\DoxyCodeLine{12     screen.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{13     DT = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{14     input = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{15     turnOn = \textcolor{keyword}{true};}
+\DoxyCodeLine{16     soundOn = \textcolor{keyword}{true};}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_acc6b33f79cb9f1ee9107beac4c474fd3}\label{classMyWindow_acc6b33f79cb9f1ee9107beac4c474fd3}} 
+\index{MyWindow@{MyWindow}!````~MyWindow@{$\sim$MyWindow}}
+\index{````~MyWindow@{$\sim$MyWindow}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{$\sim$MyWindow()}{~MyWindow()}}
+{\footnotesize\ttfamily My\+Window\+::$\sim$\+My\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 816 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{817 \{}
+\DoxyCodeLine{818     shutdown();}
+\DoxyCodeLine{819 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMyWindow_a1268f3945f965060279b23de8336d78e}\label{classMyWindow_a1268f3945f965060279b23de8336d78e}} 
+\index{MyWindow@{MyWindow}!action@{action}}
+\index{action@{action}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{action()}{action()}}
+{\footnotesize\ttfamily void My\+Window\+::action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 922 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{923 \{}
+\DoxyCodeLine{924     \textcolor{keywordflow}{while}(\mbox{\hyperlink{classMyWindow_a4e2cf4ccdda978aeb0a6e356a60cfdbf}{isOpen}}())}
+\DoxyCodeLine{925     \{}
+\DoxyCodeLine{926         \textcolor{keywordflow}{while}(SDL\_PollEvent(\&event))}
+\DoxyCodeLine{927             \mbox{\hyperlink{classMyWindow_a875c2a791e3fd46919a4a611c88cc95c}{process}}();}
+\DoxyCodeLine{928     \}}
+\DoxyCodeLine{929 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a7c60dba0a20ad3d8a9bd5cfcef178134}\label{classMyWindow_a7c60dba0a20ad3d8a9bd5cfcef178134}} 
+\index{MyWindow@{MyWindow}!changeScreens@{changeScreens}}
+\index{changeScreens@{changeScreens}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{changeScreens()}{changeScreens()}}
+{\footnotesize\ttfamily void My\+Window\+::change\+Screens (\begin{DoxyParamCaption}\item[{const char $\ast$const \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 782 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{783 \{}
+\DoxyCodeLine{784     deleteScreen();}
+\DoxyCodeLine{785 }
+\DoxyCodeLine{786     \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} mem; }
+\DoxyCodeLine{787 }
+\DoxyCodeLine{788     \mbox{\hyperlink{SYSTEM_8hpp_aa0ab0bb9519f44724cabe0ff96673bde}{readjson}}(\mbox{\hyperlink{namespaceGLOBAL_a99a02d159a27de03b9bc46ac36d4d889}{GLOBAL::AtrbScreens}}, name, mem);}
+\DoxyCodeLine{789 }
+\DoxyCodeLine{790     screen.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem.size());}
+\DoxyCodeLine{791 }
+\DoxyCodeLine{792 }
+\DoxyCodeLine{793     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) screen.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{794     \{}
+\DoxyCodeLine{795         FocusOn = i;}
+\DoxyCodeLine{796         \mbox{\hyperlink{classMyWindow_af11fd74c86eab330435da6008255d644}{top}}() = \textcolor{keyword}{new} \mbox{\hyperlink{classDisplay}{Display}};}
+\DoxyCodeLine{797         \mbox{\hyperlink{classMyWindow_af11fd74c86eab330435da6008255d644}{top}}()-\/>\mbox{\hyperlink{classDisplay_a3c062afd27a3a0a59840bec7fde8f377}{setRenderer}}(renderer);}
+\DoxyCodeLine{798         \mbox{\hyperlink{classMyWindow_af11fd74c86eab330435da6008255d644}{top}}()-\/>\mbox{\hyperlink{classDisplay_a7e281565b575d892044ecb55cdd5407d}{init}}(mem[i]);}
+\DoxyCodeLine{799     \}}
+\DoxyCodeLine{800     \textcolor{keywordflow}{if}(turnOn)}
+\DoxyCodeLine{801     \{}
+\DoxyCodeLine{802         screen[0]-\/>hideButton(0);}
+\DoxyCodeLine{803         screen[0]-\/>showButton(1);}
+\DoxyCodeLine{804     \}\textcolor{keywordflow}{else} }
+\DoxyCodeLine{805     \{}
+\DoxyCodeLine{806         screen[0]-\/>hideButton(1);}
+\DoxyCodeLine{807         screen[0]-\/>showButton(0);}
+\DoxyCodeLine{808     \}}
+\DoxyCodeLine{809     FocusOn = 0;}
+\DoxyCodeLine{810 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a9893c2ec64ab06d3e785e0189a4e8c35}\label{classMyWindow_a9893c2ec64ab06d3e785e0189a4e8c35}} 
+\index{MyWindow@{MyWindow}!init@{init}}
+\index{init@{init}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void My\+Window\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22     status = 1;}
+\DoxyCodeLine{23     WIDTH = 960;}
+\DoxyCodeLine{24     HEIGHT = 540;}
+\DoxyCodeLine{25     \mbox{\hyperlink{namespaceRANDOM_a836ff180d736e431dec670026444dd98}{RANDOM::init}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     SDL\_Init(SDL\_INIT\_VIDEO | SDL\_INIT\_AUDIO);}
+\DoxyCodeLine{28     window = SDL\_CreateWindow(}
+\DoxyCodeLine{29             \textcolor{stringliteral}{"{}Dr Duck"{}},}
+\DoxyCodeLine{30             SDL\_WINDOWPOS\_CENTERED,}
+\DoxyCodeLine{31             SDL\_WINDOWPOS\_CENTERED,}
+\DoxyCodeLine{32             WIDTH,}
+\DoxyCodeLine{33             HEIGHT,}
+\DoxyCodeLine{34             SDL\_WINDOW\_SHOWN}
+\DoxyCodeLine{35             );}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     renderer = SDL\_CreateRenderer(}
+\DoxyCodeLine{38             window,}
+\DoxyCodeLine{39             -\/1,}
+\DoxyCodeLine{40             SDL\_RENDERER\_ACCELERATED }
+\DoxyCodeLine{41             );}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     IMG\_Init(IMG\_INIT\_PNG | IMG\_INIT\_JPG);}
+\DoxyCodeLine{44     TTF\_Init();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     SDL\_Rect rect;}
+\DoxyCodeLine{47     rect.x = 0;}
+\DoxyCodeLine{48     rect.y = 0;}
+\DoxyCodeLine{49     rect.w = WIDTH;}
+\DoxyCodeLine{50     rect.h = HEIGHT;}
+\DoxyCodeLine{51     fps = 60;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     SDL\_RenderSetViewport(renderer, \&rect);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     audioSpec.freq = 44100; }
+\DoxyCodeLine{57     audioSpec.format = AUDIO\_S16SYS; }
+\DoxyCodeLine{58     audioSpec.channels = 2;}
+\DoxyCodeLine{59     audioSpec.samples = 1024;}
+\DoxyCodeLine{60     SDL\_OpenAudio(\&audioSpec, NULL);}
+\DoxyCodeLine{61     SDL\_AudioSpec waveSpec;}
+\DoxyCodeLine{62     SDL\_LoadWAV((\mbox{\hyperlink{namespaceGLOBAL_a0e4244836791a23045e426934a6e83e6}{GLOBAL::SoundFolder}} + \textcolor{stringliteral}{"{}quark.wav"{}}).c\_str(), \&waveSpec, \&waveBuffer, \&waveLength);}
+\DoxyCodeLine{63 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_aa807f5e5cadd946f78bd9a3ce28d690a}\label{classMyWindow_aa807f5e5cadd946f78bd9a3ce28d690a}} 
+\index{MyWindow@{MyWindow}!isClose@{isClose}}
+\index{isClose@{isClose}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{isClose()}{isClose()}}
+{\footnotesize\ttfamily bool My\+Window\+::is\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 777 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{778 \{}
+\DoxyCodeLine{779     \textcolor{keywordflow}{return} status == 0;}
+\DoxyCodeLine{780 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_ab2d31f4c799a8cdb04964eabfd139ea5}\label{classMyWindow_ab2d31f4c799a8cdb04964eabfd139ea5}} 
+\index{MyWindow@{MyWindow}!isHanging@{isHanging}}
+\index{isHanging@{isHanging}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{isHanging()}{isHanging()}}
+{\footnotesize\ttfamily bool My\+Window\+::is\+Hanging (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 772 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{773 \{}
+\DoxyCodeLine{774     \textcolor{keywordflow}{return} status == 2;}
+\DoxyCodeLine{775 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a4e2cf4ccdda978aeb0a6e356a60cfdbf}\label{classMyWindow_a4e2cf4ccdda978aeb0a6e356a60cfdbf}} 
+\index{MyWindow@{MyWindow}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily bool My\+Window\+::is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 767 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{768 \{}
+\DoxyCodeLine{769     \textcolor{keywordflow}{return} status == 1;}
+\DoxyCodeLine{770 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a9dad0a3c8db0a1e0cfd2c49550588232}\label{classMyWindow_a9dad0a3c8db0a1e0cfd2c49550588232}} 
+\index{MyWindow@{MyWindow}!loadScreen@{loadScreen}}
+\index{loadScreen@{loadScreen}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{loadScreen()}{loadScreen()}}
+{\footnotesize\ttfamily void My\+Window\+::load\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDisplay}{Display}} $\ast$\&}]{screen,  }\item[{const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{mem }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMyWindow_afb804429e834ad9b74ae9634b280657e}\label{classMyWindow_afb804429e834ad9b74ae9634b280657e}} 
+\index{MyWindow@{MyWindow}!mouseMove@{mouseMove}}
+\index{mouseMove@{mouseMove}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{mouseMove()}{mouseMove()}}
+{\footnotesize\ttfamily void My\+Window\+::mouse\+Move (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line 66 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{67 \{}
+\DoxyCodeLine{68     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) screen.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{69     \{}
+\DoxyCodeLine{70         \textcolor{keywordflow}{if}(screen[i]-\/>isVisible() \&\& screen[i]-\/>isLiesInside(x, y))}
+\DoxyCodeLine{71         \{}
+\DoxyCodeLine{72             FocusOn = i;}
+\DoxyCodeLine{73             screen[i]-\/>changeFocus(x, y);}
+\DoxyCodeLine{74             screen[i]-\/>mouseMove(x, y);}
+\DoxyCodeLine{75         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!screen[i]-\/>isVisible() \&\& screen[i]-\/>isLiesInside(x, y))}
+\DoxyCodeLine{76         \{}
+\DoxyCodeLine{77             \textcolor{keywordflow}{if}(screen[i]-\/>getAppear() == 0) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{78             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(screen[i]-\/>getAppear() == 1) screen[i]-\/>appearFromBot(0.4);}
+\DoxyCodeLine{79             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(screen[i]-\/>getAppear() == 2) screen[i]-\/>appearFromRight(0.4);}
+\DoxyCodeLine{80             FocusOn = i;}
+\DoxyCodeLine{81             screen[i]-\/>changeFocus(x, y);}
+\DoxyCodeLine{82             screen[i]-\/>mouseMove(x, y);}
+\DoxyCodeLine{83         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(screen[i]-\/>isVisible() \&\& !screen[i]-\/>isLiesInside(x, y))}
+\DoxyCodeLine{84         \{}
+\DoxyCodeLine{85             \textcolor{keywordflow}{if}(screen[i]-\/>getAppear() == 0) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{86             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(screen[i]-\/>getAppear() == 1) screen[i]-\/>disappearToBot(0.4);}
+\DoxyCodeLine{87             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(screen[i]-\/>getAppear() == 2) screen[i]-\/>disappearToRight(0.4);}
+\DoxyCodeLine{88         \}}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90     \textcolor{keywordflow}{if}(input != \textcolor{keyword}{nullptr}) input-\/>\mbox{\hyperlink{classInputBox_a7e8b2299c0f274b07fb0b35b09be8712}{mouseMove}}(x, y);}
+\DoxyCodeLine{91 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a12f654e50c6800595a5e2eebef37b7d5}\label{classMyWindow_a12f654e50c6800595a5e2eebef37b7d5}} 
+\index{MyWindow@{MyWindow}!mousePress@{mousePress}}
+\index{mousePress@{mousePress}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{mousePress()}{mousePress()}}
+{\footnotesize\ttfamily void My\+Window\+::mouse\+Press (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line 652 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{653 \{}
+\DoxyCodeLine{654 }
+\DoxyCodeLine{655     \textcolor{keywordflow}{if}(input != \textcolor{keyword}{nullptr}) input-\/>\mbox{\hyperlink{classInputBox_ac754fc2c58898db96a45e6a725e59f73}{mousePress}}(x, y);}
+\DoxyCodeLine{656 }
+\DoxyCodeLine{657     \mbox{\hyperlink{classButton}{Button}}* but = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{658 }
+\DoxyCodeLine{659     \textcolor{keywordflow}{if}(input != \textcolor{keyword}{nullptr}) }
+\DoxyCodeLine{660     \{}
+\DoxyCodeLine{661         but = input-\/>\mbox{\hyperlink{classInputBox_a6a339359ffa21301ab7f5f15c10875ad}{getButtonPressedByMouse}}(x, y); }
+\DoxyCodeLine{662     \}}
+\DoxyCodeLine{663     \textcolor{keywordflow}{if}(but == \textcolor{keyword}{nullptr}) }
+\DoxyCodeLine{664     \{}
+\DoxyCodeLine{665         but = \mbox{\hyperlink{classMyWindow_af11fd74c86eab330435da6008255d644}{top}}()-\/>\mbox{\hyperlink{classDisplay_aa7ec7077e4ac0cee5afa25df199a59b6}{mousePressedButton}}(x, y);}
+\DoxyCodeLine{666     \}}
+\DoxyCodeLine{667     \textcolor{keywordflow}{if}(but == \textcolor{keyword}{nullptr}) return ;}
+\DoxyCodeLine{668 }
+\DoxyCodeLine{669     \textcolor{keywordflow}{if}(but-\/>\mbox{\hyperlink{classButton_a7aafbc7deaf432112e14e9738a2e649a}{getAction}}() == \textcolor{stringliteral}{"{}setting"{}})}
+\DoxyCodeLine{670     \{}
+\DoxyCodeLine{671         UImutex.lock();}
+\DoxyCodeLine{672         \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} mem;}
+\DoxyCodeLine{673         \mbox{\hyperlink{SYSTEM_8hpp_a16fb2008390acdb451a7587c3c61fe84}{readJson}}(\mbox{\hyperlink{namespaceGLOBAL_a2fa4e642d534694ce32f87c96ffa7bf9}{GLOBAL::AtrbInputBox}} + \textcolor{stringliteral}{"{}setting.json"{}}, mem);}
+\DoxyCodeLine{674         \textcolor{keywordflow}{if}(input != \textcolor{keyword}{nullptr}) \textcolor{keyword}{delete} input;}
+\DoxyCodeLine{675         input = \textcolor{keyword}{new} \mbox{\hyperlink{classInputBox}{InputBox}};}
+\DoxyCodeLine{676         input-\/>\mbox{\hyperlink{classInputBox_ab8ce732a4b5f4c7935d5675bb492b8ed}{setRender}}(renderer);}
+\DoxyCodeLine{677         input-\/>\mbox{\hyperlink{classInputBox_a783e5f708da72753e9cbd5d0ab773ce8}{init}}(mem);}
+\DoxyCodeLine{678         UImutex.unlock();}
+\DoxyCodeLine{679         return ;}
+\DoxyCodeLine{680     \}}
+\DoxyCodeLine{681 }
+\DoxyCodeLine{682     \textcolor{keywordflow}{if}(but-\/>\mbox{\hyperlink{classButton_a7aafbc7deaf432112e14e9738a2e649a}{getAction}}() == \textcolor{stringliteral}{"{}sound on"{}}) }
+\DoxyCodeLine{683     \{}
+\DoxyCodeLine{684         turnOn = \textcolor{keyword}{true};}
+\DoxyCodeLine{685         screen[0]-\/>hideButton(0);}
+\DoxyCodeLine{686         screen[0]-\/>showButton(1);}
+\DoxyCodeLine{687         return ;}
+\DoxyCodeLine{688     \}}
+\DoxyCodeLine{689     \textcolor{keywordflow}{if}(but-\/>\mbox{\hyperlink{classButton_a7aafbc7deaf432112e14e9738a2e649a}{getAction}}() == \textcolor{stringliteral}{"{}sound off"{}}) }
+\DoxyCodeLine{690     \{}
+\DoxyCodeLine{691         turnOn = \textcolor{keyword}{false};}
+\DoxyCodeLine{692         screen[0]-\/>hideButton(1);}
+\DoxyCodeLine{693         screen[0]-\/>showButton(0);}
+\DoxyCodeLine{694         return ;}
+\DoxyCodeLine{695     \}}
+\DoxyCodeLine{696     soundOn = turnOn;}
+\DoxyCodeLine{697     soundMutex.unlock();}
+\DoxyCodeLine{698     \textcolor{keywordflow}{if}(soundOn) SDL\_Delay(350);}
+\DoxyCodeLine{699     \textcolor{keywordflow}{else} SDL\_Delay(100);}
+\DoxyCodeLine{700     soundMutex.lock();}
+\DoxyCodeLine{701     \textcolor{keywordflow}{if}(isChangeScreen(but)) }
+\DoxyCodeLine{702     \{}
+\DoxyCodeLine{703         return ;}
+\DoxyCodeLine{704     \}}
+\DoxyCodeLine{705     \textcolor{keywordflow}{if}(isDToperator(but)) }
+\DoxyCodeLine{706     \{}
+\DoxyCodeLine{707         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{708     \}}
+\DoxyCodeLine{709     \textcolor{keywordflow}{if}(isInputButton(but)) }
+\DoxyCodeLine{710     \{}
+\DoxyCodeLine{711         return ;}
+\DoxyCodeLine{712     \}}
+\DoxyCodeLine{713     \textcolor{keywordflow}{if}(isPlayButton(but))}
+\DoxyCodeLine{714     \{}
+\DoxyCodeLine{715         return ;}
+\DoxyCodeLine{716     \}}
+\DoxyCodeLine{717 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a875c2a791e3fd46919a4a611c88cc95c}\label{classMyWindow_a875c2a791e3fd46919a4a611c88cc95c}} 
+\index{MyWindow@{MyWindow}!process@{process}}
+\index{process@{process}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily void My\+Window\+::process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 877 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{878 \{}
+\DoxyCodeLine{879     \textcolor{keywordflow}{if}(event.type == SDL\_QUIT)}
+\DoxyCodeLine{880     \{}
+\DoxyCodeLine{881         status = 0;}
+\DoxyCodeLine{882         shutdown();}
+\DoxyCodeLine{883     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event.type == SDL\_MOUSEMOTION)}
+\DoxyCodeLine{884     \{}
+\DoxyCodeLine{885         \mbox{\hyperlink{classMyWindow_afb804429e834ad9b74ae9634b280657e}{mouseMove}}(event.motion.x, event.motion.y);}
+\DoxyCodeLine{886     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event.type == SDL\_MOUSEBUTTONDOWN)}
+\DoxyCodeLine{887     \{}
+\DoxyCodeLine{888         \mbox{\hyperlink{classMyWindow_a12f654e50c6800595a5e2eebef37b7d5}{mousePress}}(event.motion.x, event.motion.y);}
+\DoxyCodeLine{889         \mbox{\hyperlink{classMyWindow_afb804429e834ad9b74ae9634b280657e}{mouseMove}}(event.motion.x, event.motion.y);}
+\DoxyCodeLine{890     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event.type == SDL\_KEYDOWN) }
+\DoxyCodeLine{891     \{}
+\DoxyCodeLine{892         \textcolor{keywordflow}{if}(input != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{893         \{}
+\DoxyCodeLine{894             \mbox{\hyperlink{classMyWindow_a97545995a77efcb1827cc47f78b16eb1}{typing}}(event.key.keysym);}
+\DoxyCodeLine{895         \}}
+\DoxyCodeLine{896     \}}
+\DoxyCodeLine{897 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a9ea7b6493c614b574b5a661892ad5297}\label{classMyWindow_a9ea7b6493c614b574b5a661892ad5297}} 
+\index{MyWindow@{MyWindow}!render@{render}}
+\index{render@{render}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void My\+Window\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 831 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{832 \{}
+\DoxyCodeLine{833 }
+\DoxyCodeLine{834     \textcolor{keywordtype}{double} delayTime = 1000.0 / fps;}
+\DoxyCodeLine{835     \textcolor{keywordflow}{while}(\mbox{\hyperlink{classMyWindow_a4e2cf4ccdda978aeb0a6e356a60cfdbf}{isOpen}}())}
+\DoxyCodeLine{836     \{}
+\DoxyCodeLine{837         \textcolor{keywordflow}{if}(UImutex.try\_lock())}
+\DoxyCodeLine{838         \{}
+\DoxyCodeLine{839             Uint32 startTime = SDL\_GetTicks();}
+\DoxyCodeLine{840             SDL\_RenderClear(renderer);}
+\DoxyCodeLine{841 }
+\DoxyCodeLine{842             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) screen.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{843             \{}
+\DoxyCodeLine{844                 screen[i]-\/>render();}
+\DoxyCodeLine{845                 \textcolor{keywordflow}{if}(i == 0 \&\& DT != \textcolor{keyword}{nullptr}) }
+\DoxyCodeLine{846                 \{}
+\DoxyCodeLine{847                     DT-\/>\mbox{\hyperlink{classData__Structures_a02b1c85d9ea26acb9a37822ab89c3bbc}{render}}();}
+\DoxyCodeLine{848                 \}}
+\DoxyCodeLine{849             \}}
+\DoxyCodeLine{850             \textcolor{keywordflow}{if}(input != \textcolor{keyword}{nullptr}) input-\/>\mbox{\hyperlink{classInputBox_a2b4e9f49ec806c164530b25faca8b87a}{render}}();}
+\DoxyCodeLine{851             SDL\_RenderPresent(renderer);}
+\DoxyCodeLine{852             UImutex.unlock();}
+\DoxyCodeLine{853             Uint32 DeltaTime = SDL\_GetTicks() -\/ startTime;}
+\DoxyCodeLine{854             \textcolor{keywordflow}{if}(DeltaTime < delayTime)}
+\DoxyCodeLine{855                 SDL\_Delay(delayTime -\/ delayTime);}
+\DoxyCodeLine{856         \}}
+\DoxyCodeLine{857     \}}
+\DoxyCodeLine{858 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_ad3cdc8d2dfc2758c4d30ba22a6ff8622}\label{classMyWindow_ad3cdc8d2dfc2758c4d30ba22a6ff8622}} 
+\index{MyWindow@{MyWindow}!run@{run}}
+\index{run@{run}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void My\+Window\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 821 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{822 \{}
+\DoxyCodeLine{823     std::thread draw(\&\mbox{\hyperlink{classMyWindow_a9ea7b6493c614b574b5a661892ad5297}{MyWindow::render}}, \textcolor{keyword}{this});}
+\DoxyCodeLine{824     std::thread sound(\&\mbox{\hyperlink{classMyWindow_a2ea5dcbaba02d371fff14c109272d491}{MyWindow::speak}}, \textcolor{keyword}{this});}
+\DoxyCodeLine{825     \mbox{\hyperlink{classMyWindow_a1268f3945f965060279b23de8336d78e}{action}}();}
+\DoxyCodeLine{826 }
+\DoxyCodeLine{827     draw.join();}
+\DoxyCodeLine{828     sound.join();}
+\DoxyCodeLine{829 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a2ea5dcbaba02d371fff14c109272d491}\label{classMyWindow_a2ea5dcbaba02d371fff14c109272d491}} 
+\index{MyWindow@{MyWindow}!speak@{speak}}
+\index{speak@{speak}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{speak()}{speak()}}
+{\footnotesize\ttfamily void My\+Window\+::speak (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 860 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{861 \{}
+\DoxyCodeLine{862     \textcolor{keywordflow}{while}(\mbox{\hyperlink{classMyWindow_a4e2cf4ccdda978aeb0a6e356a60cfdbf}{isOpen}}())}
+\DoxyCodeLine{863     \{}
+\DoxyCodeLine{864         \textcolor{keywordflow}{if}(soundMutex.try\_lock())}
+\DoxyCodeLine{865         \{}
+\DoxyCodeLine{866             \textcolor{keywordflow}{if}(soundOn)}
+\DoxyCodeLine{867             \{}
+\DoxyCodeLine{868                 SDL\_QueueAudio(1, waveBuffer, waveLength);}
+\DoxyCodeLine{869                 SDL\_PauseAudio(0); }
+\DoxyCodeLine{870             \}}
+\DoxyCodeLine{871             soundOn = \textcolor{keyword}{false};}
+\DoxyCodeLine{872             soundMutex.unlock();}
+\DoxyCodeLine{873         \}}
+\DoxyCodeLine{874     \}}
+\DoxyCodeLine{875 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_af11fd74c86eab330435da6008255d644}\label{classMyWindow_af11fd74c86eab330435da6008255d644}} 
+\index{MyWindow@{MyWindow}!top@{top}}
+\index{top@{top}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{top()}{top()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDisplay}{Display}} $\ast$\& My\+Window\+::top (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 812 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{813 \{}
+\DoxyCodeLine{814     \textcolor{keywordflow}{return} screen[FocusOn];}
+\DoxyCodeLine{815 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMyWindow_a97545995a77efcb1827cc47f78b16eb1}\label{classMyWindow_a97545995a77efcb1827cc47f78b16eb1}} 
+\index{MyWindow@{MyWindow}!typing@{typing}}
+\index{typing@{typing}!MyWindow@{MyWindow}}
+\doxysubsubsection{\texorpdfstring{typing()}{typing()}}
+{\footnotesize\ttfamily void My\+Window\+::typing (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Keysym}]{key }\end{DoxyParamCaption})}
+
+
+
+Definition at line 899 of file Duck\+Win.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{900 \{}
+\DoxyCodeLine{901     UImutex.lock();}
+\DoxyCodeLine{902     \textcolor{keywordflow}{if}(key.sym == SDLK\_BACKSPACE)}
+\DoxyCodeLine{903         input-\/>\mbox{\hyperlink{classInputBox_a068ee1ea4a601b9b2b684fb4db48cbdc}{pop}}();}
+\DoxyCodeLine{904     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(key.sym == SDLK\_TAB)}
+\DoxyCodeLine{905         input-\/>\mbox{\hyperlink{classInputBox_a8a1379cc6c5e058e845ab4c5fb66b48d}{nextFocus}}();}
+\DoxyCodeLine{906     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(key.sym >= SDLK\_a \&\& key.sym <= SDLK\_z)}
+\DoxyCodeLine{907     \{}
+\DoxyCodeLine{908         \textcolor{keywordtype}{char} value = key.sym;}
+\DoxyCodeLine{909         \textcolor{keywordflow}{if}(((SDL\_GetModState() \& KMOD\_CAPS) != 0) \string^ ((SDL\_GetModState() \& KMOD\_SHIFT) != 0)) }
+\DoxyCodeLine{910             value = \textcolor{charliteral}{'A'} + (value -\/ SDLK\_a);}
+\DoxyCodeLine{911         input-\/>\mbox{\hyperlink{classInputBox_a18a67744f898d31b714c5a22f373db69}{typing}}(value);}
+\DoxyCodeLine{912     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(key.sym >= SDLK\_SPACE \&\& key.sym < SDLK\_a)}
+\DoxyCodeLine{913     \{}
+\DoxyCodeLine{914         \textcolor{keywordtype}{char} value = key.sym;}
+\DoxyCodeLine{915         \textcolor{keywordflow}{if}(event.key.keysym.sym == SDLK\_MINUS \&\& (SDL\_GetModState() \& KMOD\_SHIFT))}
+\DoxyCodeLine{916             value = \textcolor{charliteral}{'\_'};}
+\DoxyCodeLine{917         input-\/>\mbox{\hyperlink{classInputBox_a18a67744f898d31b714c5a22f373db69}{typing}}(value);}
+\DoxyCodeLine{918     \}}
+\DoxyCodeLine{919     UImutex.unlock();}
+\DoxyCodeLine{920 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{DuckWin_8hpp}{Duck\+Win.\+hpp}}\item 
+src/\mbox{\hyperlink{DuckWin_8cpp}{Duck\+Win.\+cpp}}\end{DoxyCompactItemize}
