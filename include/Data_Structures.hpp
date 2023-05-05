@@ -31,7 +31,7 @@ private:
 
     Script* script;
     Object* arrowE,* arrowW,* arrowN,* arrowS;
-
+protected:
     void lineDown(int i, int len);
     void lineUp(int i, int len);
     void lineLeft(int i, int len);
