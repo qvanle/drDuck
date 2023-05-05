@@ -1,5 +1,14 @@
 #include <Sketch.hpp>
-
+/**
+ * @brief sketch constructor 
+ * 
+ * set all pointer to be nullptr
+ * default background color is black
+ * default font color is white and there will be no text 
+ * default text align is center
+ * default border size is 0
+ * default coordinate will be top left corner and size is 0
+*/
 Sketch::Sketch()
 {
     font = nullptr;
@@ -19,13 +28,23 @@ Sketch::Sketch()
     textAlignY = 2;
 }
 
+/**
+ * @brief clear texture, k = 0 - background, k = 1 - text, anything else will cause segment fault
+ * @param k integer, index of textures, 0 will be background, 1 will be text
+ * if tes[k] is nullptr, do nothing
+ * call SDL_DestroyTexture and after that set tes[k] to be nullptr
+*/
 void Sketch::clearTexture(int k)
 {
     if(tes[k] == nullptr) return ;
     SDL_DestroyTexture(tes[k]);
     tes[k] = nullptr;
 }
-
+/**
+ * @brief destructor 
+ * font and ren will not be deleted because it just a copy of the pointer
+ * call clearTexture(0) and clearTexture(1) to delete texture
+*/
 Sketch::~Sketch()
 {
     font = nullptr;
@@ -34,7 +53,13 @@ Sketch::~Sketch()
     clearTexture(1);
     ren = nullptr;
 }
-
+/**
+ * @brief create text texture 
+ * delete old text texture if exist
+ * if text is empty then do nothing
+ * make sure that font is not nullptr, otherwise it may cause segment fault.
+ * if text texture is greater than background texture, crop it, the top left.
+*/
 void Sketch::createTextTexture()
 {
     clearTexture(1);
@@ -67,13 +92,23 @@ void Sketch::createTextTexture()
 
     SDL_FreeSurface(surface);
 }
-
+/**
+ * @brief typing text
+ * @param ch character that will be add to the end of the text
+ * add a character to the end of the text
+ * after that new text texture will be created
+*/
 void Sketch::addChar(char ch)
 {
     text = text + ch;
     createTextTexture();
 }
-
+/**
+ * @brief erase a character 
+ * if text is empty then do nothing
+ * pop a character from the end of the text
+ * after that new text texture will be create 
+*/
 void Sketch::popChar()
 {
     if(text.empty()) return ;
@@ -81,12 +116,23 @@ void Sketch::popChar()
     createTextTexture();
 }
 
+/**
+ * @brief set text to be s 
+ * @param s string that will be set to text
+ * set text to be s and create new text texture
+*/
 void Sketch::setText(std::string s)
 {
     text = s;
     createTextTexture();
 }
-
+/**
+ * @brief set text color to be (r, g, b)
+ * @param r interger, red value, 0 - 255
+ * @param b interger, blue value, 0 - 255
+ * @param g interger, green value, 0 - 255
+ * set text color to be (r, g, b) and create new text texture
+*/
 void Sketch::setTextColor(int r, int g, int b)
 {
     fontColor.r = r;
@@ -95,17 +141,29 @@ void Sketch::setTextColor(int r, int g, int b)
     createTextTexture();
 }
 
-
+/**
+ * @brief return text
+ *
+*/
 const std::string& Sketch::getText()
 {
     return text;
 }
-
+/**
+ * @brief set background color to be c
+ * @param c SDL_Color, background color
+*/
 void Sketch::setColor(SDL_Color c)
 {
     color = c;
 }
-
+/**
+ * @brief set background color to be (r, g, b)
+ * @param r interger, red value, 0 - 255
+ * @param b interger, blue value, 0 - 255
+ * @param g interger, green value, 0 - 255
+ * set background color to be (r, g, b)
+*/
 void Sketch::setColor(int r, int g, int b)
 {
     color.r = r;
@@ -113,6 +171,14 @@ void Sketch::setColor(int r, int g, int b)
     color.b = b;
 }
 
+/**
+ * @brief set background color to be (r, g, b a)
+ * @param r interger, red value, 0 - 255
+ * @param b interger, blue value, 0 - 255
+ * @param g interger, green value, 0 - 255
+ * @param a interger, alpha value, 0 - 255
+ * set background color to be (r, g, b, a)
+*/
 void Sketch::setColor(int r, int g, int b, int a)
 {
     color.r = r;
@@ -121,95 +187,171 @@ void Sketch::setColor(int r, int g, int b, int a)
     color.a = a;
 }
 
+/**
+ * @brief set coordinate of sketch
+ * @param x interger, x coordinate of the top left corner of the sketch
+ * @param y interger, y coordinate of the top left corner of the sketch
+ * @param w interger, width of the sketch
+ * @param h interger, height of the sketch
+ * set coordinate of sketch 
+*/
 void Sketch::setCoor(int x, int y, int w, int h)
 {
     coor[0] = SDL_Rect({x, y, w, h});
     align();
 }
-
+/**
+ * @brief set coordinate of sketch
+ * @param x interger, x coordinate of the top left corner of the sketch
+ * set x coordinate of sketch
+*/
 void Sketch::setX(int x)
 {
     coor[0].x = x;
     align();
 }
-
+/**
+ * @brief set coordinate of sketch
+ * @param x, interger, change of x coordinate of the top left corner of the sketch
+ * add x to x coordinate of sketch
+*/
 void Sketch::addX(int x)
 {
     coor[0].x += x;
     align();
 }
 
+/**
+ * @brief set coordinate of sketch
+ * @param y interger, change of y coordinate of the top left corner of the sketch
+ * add y to y coordinate of sketch
+*/
 void Sketch::addY(int y)
 {
     coor[0].y += y;
     align();
 }
 
-
+/**
+ * @brief set coordinate of sketch
+ * @param y interger, y coordinate of the top left corner of the sketch
+ * set y coordinate of sketch
+*/
 void Sketch::setY(int y)
 {
     coor[0].y = y;
     align();
 }
+/**
+ * @brief set coordinate of sketch
+ * @param w interger, width of the sketch
+ * set width of sketch
+*/
 void Sketch::setW(int w)
 {
     coor[0].w = w;
     align();
 }
+/**
+ * @brief set coordinate of sketch
+ * @param h interger, height of the sketch
+ * set height of sketch
+*/
 void Sketch::setH(int h)
 {
     coor[0].h = h;
     align();
 }
+/**
+ * @brief align text texture 
+ * align x coordinate of text texture to be in the center of the background texture
+*/
 void Sketch::setInCenterX()
 {
     int x = coor[0].x;
     int w = coor[0].w;
     coor[1].x = x + (w - coor[1].w) / 2;
 }
+/**
+ * @brief align text texture
+ * align y coordinate of text texture to be in the center of the background texture
+*/
 void Sketch::setInCenterY()
 {
     int y = coor[0].y;
     int h = coor[0].h;
     coor[1].y = y + (h - coor[1].h) / 2;
 }
-
+/**
+ * @brief align text texture
+ * align x coordinate of text texture to be in the left side of the background texture
+*/
 void Sketch::setOnLeftSideX()
 {
     coor[1].x = coor[0].x;
 }
-
+/**
+ * @brief align text texture
+ * align x coordinate of text texture to be in the right side of the background texture
+*/
 void Sketch::setOnRightSideX()
 {
     int x = coor[0].x;
     int w = coor[0].w;
     coor[1].x = x + w - coor[1].w;
 }
-
+/**
+ * @brief align text texture
+ * align y coordinate of text texture to be in the top side of the background texture
+*/
 void Sketch::setOnLeftSideY()
 {
     coor[1].y = coor[0].y;
 }
-
+/**
+ * @brief align text texture
+ * align y coordinate of text texture to be in the bottom side of the background texture
+*/
 void Sketch::setOnRightSideY()
 {
     int y = coor[0].y;
     int h = coor[0].h;
     coor[1].y = y + h - coor[1].h;
 }
-
+/**
+ * @brief render
+ * if sketch is hided, do nothing
+ * render sketch
+ * if renderer is nullptr, it may cause error, require setRender() before render()
+ * render background fisrt then render text 
+*/
 void Sketch::render()
 {
     if(!isVisible()) return ;
     if(tes[0] != nullptr) SDL_RenderCopy(ren, tes[0], nullptr, &coor[0]);
     if(tes[1] != nullptr) SDL_RenderCopy(ren, tes[1], &crop, &coor[1]);
 }
-
+/**
+ * @brief set render 
+ * @param r address of SDL_Renderer pointer
+ * set render of sketch
+*/
 void Sketch::setRender(SDL_Renderer *&r)
 {
     ren = r;
 }
+/** 
+ * @brief set border 
+ * 
+ * set border of sketch
+ * 
+ * @param w interger, width of border
+ * @param r interger, red value of border color, 0 - 255
+ * @param g interger, green value of border color, 0 - 255
+ * @param b interger, blue value of border color, 0 - 255
+ * @param a interger, alpha value of border color, 0 - 255
 
+*/
 void Sketch::setBorder(int w, int r, int g, int b, int a)
 {
     borderWidth = w;
@@ -218,14 +360,24 @@ void Sketch::setBorder(int w, int r, int g, int b, int a)
     borderColor.b = b;
     borderColor.a = a;
 }
-
+/**
+ * @brief set border color 
+ * @param r interger, red value of border color, 0 - 255
+ * @param g interger, green value of border color, 0 - 255
+ * @param b interger, blue value of border color, 0 - 255
+ * set border color
+*/
 void Sketch::setBorderColor(int r, int g, int b)
 {
     borderColor.r = r;
     borderColor.g = g;
     borderColor.b = b;
 }
-
+/**
+ * @brief fill background color with color C
+ * @param c SDL_Color, color to fill
+ * fill background color with color C
+*/
 void Sketch::FillWithColor(SDL_Color c)
 {
     SDL_Color temp = color;
@@ -234,6 +386,11 @@ void Sketch::FillWithColor(SDL_Color c)
     color = temp;
 }
 
+/**
+ * @brief fill background color with default color, which is set by SetColor function
+ * fill background color with default color, which is set by SetColor function 
+ * at default color is black  
+*/
 void Sketch::FillWithColor()
 {
     int w = coor[0].w;
@@ -265,6 +422,37 @@ void Sketch::FillWithColor()
     SDL_FreeSurface(surf);
 
 }
+/**
+ * @brief set cooridnate of sketch from json 
+
+ * if mem is not contain "rect" key, do nothing
+
+ * if in "rect" object contain "x" key, set x coordinate of sketch to be mem["rect"]["x"]
+
+ * if in "rect" object contain "y" key, set y coordinate of sketch to be mem["rect"]["y"]
+
+ * if in "rect" object contain "w" key, set w coordinate of sketch to be mem["rect"]["w"]
+
+ * if in "rect" object contain "h" key, set h coordinate of sketch to be mem["rect"]["h"]
+
+ * example of param mem: 
+
+ * {
+
+ *     "rect": {
+
+ *          "x": 0,
+
+ *          "y": 0,
+
+ *          "w": 0,
+
+ *          "h": 0
+
+ * }
+
+ * @param mem json, contain coordinate of sketch
+*/
 
 void Sketch::initRect(const json& mem)
 {
@@ -288,7 +476,39 @@ void Sketch::initRect(const json& mem)
         }
     }
 }
-
+/**
+ * @brief init color from json 
+ * 
+ * if mem is not contain "color" key, do nothing
+ * 
+ * if in "color" object contain "r" key, set r color of sketch to be mem["color"]["r"]
+ * 
+ * if in "color" object contain "g" key, set g color of sketch to be mem["color"]["g"]
+ * 
+ * if in "color" object contain "b" key, set b color of sketch to be mem["color"]["b"]
+ * 
+ * if in "color" object contain "a" key, set a color of sketch to be mem["color"]["a"]
+ * 
+ * example of param mem:
+ * 
+ * {
+ * 
+ *    "color": {
+ * 
+ *         "r": 0,
+ * 
+ *         "g": 0,
+ * 
+ *         "b": 0,
+ * 
+ *         "a": 0
+ * 
+ *    }
+ * 
+ * }
+ * 
+ * @param mem json, contain color of sketch
+*/
 void Sketch::initColor(const json& mem)
 {
     if(mem.contains("color"))
@@ -304,7 +524,63 @@ void Sketch::initColor(const json& mem)
         cache = color;
     }
 }
-
+/**
+ * @brief init font from json
+ * 
+ * if mem is not contain "font" key, do nothing
+ * 
+ * get font file and combine with GLOBAL::FontsFolder to get full path of font file
+ * 
+ * source font from that path and source the size of the font 
+ * 
+ * if in "font" object contain "rect" key, get rect text 
+ * 
+ * if in "font" object contain "color" key, get color text
+ * 
+ * if int "font" object contain "text", set default text of sketch to be mem["font"]["text"]
+ * 
+ * example of param mem:
+ * 
+ * {
+ * 
+ *    "font": {
+ * 
+ *         "name": "font.ttf",
+ * 
+ *         "size": 0,
+ * 
+ *         "rect": {
+ * 
+ *              "x": 0,
+ * 
+ *              "y": 0,
+ * 
+ *              "w": 0,
+ * 
+ *              "h": 0
+ * 
+ *        },
+ * 
+ *        "color": {
+ * 
+ *              "r": 0,
+ * 
+ *              "g": 0,
+ * 
+ *              "b": 0,
+ * 
+ *              "a": 0
+ * 
+ *        },
+ * 
+ *        "text": "text"
+ * 
+ *    }
+ * 
+ * }
+ * 
+ * @param mem json, contain font of sketch
+*/
 void Sketch::initFont(const json& mem)
 {
     if(!mem.contains("font")) return ;
@@ -353,7 +629,41 @@ void Sketch::initFont(const json& mem)
         setText(mem["font"]["text"].get<std::string>());
     }
 }
-
+/**
+ * @brief init border from json
+ * 
+ * if mem is not contain "border" key, do nothing
+ * 
+ * if in "border" object contain "width" key, set width of border to be mem["border"]["width"]
+ * 
+ * if in "border" object contain "color" key, set color of border to be mem["border"]["color"]
+ * 
+ * example of param mem:
+ * 
+ * {
+ * 
+ *    "border": {
+ * 
+ *        "width": 0,
+ * 
+ *        "color": {
+ * 
+ *          "r": 0,
+ * 
+ *          "g": 0,
+ * 
+ *          "b": 0,
+ * 
+ *          "a": 0
+ * 
+ *        }
+ * 
+ *    }
+ * 
+ * }
+ * 
+ * @param mem json, contain border of sketch
+*/
 void Sketch::initBorder(const json& mem)
 {
     if(!mem.contains("border")) return ;
@@ -380,7 +690,51 @@ void Sketch::initBorder(const json& mem)
         }
     }
 }
-
+/**
+ * @brief init sketch from json
+ * 
+ * this function call initRect, initColor, initFont, initBorder
+ * this function also change visible, if mem contain "visible" key
+ * this function will fill with color, if mem contain "fill with color" key
+ * 
+ * @param mem json 
+ * 
+ * example of param mem:
+ * 
+ * {
+ * 
+ *      "rect": 
+ * 
+ *      {
+ * 
+ *      },
+ * 
+ *      "color":
+ * 
+ *      {
+ * 
+ *      },
+ * 
+ *      "font":
+ * 
+ *      {
+ * 
+ *      },
+ * 
+ *      "border":
+ * 
+ *      {
+ * 
+ *      },
+ * 
+ *      "text": "text",
+ * 
+ *      "visible": true,
+ * 
+ *     "fill with color": true
+ * 
+ * }
+*/
 void Sketch::init(const json &mem)
 {
     
@@ -400,7 +754,10 @@ void Sketch::init(const json &mem)
         FillWithColor();
     }
 }
-
+/**
+ * @brief align text 
+ * this function will call setOnLeftSideX, setOnRightSideX, setInCenterX, setOnLeftSideY, setOnRightSideY, setInCenterY
+*/
 void Sketch::align()
 {
 
@@ -412,34 +769,60 @@ void Sketch::align()
     if(textAlignY == 2) setInCenterY();
     if(textAlignY == 3) setOnRightSideY();
 }
-
+/**
+ * @brief get coordinate
+ * this function will return coordinate of background of sketch
+ * @return SDL_Rect
+*/
 SDL_Rect Sketch::getCoor()
 {
     return coor[0];
 }
-
+/**
+ * @brief get visible
+ * this function will return visible of sketch
+ * @return bool
+*/
 bool Sketch::isVisible()
 {
     return visible;
 }
-
+/**
+ * @brief show the sketch 
+ * this function will set visible to true, that will enable the sketch to be rendered
+*/
 void Sketch::show()
 {
     visible = true;
 }
-
+/**
+ * @brief hide the sketch
+ * this function will set visible to false, that will disable the sketch to be rendered
+*/
 void Sketch::hide()
 {
     visible = false;
 }
-
+/**
+ * @brief determine a point is lie inside sketch or not 
+ * this function will return true if point (x, y) lie inside sketch
+ * @param x int
+ * @param y int
+ * @return bool
+*/
 bool Sketch::isLieInside(int x, int y)
 {
     if(x < coor[0].x || coor[0].x + coor[0].w <= x) return false;
     if(y < coor[0].y || coor[0].y + coor[0].y <= y) return false;
     return true;
 }
-
+/**
+ * @brief animation of sketch to move the sketch to point (x, y) in time (second)
+ * this function will move the sketch to point (x, y) in time (second)
+ * @param x int
+ * @param y int
+ * @param time double
+*/
 void Sketch::moveTo(int x, int y, double time)
 {
     int dx = x - getCoor().x;
@@ -477,7 +860,10 @@ void Sketch::moveTo(int x, int y, double time)
             SDL_Delay(time * 1000 - deltaTime);
     }
 }
-
+/**
+ * @brief hightlight the sketch
+ * this function will change color of background to invert color
+*/
 void Sketch::highlight()
 {
     color.r = 255 - color.r;
@@ -491,7 +877,10 @@ void Sketch::highlight()
     }
     FillWithColor();
 }
-
+/**
+ * @brief unhightlight the sketch
+ * this function will change color of background to normal color
+*/
 void Sketch::unHighlight()
 {
     color = cache;
