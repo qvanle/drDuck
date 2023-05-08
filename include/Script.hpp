@@ -6,6 +6,10 @@
 #include <SDL2/SDL.h>
 #include <Object.hpp>
 
+/**
+ * @brief class that load an text image and render it to the screen
+ * Support highlight lines
+*/
 
 class Script : public Sketch
 {

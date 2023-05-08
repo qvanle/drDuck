@@ -15,6 +15,10 @@
 #include <SYSTEM.hpp>
 #include <InputBox.hpp>
 
+/**
+ * @brief class that handle screen box, input box, data_structures box
+ * Finite state machine
+*/
 
 class MyWindow
 {

@@ -27,8 +27,11 @@ var NAVTREE =
   [ "Dr Duck", "index.html", [
     [ "Dr Duck", "md_README.html", [
       [ "FEATURES", "md_README.html#autotoc_md1", null ],
-      [ "REQUIRED", "md_README.html#autotoc_md6", null ],
-      [ "INSTALL", "md_README.html#autotoc_md7", null ]
+      [ "REQUIRED", "md_README.html#autotoc_md8", null ],
+      [ "INSTALL", "md_README.html#autotoc_md9", null ],
+      [ "Usage", "md_README.html#autotoc_md10", null ],
+      [ "Demonstration", "md_README.html#autotoc_md11", null ],
+      [ "Documentation", "md_README.html#autotoc_md12", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

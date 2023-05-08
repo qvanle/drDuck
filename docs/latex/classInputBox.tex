@@ -2,6 +2,11 @@
 \label{classInputBox}\index{InputBox@{InputBox}}
 
 
+class that create an input box and render it to the screen Popup a box that can typing in.  
+
+
+
+
 {\ttfamily \#include $<$Input\+Box.\+hpp$>$}
 
 Inheritance diagram for Input\+Box\+:\begin{figure}[H]
@@ -14,33 +19,33 @@ Inheritance diagram for Input\+Box\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classInputBox_a2cc665db8204ff3977b3601983dcad37}{Input\+Box}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em constructor of \mbox{\hyperlink{classInputBox}{Input\+Box}} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classInputBox_abe56acf07570e1ff883705edf3223b5b}{$\sim$\+Input\+Box}} ()
 \item 
 void \mbox{\hyperlink{classInputBox_ab8ce732a4b5f4c7935d5675bb492b8ed}{set\+Render}} (SDL\+\_\+\+Renderer $\ast$\&r)
-\item 
+\begin{DoxyCompactList}\small\item\em set renderer for this \mbox{\hyperlink{classInputBox}{Input\+Box}} \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_a783e5f708da72753e9cbd5d0ab773ce8}{init}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
-\item 
+\begin{DoxyCompactList}\small\item\em load this object from json file \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_a18a67744f898d31b714c5a22f373db69}{typing}} (char ch)
-\item 
+\begin{DoxyCompactList}\small\item\em add a character to chosen input area \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_a3dca909296686692c227cef11bc36c86}{set\+Input}} (std\+::string s)
-\item 
+\begin{DoxyCompactList}\small\item\em set text for chosen input area \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_a068ee1ea4a601b9b2b684fb4db48cbdc}{pop}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em pop a character from chosen input area \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_a2b4e9f49ec806c164530b25faca8b87a}{render}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em render this \mbox{\hyperlink{classInputBox}{Input\+Box}} \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_a7e8b2299c0f274b07fb0b35b09be8712}{mouse\+Move}} (int x, int y)
-\item 
+\begin{DoxyCompactList}\small\item\em handle mouse move event \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_ac754fc2c58898db96a45e6a725e59f73}{mouse\+Press}} (int x, int y)
-\item 
+\begin{DoxyCompactList}\small\item\em choose input area \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classButton}{Button}} $\ast$ \mbox{\hyperlink{classInputBox_a6a339359ffa21301ab7f5f15c10875ad}{get\+Button\+Pressed\+By\+Mouse}} (int x, int y)
-\item 
+\begin{DoxyCompactList}\small\item\em return button pressed by mouse \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_a8a1379cc6c5e058e845ab4c5fb66b48d}{next\+Focus}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em choose input area \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInputBox_afc6c7df65dd2be76fc381d3cfce2da9b}{set\+Focus}} (int k)
-\item 
+\begin{DoxyCompactList}\small\item\em choose input area \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classInputBox_aabc27a99bf04841dee0e5df931989adb}{get\+Text}} (int k)
-\item 
+\begin{DoxyCompactList}\small\item\em return text of chosen input area \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{is\+Visible}} ()
 \begin{DoxyCompactList}\small\item\em get visible this function will return visible of sketch \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSketch_ac3d4947c6ec15278d3b00e9350d5869a}{show}} ()
@@ -128,9 +133,9 @@ void \mbox{\hyperlink{classSketch_ad9b674c6a933471fc59492ac5c4697df}{create\+Tex
 
 
 \doxysubsection{Detailed Description}
+class that create an input box and render it to the screen Popup a box that can typing in. 
 
-
-Definition at line 10 of file Input\+Box.\+hpp.
+Definition at line 14 of file Input\+Box.\+hpp.
 
 
 
@@ -143,18 +148,22 @@ Definition at line 10 of file Input\+Box.\+hpp.
 
 
 
-Definition at line 3 of file Input\+Box.\+cpp.
+constructor of \mbox{\hyperlink{classInputBox}{Input\+Box}} 
+
+
+
+Definition at line 5 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{4 \{}
-\DoxyCodeLine{5     ren = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{6     boxTitle = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{7     input.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{8     texts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{9     buts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{10     focusOn = -\/1;}
-\DoxyCodeLine{11 \}}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     ren = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{8     boxTitle = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{9     input.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{10     texts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{11     buts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{12     focusOn = -\/1;}
+\DoxyCodeLine{13 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classInputBox_abe56acf07570e1ff883705edf3223b5b}\label{classInputBox_abe56acf07570e1ff883705edf3223b5b}} 
@@ -165,21 +174,21 @@ Definition at line 3 of file Input\+Box.\+cpp.
 
 
 
-Definition at line 13 of file Input\+Box.\+cpp.
+Definition at line 15 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{14 \{}
-\DoxyCodeLine{15     ren = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{16     \textcolor{keywordflow}{if}(boxTitle != \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{17     \{}
-\DoxyCodeLine{18         \textcolor{keyword}{delete} boxTitle;}
-\DoxyCodeLine{19         boxTitle = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{20     \}}
-\DoxyCodeLine{21     input.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{22     texts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{23     buts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{24 \}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     ren = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{18     \textcolor{keywordflow}{if}(boxTitle != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         \textcolor{keyword}{delete} boxTitle;}
+\DoxyCodeLine{21         boxTitle = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{22     \}}
+\DoxyCodeLine{23     input.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{24     texts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{25     buts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{26 \}}
 
 \end{DoxyCode}
 
@@ -457,18 +466,22 @@ Definition at line 381 of file Sketch.\+cpp.
 
 
 
-Definition at line 154 of file Input\+Box.\+cpp.
+return button pressed by mouse 
+
+
+
+Definition at line 180 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{155 \{}
-\DoxyCodeLine{156     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{157 }
-\DoxyCodeLine{158     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) buts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{159         \textcolor{keywordflow}{if}(buts[i]-\/>isChosen(x, y))}
-\DoxyCodeLine{160             \textcolor{keywordflow}{return} buts[i];}
-\DoxyCodeLine{161     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{162 \}}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) buts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{185         \textcolor{keywordflow}{if}(buts[i]-\/>isChosen(x, y))}
+\DoxyCodeLine{186             \textcolor{keywordflow}{return} buts[i];}
+\DoxyCodeLine{187     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{188 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_abdf709d5c830e600622e3a99e72926ec}\label{classSketch_abdf709d5c830e600622e3a99e72926ec}} 
@@ -524,13 +537,17 @@ Definition at line 148 of file Sketch.\+cpp.
 
 
 
-Definition at line 165 of file Input\+Box.\+cpp.
+return text of chosen input area 
+
+
+
+Definition at line 193 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{166 \{}
-\DoxyCodeLine{167     \textcolor{keywordflow}{return} input[k]-\/>getText();}
-\DoxyCodeLine{168 \}}
+\DoxyCodeLine{194 \{}
+\DoxyCodeLine{195     \textcolor{keywordflow}{return} input[k]-\/>getText();}
+\DoxyCodeLine{196 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_ad3149f9ae10074d26d1917b0a15dc1c4}\label{classSketch_ad3149f9ae10074d26d1917b0a15dc1c4}} 
@@ -592,58 +609,62 @@ Definition at line 867 of file Sketch.\+cpp.
 
 
 
-Definition at line 31 of file Input\+Box.\+cpp.
+load this object from json file 
+
+
+
+Definition at line 37 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{32 \{}
-\DoxyCodeLine{33     focusOn = -\/1;}
-\DoxyCodeLine{34     \mbox{\hyperlink{classSketch_aab00f66b334da55a963282da6ed313d8}{Sketch::setRender}}(ren);}
-\DoxyCodeLine{35     \mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{Sketch::init}}(mem);}
-\DoxyCodeLine{36     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}title"{}}))}
-\DoxyCodeLine{37     \{}
-\DoxyCodeLine{38         boxTitle = \textcolor{keyword}{new} \mbox{\hyperlink{classSketch_a09a03a395a8c044a7279dc2a91a27ebc}{Sketch}};}
-\DoxyCodeLine{39         boxTitle-\/>\mbox{\hyperlink{classSketch_aab00f66b334da55a963282da6ed313d8}{setRender}}(ren);}
-\DoxyCodeLine{40         boxTitle-\/>\mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{init}}(mem[\textcolor{stringliteral}{"{}title"{}}]);}
-\DoxyCodeLine{41     \}}
-\DoxyCodeLine{42     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}input"{}}))}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39     focusOn = -\/1;}
+\DoxyCodeLine{40     \mbox{\hyperlink{classSketch_aab00f66b334da55a963282da6ed313d8}{Sketch::setRender}}(ren);}
+\DoxyCodeLine{41     \mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{Sketch::init}}(mem);}
+\DoxyCodeLine{42     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}title"{}}))}
 \DoxyCodeLine{43     \{}
-\DoxyCodeLine{44         input.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{45         input.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}input"{}}].size());}
-\DoxyCodeLine{46         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{47         \{}
-\DoxyCodeLine{48             input[i] = \textcolor{keyword}{new} \mbox{\hyperlink{classSketch_a09a03a395a8c044a7279dc2a91a27ebc}{Sketch}};}
-\DoxyCodeLine{49             input[i]-\/>setRender(ren);}
-\DoxyCodeLine{50             input[i]-\/>init(mem[\textcolor{stringliteral}{"{}input"{}}][i]);}
-\DoxyCodeLine{51         \}}
-\DoxyCodeLine{52     \}}
-\DoxyCodeLine{53     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}texts"{}}))}
-\DoxyCodeLine{54     \{}
-\DoxyCodeLine{55         texts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{56         texts.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}texts"{}}].size());}
-\DoxyCodeLine{57         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) texts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{58         \{}
-\DoxyCodeLine{59             texts[i] = \textcolor{keyword}{new} \mbox{\hyperlink{classSketch_a09a03a395a8c044a7279dc2a91a27ebc}{Sketch}};}
-\DoxyCodeLine{60             texts[i]-\/>setRender(ren);}
-\DoxyCodeLine{61             texts[i]-\/>init(mem[\textcolor{stringliteral}{"{}texts"{}}][i]);}
-\DoxyCodeLine{62         \}}
-\DoxyCodeLine{63     \}}
-\DoxyCodeLine{64     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}buttons"{}}))}
-\DoxyCodeLine{65     \{}
-\DoxyCodeLine{66         buts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{67         buts.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}buttons"{}}].size());}
-\DoxyCodeLine{68         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) buts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{69         \{}
-\DoxyCodeLine{70             buts[i] = \textcolor{keyword}{new} \mbox{\hyperlink{classButton}{Button}};}
-\DoxyCodeLine{71             buts[i]-\/>setRenderer(ren);}
-\DoxyCodeLine{72             buts[i]-\/>init(}
-\DoxyCodeLine{73                     \mbox{\hyperlink{namespaceGLOBAL_a5df186de50f9aaf1e4e6de2edcc5d60c}{GLOBAL::AtrbButtons}},}
-\DoxyCodeLine{74                     mem[\textcolor{stringliteral}{"{}buttons"{}}][i][\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str()}
-\DoxyCodeLine{75                     );}
-\DoxyCodeLine{76             buts[i]-\/>init(mem[\textcolor{stringliteral}{"{}buttons"{}}][i]);}
-\DoxyCodeLine{77         \}}
-\DoxyCodeLine{78     \}}
-\DoxyCodeLine{79 \}}
+\DoxyCodeLine{44         boxTitle = \textcolor{keyword}{new} \mbox{\hyperlink{classSketch_a09a03a395a8c044a7279dc2a91a27ebc}{Sketch}};}
+\DoxyCodeLine{45         boxTitle-\/>\mbox{\hyperlink{classSketch_aab00f66b334da55a963282da6ed313d8}{setRender}}(ren);}
+\DoxyCodeLine{46         boxTitle-\/>\mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{init}}(mem[\textcolor{stringliteral}{"{}title"{}}]);}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}input"{}}))}
+\DoxyCodeLine{49     \{}
+\DoxyCodeLine{50         input.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{51         input.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}input"{}}].size());}
+\DoxyCodeLine{52         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{53         \{}
+\DoxyCodeLine{54             input[i] = \textcolor{keyword}{new} \mbox{\hyperlink{classSketch_a09a03a395a8c044a7279dc2a91a27ebc}{Sketch}};}
+\DoxyCodeLine{55             input[i]-\/>setRender(ren);}
+\DoxyCodeLine{56             input[i]-\/>init(mem[\textcolor{stringliteral}{"{}input"{}}][i]);}
+\DoxyCodeLine{57         \}}
+\DoxyCodeLine{58     \}}
+\DoxyCodeLine{59     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}texts"{}}))}
+\DoxyCodeLine{60     \{}
+\DoxyCodeLine{61         texts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{62         texts.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}texts"{}}].size());}
+\DoxyCodeLine{63         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) texts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{64         \{}
+\DoxyCodeLine{65             texts[i] = \textcolor{keyword}{new} \mbox{\hyperlink{classSketch_a09a03a395a8c044a7279dc2a91a27ebc}{Sketch}};}
+\DoxyCodeLine{66             texts[i]-\/>setRender(ren);}
+\DoxyCodeLine{67             texts[i]-\/>init(mem[\textcolor{stringliteral}{"{}texts"{}}][i]);}
+\DoxyCodeLine{68         \}}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70     \textcolor{keywordflow}{if}(mem.contains(\textcolor{stringliteral}{"{}buttons"{}}))}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         buts.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{73         buts.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}buttons"{}}].size());}
+\DoxyCodeLine{74         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) buts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{75         \{}
+\DoxyCodeLine{76             buts[i] = \textcolor{keyword}{new} \mbox{\hyperlink{classButton}{Button}};}
+\DoxyCodeLine{77             buts[i]-\/>setRenderer(ren);}
+\DoxyCodeLine{78             buts[i]-\/>init(}
+\DoxyCodeLine{79                     \mbox{\hyperlink{namespaceGLOBAL_a5df186de50f9aaf1e4e6de2edcc5d60c}{GLOBAL::AtrbButtons}},}
+\DoxyCodeLine{80                     mem[\textcolor{stringliteral}{"{}buttons"{}}][i][\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str()}
+\DoxyCodeLine{81                     );}
+\DoxyCodeLine{82             buts[i]-\/>init(mem[\textcolor{stringliteral}{"{}buttons"{}}][i]);}
+\DoxyCodeLine{83         \}}
+\DoxyCodeLine{84     \}}
+\DoxyCodeLine{85 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a7430f06316348a8fef6c315510ab9c00}\label{classSketch_a7430f06316348a8fef6c315510ab9c00}} 
@@ -1038,17 +1059,21 @@ Definition at line 786 of file Sketch.\+cpp.
 
 
 
-Definition at line 124 of file Input\+Box.\+cpp.
+handle mouse move event 
+
+
+
+Definition at line 144 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{125 \{}
-\DoxyCodeLine{126     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
-\DoxyCodeLine{127 }
-\DoxyCodeLine{128     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) buts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{129         \textcolor{keywordflow}{if}(buts[i]-\/>isChosen(x, y)) \textcolor{keywordflow}{break};}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{131 \}}
+\DoxyCodeLine{145 \{}
+\DoxyCodeLine{146     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) buts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{149         \textcolor{keywordflow}{if}(buts[i]-\/>isChosen(x, y)) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classInputBox_ac754fc2c58898db96a45e6a725e59f73}\label{classInputBox_ac754fc2c58898db96a45e6a725e59f73}} 
@@ -1059,17 +1084,21 @@ Definition at line 124 of file Input\+Box.\+cpp.
 
 
 
-Definition at line 133 of file Input\+Box.\+cpp.
+choose input area 
+
+
+
+Definition at line 155 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{134 \{}
-\DoxyCodeLine{135     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
-\DoxyCodeLine{136     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{137         \textcolor{keywordflow}{if}(input[i]-\/>\mbox{\hyperlink{classSketch_a68117865f3bde7c9e3d29106bebdd8a3}{isLieInside}}(x, y))}
-\DoxyCodeLine{138             \mbox{\hyperlink{classInputBox_afc6c7df65dd2be76fc381d3cfce2da9b}{setFocus}}(i);}
-\DoxyCodeLine{139     return ;}
-\DoxyCodeLine{140 \}}
+\DoxyCodeLine{156 \{}
+\DoxyCodeLine{157     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
+\DoxyCodeLine{158     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{159         \textcolor{keywordflow}{if}(input[i]-\/>\mbox{\hyperlink{classSketch_a68117865f3bde7c9e3d29106bebdd8a3}{isLieInside}}(x, y))}
+\DoxyCodeLine{160             \mbox{\hyperlink{classInputBox_afc6c7df65dd2be76fc381d3cfce2da9b}{setFocus}}(i);}
+\DoxyCodeLine{161     return ;}
+\DoxyCodeLine{162 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a3a158b0895089d66c3ff798cb36235c0}\label{classSketch_a3a158b0895089d66c3ff798cb36235c0}} 
@@ -1143,20 +1172,24 @@ Definition at line 826 of file Sketch.\+cpp.
 
 
 
-Definition at line 142 of file Input\+Box.\+cpp.
+choose input area 
+
+
+
+Definition at line 166 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{143 \{}
-\DoxyCodeLine{144     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
-\DoxyCodeLine{145     \textcolor{keywordflow}{if}(focusOn == -\/1) }
-\DoxyCodeLine{146     \{}
-\DoxyCodeLine{147         \textcolor{keywordflow}{if}(!input.\mbox{\hyperlink{classvector_a9af39ba556fbaeaa09cff474c6308076}{empty}}()) focusOn = 0;}
-\DoxyCodeLine{148         return ;}
-\DoxyCodeLine{149     \}}
-\DoxyCodeLine{150     \textcolor{keywordflow}{if}(input.\mbox{\hyperlink{classvector_a9af39ba556fbaeaa09cff474c6308076}{empty}}()) return ;}
-\DoxyCodeLine{151     focusOn = (focusOn + 1) \% input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}();}
-\DoxyCodeLine{152 \}}
+\DoxyCodeLine{167 \{}
+\DoxyCodeLine{168     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
+\DoxyCodeLine{169     \textcolor{keywordflow}{if}(focusOn == -\/1) }
+\DoxyCodeLine{170     \{}
+\DoxyCodeLine{171         \textcolor{keywordflow}{if}(!input.\mbox{\hyperlink{classvector_a9af39ba556fbaeaa09cff474c6308076}{empty}}()) focusOn = 0;}
+\DoxyCodeLine{172         return ;}
+\DoxyCodeLine{173     \}}
+\DoxyCodeLine{174     \textcolor{keywordflow}{if}(input.\mbox{\hyperlink{classvector_a9af39ba556fbaeaa09cff474c6308076}{empty}}()) return ;}
+\DoxyCodeLine{175     focusOn = (focusOn + 1) \% input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}();}
+\DoxyCodeLine{176 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classInputBox_a068ee1ea4a601b9b2b684fb4db48cbdc}\label{classInputBox_a068ee1ea4a601b9b2b684fb4db48cbdc}} 
@@ -1167,15 +1200,19 @@ Definition at line 142 of file Input\+Box.\+cpp.
 
 
 
-Definition at line 117 of file Input\+Box.\+cpp.
+pop a character from chosen input area 
+
+
+
+Definition at line 134 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{118 \{}
-\DoxyCodeLine{119     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
-\DoxyCodeLine{120     \textcolor{keywordflow}{if}(focusOn == -\/1) return ;}
-\DoxyCodeLine{121     input[focusOn]-\/>popChar();}
-\DoxyCodeLine{122 \}}
+\DoxyCodeLine{135 \{}
+\DoxyCodeLine{136     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
+\DoxyCodeLine{137     \textcolor{keywordflow}{if}(focusOn == -\/1) return ;}
+\DoxyCodeLine{138     input[focusOn]-\/>popChar();}
+\DoxyCodeLine{139 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_aaf8a7e1f834cadefdc707c68a92f0cc9}\label{classSketch_aaf8a7e1f834cadefdc707c68a92f0cc9}} 
@@ -1209,26 +1246,30 @@ Definition at line 112 of file Sketch.\+cpp.
 
 
 
-Definition at line 81 of file Input\+Box.\+cpp.
+render this \mbox{\hyperlink{classInputBox}{Input\+Box}} 
+
+
+
+Definition at line 89 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{82 \{}
-\DoxyCodeLine{83     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
-\DoxyCodeLine{84 }
-\DoxyCodeLine{85     \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{Sketch::render}}();}
-\DoxyCodeLine{86 }
-\DoxyCodeLine{87     \textcolor{keywordflow}{if}(boxTitle != \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{88     \{}
-\DoxyCodeLine{89         boxTitle-\/>\mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}}();}
-\DoxyCodeLine{90     \}}
-\DoxyCodeLine{91     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{92         input[i]-\/>\mbox{\hyperlink{classInputBox_a2b4e9f49ec806c164530b25faca8b87a}{render}}();}
-\DoxyCodeLine{93     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) texts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{94         texts[i]-\/>\mbox{\hyperlink{classInputBox_a2b4e9f49ec806c164530b25faca8b87a}{render}}();}
-\DoxyCodeLine{95     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) buts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
-\DoxyCodeLine{96         buts[i]-\/>\mbox{\hyperlink{classInputBox_a2b4e9f49ec806c164530b25faca8b87a}{render}}();}
-\DoxyCodeLine{97 \}}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{Sketch::render}}();}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \textcolor{keywordflow}{if}(boxTitle != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{96     \{}
+\DoxyCodeLine{97         boxTitle-\/>\mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}}();}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{100         input[i]-\/>\mbox{\hyperlink{classInputBox_a2b4e9f49ec806c164530b25faca8b87a}{render}}();}
+\DoxyCodeLine{101     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) texts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{102         texts[i]-\/>\mbox{\hyperlink{classInputBox_a2b4e9f49ec806c164530b25faca8b87a}{render}}();}
+\DoxyCodeLine{103     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < (int) buts.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}(); i++)}
+\DoxyCodeLine{104         buts[i]-\/>\mbox{\hyperlink{classInputBox_a2b4e9f49ec806c164530b25faca8b87a}{render}}();}
+\DoxyCodeLine{105 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_aacef20f4453d1d1a7a1f9c12c5abe260}\label{classSketch_aacef20f4453d1d1a7a1f9c12c5abe260}} 
@@ -1437,15 +1478,19 @@ Definition at line 198 of file Sketch.\+cpp.
 
 
 
-Definition at line 99 of file Input\+Box.\+cpp.
+choose input area 
+
+
+
+Definition at line 109 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{100 \{}
-\DoxyCodeLine{101     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
-\DoxyCodeLine{102     \textcolor{keywordflow}{if}(k >= input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}()) return ;}
-\DoxyCodeLine{103     focusOn = k;}
-\DoxyCodeLine{104 \}}
+\DoxyCodeLine{110 \{}
+\DoxyCodeLine{111     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classSketch_a742deb0e2a5054bee4da5ec27e4c030f}{isVisible}}()) return ;}
+\DoxyCodeLine{112     \textcolor{keywordflow}{if}(k >= input.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}()) return ;}
+\DoxyCodeLine{113     focusOn = k;}
+\DoxyCodeLine{114 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a6e735efe9983e62140a904bfda372d75}\label{classSketch_a6e735efe9983e62140a904bfda372d75}} 
@@ -1529,14 +1574,18 @@ Definition at line 279 of file Sketch.\+cpp.
 
 
 
-Definition at line 111 of file Input\+Box.\+cpp.
+set text for chosen input area 
+
+
+
+Definition at line 126 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{112 \{}
-\DoxyCodeLine{113     \textcolor{keywordflow}{if}(focusOn == -\/1) return ;}
-\DoxyCodeLine{114     input[focusOn]-\/>setText(s);}
-\DoxyCodeLine{115 \}}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128     \textcolor{keywordflow}{if}(focusOn == -\/1) return ;}
+\DoxyCodeLine{129     input[focusOn]-\/>setText(s);}
+\DoxyCodeLine{130 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a3803cf567a2e6f5f39318da4f384decb}\label{classSketch_a3803cf567a2e6f5f39318da4f384decb}} 
@@ -1635,13 +1684,17 @@ Definition at line 315 of file Sketch.\+cpp.
 
 
 
-Definition at line 26 of file Input\+Box.\+cpp.
+set renderer for this \mbox{\hyperlink{classInputBox}{Input\+Box}} 
+
+
+
+Definition at line 30 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{27 \{}
-\DoxyCodeLine{28     ren = r;}
-\DoxyCodeLine{29 \}}
+\DoxyCodeLine{31 \{}
+\DoxyCodeLine{32     ren = r;}
+\DoxyCodeLine{33 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_ad70db15d37985b1e4e9c72f73aba738e}\label{classSketch_ad70db15d37985b1e4e9c72f73aba738e}} 
@@ -1814,14 +1867,18 @@ Definition at line 794 of file Sketch.\+cpp.
 
 
 
-Definition at line 105 of file Input\+Box.\+cpp.
+add a character to chosen input area 
+
+
+
+Definition at line 118 of file Input\+Box.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{106 \{}
-\DoxyCodeLine{107     \textcolor{keywordflow}{if}(focusOn == -\/1) return ;}
-\DoxyCodeLine{108     input[focusOn]-\/>addChar(ch);}
-\DoxyCodeLine{109 \}}
+\DoxyCodeLine{119 \{}
+\DoxyCodeLine{120     \textcolor{keywordflow}{if}(focusOn == -\/1) return ;}
+\DoxyCodeLine{121     input[focusOn]-\/>addChar(ch);}
+\DoxyCodeLine{122 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a59b0712ea0d65a8e66ee1e3e227d8766}\label{classSketch_a59b0712ea0d65a8e66ee1e3e227d8766}} 

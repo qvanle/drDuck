@@ -97,98 +97,98 @@ $(document).ready(function(){initNavTree('Sketch_8hpp_source.html',''); initResi
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SYSTEM_8hpp.html">SYSTEM.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classSketch.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSketch.html">Sketch</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>: </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> visible;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> textAlignX;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> textAlignY;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    SDL_Color borderColor;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> borderWidth;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    TTF_Font* font;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    SDL_Color fontColor;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::string text;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    SDL_Rect crop;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    SDL_Color color;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    SDL_Color cache;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    SDL_Texture* tes[2];</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    SDL_Rect coor[2];</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    SDL_Renderer* ren;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">protected</span>: </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a7336eb658c12bc2a5b3a3fa718daeabc">clearTexture</a>(<span class="keywordtype">int</span> k);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aa156dff52ecdb960fad3151e5c1b4dcc">initRect</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#abc5bec3af86a19d73c5ba8fadba3bce4">initColor</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a26509c690c0bc6429a18d00df0a20d18">initFont</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a7430f06316348a8fef6c315510ab9c00">initBorder</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ad9b674c6a933471fc59492ac5c4697df">createTextTexture</a>();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classSketch.html#a09a03a395a8c044a7279dc2a91a27ebc">Sketch</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classSketch.html#aaea504be3a8abee405a64d74cc0be324">~Sketch</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classSketch.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSketch.html">Sketch</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>: </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">bool</span> visible;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> textAlignX;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> textAlignY;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    SDL_Color borderColor;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">int</span> borderWidth;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    TTF_Font* font;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    SDL_Color fontColor;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string text;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    SDL_Rect crop;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    SDL_Color color;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    SDL_Color cache;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    SDL_Texture* tes[2];</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    SDL_Rect coor[2];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    SDL_Renderer* ren;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">protected</span>: </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a7336eb658c12bc2a5b3a3fa718daeabc">clearTexture</a>(<span class="keywordtype">int</span> k);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aa156dff52ecdb960fad3151e5c1b4dcc">initRect</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#abc5bec3af86a19d73c5ba8fadba3bce4">initColor</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a26509c690c0bc6429a18d00df0a20d18">initFont</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a7430f06316348a8fef6c315510ab9c00">initBorder</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ad9b674c6a933471fc59492ac5c4697df">createTextTexture</a>();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classSketch.html#a742deb0e2a5054bee4da5ec27e4c030f">isVisible</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac3d4947c6ec15278d3b00e9350d5869a">show</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ad3149f9ae10074d26d1917b0a15dc1c4">hide</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a4a39d2dda0814490931ba3afa09663ee">init</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aab00f66b334da55a963282da6ed313d8">setRender</a>(SDL_Renderer *&amp; r);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aee998636e2f64fea8020cc53983754d2">render</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac98fafc49f432667f2f23e593d2693a9">addChar</a>(<span class="keywordtype">char</span> ch);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aaf8a7e1f834cadefdc707c68a92f0cc9">popChar</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ad70db15d37985b1e4e9c72f73aba738e">setText</a>(std::string s);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#af823f58bba1c6b12ba623bac4a84aae9">setTextColor</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">const</span> std::string &amp; <a class="code" href="classSketch.html#a54634737ea0afcf47bf0d7f0f1cad9b9">getText</a>();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a06f2fb5b8df56dad239048927d17f2db">setColor</a>(SDL_Color c);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a06f2fb5b8df56dad239048927d17f2db">setColor</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a06f2fb5b8df56dad239048927d17f2db">setColor</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> a);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classSketch.html#a09a03a395a8c044a7279dc2a91a27ebc">Sketch</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classSketch.html#aaea504be3a8abee405a64d74cc0be324">~Sketch</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classSketch.html#a742deb0e2a5054bee4da5ec27e4c030f">isVisible</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac3d4947c6ec15278d3b00e9350d5869a">show</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ad3149f9ae10074d26d1917b0a15dc1c4">hide</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a4a39d2dda0814490931ba3afa09663ee">init</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aab00f66b334da55a963282da6ed313d8">setRender</a>(SDL_Renderer *&amp; r);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aee998636e2f64fea8020cc53983754d2">render</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac98fafc49f432667f2f23e593d2693a9">addChar</a>(<span class="keywordtype">char</span> ch);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aaf8a7e1f834cadefdc707c68a92f0cc9">popChar</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ad70db15d37985b1e4e9c72f73aba738e">setText</a>(std::string s);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#af823f58bba1c6b12ba623bac4a84aae9">setTextColor</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">const</span> std::string &amp; <a class="code" href="classSketch.html#a54634737ea0afcf47bf0d7f0f1cad9b9">getText</a>();</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a0fff0ef0d1d5fd070f291965b2c36905">setCoor</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a7b3c64deaabf2d06b41f681b084e8fbb">setX</a>(<span class="keywordtype">int</span> x);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#abeda8577b80488d1507a6c1978520c68">setY</a>(<span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a4e2d5eb0eeab7addc25590708cb6769f">setW</a>(<span class="keywordtype">int</span> w);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a6e735efe9983e62140a904bfda372d75">setH</a>(<span class="keywordtype">int</span> h);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aad41b6dae0bec0ec575b874b8b689d67">addX</a>(<span class="keywordtype">int</span> x);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a52616ab5c6c79bc0e3c1596b4c06ada0">addY</a>(<span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a37f8156e9953f9cfc821ab6b39c72be1">setInCenterX</a>();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a3803cf567a2e6f5f39318da4f384decb">setOnLeftSideX</a>();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a2074bb5655738694be1eb4976a14f4f5">setOnRightSideX</a>();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aa505abcaeb1647d4211170ac1627fba3">setInCenterY</a>();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a59c564c5c8e6f275c83185a1b84fc4bf">setOnLeftSideY</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac6126e3e448627d18e0372694497bedd">setOnRightSideY</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a06f2fb5b8df56dad239048927d17f2db">setColor</a>(SDL_Color c);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a06f2fb5b8df56dad239048927d17f2db">setColor</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a06f2fb5b8df56dad239048927d17f2db">setColor</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> a);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a0fff0ef0d1d5fd070f291965b2c36905">setCoor</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a7b3c64deaabf2d06b41f681b084e8fbb">setX</a>(<span class="keywordtype">int</span> x);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#abeda8577b80488d1507a6c1978520c68">setY</a>(<span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a4e2d5eb0eeab7addc25590708cb6769f">setW</a>(<span class="keywordtype">int</span> w);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a6e735efe9983e62140a904bfda372d75">setH</a>(<span class="keywordtype">int</span> h);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aad41b6dae0bec0ec575b874b8b689d67">addX</a>(<span class="keywordtype">int</span> x);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a52616ab5c6c79bc0e3c1596b4c06ada0">addY</a>(<span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a37f8156e9953f9cfc821ab6b39c72be1">setInCenterX</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a3803cf567a2e6f5f39318da4f384decb">setOnLeftSideX</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a2074bb5655738694be1eb4976a14f4f5">setOnRightSideX</a>();</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ae9982d949cf45e150dc002ea0af38b89">align</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    SDL_Rect <a class="code" href="classSketch.html#abdf709d5c830e600622e3a99e72926ec">getCoor</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aacef20f4453d1d1a7a1f9c12c5abe260">setBorder</a>(<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> a);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ae426dc96884dadf565df9f588bee553c">setBorderColor</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac9f51685fcc7fa03fbb5cec1818666e1">FillWithColor</a>();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac9f51685fcc7fa03fbb5cec1818666e1">FillWithColor</a>(SDL_Color c);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a891e60a6552b963ab90f42c83c4c28ed">highlight</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a59b0712ea0d65a8e66ee1e3e227d8766">unHighlight</a>();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classSketch.html#a68117865f3bde7c9e3d29106bebdd8a3">isLieInside</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a3a158b0895089d66c3ff798cb36235c0">moveTo</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">double</span> time);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;};</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aa505abcaeb1647d4211170ac1627fba3">setInCenterY</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a59c564c5c8e6f275c83185a1b84fc4bf">setOnLeftSideY</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac6126e3e448627d18e0372694497bedd">setOnRightSideY</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ae9982d949cf45e150dc002ea0af38b89">align</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    SDL_Rect <a class="code" href="classSketch.html#abdf709d5c830e600622e3a99e72926ec">getCoor</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#aacef20f4453d1d1a7a1f9c12c5abe260">setBorder</a>(<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> a);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ae426dc96884dadf565df9f588bee553c">setBorderColor</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac9f51685fcc7fa03fbb5cec1818666e1">FillWithColor</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#ac9f51685fcc7fa03fbb5cec1818666e1">FillWithColor</a>(SDL_Color c);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a891e60a6552b963ab90f42c83c4c28ed">highlight</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a59b0712ea0d65a8e66ee1e3e227d8766">unHighlight</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classSketch.html#a68117865f3bde7c9e3d29106bebdd8a3">isLieInside</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSketch.html#a3a158b0895089d66c3ff798cb36235c0">moveTo</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">double</span> time);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aButton_8hpp_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="Button_8hpp_source.html#l00013">Button.hpp:13</a></div></div>
 <div class="ttc" id="aSYSTEM_8hpp_html"><div class="ttname"><a href="SYSTEM_8hpp.html">SYSTEM.hpp</a></div></div>
-<div class="ttc" id="aclassSketch_html"><div class="ttname"><a href="classSketch.html">Sketch</a></div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8hpp_source.html#l00011">Sketch.hpp:12</a></div></div>
+<div class="ttc" id="aclassSketch_html"><div class="ttname"><a href="classSketch.html">Sketch</a></div><div class="ttdoc">class that create an text box and render it to the screen</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8hpp_source.html#l00015">Sketch.hpp:16</a></div></div>
 <div class="ttc" id="aclassSketch_html_a06f2fb5b8df56dad239048927d17f2db"><div class="ttname"><a href="classSketch.html#a06f2fb5b8df56dad239048927d17f2db">Sketch::setColor</a></div><div class="ttdeci">void setColor(SDL_Color c)</div><div class="ttdoc">set background color to be c</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8cpp_source.html#l00156">Sketch.cpp:156</a></div></div>
 <div class="ttc" id="aclassSketch_html_a09a03a395a8c044a7279dc2a91a27ebc"><div class="ttname"><a href="classSketch.html#a09a03a395a8c044a7279dc2a91a27ebc">Sketch::Sketch</a></div><div class="ttdeci">Sketch()</div><div class="ttdoc">sketch constructor</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8cpp_source.html#l00012">Sketch.cpp:12</a></div></div>
 <div class="ttc" id="aclassSketch_html_a0fff0ef0d1d5fd070f291965b2c36905"><div class="ttname"><a href="classSketch.html#a0fff0ef0d1d5fd070f291965b2c36905">Sketch::setCoor</a></div><div class="ttdeci">void setCoor(int x, int y, int w, int h)</div><div class="ttdoc">set coordinate of sketch</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8cpp_source.html#l00198">Sketch.cpp:198</a></div></div>

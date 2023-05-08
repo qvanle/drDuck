@@ -1,5 +1,7 @@
 #include <Display.hpp>
-
+/**
+ * @brief Constructor of Display
+*/
 Display::Display()
 {
     ren = nullptr;
@@ -10,12 +12,18 @@ Display::Display()
 
     appear = 0;
 }
-
+/**
+ * @brief return true if user are iteractive on this display
+*/
 bool Display::isFocus()
 {
     return status;
 }
-
+/**
+ * @brief set this display to be iteractive or not by mouse move
+ * @param x x coordinate of mouse
+ * @param y y coordinate of mouse
+*/
 bool Display::changeFocus(int x, int y)
 {
     if(isLiesInside(x, y))
@@ -26,7 +34,11 @@ bool Display::changeFocus(int x, int y)
     status = 0;
     return false;
 }
-
+/**
+ * @brief init this display by json file which is in dir/name
+ * @param dir directory of json file
+ * @param name name of json file
+*/
 void Display::init(const char *dir, const char *name)
 {
     json mem; 
@@ -35,7 +47,11 @@ void Display::init(const char *dir, const char *name)
 
     init(mem[0]);
 }
-
+/**
+ * @brief init this display by json file
+ * @param mem json file
+ * init buttons, animation (if it has)
+*/
 void Display::init(const json& mem)
 {
     Object::init(mem, ren);   
@@ -52,7 +68,10 @@ void Display::init(const json& mem)
             appear = 2;
     }
 }
-
+/**
+ * @brief load buttons from json file
+ * @param mem json file
+*/
 void Display::loadButtons(const json &mem)
 {
     DeleteButs();
@@ -65,12 +84,17 @@ void Display::loadButtons(const json &mem)
         loadButton(buts[i], mem[i]);
     }            
 }
-
+/**
+ * @brief set renderer for this display
+ * @param &r renderer
+*/
 void Display::setRenderer(SDL_Renderer* const& r)
 {
     ren = r;
 }
-
+/**
+ * @brief render this display
+*/
 void Display::render() 
 {
     if(!isVisible()) return ;
@@ -79,14 +103,20 @@ void Display::render()
     for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->render();
 }
-
+/**
+ * @brief render this display
+ * @param update boolean 
+ * if update is true, it will display to screen after render it
+*/
 void Display::render(bool update)
 {
     Object::render(update);
     for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->render(update);
 }
-
+/**
+ * @brief delete all buttons
+*/
 void Display::DeleteButs()
 {
     if(!buts.empty())
@@ -96,12 +126,19 @@ void Display::DeleteButs()
         buts.clear();
     }
 }
-
+/**
+ * @brief set button visible to false
+ * @param k index of button
+*/
 void Display::hideButton(int k)
 {
     if(k >= (int) buts.size()) return ;
     buts[k]->hide();
 }
+/**
+ * @brief set button visible to true
+ * @param k index of button
+*/
 void Display::showButton(int k)
 {
     if(k >= (int) buts.size()) return ;
@@ -116,7 +153,11 @@ Display::~Display()
     DeleteButs();
 }
 
-
+/**
+ * @brief load button from json file
+ * @param but button that will be loaded
+ * @param mem json file
+*/
 void Display::loadButton(Button *& but, const json& mem)
 {
 
@@ -135,7 +176,12 @@ void Display::loadButton(Button *& but, const json& mem)
     but->init(mem);
     return ;
 }
-
+/**
+ * @brief handle mouse move event
+ * @param x x coordinate of mouse
+ * @param y y coordinate of mouse
+ * if mouse is on button, it will change button's texture (if it has) and status
+*/
 void Display::mouseMove(int x, int y)
 {
     if(!isFocus()) return ;
@@ -145,7 +191,12 @@ void Display::mouseMove(int x, int y)
         if(buts[i]->isChosen(x, y))
             break;
 }
-
+/**
+ * @brief get the button that is pressed
+ * @param x x coordinate of mouse
+ * @param y y coordinate of mouse
+ * @return button that is pressed or nullptr if no button is pressed
+*/
 Button* Display::mousePressedButton(int x, int y)
 {
     if(!isFocus()) return nullptr;
@@ -156,7 +207,10 @@ Button* Display::mousePressedButton(int x, int y)
         }
     return nullptr;
 }
-
+/**
+ * @brief move the display to (x, y) coordinate in time (second) from the bottom
+ * @param time time double
+*/
 void Display::appearFromBot(double time)
 {
     int sy = getCoor().y;
@@ -169,7 +223,10 @@ void Display::appearFromBot(double time)
     show();
     moveTo(getCoor().x, sy, time);
 }
-
+/**
+ * @brief move the display to (x, y) coordinate in time (second) from the right
+ * @param time time double
+*/
 void Display::appearFromRight(double time)
 {
     int sx = getCoor().x;
@@ -183,6 +240,10 @@ void Display::appearFromRight(double time)
     moveTo(sx, getCoor().y, time);
 }
 
+/**
+ * @brief move the display to bottom coordinate in time (second) from the current position
+ * @param time time double
+*/
 void Display::disappearToBot(double time)
 {
     int sy = getCoor().y;
@@ -194,7 +255,10 @@ void Display::disappearToBot(double time)
     for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->addY(dy);
 }
-
+/**
+ * @brief move the display to right coordinate in time (second) from the current position
+ * @param time time double
+*/
 void Display::disappearToRight(double time)
 {
     int sx = getCoor().x;
@@ -206,12 +270,16 @@ void Display::disappearToRight(double time)
     for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->addX(dx);
 }
-
+/**
+ * @brief return true if the screen have animation
+*/
 int Display::getAppear()
 {
     return appear;
 }
-
+/**
+ * @brief move the display to (x, y) coordinate in time (second) from the current position
+*/
 void Display::moveTo(int x, int y, double time)
 {
     int dx = x - getCoor().x;
@@ -260,7 +328,11 @@ void Display::moveTo(int x, int y, double time)
         SDL_Delay(time * 1000 - deltatime);
     }
 }
-
+/**
+ * @brief Run animation when mouse is in trigger area of screen
+ * @param x x coordinate of mouse
+ * @param y y coordinate of mouse
+*/
 void Display::trigger(int x, int y)
 {
     if(!isLiesInside(x, y)) return ;

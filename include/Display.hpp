@@ -10,7 +10,11 @@
 #include <Button.hpp>
 #include <Object.hpp>
 
-
+/**
+ * @brief class that represents a screen. 
+ * Screen just a rectangle with some buttons on it.
+ *  window can have many screens
+*/
 
 class Display : public Object
 {

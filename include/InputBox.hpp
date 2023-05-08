@@ -6,6 +6,10 @@
 #include <Button.hpp>
 #include <SDL2/SDL.h>
 
+/**
+ * @brief class that create an input box and render it to the screen
+ * Popup a box that can typing in.
+*/
 
 class InputBox: public Sketch
 {

@@ -95,35 +95,34 @@ $(document).ready(function(){initNavTree('Script_8hpp_source.html',''); initResi
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Object_8hpp.html">Object.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classScript.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classScript.html">Script</a> : <span class="keyword">public</span> <a class="code" href="classSketch.html">Sketch</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classvector.html">vector&lt;Sketch*&gt;</a> lines;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classObject.html">Object</a>* obj;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    SDL_Renderer* ren;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>: </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classScript.html#a10975b78b03162488c522f095fd7707f">Script</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classScript.html#a7f3a173d141bcfefce0ba98b941dc823">~Script</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a6258d453c37b44cdfc3e1b126e09bd87">loadObject</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a796661ac6a35622d931f63cbddf35437">loadHighlight</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> &amp; mem);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a8b194b8f941a7079e4fa6f5e1dcc75f3">init</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a099d5b6d757b9888a7bbfda280a2ee05">highlightLine</a>(<span class="keywordtype">int</span> k);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a8163bba2029f77d6319c83a28b6098db">unHighlighLine</a>(<span class="keywordtype">int</span> k);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a9578f50350e89b6c9f57a0545b7914fa">setRender</a>(SDL_Renderer *&amp; r);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#aa7d007329ec6b06acdefbd22cd2229e4">render</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classScript.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classScript.html">Script</a> : <span class="keyword">public</span> <a class="code" href="classSketch.html">Sketch</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classvector.html">vector&lt;Sketch*&gt;</a> lines;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classObject.html">Object</a>* obj;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    SDL_Renderer* ren;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>: </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classScript.html#a10975b78b03162488c522f095fd7707f">Script</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classScript.html#a7f3a173d141bcfefce0ba98b941dc823">~Script</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a6258d453c37b44cdfc3e1b126e09bd87">loadObject</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a796661ac6a35622d931f63cbddf35437">loadHighlight</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> &amp; mem);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a8b194b8f941a7079e4fa6f5e1dcc75f3">init</a>(<span class="keyword">const</span> <a class="code" href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; mem);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a099d5b6d757b9888a7bbfda280a2ee05">highlightLine</a>(<span class="keywordtype">int</span> k);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a8163bba2029f77d6319c83a28b6098db">unHighlighLine</a>(<span class="keywordtype">int</span> k);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#a9578f50350e89b6c9f57a0545b7914fa">setRender</a>(SDL_Renderer *&amp; r);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classScript.html#aa7d007329ec6b06acdefbd22cd2229e4">render</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aButton_8hpp_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="Button_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="Button_8hpp_source.html#l00013">Button.hpp:13</a></div></div>
 <div class="ttc" id="aObject_8hpp_html"><div class="ttname"><a href="Object_8hpp.html">Object.hpp</a></div></div>
 <div class="ttc" id="aSYSTEM_8hpp_html"><div class="ttname"><a href="SYSTEM_8hpp.html">SYSTEM.hpp</a></div></div>
 <div class="ttc" id="aSketch_8hpp_html"><div class="ttname"><a href="Sketch_8hpp.html">Sketch.hpp</a></div></div>
-<div class="ttc" id="aclassObject_html"><div class="ttname"><a href="classObject.html">Object</a></div><div class="ttdef"><b>Definition:</b> <a href="Object_8hpp_source.html#l00010">Object.hpp:11</a></div></div>
-<div class="ttc" id="aclassScript_html"><div class="ttname"><a href="classScript.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="Script_8hpp_source.html#l00010">Script.hpp:11</a></div></div>
+<div class="ttc" id="aclassObject_html"><div class="ttname"><a href="classObject.html">Object</a></div><div class="ttdoc">class that create an object and render it to the screen texture can be load from image or create new ...</div><div class="ttdef"><b>Definition:</b> <a href="Object_8hpp_source.html#l00014">Object.hpp:15</a></div></div>
+<div class="ttc" id="aclassScript_html"><div class="ttname"><a href="classScript.html">Script</a></div><div class="ttdoc">class that load an text image and render it to the screen Support highlight lines</div><div class="ttdef"><b>Definition:</b> <a href="Script_8hpp_source.html#l00014">Script.hpp:15</a></div></div>
 <div class="ttc" id="aclassScript_html_a099d5b6d757b9888a7bbfda280a2ee05"><div class="ttname"><a href="classScript.html#a099d5b6d757b9888a7bbfda280a2ee05">Script::highlightLine</a></div><div class="ttdeci">void highlightLine(int k)</div><div class="ttdef"><b>Definition:</b> <a href="Script_8cpp_source.html#l00058">Script.cpp:58</a></div></div>
 <div class="ttc" id="aclassScript_html_a10975b78b03162488c522f095fd7707f"><div class="ttname"><a href="classScript.html#a10975b78b03162488c522f095fd7707f">Script::Script</a></div><div class="ttdeci">Script()</div><div class="ttdef"><b>Definition:</b> <a href="Script_8cpp_source.html#l00003">Script.cpp:3</a></div></div>
 <div class="ttc" id="aclassScript_html_a6258d453c37b44cdfc3e1b126e09bd87"><div class="ttname"><a href="classScript.html#a6258d453c37b44cdfc3e1b126e09bd87">Script::loadObject</a></div><div class="ttdeci">void loadObject(const json &amp;mem)</div><div class="ttdef"><b>Definition:</b> <a href="Script_8cpp_source.html#l00020">Script.cpp:20</a></div></div>
@@ -133,7 +132,7 @@ $(document).ready(function(){initNavTree('Script_8hpp_source.html',''); initResi
 <div class="ttc" id="aclassScript_html_a8b194b8f941a7079e4fa6f5e1dcc75f3"><div class="ttname"><a href="classScript.html#a8b194b8f941a7079e4fa6f5e1dcc75f3">Script::init</a></div><div class="ttdeci">void init(const json &amp;mem)</div><div class="ttdef"><b>Definition:</b> <a href="Script_8cpp_source.html#l00044">Script.cpp:44</a></div></div>
 <div class="ttc" id="aclassScript_html_a9578f50350e89b6c9f57a0545b7914fa"><div class="ttname"><a href="classScript.html#a9578f50350e89b6c9f57a0545b7914fa">Script::setRender</a></div><div class="ttdeci">void setRender(SDL_Renderer *&amp;r)</div><div class="ttdef"><b>Definition:</b> <a href="Script_8cpp_source.html#l00067">Script.cpp:67</a></div></div>
 <div class="ttc" id="aclassScript_html_aa7d007329ec6b06acdefbd22cd2229e4"><div class="ttname"><a href="classScript.html#aa7d007329ec6b06acdefbd22cd2229e4">Script::render</a></div><div class="ttdeci">void render()</div><div class="ttdef"><b>Definition:</b> <a href="Script_8cpp_source.html#l00072">Script.cpp:72</a></div></div>
-<div class="ttc" id="aclassSketch_html"><div class="ttname"><a href="classSketch.html">Sketch</a></div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8hpp_source.html#l00011">Sketch.hpp:12</a></div></div>
+<div class="ttc" id="aclassSketch_html"><div class="ttname"><a href="classSketch.html">Sketch</a></div><div class="ttdoc">class that create an text box and render it to the screen</div><div class="ttdef"><b>Definition:</b> <a href="Sketch_8hpp_source.html#l00015">Sketch.hpp:16</a></div></div>
 <div class="ttc" id="aclassvector_html"><div class="ttname"><a href="classvector.html">vector&lt; Sketch * &gt;</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

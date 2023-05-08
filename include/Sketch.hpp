@@ -8,6 +8,10 @@
 
 #include <SYSTEM.hpp>
 
+/**
+ * @brief class that create an text box and render it to the screen
+*/
+
 class Sketch
 {
 private: 

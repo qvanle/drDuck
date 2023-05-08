@@ -1,5 +1,7 @@
 #include <DuckWin.hpp>
-
+/**
+ * @brief contructor of MyWindow
+*/
 MyWindow::MyWindow()
 {
     soundMutex.lock();
@@ -16,7 +18,18 @@ MyWindow::MyWindow()
     soundOn = true;
 }
 
-
+/**
+ * @brief init the window 
+ * default size is 960x540
+ * 
+ * default fps is 60
+ * 
+ * default sound is on
+ * 
+ * default status is 1
+ * 
+ * init window, renderer, audio, image, font
+*/
 void MyWindow::init()
 {
     status = 1;
@@ -62,7 +75,12 @@ void MyWindow::init()
     SDL_LoadWAV((GLOBAL::SoundFolder + "quark.wav").c_str(), &waveSpec, &waveBuffer, &waveLength);
 }
 
-
+/**
+ * @brief when user move mouse, this function will be called
+ * @param x x coordinate of mouse
+ * @param y y coordinate of mouse
+ * When mouse is move it will trigger the button, screen.
+*/
 void MyWindow::mouseMove(int x, int y)
 {
     for(int i = 0; i < (int) screen.size(); i++)
@@ -90,6 +108,11 @@ void MyWindow::mouseMove(int x, int y)
     if(input != nullptr) input->mouseMove(x, y);
 }
 
+/**
+ * @brief The same to MyWindow::isChangeScreen(Button *& but) but source DT from json
+ * @param but button that through from system or click by user
+ * @param mem json that contain information of data structure
+*/
 bool MyWindow::isChangeScreen(Button *& but, const json &mem)
 {
     if(but->getAction() == "change screen")
@@ -196,6 +219,10 @@ bool MyWindow::isChangeScreen(Button *& but, const json &mem)
     }
     return false;
 }
+/**
+ * @brief delete all screen and add new screens which information can be found from the button pressed
+ * @param but button that through from system or click by user
+*/
 bool MyWindow::isChangeScreen(Button *& but)
 {
     if(but->getAction() == "change screen")
@@ -297,7 +324,12 @@ bool MyWindow::isChangeScreen(Button *& but)
     }
     return false;
 }
-
+/**
+ * @brief Action on data structure when user pressed button
+ * @param but button that through from system or click by user
+ * Action is insert, delete, search, update, new, push, pop
+ * @return true if action is done, false if not
+*/
 bool MyWindow::isDToperator(Button *& but)
 {
     if(but->getAction() == "new")
@@ -407,7 +439,10 @@ bool MyWindow::isDToperator(Button *& but)
     }
     return false;
 }
-
+/**
+ * @brief Action on input box 
+ * @param but button that through from system or click by user
+*/
 bool MyWindow::isInputButton(Button *& but)
 {
     if(input == nullptr) return false;
@@ -604,7 +639,11 @@ bool MyWindow::isInputButton(Button *& but)
     }
     return false;
 }
-
+/**
+ * @brief Action on play buttons
+ * @param but button that was clicked
+ * Action is slow down, speed up, play, pause, next step
+*/
 bool MyWindow::isPlayButton(Button *& but)
 {
     if(DT != nullptr && DT->isVisible() && but->getAction() == "pause") 
@@ -648,7 +687,11 @@ bool MyWindow::isPlayButton(Button *& but)
     }
     return false;
 }
-
+/**
+ * @brief When user press mouse, this function will be called to handle it
+ * @param x x coordinate of mouse
+ * @param y y coordinate of mouse 
+*/
 void MyWindow::mousePress(int x, int y)
 {
 
@@ -716,7 +759,9 @@ void MyWindow::mousePress(int x, int y)
     }
 }
 
-
+/**
+ * @brief delete all screens
+*/
 void MyWindow::deleteScreen()
 {
     if(screen.empty()) return ;
@@ -730,7 +775,9 @@ void MyWindow::deleteScreen()
     }
     screen.clear();
 }
-
+/** 
+ * @brief Turn off MyWindow 
+*/
 void MyWindow::shutdown()
 {
     UImutex.lock();
@@ -763,7 +810,9 @@ void MyWindow::shutdown()
     UImutex.unlock();
     soundMutex.unlock();
 } 
-
+/**
+ * @brief Return true if MyWindow is open, false otherwise
+*/
 bool MyWindow::isOpen()
 {
     return status == 1;
@@ -773,12 +822,16 @@ bool MyWindow::isHanging()
 {
     return status == 2;
 }
-
+/**
+ * @brief Return true if MyWindow is close, false otherwise
+*/
 bool MyWindow::isClose()
 {
     return status == 0;
 }
-
+/**
+ * @brief Delete all screens and add new screens which information is in json file have directory is "GLOBAL::AtrbScreens/name"
+*/
 void MyWindow::changeScreens(const char *const& name)
 {
     deleteScreen();
@@ -808,7 +861,9 @@ void MyWindow::changeScreens(const char *const& name)
     }
     FocusOn = 0;
 }
-
+/**
+ * @brief Return the screen that is focus on
+*/
 Display *& MyWindow::top()
 {
     return screen[FocusOn];
@@ -817,7 +872,10 @@ MyWindow::~MyWindow()
 {
     shutdown();
 }
-
+/**
+ * @brief Start MyWindow
+ * render and sound, user input will be run in 3 thread
+*/
 void MyWindow::run()
 {
     std::thread draw(&MyWindow::render, this);
@@ -827,7 +885,9 @@ void MyWindow::run()
     draw.join();
     sound.join();
 }
-
+/**
+ * @brief render function
+*/
 void MyWindow::render()
 {
 
@@ -856,7 +916,9 @@ void MyWindow::render()
         }
     }
 }
-
+/**
+ * @brief sound function
+*/
 void MyWindow::speak()
 {
     while(isOpen())
@@ -873,7 +935,9 @@ void MyWindow::speak()
         }
     }
 }
-
+/**
+ * @brief Handle user input
+*/
 void MyWindow::process()
 {
     if(event.type == SDL_QUIT)
@@ -895,7 +959,9 @@ void MyWindow::process()
         }
     }
 }
-
+/**
+ * @brief add a character to input box
+*/
 void MyWindow::typing(SDL_Keysym key)
 {
     UImutex.lock();
@@ -918,7 +984,9 @@ void MyWindow::typing(SDL_Keysym key)
     }
     UImutex.unlock();
 }
-
+/**
+ * @brief get user input
+*/
 void MyWindow::action()
 {
     while(isOpen())

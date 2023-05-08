@@ -7,6 +7,10 @@
 #include <SYSTEM.hpp>
 #include <SDL2/SDL_image.h>
 
+/**
+ * @brief class that create an object and render it to the screen
+ * texture can be load from image or create new one with text and background color
+*/
 class Object : public Sketch
 {
 private:

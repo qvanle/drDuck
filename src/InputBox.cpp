@@ -1,5 +1,7 @@
 #include <InputBox.hpp>
-
+/**
+ * @brief constructor of InputBox
+*/
 InputBox::InputBox()
 {
     ren = nullptr;
@@ -22,12 +24,16 @@ InputBox::~InputBox()
     texts.clear();
     buts.clear();
 }
-
+/**
+ * @brief set renderer for this InputBox
+*/
 void InputBox::setRender(SDL_Renderer *&r)
 {
     ren = r;
 }
-
+/**
+ * @brief load this object from json file
+*/
 void InputBox::init(const json &mem)
 {
     focusOn = -1;
@@ -77,7 +83,9 @@ void InputBox::init(const json &mem)
         }
     }
 }
-
+/**
+ * @brief render this InputBox
+*/
 void InputBox::render()
 {
     if(!isVisible()) return ;
@@ -95,25 +103,34 @@ void InputBox::render()
     for(int i = 0; i < (int) buts.size(); i++)
         buts[i]->render();
 }
-
+/**
+ * @brief choose input area
+*/
 void InputBox::setFocus(int k)
 {
     if(!isVisible()) return ;
     if(k >= input.size()) return ;
     focusOn = k;
 }
+/**
+ * @brief add a character to chosen input area
+*/
 void InputBox::typing(char ch)
 {
     if(focusOn == -1) return ;
     input[focusOn]->addChar(ch);
 }
-
+/**
+ * @brief set text for chosen input area
+*/
 void InputBox::setInput(std::string s)
 {
     if(focusOn == -1) return ;
     input[focusOn]->setText(s);
 }
-
+/**
+ * @brief pop a character from chosen input area
+*/
 void InputBox::pop()
 {
     if(!isVisible()) return ;
@@ -121,6 +138,9 @@ void InputBox::pop()
     input[focusOn]->popChar();
 }
 
+/**
+ * @brief handle mouse move event
+*/
 void InputBox::mouseMove(int x, int y)
 {
     if(!isVisible()) return ;
@@ -129,7 +149,9 @@ void InputBox::mouseMove(int x, int y)
         if(buts[i]->isChosen(x, y)) break;
 
 }
-
+/**
+ * @brief choose input area
+*/
 void InputBox::mousePress(int x, int y)
 {
     if(!isVisible()) return ;
@@ -138,7 +160,9 @@ void InputBox::mousePress(int x, int y)
             setFocus(i);
     return ;
 }
-
+/**
+ * @brief choose input area
+*/
 void InputBox::nextFocus()
 {
     if(!isVisible()) return ;
@@ -150,7 +174,9 @@ void InputBox::nextFocus()
     if(input.empty()) return ;
     focusOn = (focusOn + 1) % input.size();
 }
-
+/**
+ * @brief return button pressed by mouse
+*/
 Button* InputBox::getButtonPressedByMouse(int x, int y)
 {
     if(!isVisible()) return nullptr;
@@ -161,7 +187,9 @@ Button* InputBox::getButtonPressedByMouse(int x, int y)
     return nullptr;
 }
 
-
+/**
+ * @brief return text of chosen input area
+*/
 std::string InputBox::getText(int k)
 {
     return input[k]->getText();

@@ -2,7 +2,9 @@
 #define VECTOR1_H
 #include <cstddef> //size_t
 #include <utility> //move()
-
+/**
+ * @brief a vector class
+*/
 template <typename T>
 class vector
 {

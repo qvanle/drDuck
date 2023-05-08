@@ -11,7 +11,10 @@
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
-
+/**
+ * @brief class that represents a button.
+ * Button is just a object that when is triggered, it will do something.
+*/
 class Button : public Object
 {
 private:

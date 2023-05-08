@@ -2,6 +2,11 @@
 \label{classObject}\index{Object@{Object}}
 
 
+class that create an object and render it to the screen texture can be load from image or create new one with text and background color  
+
+
+
+
 {\ttfamily \#include $<$Object.\+hpp$>$}
 
 Inheritance diagram for Object\+:\begin{figure}[H]
@@ -14,57 +19,57 @@ Inheritance diagram for Object\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classObject_a40860402e64d8008fb42329df7097cdb}{Object}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em constructor of \mbox{\hyperlink{classObject}{Object}} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{$\sim$\+Object}} ()
 \item 
 void \mbox{\hyperlink{classObject_a739c8034c25e913916390bceed2ceb40}{clear\+Textures}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em clear all textures \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a22df77c92a507a5886d2e0cb60d20e6a}{init}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem, SDL\+\_\+\+Renderer $\ast$\&r)
-\item 
+\begin{DoxyCompactList}\small\item\em init this object by json file \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a482dfe6078c3ebc8120fb720b8924995}{set\+Coor}} (int x, int y, int w, int h)
-\item 
+\begin{DoxyCompactList}\small\item\em set coordinate of this object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_ad46063e9297907c8e0e6e98727fb5834}{set\+Coor}} (SDL\+\_\+\+Rect key)
-\item 
+\begin{DoxyCompactList}\small\item\em set coordinate of this object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a2788cb89a69545981a55959bc8003c1d}{setX}} (int x)
-\item 
+\begin{DoxyCompactList}\small\item\em set x coordinate of this object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a95816b2bfea04b5322378b48c866c140}{setY}} (int y)
-\item 
+\begin{DoxyCompactList}\small\item\em set y coordinate of this object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_acf47387b83af5aa5aff0d3c96f6a7e0b}{setW}} (int w)
-\item 
+\begin{DoxyCompactList}\small\item\em set width of this object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a97361d3e51f617fef03a435414cc6962}{setH}} (int h)
-\item 
+\begin{DoxyCompactList}\small\item\em set height of this object \end{DoxyCompactList}\item 
 const SDL\+\_\+\+Rect \& \mbox{\hyperlink{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}{get\+Coor}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em return coordinate of this object \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classObject_a8ccb3d2835e849a909ff6dab8fc336a4}{is\+Lies\+Inside}} (int x, int y)
-\item 
+\begin{DoxyCompactList}\small\item\em return true if a point lies inside this object \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classObject_a8a1e55d7de5885f3bd0f165d610a2b6b}{is\+Lies\+Inside}} (int x, int y, int w, int h)
-\item 
+\begin{DoxyCompactList}\small\item\em return true if a rectangle inside this object \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classObject_a3c3bf200380a391f7991dc00cba1c8bf}{is\+Lies\+Inside}} (SDL\+\_\+\+Rect rect)
-\item 
+\begin{DoxyCompactList}\small\item\em return true if a rectangle inside this object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a4e60a9d57998ae3257dd22d646a47691}{addX}} (int k)
-\item 
+\begin{DoxyCompactList}\small\item\em add k to x coordinate \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}{addY}} (int k)
-\item 
+\begin{DoxyCompactList}\small\item\em add k to y coordinate \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_aec21a23987d5ef54a6d9e84e94355fc1}{addW}} (int k)
-\item 
+\begin{DoxyCompactList}\small\item\em add k to width \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a0c9303fe732f2452204e617d51445c8c}{addH}} (int k)
-\item 
+\begin{DoxyCompactList}\small\item\em add k to height \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_ab6d0594ca9021e45807970c88710b759}{show}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em show this object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_adc8b1304393aa4624d90b354547e4417}{hide}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em hide this object \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classObject_a273d5a6a9a37f5a367c8f7e24148111f}{is\+Visible}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em return true if this object is visible \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_ab2c70e366d33ebc15119ac32abe09c1e}{set\+Textures}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
-\item 
+\begin{DoxyCompactList}\small\item\em load textures from json file \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_ac6f79e1f58ddf42a351fc03f0bf022aa}{pick\+Texure}} (int k)
-\item 
+\begin{DoxyCompactList}\small\item\em choose top texture \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em return number of textures \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_a403bc18560483c4be37a618939d44bea}{render}} (bool update)
-\item 
+\begin{DoxyCompactList}\small\item\em render this object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classObject_aa61f9fc990b651532c1a18b190d14e70}{move\+To}} (int x, int y, double time)
-\item 
+\begin{DoxyCompactList}\small\item\em move this object to (x, y) in time seconds \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{init}} (const \mbox{\hyperlink{Button_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&mem)
 \begin{DoxyCompactList}\small\item\em init sketch from json \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSketch_aab00f66b334da55a963282da6ed313d8}{set\+Render}} (SDL\+\_\+\+Renderer $\ast$\&r)
@@ -132,9 +137,9 @@ void \mbox{\hyperlink{classSketch_ad9b674c6a933471fc59492ac5c4697df}{create\+Tex
 
 
 \doxysubsection{Detailed Description}
+class that create an object and render it to the screen texture can be load from image or create new one with text and background color 
 
-
-Definition at line 10 of file Object.\+hpp.
+Definition at line 14 of file Object.\+hpp.
 
 
 
@@ -147,17 +152,21 @@ Definition at line 10 of file Object.\+hpp.
 
 
 
-Definition at line 3 of file Object.\+cpp.
+constructor of \mbox{\hyperlink{classObject}{Object}} 
+
+
+
+Definition at line 7 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{4 \{}
-\DoxyCodeLine{5     \mbox{\hyperlink{classObject_a482dfe6078c3ebc8120fb720b8924995}{setCoor}}(0, 0, 0, 0);}
-\DoxyCodeLine{6     \mbox{\hyperlink{classObject_adc8b1304393aa4624d90b354547e4417}{hide}}();}
-\DoxyCodeLine{7     tes.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{8     ren = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{9     top = 0;}
-\DoxyCodeLine{10 \}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \mbox{\hyperlink{classObject_a482dfe6078c3ebc8120fb720b8924995}{setCoor}}(0, 0, 0, 0);}
+\DoxyCodeLine{10     \mbox{\hyperlink{classObject_adc8b1304393aa4624d90b354547e4417}{hide}}();}
+\DoxyCodeLine{11     tes.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{12     ren = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{13     top = 0;}
+\DoxyCodeLine{14 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_ae8f5483f459e46687bd01e6f9977afd3}\label{classObject_ae8f5483f459e46687bd01e6f9977afd3}} 
@@ -168,17 +177,17 @@ Definition at line 3 of file Object.\+cpp.
 
 
 
-Definition at line 150 of file Object.\+cpp.
+Definition at line 197 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{151 \{}
-\DoxyCodeLine{152     \mbox{\hyperlink{classObject_a739c8034c25e913916390bceed2ceb40}{clearTextures}}();}
-\DoxyCodeLine{153     \mbox{\hyperlink{classObject_a482dfe6078c3ebc8120fb720b8924995}{setCoor}}(0, 0, 0, 0);}
-\DoxyCodeLine{154     \mbox{\hyperlink{classObject_adc8b1304393aa4624d90b354547e4417}{hide}}();}
-\DoxyCodeLine{155     ren = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{156     top = 0;}
-\DoxyCodeLine{157 \}}
+\DoxyCodeLine{198 \{}
+\DoxyCodeLine{199     \mbox{\hyperlink{classObject_a739c8034c25e913916390bceed2ceb40}{clearTextures}}();}
+\DoxyCodeLine{200     \mbox{\hyperlink{classObject_a482dfe6078c3ebc8120fb720b8924995}{setCoor}}(0, 0, 0, 0);}
+\DoxyCodeLine{201     \mbox{\hyperlink{classObject_adc8b1304393aa4624d90b354547e4417}{hide}}();}
+\DoxyCodeLine{202     ren = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{203     top = 0;}
+\DoxyCodeLine{204 \}}
 
 \end{DoxyCode}
 
@@ -219,13 +228,17 @@ Definition at line 101 of file Sketch.\+cpp.
 
 
 
-Definition at line 234 of file Object.\+cpp.
+add k to height 
+
+
+
+Definition at line 308 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{235 \{}
-\DoxyCodeLine{236     coor.h += k;}
-\DoxyCodeLine{237 \}}
+\DoxyCodeLine{309 \{}
+\DoxyCodeLine{310     coor.h += k;}
+\DoxyCodeLine{311 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_aec21a23987d5ef54a6d9e84e94355fc1}\label{classObject_aec21a23987d5ef54a6d9e84e94355fc1}} 
@@ -236,13 +249,17 @@ Definition at line 234 of file Object.\+cpp.
 
 
 
-Definition at line 230 of file Object.\+cpp.
+add k to width 
+
+
+
+Definition at line 301 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{231 \{}
-\DoxyCodeLine{232     coor.w += k;}
-\DoxyCodeLine{233 \}}
+\DoxyCodeLine{302 \{}
+\DoxyCodeLine{303     coor.w += k;}
+\DoxyCodeLine{304 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a4e60a9d57998ae3257dd22d646a47691}\label{classObject_a4e60a9d57998ae3257dd22d646a47691}} 
@@ -253,13 +270,17 @@ Definition at line 230 of file Object.\+cpp.
 
 
 
-Definition at line 220 of file Object.\+cpp.
+add k to x coordinate 
+
+
+
+Definition at line 287 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{221 \{}
-\DoxyCodeLine{222     coor.x += k;}
-\DoxyCodeLine{223 \}}
+\DoxyCodeLine{288 \{}
+\DoxyCodeLine{289     coor.x += k;}
+\DoxyCodeLine{290 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}\label{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}} 
@@ -270,13 +291,17 @@ Definition at line 220 of file Object.\+cpp.
 
 
 
-Definition at line 225 of file Object.\+cpp.
+add k to y coordinate 
+
+
+
+Definition at line 294 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{226 \{}
-\DoxyCodeLine{227     coor.y += k;}
-\DoxyCodeLine{228 \}}
+\DoxyCodeLine{295 \{}
+\DoxyCodeLine{296     coor.y += k;}
+\DoxyCodeLine{297 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_ae9982d949cf45e150dc002ea0af38b89}\label{classSketch_ae9982d949cf45e150dc002ea0af38b89}} 
@@ -343,21 +368,25 @@ Definition at line 37 of file Sketch.\+cpp.
 
 
 
-Definition at line 164 of file Object.\+cpp.
+clear all textures 
+
+
+
+Definition at line 215 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{165 \{}
-\DoxyCodeLine{166     \textcolor{keywordflow}{if}(!tes.\mbox{\hyperlink{classvector_a9af39ba556fbaeaa09cff474c6308076}{empty}}())}
-\DoxyCodeLine{167     \{}
-\DoxyCodeLine{168         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}(); i++)}
-\DoxyCodeLine{169         \{}
-\DoxyCodeLine{170             \textcolor{keywordflow}{if}(tes[i] != \textcolor{keyword}{nullptr}) }
-\DoxyCodeLine{171                 SDL\_DestroyTexture(tes[i]);}
-\DoxyCodeLine{172         \}}
-\DoxyCodeLine{173         tes.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
-\DoxyCodeLine{174     \}}
-\DoxyCodeLine{175 \}}
+\DoxyCodeLine{216 \{}
+\DoxyCodeLine{217     \textcolor{keywordflow}{if}(!tes.\mbox{\hyperlink{classvector_a9af39ba556fbaeaa09cff474c6308076}{empty}}())}
+\DoxyCodeLine{218     \{}
+\DoxyCodeLine{219         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}(); i++)}
+\DoxyCodeLine{220         \{}
+\DoxyCodeLine{221             \textcolor{keywordflow}{if}(tes[i] != \textcolor{keyword}{nullptr}) }
+\DoxyCodeLine{222                 SDL\_DestroyTexture(tes[i]);}
+\DoxyCodeLine{223         \}}
+\DoxyCodeLine{224         tes.\mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}}();}
+\DoxyCodeLine{225     \}}
+\DoxyCodeLine{226 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_ad9b674c6a933471fc59492ac5c4697df}\label{classSketch_ad9b674c6a933471fc59492ac5c4697df}} 
@@ -495,13 +524,17 @@ Definition at line 381 of file Sketch.\+cpp.
 
 
 
-Definition at line 92 of file Object.\+cpp.
+return coordinate of this object 
+
+
+
+Definition at line 133 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{93 \{}
-\DoxyCodeLine{94     \textcolor{keywordflow}{return} coor;}
-\DoxyCodeLine{95 \}}
+\DoxyCodeLine{134 \{}
+\DoxyCodeLine{135     \textcolor{keywordflow}{return} coor;}
+\DoxyCodeLine{136 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a54634737ea0afcf47bf0d7f0f1cad9b9}\label{classSketch_a54634737ea0afcf47bf0d7f0f1cad9b9}} 
@@ -533,13 +566,17 @@ Definition at line 148 of file Sketch.\+cpp.
 
 
 
-Definition at line 102 of file Object.\+cpp.
+hide this object 
+
+
+
+Definition at line 147 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{103 \{}
-\DoxyCodeLine{104     visable = \textcolor{keyword}{false};}
-\DoxyCodeLine{105 \}}
+\DoxyCodeLine{148 \{}
+\DoxyCodeLine{149     visable = \textcolor{keyword}{false};}
+\DoxyCodeLine{150 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a891e60a6552b963ab90f42c83c4c28ed}\label{classSketch_a891e60a6552b963ab90f42c83c4c28ed}} 
@@ -655,19 +692,30 @@ Definition at line 738 of file Sketch.\+cpp.
 
 
 
-Definition at line 45 of file Object.\+cpp.
+init this object by json file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & json file \\
+\hline
+{\em r} & renderer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{46 \{}
-\DoxyCodeLine{47     ren = r;}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49     \mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{Sketch::init}}(mem);}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51     initTextures(mem);}
-\DoxyCodeLine{52     initRect(mem);}
-\DoxyCodeLine{53     initVisible(mem);}
-\DoxyCodeLine{54 \}}
+\DoxyCodeLine{64 \{}
+\DoxyCodeLine{65     ren = r;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \mbox{\hyperlink{classSketch_a4a39d2dda0814490931ba3afa09663ee}{Sketch::init}}(mem);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     initTextures(mem);}
+\DoxyCodeLine{70     initRect(mem);}
+\DoxyCodeLine{71     initVisible(mem);}
+\DoxyCodeLine{72 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a7430f06316348a8fef6c315510ab9c00}\label{classSketch_a7430f06316348a8fef6c315510ab9c00}} 
@@ -970,17 +1018,21 @@ Definition at line 813 of file Sketch.\+cpp.
 
 
 
-Definition at line 197 of file Object.\+cpp.
+return true if a point lies inside this object 
+
+
+
+Definition at line 258 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{198 \{}
-\DoxyCodeLine{199     \textcolor{keywordflow}{if}(x < coor.x || coor.x + coor.w <= x)}
-\DoxyCodeLine{200         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{201     \textcolor{keywordflow}{if}(y < coor.y || coor.y + coor.h <= y)}
-\DoxyCodeLine{202         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{203     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{204 \}}
+\DoxyCodeLine{259 \{}
+\DoxyCodeLine{260     \textcolor{keywordflow}{if}(x < coor.x || coor.x + coor.w <= x)}
+\DoxyCodeLine{261         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{262     \textcolor{keywordflow}{if}(y < coor.y || coor.y + coor.h <= y)}
+\DoxyCodeLine{263         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{264     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{265 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a8a1e55d7de5885f3bd0f165d610a2b6b}\label{classObject_a8a1e55d7de5885f3bd0f165d610a2b6b}} 
@@ -991,17 +1043,21 @@ Definition at line 197 of file Object.\+cpp.
 
 
 
-Definition at line 206 of file Object.\+cpp.
+return true if a rectangle inside this object 
+
+
+
+Definition at line 269 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{207 \{}
-\DoxyCodeLine{208     \textcolor{keywordflow}{if}(x < coor.x || coor.x + coor.w <= x + w)}
-\DoxyCodeLine{209         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{210     \textcolor{keywordflow}{if}(y < coor.y || coor.y + coor.h <= y + h)}
-\DoxyCodeLine{211         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{212     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{213 \}}
+\DoxyCodeLine{270 \{}
+\DoxyCodeLine{271     \textcolor{keywordflow}{if}(x < coor.x || coor.x + coor.w <= x + w)}
+\DoxyCodeLine{272         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{273     \textcolor{keywordflow}{if}(y < coor.y || coor.y + coor.h <= y + h)}
+\DoxyCodeLine{274         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{275     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{276 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a3c3bf200380a391f7991dc00cba1c8bf}\label{classObject_a3c3bf200380a391f7991dc00cba1c8bf}} 
@@ -1012,13 +1068,17 @@ Definition at line 206 of file Object.\+cpp.
 
 
 
-Definition at line 215 of file Object.\+cpp.
+return true if a rectangle inside this object 
+
+
+
+Definition at line 280 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{216 \{}
-\DoxyCodeLine{217     \textcolor{keywordflow}{return} \mbox{\hyperlink{classObject_a8ccb3d2835e849a909ff6dab8fc336a4}{isLiesInside}}(rect.x, rect.y, rect.w, rect.h);}
-\DoxyCodeLine{218 \}}
+\DoxyCodeLine{281 \{}
+\DoxyCodeLine{282     \textcolor{keywordflow}{return} \mbox{\hyperlink{classObject_a8ccb3d2835e849a909ff6dab8fc336a4}{isLiesInside}}(rect.x, rect.y, rect.w, rect.h);}
+\DoxyCodeLine{283 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a273d5a6a9a37f5a367c8f7e24148111f}\label{classObject_a273d5a6a9a37f5a367c8f7e24148111f}} 
@@ -1029,13 +1089,17 @@ Definition at line 215 of file Object.\+cpp.
 
 
 
-Definition at line 192 of file Object.\+cpp.
+return true if this object is visible 
+
+
+
+Definition at line 250 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{193 \{}
-\DoxyCodeLine{194     \textcolor{keywordflow}{return} visable;}
-\DoxyCodeLine{195 \}}
+\DoxyCodeLine{251 \{}
+\DoxyCodeLine{252     \textcolor{keywordflow}{return} visable;}
+\DoxyCodeLine{253 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_aa61f9fc990b651532c1a18b190d14e70}\label{classObject_aa61f9fc990b651532c1a18b190d14e70}} 
@@ -1046,50 +1110,54 @@ Definition at line 192 of file Object.\+cpp.
 
 
 
-Definition at line 239 of file Object.\+cpp.
+move this object to (x, y) in time seconds 
+
+
+
+Definition at line 316 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{240 \{}
-\DoxyCodeLine{241     \textcolor{keywordtype}{int} dx = x -\/ \mbox{\hyperlink{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}{getCoor}}().x;}
-\DoxyCodeLine{242     \textcolor{keywordtype}{int} dy = y -\/ \mbox{\hyperlink{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}{getCoor}}().y;}
-\DoxyCodeLine{243 }
-\DoxyCodeLine{244     \textcolor{keywordflow}{if}(\mbox{\hyperlink{SYSTEM_8hpp_a82aa2c691212111c6e0b7362267a9d9f}{diff}}(time, 0))}
-\DoxyCodeLine{245     \{}
-\DoxyCodeLine{246         coor.x = x;}
-\DoxyCodeLine{247         coor.y = y;}
-\DoxyCodeLine{248         return ;}
-\DoxyCodeLine{249     \}}
-\DoxyCodeLine{250 }
-\DoxyCodeLine{251     \textcolor{keywordtype}{double} velo;}
-\DoxyCodeLine{252     \textcolor{keywordflow}{if}(abs(dx) < abs(dy))}
-\DoxyCodeLine{253         velo = dy / time;}
-\DoxyCodeLine{254     \textcolor{keywordflow}{else} velo = dx / time;}
-\DoxyCodeLine{255 }
-\DoxyCodeLine{256     \textcolor{keywordtype}{int} loop = std::min(80.0, abs(velo * time));}
-\DoxyCodeLine{257 }
-\DoxyCodeLine{258     time = time / loop;}
-\DoxyCodeLine{259 }
-\DoxyCodeLine{260 }
-\DoxyCodeLine{261     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= loop; i++)}
-\DoxyCodeLine{262     \{}
-\DoxyCodeLine{263         Uint32 startTime = SDL\_GetTicks();}
-\DoxyCodeLine{264 }
-\DoxyCodeLine{265         \mbox{\hyperlink{classObject_a4e60a9d57998ae3257dd22d646a47691}{addX}}(-\/dx * (i -\/ 1) / loop);}
-\DoxyCodeLine{266         \mbox{\hyperlink{classObject_a4e60a9d57998ae3257dd22d646a47691}{addX}}(dx * i / loop);}
-\DoxyCodeLine{267         \mbox{\hyperlink{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}{addY}}(-\/dy * (i -\/ 1) / loop);}
-\DoxyCodeLine{268         \mbox{\hyperlink{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}{addY}}(dy * i / loop);}
-\DoxyCodeLine{269         \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}}(\textcolor{keyword}{true}); }
-\DoxyCodeLine{270         Uint32 deltaTime = SDL\_GetTicks() -\/ startTime;}
-\DoxyCodeLine{271         startTime = SDL\_GetTicks();}
-\DoxyCodeLine{272 }
-\DoxyCodeLine{273         \textcolor{keywordflow}{if}(deltaTime <= time * 1000)}
-\DoxyCodeLine{274             SDL\_Delay(time * 1000 -\/ deltaTime);}
-\DoxyCodeLine{275     \}}
-\DoxyCodeLine{276     \mbox{\hyperlink{classObject_a2788cb89a69545981a55959bc8003c1d}{setX}}(x);}
-\DoxyCodeLine{277     \mbox{\hyperlink{classObject_a95816b2bfea04b5322378b48c866c140}{setY}}(y);}
-\DoxyCodeLine{278     \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{279 \}}
+\DoxyCodeLine{317 \{}
+\DoxyCodeLine{318     \textcolor{keywordtype}{int} dx = x -\/ \mbox{\hyperlink{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}{getCoor}}().x;}
+\DoxyCodeLine{319     \textcolor{keywordtype}{int} dy = y -\/ \mbox{\hyperlink{classObject_afc3646e79025bcadc6ed3e0cfa1d64dd}{getCoor}}().y;}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{321     \textcolor{keywordflow}{if}(\mbox{\hyperlink{SYSTEM_8hpp_a82aa2c691212111c6e0b7362267a9d9f}{diff}}(time, 0))}
+\DoxyCodeLine{322     \{}
+\DoxyCodeLine{323         coor.x = x;}
+\DoxyCodeLine{324         coor.y = y;}
+\DoxyCodeLine{325         return ;}
+\DoxyCodeLine{326     \}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{328     \textcolor{keywordtype}{double} velo;}
+\DoxyCodeLine{329     \textcolor{keywordflow}{if}(abs(dx) < abs(dy))}
+\DoxyCodeLine{330         velo = dy / time;}
+\DoxyCodeLine{331     \textcolor{keywordflow}{else} velo = dx / time;}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{333     \textcolor{keywordtype}{int} loop = std::min(80.0, abs(velo * time));}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{335     time = time / loop;}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{337 }
+\DoxyCodeLine{338     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= loop; i++)}
+\DoxyCodeLine{339     \{}
+\DoxyCodeLine{340         Uint32 startTime = SDL\_GetTicks();}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{342         \mbox{\hyperlink{classObject_a4e60a9d57998ae3257dd22d646a47691}{addX}}(-\/dx * (i -\/ 1) / loop);}
+\DoxyCodeLine{343         \mbox{\hyperlink{classObject_a4e60a9d57998ae3257dd22d646a47691}{addX}}(dx * i / loop);}
+\DoxyCodeLine{344         \mbox{\hyperlink{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}{addY}}(-\/dy * (i -\/ 1) / loop);}
+\DoxyCodeLine{345         \mbox{\hyperlink{classObject_a2b95a422d8af3ba3e8a24e3d0b1b1052}{addY}}(dy * i / loop);}
+\DoxyCodeLine{346         \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}}(\textcolor{keyword}{true}); }
+\DoxyCodeLine{347         Uint32 deltaTime = SDL\_GetTicks() -\/ startTime;}
+\DoxyCodeLine{348         startTime = SDL\_GetTicks();}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{350         \textcolor{keywordflow}{if}(deltaTime <= time * 1000)}
+\DoxyCodeLine{351             SDL\_Delay(time * 1000 -\/ deltaTime);}
+\DoxyCodeLine{352     \}}
+\DoxyCodeLine{353     \mbox{\hyperlink{classObject_a2788cb89a69545981a55959bc8003c1d}{setX}}(x);}
+\DoxyCodeLine{354     \mbox{\hyperlink{classObject_a95816b2bfea04b5322378b48c866c140}{setY}}(y);}
+\DoxyCodeLine{355     \mbox{\hyperlink{classSketch_aee998636e2f64fea8020cc53983754d2}{render}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{356 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_ac6f79e1f58ddf42a351fc03f0bf022aa}\label{classObject_ac6f79e1f58ddf42a351fc03f0bf022aa}} 
@@ -1100,14 +1168,18 @@ Definition at line 239 of file Object.\+cpp.
 
 
 
-Definition at line 177 of file Object.\+cpp.
+choose top texture 
+
+
+
+Definition at line 231 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{178 \{}
-\DoxyCodeLine{179     \textcolor{keywordflow}{if}(k >= \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}()) return ;}
-\DoxyCodeLine{180     top = k;}
-\DoxyCodeLine{181 \}}
+\DoxyCodeLine{232 \{}
+\DoxyCodeLine{233     \textcolor{keywordflow}{if}(k >= \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}()) return ;}
+\DoxyCodeLine{234     top = k;}
+\DoxyCodeLine{235 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_aaf8a7e1f834cadefdc707c68a92f0cc9}\label{classSketch_aaf8a7e1f834cadefdc707c68a92f0cc9}} 
@@ -1164,17 +1236,21 @@ Definition at line 328 of file Sketch.\+cpp.
 
 
 
-Definition at line 183 of file Object.\+cpp.
+render this object 
+
+
+
+Definition at line 239 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{184 \{}
-\DoxyCodeLine{185     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classObject_a273d5a6a9a37f5a367c8f7e24148111f}{isVisible}}()) return ; }
-\DoxyCodeLine{186     SDL\_RenderCopy(ren, tes[top], \textcolor{keyword}{nullptr}, \&coor);}
-\DoxyCodeLine{187     \textcolor{keywordflow}{if}(update == \textcolor{keyword}{true})}
-\DoxyCodeLine{188         SDL\_RenderPresent(ren);}
-\DoxyCodeLine{189     return ;}
-\DoxyCodeLine{190 \}}
+\DoxyCodeLine{240 \{}
+\DoxyCodeLine{241     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classObject_a273d5a6a9a37f5a367c8f7e24148111f}{isVisible}}()) return ; }
+\DoxyCodeLine{242     SDL\_RenderCopy(ren, tes[top], \textcolor{keyword}{nullptr}, \&coor);}
+\DoxyCodeLine{243     \textcolor{keywordflow}{if}(update == \textcolor{keyword}{true})}
+\DoxyCodeLine{244         SDL\_RenderPresent(ren);}
+\DoxyCodeLine{245     return ;}
+\DoxyCodeLine{246 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_aacef20f4453d1d1a7a1f9c12c5abe260}\label{classSketch_aacef20f4453d1d1a7a1f9c12c5abe260}} 
@@ -1350,16 +1426,31 @@ Definition at line 156 of file Sketch.\+cpp.
 
 
 
-Definition at line 56 of file Object.\+cpp.
+set coordinate of this object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate \\
+\hline
+{\em y} & y coordinate \\
+\hline
+{\em w} & width \\
+\hline
+{\em h} & height \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 80 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{57 \{}
-\DoxyCodeLine{58     coor.x = x;}
-\DoxyCodeLine{59     coor.y = y;}
-\DoxyCodeLine{60     coor.w = w;}
-\DoxyCodeLine{61     coor.h = h;}
-\DoxyCodeLine{62 \}}
+\DoxyCodeLine{81 \{}
+\DoxyCodeLine{82     coor.x = x;}
+\DoxyCodeLine{83     coor.y = y;}
+\DoxyCodeLine{84     coor.w = w;}
+\DoxyCodeLine{85     coor.h = h;}
+\DoxyCodeLine{86 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_ad46063e9297907c8e0e6e98727fb5834}\label{classObject_ad46063e9297907c8e0e6e98727fb5834}} 
@@ -1370,16 +1461,25 @@ Definition at line 56 of file Object.\+cpp.
 
 
 
-Definition at line 64 of file Object.\+cpp.
+set coordinate of this object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & SDL\+\_\+\+Rect \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 91 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{65 \{}
-\DoxyCodeLine{66     coor.x = key.x;}
-\DoxyCodeLine{67     coor.y = key.y;}
-\DoxyCodeLine{68     coor.w = key.w;}
-\DoxyCodeLine{69     coor.h = key.h;}
-\DoxyCodeLine{70 \}}
+\DoxyCodeLine{92 \{}
+\DoxyCodeLine{93     coor.x = key.x;}
+\DoxyCodeLine{94     coor.y = key.y;}
+\DoxyCodeLine{95     coor.w = key.w;}
+\DoxyCodeLine{96     coor.h = key.h;}
+\DoxyCodeLine{97 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a97361d3e51f617fef03a435414cc6962}\label{classObject_a97361d3e51f617fef03a435414cc6962}} 
@@ -1390,13 +1490,22 @@ Definition at line 64 of file Object.\+cpp.
 
 
 
-Definition at line 87 of file Object.\+cpp.
+set height of this object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & height \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 126 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{88 \{}
-\DoxyCodeLine{89     coor.h = h;}
-\DoxyCodeLine{90 \}}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128     coor.h = h;}
+\DoxyCodeLine{129 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a37f8156e9953f9cfc821ab6b39c72be1}\label{classSketch_a37f8156e9953f9cfc821ab6b39c72be1}} 
@@ -1627,50 +1736,54 @@ Definition at line 136 of file Sketch.\+cpp.
 
 
 
-Definition at line 107 of file Object.\+cpp.
+load textures from json file 
+
+
+
+Definition at line 154 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{108 \{}
-\DoxyCodeLine{109     \mbox{\hyperlink{classObject_a739c8034c25e913916390bceed2ceb40}{clearTextures}}();}
-\DoxyCodeLine{110 }
-\DoxyCodeLine{111     tes.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}textures"{}}].\mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}());}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{113     \textcolor{keywordtype}{char}* FolderName = \textcolor{keyword}{new} \textcolor{keywordtype}{char} [256];}
-\DoxyCodeLine{114     strcpy(FolderName, mem[\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str());}
-\DoxyCodeLine{115 }
-\DoxyCodeLine{116     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0 ; i < \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}(); i++)}
-\DoxyCodeLine{117     \{}
-\DoxyCodeLine{118         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fullname = \mbox{\hyperlink{SYSTEM_8hpp_add498b5bd70219e44845487e69eb6daa}{combineName}}(}
-\DoxyCodeLine{119             mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str(),}
-\DoxyCodeLine{120             mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}type"{}}].get<std::string>().c\_str()}
-\DoxyCodeLine{121         );}
-\DoxyCodeLine{122         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* name = \mbox{\hyperlink{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}( }
-\DoxyCodeLine{123             FolderName,}
-\DoxyCodeLine{124             fullname}
-\DoxyCodeLine{125         );}
-\DoxyCodeLine{126         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* link = \mbox{\hyperlink{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}(}
-\DoxyCodeLine{127             \mbox{\hyperlink{namespaceGLOBAL_ad75dd09e451ef5558589a16318a45e73}{GLOBAL::GraphicsFolder}}, }
-\DoxyCodeLine{128             name}
-\DoxyCodeLine{129         ); }
-\DoxyCodeLine{130         }
-\DoxyCodeLine{131         SDL\_Surface* surf;}
-\DoxyCodeLine{132 }
-\DoxyCodeLine{133         std::string type = mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}type"{}}].get<std::string>();}
-\DoxyCodeLine{134         \textcolor{keywordflow}{if}(type == \textcolor{stringliteral}{"{}bmp"{}})}
-\DoxyCodeLine{135             surf = SDL\_LoadBMP(link);}
-\DoxyCodeLine{136         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(type == \textcolor{stringliteral}{"{}png"{}} || type == \textcolor{stringliteral}{"{}jpg"{}})}
-\DoxyCodeLine{137             surf = IMG\_Load(link);}
-\DoxyCodeLine{138 }
-\DoxyCodeLine{139         tes[i] = SDL\_CreateTextureFromSurface(ren, surf);}
-\DoxyCodeLine{140 }
-\DoxyCodeLine{141         \textcolor{keyword}{delete} [] link;}
-\DoxyCodeLine{142         \textcolor{keyword}{delete} [] name;}
-\DoxyCodeLine{143         \textcolor{keyword}{delete} []fullname;}
-\DoxyCodeLine{144         SDL\_FreeSurface(surf);}
-\DoxyCodeLine{145     \}}
-\DoxyCodeLine{146     \textcolor{keyword}{delete} [] FolderName;}
-\DoxyCodeLine{147 \}}
+\DoxyCodeLine{155 \{}
+\DoxyCodeLine{156     \mbox{\hyperlink{classObject_a739c8034c25e913916390bceed2ceb40}{clearTextures}}();}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158     tes.\mbox{\hyperlink{classvector_aae6a11719d461a23f420fd9d5b9396b3}{resize}}(mem[\textcolor{stringliteral}{"{}textures"{}}].\mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}());}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160     \textcolor{keywordtype}{char}* FolderName = \textcolor{keyword}{new} \textcolor{keywordtype}{char} [256];}
+\DoxyCodeLine{161     strcpy(FolderName, mem[\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str());}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0 ; i < \mbox{\hyperlink{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}{size}}(); i++)}
+\DoxyCodeLine{164     \{}
+\DoxyCodeLine{165         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fullname = \mbox{\hyperlink{SYSTEM_8hpp_add498b5bd70219e44845487e69eb6daa}{combineName}}(}
+\DoxyCodeLine{166             mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}name"{}}].get<std::string>().c\_str(),}
+\DoxyCodeLine{167             mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}type"{}}].get<std::string>().c\_str()}
+\DoxyCodeLine{168         );}
+\DoxyCodeLine{169         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* name = \mbox{\hyperlink{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}( }
+\DoxyCodeLine{170             FolderName,}
+\DoxyCodeLine{171             fullname}
+\DoxyCodeLine{172         );}
+\DoxyCodeLine{173         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* link = \mbox{\hyperlink{SYSTEM_8hpp_a1f81fa7626d87f433f5e1bfe23f7d84a}{combineLink}}(}
+\DoxyCodeLine{174             \mbox{\hyperlink{namespaceGLOBAL_ad75dd09e451ef5558589a16318a45e73}{GLOBAL::GraphicsFolder}}, }
+\DoxyCodeLine{175             name}
+\DoxyCodeLine{176         ); }
+\DoxyCodeLine{177         }
+\DoxyCodeLine{178         SDL\_Surface* surf;}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180         std::string type = mem[\textcolor{stringliteral}{"{}textures"{}}][i][\textcolor{stringliteral}{"{}type"{}}].get<std::string>();}
+\DoxyCodeLine{181         \textcolor{keywordflow}{if}(type == \textcolor{stringliteral}{"{}bmp"{}})}
+\DoxyCodeLine{182             surf = SDL\_LoadBMP(link);}
+\DoxyCodeLine{183         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(type == \textcolor{stringliteral}{"{}png"{}} || type == \textcolor{stringliteral}{"{}jpg"{}})}
+\DoxyCodeLine{184             surf = IMG\_Load(link);}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186         tes[i] = SDL\_CreateTextureFromSurface(ren, surf);}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188         \textcolor{keyword}{delete} [] link;}
+\DoxyCodeLine{189         \textcolor{keyword}{delete} [] name;}
+\DoxyCodeLine{190         \textcolor{keyword}{delete} []fullname;}
+\DoxyCodeLine{191         SDL\_FreeSurface(surf);}
+\DoxyCodeLine{192     \}}
+\DoxyCodeLine{193     \textcolor{keyword}{delete} [] FolderName;}
+\DoxyCodeLine{194 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_acf47387b83af5aa5aff0d3c96f6a7e0b}\label{classObject_acf47387b83af5aa5aff0d3c96f6a7e0b}} 
@@ -1681,13 +1794,22 @@ Definition at line 107 of file Object.\+cpp.
 
 
 
-Definition at line 82 of file Object.\+cpp.
+set width of this object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & width \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 118 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{83 \{}
-\DoxyCodeLine{84     coor.w = w;}
-\DoxyCodeLine{85 \}}
+\DoxyCodeLine{119 \{}
+\DoxyCodeLine{120     coor.w = w;}
+\DoxyCodeLine{121 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a2788cb89a69545981a55959bc8003c1d}\label{classObject_a2788cb89a69545981a55959bc8003c1d}} 
@@ -1698,13 +1820,22 @@ Definition at line 82 of file Object.\+cpp.
 
 
 
-Definition at line 72 of file Object.\+cpp.
+set x coordinate of this object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 102 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{73 \{}
-\DoxyCodeLine{74     coor.x = x;}
-\DoxyCodeLine{75 \}}
+\DoxyCodeLine{103 \{}
+\DoxyCodeLine{104     coor.x = x;}
+\DoxyCodeLine{105 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a95816b2bfea04b5322378b48c866c140}\label{classObject_a95816b2bfea04b5322378b48c866c140}} 
@@ -1715,13 +1846,22 @@ Definition at line 72 of file Object.\+cpp.
 
 
 
-Definition at line 77 of file Object.\+cpp.
+set y coordinate of this object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & y coordinate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 110 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{78 \{}
-\DoxyCodeLine{79     coor.y = y;}
-\DoxyCodeLine{80 \}}
+\DoxyCodeLine{111 \{}
+\DoxyCodeLine{112     coor.y = y;}
+\DoxyCodeLine{113 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_ab6d0594ca9021e45807970c88710b759}\label{classObject_ab6d0594ca9021e45807970c88710b759}} 
@@ -1732,13 +1872,17 @@ Definition at line 77 of file Object.\+cpp.
 
 
 
-Definition at line 97 of file Object.\+cpp.
+show this object 
+
+
+
+Definition at line 140 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{98 \{}
-\DoxyCodeLine{99     visable = \textcolor{keyword}{true};}
-\DoxyCodeLine{100 \}}
+\DoxyCodeLine{141 \{}
+\DoxyCodeLine{142     visable = \textcolor{keyword}{true};}
+\DoxyCodeLine{143 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}\label{classObject_a5055502bfdf73934b0ed9d9ad7c678f8}} 
@@ -1749,13 +1893,17 @@ Definition at line 97 of file Object.\+cpp.
 
 
 
-Definition at line 159 of file Object.\+cpp.
+return number of textures 
+
+
+
+Definition at line 208 of file Object.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{160 \{}
-\DoxyCodeLine{161     \textcolor{keywordflow}{return} tes.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}();}
-\DoxyCodeLine{162 \}}
+\DoxyCodeLine{209 \{}
+\DoxyCodeLine{210     \textcolor{keywordflow}{return} tes.\mbox{\hyperlink{classvector_af7961c7a6accd1fd521956a6b35cb2d2}{size}}();}
+\DoxyCodeLine{211 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classSketch_a59b0712ea0d65a8e66ee1e3e227d8766}\label{classSketch_a59b0712ea0d65a8e66ee1e3e227d8766}} 

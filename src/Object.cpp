@@ -1,5 +1,9 @@
 #include <Object.hpp>
 
+/**
+ * @brief constructor of Object
+*/
+
 Object::Object()
 {
     setCoor(0, 0, 0, 0);
@@ -9,6 +13,10 @@ Object::Object()
     top = 0;
 }
 
+/**
+ * @brief load textures from an image which infomatition is in json file
+ * @param mem json file
+*/
 void Object::initTextures(const json& mem)
 {
     if(mem.contains("textures"))
@@ -16,7 +24,10 @@ void Object::initTextures(const json& mem)
         setTextures(mem);
     }
 }
-
+/**
+ * @brief load coordinate from json file
+ * @param mem json file
+*/
 void Object::initRect(const json& mem)
 {
     if(mem.contains("rect"))
@@ -31,7 +42,10 @@ void Object::initRect(const json& mem)
             setH(mem["rect"]["h"]);
     }
 }
-
+/**
+ * @brief load visible from json file
+ * @param mem json file
+*/
 void Object::initVisible(const json& mem)
 {
     if(mem.contains("visible"))
@@ -41,7 +55,11 @@ void Object::initVisible(const json& mem)
         else hide();
     }
 }
-
+/**
+ * @brief init this object by json file
+ * @param mem json file
+ * @param r renderer
+*/
 void Object::init(const json& mem, SDL_Renderer *& r)
 {
     ren = r;
@@ -52,7 +70,13 @@ void Object::init(const json& mem, SDL_Renderer *& r)
     initRect(mem);
     initVisible(mem);
 }
-
+/**
+ * @brief set coordinate of this object
+ * @param x x coordinate
+ * @param y y coordinate
+ * @param w width
+ * @param h height
+*/
 void Object::setCoor(int x, int y, int w, int h)
 {
     coor.x = x;
@@ -60,7 +84,10 @@ void Object::setCoor(int x, int y, int w, int h)
     coor.w = w;
     coor.h = h;
 }
-
+/**
+ * @brief set coordinate of this object
+ * @param key SDL_Rect
+*/
 void Object::setCoor(SDL_Rect key)
 {
     coor.x = key.x;
@@ -68,42 +95,62 @@ void Object::setCoor(SDL_Rect key)
     coor.w = key.w;
     coor.h = key.h;
 }
-
+/**
+ * @brief set x coordinate of this object
+ * @param x x coordinate
+*/
 void Object::setX(int x)
 {
     coor.x = x;
 }
-
+/**
+ * @brief set y coordinate of this object
+ * @param y y coordinate
+*/
 void Object::setY(int y)
 {
     coor.y = y;
 }
-
+/**
+ * @brief set width of this object
+ * @param w width
+*/
 void Object::setW(int w)
 {
     coor.w = w;
 }
-
+/**
+ * @brief set height of this object
+ * @param h height
+*/
 void Object::setH(int h)
 {
     coor.h = h;
 }
-
+/**
+ * @brief return coordinate of this object
+*/
 const SDL_Rect &Object::getCoor()
 {
     return coor;
 }
-
+/**
+ * @brief show this object
+*/
 void Object::show()
 {
     visable = true;
 }
-
+/**
+ * @brief hide this object
+*/
 void Object::hide()
 {
     visable = false;
 }
-
+/**
+ * @brief load textures from json file
+*/
 void Object::setTextures(const json &mem)
 {
     clearTextures();
@@ -155,12 +202,16 @@ Object::~Object()
     ren = nullptr;
     top = 0;
 }
-
+/**
+ * @brief return number of textures
+*/
 int Object::size()
 {
     return tes.size();
 }
-
+/**
+ * @brief clear all textures
+*/
 void Object::clearTextures()
 {
     if(!tes.empty())
@@ -174,12 +225,17 @@ void Object::clearTextures()
     }
 }
 
+/**
+ * @brief choose top texture
+*/
 void Object::pickTexure(int k)
 {
     if(k >= size()) return ;
     top = k;
 }
-
+/**
+ * @brief render this object
+*/
 void Object::render(bool update)
 {
     if(!isVisible()) return ; 
@@ -188,12 +244,17 @@ void Object::render(bool update)
         SDL_RenderPresent(ren);
     return ;
 }
-
+/**
+ * @brief return true if this object is visible
+*/
 bool Object::isVisible()
 {
     return visable;
 }
 
+/**
+ * @brief return true if a point lies inside this object
+*/
 bool Object::isLiesInside(int x, int y)
 {
     if(x < coor.x || coor.x + coor.w <= x)
@@ -202,7 +263,9 @@ bool Object::isLiesInside(int x, int y)
         return false;
     return true;
 }
-
+/**
+ * @brief return true if a rectangle inside this object
+*/
 bool Object::isLiesInside(int x, int y, int w, int h)
 {
     if(x < coor.x || coor.x + coor.w <= x + w)
@@ -211,31 +274,45 @@ bool Object::isLiesInside(int x, int y, int w, int h)
         return false;
     return true;
 }
-
+/**
+ * @brief return true if a rectangle inside this object
+*/
 bool Object::isLiesInside(SDL_Rect rect)
 {
     return isLiesInside(rect.x, rect.y, rect.w, rect.h);
 }
-
+/**
+ * @brief add k to x coordinate
+*/
 void Object::addX(int k)
 {
     coor.x += k;
 }
-
+/**
+ * @brief add k to y coordinate
+*/
 void Object::addY(int k)
 {
     coor.y += k;
 }
-
+/**
+ * @brief add k to width
+*/
 void Object::addW(int k)
 {
     coor.w += k;
 }
+/**
+ * @brief add k to height
+*/
 void Object::addH(int k)
 {
     coor.h += k;
 }
 
+/**
+ * @brief move this object to (x, y) in time seconds
+*/
 void Object::moveTo(int x, int y, double time)
 {
     int dx = x - getCoor().x;

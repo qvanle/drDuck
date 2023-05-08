@@ -1,10 +1,15 @@
 #include <Data_Structures.hpp>
-
+/**
+ * @brief get number of elements in this data structure
+*/
 int Data_Structures::size()
 {
     return num;
 }
 
+/**
+ * @brief constructor of Data_Structures
+*/
 Data_Structures::Data_Structures()
 {
     finish = true;
@@ -32,7 +37,9 @@ Data_Structures::~Data_Structures()
     arrowE = nullptr;
     //Sketch::~Sketch();
 }
-
+/**
+ * @brief init data structure from json file
+*/
 void Data_Structures::init(const json & mem)
 {
     finish = false;
@@ -69,12 +76,16 @@ void Data_Structures::init(const json & mem)
     }
     finish = true;
 }
-
+/**
+ * @brief set renderer for this data structure
+*/
 void Data_Structures::setRender(SDL_Renderer *&r)
 {
     ren = r;
 }
-
+/**
+ * @brief load value from json file
+*/
 void Data_Structures::loadValue(const json &mem)
 {
     finish = false;

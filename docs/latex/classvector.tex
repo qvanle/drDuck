@@ -2,6 +2,11 @@
 \label{classvector}\index{vector$<$ T $>$@{vector$<$ T $>$}}
 
 
+a vector class  
+
+
+
+
 {\ttfamily \#include $<$vector.\+hpp$>$}
 
 \doxysubsection*{Public Types}
@@ -86,9 +91,9 @@ void \mbox{\hyperlink{classvector_a1a91cd18e54c382af1097d630405398f}{clear}} ()
 \subsubsection*{template$<$typename T$>$\newline
 class vector$<$ T $>$}
 
+a vector class 
 
-
-Definition at line 7 of file vector.\+hpp.
+Definition at line 9 of file vector.\+hpp.
 
 
 
@@ -102,7 +107,7 @@ using \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classv
 
 
 
-Definition at line 17 of file vector.\+hpp.
+Definition at line 19 of file vector.\+hpp.
 
 \mbox{\Hypertarget{classvector_a7cb932caa8ab54e6012210722889ba41}\label{classvector_a7cb932caa8ab54e6012210722889ba41}} 
 \index{vector$<$ T $>$@{vector$<$ T $>$}!const\_reference@{const\_reference}}
@@ -113,7 +118,7 @@ using \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classv
 
 
 
-Definition at line 15 of file vector.\+hpp.
+Definition at line 17 of file vector.\+hpp.
 
 \mbox{\Hypertarget{classvector_abc9823ddef49efbb6aee584ca14728d8}\label{classvector_abc9823ddef49efbb6aee584ca14728d8}} 
 \index{vector$<$ T $>$@{vector$<$ T $>$}!iterator@{iterator}}
@@ -124,7 +129,7 @@ using \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classv
 
 
 
-Definition at line 16 of file vector.\+hpp.
+Definition at line 18 of file vector.\+hpp.
 
 \mbox{\Hypertarget{classvector_ae9dbb3e1b98a57963546f1c46b87596f}\label{classvector_ae9dbb3e1b98a57963546f1c46b87596f}} 
 \index{vector$<$ T $>$@{vector$<$ T $>$}!reference@{reference}}
@@ -135,7 +140,7 @@ using \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classv
 
 
 
-Definition at line 14 of file vector.\+hpp.
+Definition at line 16 of file vector.\+hpp.
 
 \mbox{\Hypertarget{classvector_aef474e0ff8b2e536cb46a2e9ae1accab}\label{classvector_aef474e0ff8b2e536cb46a2e9ae1accab}} 
 \index{vector$<$ T $>$@{vector$<$ T $>$}!size\_type@{size\_type}}
@@ -146,7 +151,7 @@ using \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classv
 
 
 
-Definition at line 18 of file vector.\+hpp.
+Definition at line 20 of file vector.\+hpp.
 
 \mbox{\Hypertarget{classvector_a734f2f7bdca203914356632292c0c596}\label{classvector_a734f2f7bdca203914356632292c0c596}} 
 \index{vector$<$ T $>$@{vector$<$ T $>$}!value\_type@{value\_type}}
@@ -157,7 +162,7 @@ using \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classv
 
 
 
-Definition at line 13 of file vector.\+hpp.
+Definition at line 15 of file vector.\+hpp.
 
 
 
@@ -171,11 +176,11 @@ Definition at line 13 of file vector.\+hpp.
 
 
 
-Definition at line 23 of file vector.\+hpp.
+Definition at line 25 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{23 : m\_size(0U), m\_capacity(0U), arr(\textcolor{keyword}{nullptr}) \{\}}
+\DoxyCodeLine{25 : m\_size(0U), m\_capacity(0U), arr(\textcolor{keyword}{nullptr}) \{\}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_af2e1a4f12ffdc23988ebc983b5175aeb}\label{classvector_af2e1a4f12ffdc23988ebc983b5175aeb}} 
@@ -187,11 +192,11 @@ Definition at line 23 of file vector.\+hpp.
 
 
 
-Definition at line 24 of file vector.\+hpp.
+Definition at line 26 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{24 : m\_size(n), m\_capacity(n), arr(n ? \textcolor{keyword}{new} T[n] : \textcolor{keyword}{nullptr}) \{\}}
+\DoxyCodeLine{26 : m\_size(n), m\_capacity(n), arr(n ? \textcolor{keyword}{new} T[n] : \textcolor{keyword}{nullptr}) \{\}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a61d97418072578e512110b41c570da83}\label{classvector_a61d97418072578e512110b41c570da83}} 
@@ -210,11 +215,11 @@ Definition at line 24 of file vector.\+hpp.
 
 
 
-Definition at line 26 of file vector.\+hpp.
+Definition at line 28 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{26 : m\_size(v.m\_size), m\_capacity(v.m\_capacity), arr(v.arr) \{ v.arr = \textcolor{keyword}{nullptr}; \}}
+\DoxyCodeLine{28 : m\_size(v.m\_size), m\_capacity(v.m\_capacity), arr(v.arr) \{ v.arr = \textcolor{keyword}{nullptr}; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a7bc236f547bb5debe890fa8ebaabe965}\label{classvector_a7bc236f547bb5debe890fa8ebaabe965}} 
@@ -226,11 +231,11 @@ Definition at line 26 of file vector.\+hpp.
 
 
 
-Definition at line 28 of file vector.\+hpp.
+Definition at line 30 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{28 \{ \textcolor{keyword}{delete}[]arr; \}}
+\DoxyCodeLine{30 \{ \textcolor{keyword}{delete}[]arr; \}}
 
 \end{DoxyCode}
 
@@ -245,11 +250,11 @@ Definition at line 28 of file vector.\+hpp.
 
 
 
-Definition at line 53 of file vector.\+hpp.
+Definition at line 55 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{53 \{ \textcolor{keywordflow}{return} arr[m\_size -\/ 1U]; \}}
+\DoxyCodeLine{55 \{ \textcolor{keywordflow}{return} arr[m\_size -\/ 1U]; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_ad7f7ad663611b0a891fdfe4ee6d0afcd}\label{classvector_ad7f7ad663611b0a891fdfe4ee6d0afcd}} 
@@ -261,11 +266,11 @@ Definition at line 53 of file vector.\+hpp.
 
 
 
-Definition at line 54 of file vector.\+hpp.
+Definition at line 56 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{54 \{ \textcolor{keywordflow}{return} arr[m\_size -\/ 1U]; \}}
+\DoxyCodeLine{56 \{ \textcolor{keywordflow}{return} arr[m\_size -\/ 1U]; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a7aecb965ffda6737cc461c9316d878f2}\label{classvector_a7aecb965ffda6737cc461c9316d878f2}} 
@@ -277,11 +282,11 @@ Definition at line 54 of file vector.\+hpp.
 
 
 
-Definition at line 33 of file vector.\+hpp.
+Definition at line 35 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{33 \{ \textcolor{keywordflow}{return} arr; \}}
+\DoxyCodeLine{35 \{ \textcolor{keywordflow}{return} arr; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a08a0cf03d12c736d7a5d38417a0828f3}\label{classvector_a08a0cf03d12c736d7a5d38417a0828f3}} 
@@ -293,11 +298,11 @@ Definition at line 33 of file vector.\+hpp.
 
 
 
-Definition at line 34 of file vector.\+hpp.
+Definition at line 36 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{34 \{ \textcolor{keywordflow}{return} arr; \}}
+\DoxyCodeLine{36 \{ \textcolor{keywordflow}{return} arr; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a893da0a956044cbfc2d4ebd4edb097cb}\label{classvector_a893da0a956044cbfc2d4ebd4edb097cb}} 
@@ -309,11 +314,11 @@ Definition at line 34 of file vector.\+hpp.
 
 
 
-Definition at line 44 of file vector.\+hpp.
+Definition at line 46 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{44 \{ \textcolor{keywordflow}{return} m\_capacity; \}}
+\DoxyCodeLine{46 \{ \textcolor{keywordflow}{return} m\_capacity; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a354eb76fa8cc57d1bb5e7a7ee8fea1b1}\label{classvector_a354eb76fa8cc57d1bb5e7a7ee8fea1b1}} 
@@ -325,11 +330,11 @@ Definition at line 44 of file vector.\+hpp.
 
 
 
-Definition at line 37 of file vector.\+hpp.
+Definition at line 39 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{37 \{ \textcolor{keywordflow}{return} arr; \}}
+\DoxyCodeLine{39 \{ \textcolor{keywordflow}{return} arr; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a9d33c489572ba4731b6c7263578c6c49}\label{classvector_a9d33c489572ba4731b6c7263578c6c49}} 
@@ -341,11 +346,11 @@ Definition at line 37 of file vector.\+hpp.
 
 
 
-Definition at line 38 of file vector.\+hpp.
+Definition at line 40 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{38 \{ \textcolor{keywordflow}{return} arr + m\_size; \}}
+\DoxyCodeLine{40 \{ \textcolor{keywordflow}{return} arr + m\_size; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a1a91cd18e54c382af1097d630405398f}\label{classvector_a1a91cd18e54c382af1097d630405398f}} 
@@ -357,15 +362,15 @@ void \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::clear\hspace{0.3cm}{\ttf
 
 
 
-Definition at line 183 of file vector.\+hpp.
+Definition at line 185 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{184 \{}
-\DoxyCodeLine{185     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&i : (*\textcolor{keyword}{this}))}
-\DoxyCodeLine{186         i.\string~T();}
-\DoxyCodeLine{187     m\_size = 0U;}
-\DoxyCodeLine{188 \}}
+\DoxyCodeLine{186 \{}
+\DoxyCodeLine{187     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&i : (*\textcolor{keyword}{this}))}
+\DoxyCodeLine{188         i.\string~T();}
+\DoxyCodeLine{189     m\_size = 0U;}
+\DoxyCodeLine{190 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a9af39ba556fbaeaa09cff474c6308076}\label{classvector_a9af39ba556fbaeaa09cff474c6308076}} 
@@ -377,11 +382,11 @@ bool \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::empty (\begin{DoxyParamC
 
 
 
-Definition at line 45 of file vector.\+hpp.
+Definition at line 47 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{45 \{ \textcolor{keywordflow}{return} !m\_size; \}}
+\DoxyCodeLine{47 \{ \textcolor{keywordflow}{return} !m\_size; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_ad18d9638b1d68f0398794ba0da4504a9}\label{classvector_ad18d9638b1d68f0398794ba0da4504a9}} 
@@ -393,11 +398,11 @@ Definition at line 45 of file vector.\+hpp.
 
 
 
-Definition at line 35 of file vector.\+hpp.
+Definition at line 37 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{35 \{ \textcolor{keywordflow}{return} arr + m\_size; \}}
+\DoxyCodeLine{37 \{ \textcolor{keywordflow}{return} arr + m\_size; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a2afa1e4a11073b98c2d13157d84cf029}\label{classvector_a2afa1e4a11073b98c2d13157d84cf029}} 
@@ -409,11 +414,11 @@ Definition at line 35 of file vector.\+hpp.
 
 
 
-Definition at line 36 of file vector.\+hpp.
+Definition at line 38 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{36 \{ \textcolor{keywordflow}{return} arr + m\_size; \}}
+\DoxyCodeLine{38 \{ \textcolor{keywordflow}{return} arr + m\_size; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a4464ea4a823cbd08c978dbc5c72fc889}\label{classvector_a4464ea4a823cbd08c978dbc5c72fc889}} 
@@ -425,25 +430,25 @@ Definition at line 36 of file vector.\+hpp.
 
 
 
-Definition at line 165 of file vector.\+hpp.
+Definition at line 167 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{166 \{}
-\DoxyCodeLine{167     position-\/>\string~T();}
-\DoxyCodeLine{168 }
-\DoxyCodeLine{169     \textcolor{comment}{//pointer arithmetic}}
-\DoxyCodeLine{170     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{classvector_abc9823ddef49efbb6aee584ca14728d8}{iterator}}\textcolor{keyword}{>}(position); i < \mbox{\hyperlink{classvector_ad18d9638b1d68f0398794ba0da4504a9}{end}}() -\/ 1; ++i)}
-\DoxyCodeLine{171         (*i) = std::move(*(i + 1));}
-\DoxyCodeLine{172 }
-\DoxyCodeLine{173     \textcolor{comment}{//second option}}
-\DoxyCodeLine{174     \textcolor{comment}{/*for (size\_t i = position -\/ begin(); i < m\_size; ++i)}}
-\DoxyCodeLine{175 \textcolor{comment}{        arr[i] = std::move(arr[i + 1]);*/}}
-\DoxyCodeLine{176 }
-\DoxyCodeLine{177     -\/-\/m\_size;}
+\DoxyCodeLine{168 \{}
+\DoxyCodeLine{169     position-\/>\string~T();}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171     \textcolor{comment}{//pointer arithmetic}}
+\DoxyCodeLine{172     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{classvector_abc9823ddef49efbb6aee584ca14728d8}{iterator}}\textcolor{keyword}{>}(position); i < \mbox{\hyperlink{classvector_ad18d9638b1d68f0398794ba0da4504a9}{end}}() -\/ 1; ++i)}
+\DoxyCodeLine{173         (*i) = std::move(*(i + 1));}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175     \textcolor{comment}{//second option}}
+\DoxyCodeLine{176     \textcolor{comment}{/*for (size\_t i = position -\/ begin(); i < m\_size; ++i)}}
+\DoxyCodeLine{177 \textcolor{comment}{        arr[i] = std::move(arr[i + 1]);*/}}
 \DoxyCodeLine{178 }
-\DoxyCodeLine{179     \textcolor{keywordflow}{return} \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{classvector_abc9823ddef49efbb6aee584ca14728d8}{iterator}}\textcolor{keyword}{>}(position);}
-\DoxyCodeLine{180 \}}
+\DoxyCodeLine{179     -\/-\/m\_size;}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181     \textcolor{keywordflow}{return} \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{classvector_abc9823ddef49efbb6aee584ca14728d8}{iterator}}\textcolor{keyword}{>}(position);}
+\DoxyCodeLine{182 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_aa1b981759032ab76b6f35db8bfb5fe5c}\label{classvector_aa1b981759032ab76b6f35db8bfb5fe5c}} 
@@ -455,11 +460,11 @@ Definition at line 165 of file vector.\+hpp.
 
 
 
-Definition at line 51 of file vector.\+hpp.
+Definition at line 53 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{51 \{ \textcolor{keywordflow}{return} arr[0U]; \}}
+\DoxyCodeLine{53 \{ \textcolor{keywordflow}{return} arr[0U]; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a26bf3e51ca3c8b171f285f1c6720c0f1}\label{classvector_a26bf3e51ca3c8b171f285f1c6720c0f1}} 
@@ -471,11 +476,11 @@ Definition at line 51 of file vector.\+hpp.
 
 
 
-Definition at line 52 of file vector.\+hpp.
+Definition at line 54 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{52 \{ \textcolor{keywordflow}{return} arr[0U]; \}}
+\DoxyCodeLine{54 \{ \textcolor{keywordflow}{return} arr[0U]; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_ac2e548bf42a4298296209e5595dc1da0}\label{classvector_ac2e548bf42a4298296209e5595dc1da0}} 
@@ -487,21 +492,21 @@ Definition at line 52 of file vector.\+hpp.
 
 
 
-Definition at line 84 of file vector.\+hpp.
+Definition at line 86 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{85 \{}
-\DoxyCodeLine{86     \textcolor{keywordflow}{if} (\textcolor{keyword}{this} != \&v) \{}
-\DoxyCodeLine{87         \mbox{\hyperlink{classvector_a7bc236f547bb5debe890fa8ebaabe965}{\string~vector}}();}
-\DoxyCodeLine{88         m\_size = v.m\_size;}
-\DoxyCodeLine{89         m\_capacity = v.m\_capacity;}
-\DoxyCodeLine{90         arr = \textcolor{keyword}{new} T[m\_capacity];}
-\DoxyCodeLine{91         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0U; i < m\_size; ++i)}
-\DoxyCodeLine{92             arr[i] = v.arr[i];}
-\DoxyCodeLine{93     \}}
-\DoxyCodeLine{94     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
-\DoxyCodeLine{95 \}}
+\DoxyCodeLine{87 \{}
+\DoxyCodeLine{88     \textcolor{keywordflow}{if} (\textcolor{keyword}{this} != \&v) \{}
+\DoxyCodeLine{89         \mbox{\hyperlink{classvector_a7bc236f547bb5debe890fa8ebaabe965}{\string~vector}}();}
+\DoxyCodeLine{90         m\_size = v.m\_size;}
+\DoxyCodeLine{91         m\_capacity = v.m\_capacity;}
+\DoxyCodeLine{92         arr = \textcolor{keyword}{new} T[m\_capacity];}
+\DoxyCodeLine{93         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0U; i < m\_size; ++i)}
+\DoxyCodeLine{94             arr[i] = v.arr[i];}
+\DoxyCodeLine{95     \}}
+\DoxyCodeLine{96     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{97 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a8cc9714a4fd45142153af746fe39aeb2}\label{classvector_a8cc9714a4fd45142153af746fe39aeb2}} 
@@ -513,11 +518,11 @@ Definition at line 84 of file vector.\+hpp.
 
 
 
-Definition at line 49 of file vector.\+hpp.
+Definition at line 51 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{49 \{ \textcolor{keywordflow}{return} arr[n]; \}}
+\DoxyCodeLine{51 \{ \textcolor{keywordflow}{return} arr[n]; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a8127cc4c6e036ba2f5ee3b9b27f8d24b}\label{classvector_a8127cc4c6e036ba2f5ee3b9b27f8d24b}} 
@@ -529,11 +534,11 @@ Definition at line 49 of file vector.\+hpp.
 
 
 
-Definition at line 50 of file vector.\+hpp.
+Definition at line 52 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{50 \{ \textcolor{keywordflow}{return} arr[n]; \}}
+\DoxyCodeLine{52 \{ \textcolor{keywordflow}{return} arr[n]; \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_aeec9e5d602d555d466a936310aa47866}\label{classvector_aeec9e5d602d555d466a936310aa47866}} 
@@ -545,11 +550,11 @@ void \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::pop\+\_\+back (\begin{Do
 
 
 
-Definition at line 59 of file vector.\+hpp.
+Definition at line 61 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{59 \{ arr[-\/-\/m\_size].\string~T(); \}}
+\DoxyCodeLine{61 \{ arr[-\/-\/m\_size].\string~T(); \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a3dad412c2b85f46e7f3834d453d9524f}\label{classvector_a3dad412c2b85f46e7f3834d453d9524f}} 
@@ -561,14 +566,14 @@ void \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::push\+\_\+back (\begin{D
 
 
 
-Definition at line 151 of file vector.\+hpp.
+Definition at line 153 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{152 \{}
-\DoxyCodeLine{153     enough\_capacity();}
-\DoxyCodeLine{154     arr[m\_size++] = t;}
-\DoxyCodeLine{155 \}}
+\DoxyCodeLine{154 \{}
+\DoxyCodeLine{155     enough\_capacity();}
+\DoxyCodeLine{156     arr[m\_size++] = t;}
+\DoxyCodeLine{157 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a151a4be9c10a60f1741da2070e6b62a4}\label{classvector_a151a4be9c10a60f1741da2070e6b62a4}} 
@@ -580,14 +585,14 @@ void \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::push\+\_\+back (\begin{D
 
 
 
-Definition at line 158 of file vector.\+hpp.
+Definition at line 160 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{159 \{}
-\DoxyCodeLine{160     enough\_capacity();}
-\DoxyCodeLine{161     arr[m\_size++] = std::move(val);}
-\DoxyCodeLine{162 \}}
+\DoxyCodeLine{161 \{}
+\DoxyCodeLine{162     enough\_capacity();}
+\DoxyCodeLine{163     arr[m\_size++] = std::move(val);}
+\DoxyCodeLine{164 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_aa2e30f799d6ff3ccc03411bac5b3a4c6}\label{classvector_aa2e30f799d6ff3ccc03411bac5b3a4c6}} 
@@ -599,20 +604,20 @@ void \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::reserve (\begin{DoxyPara
 
 
 
-Definition at line 138 of file vector.\+hpp.
+Definition at line 140 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{139 \{}
-\DoxyCodeLine{140     \textcolor{keywordflow}{if} (n > m\_capacity) \{}
-\DoxyCodeLine{141         T *newbuff = \textcolor{keyword}{new} T[n];}
-\DoxyCodeLine{142         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0U; i < m\_size; ++i)}
-\DoxyCodeLine{143             newbuff[i] = std::move(arr[i]);}
-\DoxyCodeLine{144         \textcolor{keyword}{delete}[]arr;}
-\DoxyCodeLine{145         arr = newbuff;}
-\DoxyCodeLine{146         m\_capacity = n;}
-\DoxyCodeLine{147     \}}
-\DoxyCodeLine{148 \}}
+\DoxyCodeLine{141 \{}
+\DoxyCodeLine{142     \textcolor{keywordflow}{if} (n > m\_capacity) \{}
+\DoxyCodeLine{143         T *newbuff = \textcolor{keyword}{new} T[n];}
+\DoxyCodeLine{144         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0U; i < m\_size; ++i)}
+\DoxyCodeLine{145             newbuff[i] = std::move(arr[i]);}
+\DoxyCodeLine{146         \textcolor{keyword}{delete}[]arr;}
+\DoxyCodeLine{147         arr = newbuff;}
+\DoxyCodeLine{148         m\_capacity = n;}
+\DoxyCodeLine{149     \}}
+\DoxyCodeLine{150 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_aae6a11719d461a23f420fd9d5b9396b3}\label{classvector_aae6a11719d461a23f420fd9d5b9396b3}} 
@@ -624,26 +629,26 @@ void \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::resize (\begin{DoxyParam
 
 
 
-Definition at line 98 of file vector.\+hpp.
+Definition at line 100 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{99 \{}
-\DoxyCodeLine{100     \textcolor{keywordflow}{if} (n < m\_size) \{}
-\DoxyCodeLine{101         \textcolor{keywordflow}{while} (n < m\_size)}
-\DoxyCodeLine{102             \mbox{\hyperlink{classvector_aeec9e5d602d555d466a936310aa47866}{pop\_back}}();}
-\DoxyCodeLine{103         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{104     \}}
-\DoxyCodeLine{105     \textcolor{keywordflow}{if} (n > m\_capacity)}
-\DoxyCodeLine{106             \mbox{\hyperlink{classvector_aa2e30f799d6ff3ccc03411bac5b3a4c6}{reserve}}(n);}
-\DoxyCodeLine{107     m\_size = n;}
-\DoxyCodeLine{108 }
-\DoxyCodeLine{109     \textcolor{comment}{/*while (n > m\_size) //initialize?}}
-\DoxyCodeLine{110 \textcolor{comment}{    \{}}
-\DoxyCodeLine{111 \textcolor{comment}{        arr[m\_size++] = \{\};}}
-\DoxyCodeLine{112 \textcolor{comment}{    \}*/}}
-\DoxyCodeLine{113 }
-\DoxyCodeLine{114 \}}
+\DoxyCodeLine{101 \{}
+\DoxyCodeLine{102     \textcolor{keywordflow}{if} (n < m\_size) \{}
+\DoxyCodeLine{103         \textcolor{keywordflow}{while} (n < m\_size)}
+\DoxyCodeLine{104             \mbox{\hyperlink{classvector_aeec9e5d602d555d466a936310aa47866}{pop\_back}}();}
+\DoxyCodeLine{105         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{106     \}}
+\DoxyCodeLine{107     \textcolor{keywordflow}{if} (n > m\_capacity)}
+\DoxyCodeLine{108             \mbox{\hyperlink{classvector_aa2e30f799d6ff3ccc03411bac5b3a4c6}{reserve}}(n);}
+\DoxyCodeLine{109     m\_size = n;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     \textcolor{comment}{/*while (n > m\_size) //initialize?}}
+\DoxyCodeLine{112 \textcolor{comment}{    \{}}
+\DoxyCodeLine{113 \textcolor{comment}{        arr[m\_size++] = \{\};}}
+\DoxyCodeLine{114 \textcolor{comment}{    \}*/}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_a47171bb6d1db03b5cacd864d09cf51a9}\label{classvector_a47171bb6d1db03b5cacd864d09cf51a9}} 
@@ -655,29 +660,29 @@ void \mbox{\hyperlink{classvector}{vector}}$<$ T $>$\+::resize (\begin{DoxyParam
 
 
 
-Definition at line 116 of file vector.\+hpp.
+Definition at line 118 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{117 \{}
-\DoxyCodeLine{118     \textcolor{keywordflow}{if} (n < m\_size) \{}
-\DoxyCodeLine{119         \textcolor{keywordflow}{while} (n < m\_size)}
-\DoxyCodeLine{120             \mbox{\hyperlink{classvector_aeec9e5d602d555d466a936310aa47866}{pop\_back}}();}
-\DoxyCodeLine{121         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{122     \}}
-\DoxyCodeLine{123     \textcolor{keywordflow}{if} (n > m\_capacity)}
-\DoxyCodeLine{124             \mbox{\hyperlink{classvector_aa2e30f799d6ff3ccc03411bac5b3a4c6}{reserve}}(n);}
-\DoxyCodeLine{125     m\_size = n;}
-\DoxyCodeLine{126     }
-\DoxyCodeLine{127     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < n; i++)}
-\DoxyCodeLine{128         arr[i] = value;}
-\DoxyCodeLine{129 }
-\DoxyCodeLine{130     \textcolor{comment}{/*while (n > m\_size) //initialize?}}
-\DoxyCodeLine{131 \textcolor{comment}{    \{}}
-\DoxyCodeLine{132 \textcolor{comment}{        arr[m\_size++] = \{\};}}
-\DoxyCodeLine{133 \textcolor{comment}{    \}*/}}
-\DoxyCodeLine{134 }
-\DoxyCodeLine{135 \}}
+\DoxyCodeLine{119 \{}
+\DoxyCodeLine{120     \textcolor{keywordflow}{if} (n < m\_size) \{}
+\DoxyCodeLine{121         \textcolor{keywordflow}{while} (n < m\_size)}
+\DoxyCodeLine{122             \mbox{\hyperlink{classvector_aeec9e5d602d555d466a936310aa47866}{pop\_back}}();}
+\DoxyCodeLine{123         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{124     \}}
+\DoxyCodeLine{125     \textcolor{keywordflow}{if} (n > m\_capacity)}
+\DoxyCodeLine{126             \mbox{\hyperlink{classvector_aa2e30f799d6ff3ccc03411bac5b3a4c6}{reserve}}(n);}
+\DoxyCodeLine{127     m\_size = n;}
+\DoxyCodeLine{128     }
+\DoxyCodeLine{129     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < n; i++)}
+\DoxyCodeLine{130         arr[i] = value;}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     \textcolor{comment}{/*while (n > m\_size) //initialize?}}
+\DoxyCodeLine{133 \textcolor{comment}{    \{}}
+\DoxyCodeLine{134 \textcolor{comment}{        arr[m\_size++] = \{\};}}
+\DoxyCodeLine{135 \textcolor{comment}{    \}*/}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classvector_af7961c7a6accd1fd521956a6b35cb2d2}\label{classvector_af7961c7a6accd1fd521956a6b35cb2d2}} 
@@ -689,11 +694,11 @@ Definition at line 116 of file vector.\+hpp.
 
 
 
-Definition at line 41 of file vector.\+hpp.
+Definition at line 43 of file vector.\+hpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{41 \{ \textcolor{keywordflow}{return} m\_size; \}}
+\DoxyCodeLine{43 \{ \textcolor{keywordflow}{return} m\_size; \}}
 
 \end{DoxyCode}
 

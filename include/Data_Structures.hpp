@@ -10,6 +10,9 @@
 #include <Sketch.hpp>
 #include <Script.hpp>
 
+/**
+ * @brief class that handle data structures.
+*/
 
 class Data_Structures : public Sketch
 {
