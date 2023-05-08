@@ -1,12 +1,4 @@
 var searchData=
 [
-  ['_7ebutton_381',['~Button',['../classButton.html#a2a001eb9c3cc8ae54768a850dd345002',1,'Button']]],
-  ['_7edata_5fstructures_382',['~Data_Structures',['../classData__Structures.html#a649f7e1cf1195031ead9eeade9d91c82',1,'Data_Structures']]],
-  ['_7edisplay_383',['~Display',['../classDisplay.html#ac2607a6bb236c55547a4223d40d85d1f',1,'Display']]],
-  ['_7einputbox_384',['~InputBox',['../classInputBox.html#abe56acf07570e1ff883705edf3223b5b',1,'InputBox']]],
-  ['_7emywindow_385',['~MyWindow',['../classMyWindow.html#acc6b33f79cb9f1ee9107beac4c474fd3',1,'MyWindow']]],
-  ['_7eobject_386',['~Object',['../classObject.html#ae8f5483f459e46687bd01e6f9977afd3',1,'Object']]],
-  ['_7escript_387',['~Script',['../classScript.html#a7f3a173d141bcfefce0ba98b941dc823',1,'Script']]],
-  ['_7esketch_388',['~Sketch',['../classSketch.html#aaea504be3a8abee405a64d74cc0be324',1,'Sketch']]],
-  ['_7evector_389',['~vector',['../classvector.html#a7bc236f547bb5debe890fa8ebaabe965',1,'vector']]]
+  ['vector_470',['vector',['../classvector.html#a00d237f22fd5eb1aa9a536993e82e54f',1,'vector::vector()'],['../classvector.html#af2e1a4f12ffdc23988ebc983b5175aeb',1,'vector::vector(size_type n)'],['../classvector.html#a61d97418072578e512110b41c570da83',1,'vector::vector(const vector &amp;v)=delete'],['../classvector.html#a8c25e7fe5becc598b988039a726fb5f7',1,'vector::vector(vector &amp;&amp;v)']]]
 ];

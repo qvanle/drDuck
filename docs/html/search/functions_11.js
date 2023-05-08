@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['unhighlighline_377',['unHighlighLine',['../classScript.html#a8163bba2029f77d6319c83a28b6098db',1,'Script']]],
-  ['unhighlight_378',['unHighlight',['../classSketch.html#a59b0712ea0d65a8e66ee1e3e227d8766',1,'Sketch']]],
-  ['update_379',['update',['../classData__Structures.html#a3d86391670d5b1e2b2180d93ce680efa',1,'Data_Structures']]]
+  ['top_464',['top',['../classMyWindow.html#af11fd74c86eab330435da6008255d644',1,'MyWindow']]],
+  ['trigger_465',['trigger',['../classDisplay.html#a2aebca1870282b07cfddfe6e299af609',1,'Display']]],
+  ['typing_466',['typing',['../classMyWindow.html#a97545995a77efcb1827cc47f78b16eb1',1,'MyWindow::typing()'],['../classInputBox.html#a18a67744f898d31b714c5a22f373db69',1,'InputBox::typing()']]]
 ];

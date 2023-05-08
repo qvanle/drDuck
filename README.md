@@ -1,7 +1,8 @@
 # Dr Duck
-- CS162 projects
-- Visualize data structures
-
+- CS162 projects.
+- This is a solo project for the course CS162 - Introduction to Computer Science II.
+- Visualize data structures.
+- In this project, I will do a data visualization application.
 ## FEATURES 
 #### Static array / dynamic array / singly, doubly, circular linked list / stack / queue
 - Init from file
@@ -11,7 +12,10 @@
 - Custom
 #### Run step by step
 #### Speed up and slow down
-#### Sound / GUI / multithread
+#### Sound 
+#### Graphics
+#### Open with file 
+- Data is storing in folder saving/
 ## REQUIRED
 - SDL2
 - SDL\_image
@@ -21,7 +25,7 @@
 - makefile
 - C++17
 ## INSTALL 
-- At first you need to C++17, makefile, CMake:
+- At first you need to install C++17, makefile, CMake:
 ```
 sudo apt update 
 sudo apt install build-essential
@@ -48,3 +52,9 @@ git clone https://github.com/qvanle/drDuck
 cd drDuck 
 make 
 ```
+## Usage
+
+## Demonstration
+
+## Documentation
+
