@@ -68,7 +68,7 @@ make
 1. Static array.
 2. Dynamic array.
 #### Linked list 
-![choose linked list](docs/image/choose_linked_list.png)
+![choose linked list](docs/images/choose_linked_list.png)
 1. Singly linked list.
 2. Doubly linked list.
 3. Circular linked list.
