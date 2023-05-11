@@ -76,18 +76,18 @@ make
 1. Stack.
 2. Queue.
 ![choose in and out order](docs/images/choose_InO_order.png)
-#### Open file 
+### 3. Open file 
 - After press button "open file" there will a box pop up require to enter file name.
 - This file must be store in folder saving, if there don't exist that file, the window unable to do anything.
 - To create new file, you have to save it with file extension "json" 
 - Samples are in saving/
 ![open file](docs/images/open_file_input.png)
-#### Working screen 
-##### After you have choose data structures or open file, this screen will be displayed.
+### 4. Working screen 
+#### After you have choose data structures or open file, this screen will be displayed.
 ![working screen](docs/images/working_screen.png)
-##### Move the cursor to the right, operator bar will be appeared.
+#### Move the cursor to the right, operator bar will be appeared.
 ![operator bar](docs/images/operator_bar.png)
-##### Move the cursor to the bottom, play bar will be appeared.
+#### Move the cursor to the bottom, play bar will be appeared.
 ![play bar](docs/images/play_bar.png)
 ## Demonstration
 
