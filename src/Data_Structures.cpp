@@ -2165,6 +2165,7 @@ void Data_Structures::QueuePush(int value, std::mutex & m)
     for(int i = num; i > 0; i--)
         elements[i]->setText(elements[i - 1]->getText());
     elements[0]->setText(std::to_string(value));
+    connection[num - 2] = num - 1;
     elements[capacity]->hide();
     m.unlock();
     
@@ -2588,12 +2589,12 @@ void Data_Structures::initQueue(const json& mem)
 
 void Data_Structures::StackCreate(std::string s)
 {
-    DynamicArrayCreate(s);
+    SinglyLinkedListCreate(s);
 }
 
 void Data_Structures::QueueCreate(std::string s)
 {
-    DynamicArrayCreate(s);
+    SinglyLinkedListCreate(s);
 }
 
 int Data_Structures::getType()
