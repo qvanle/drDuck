@@ -96,11 +96,17 @@ make
 ![play bar](docs/images/play_bar.png)
 ### 5. Opeartor bar
 #### New operator 
+- Maximum size of static and dynamic array is 12, otherwise it's 10.
+- If the input greater than maximum size, it will ignore the remainder.
 ![new opeartor](docs/images/new_operator.png)
 #### Insert operator 
+- If the size is maximum, it will do nothing.
+- In stack and queue mode, this will be call push. 
 ![insert operator](docs/images/insert_operator.png)
 ![inserting](docs/images/inserting.png)
 #### Delete operator 
+- If the size is equal 0, it will do nothing.
+- In stack and queue mode, this will be call pop.
 ![delete operator](docs/images/delete_operator.png)
 ![deleting](docs/images/deleting.png)
 #### Update operator 
@@ -110,6 +116,8 @@ make
 ![search operator](docs/images/search_operator.png) 
 ![searching](docs/images/searching.png)
 ## Demonstration
-
+- https://youtu.be/aZ55WbN_IRI
 ## Documentation
-
+- github repository: https://github.com/qvanle/drDuck
+- Report: docs/report.pdf 
+- Report: website version, open file docs/html/index.html
