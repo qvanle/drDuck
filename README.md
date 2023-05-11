@@ -117,7 +117,28 @@ make
 ![searching](docs/images/searching.png)
 ## Demonstration
 - https://youtu.be/aZ55WbN_IRI
+## Files/folders structures
+#### Asset/
+- Fonts is stored in folder fonts.
+- Graphics is stored in folder graphics.
+- Sound is stored in folder sound.
+- Attribute folder is use to stored property of buttons, screens, input box, script, Data structures (size, position in screen, font used, graphics used, ...)
+#### include/
+- All file *.hpp is stored here.
+#### src/ 
+- All file *.cpp is stored here.
+#### saving/
+- All files that use for "open file" features is stored here.
+#### docs
+- Grading scheme is stored here.
+- report is stored here.
+- Open docs/html/index.html to run website version of document.
+#### CMakeLists.txt
+- CMake file 
+#### makefile
+- makefile that use to call CMAKE (this is for my text editor)
+#### README.md 
 ## Documentation
 - github repository: https://github.com/qvanle/drDuck
 - Report: docs/report.pdf 
-- Report: website version, open file docs/html/index.html
+- Documentation: website version, open file docs/html/index.html

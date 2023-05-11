@@ -1,6 +1,14 @@
 var namespaces_dup =
 [
     [ "GLOBAL", "namespaceGLOBAL.html", [
+      [ "Asset/", "md_README.html#autotoc_md29", null ],
+      [ "include/", "md_README.html#autotoc_md30", null ],
+      [ "src/", "md_README.html#autotoc_md31", null ],
+      [ "saving/", "md_README.html#autotoc_md32", null ],
+      [ "docs", "md_README.html#autotoc_md33", null ],
+      [ "CMakeLists.txt", "md_README.html#autotoc_md34", null ],
+      [ "makefile", "md_README.html#autotoc_md35", null ],
+      [ "README.md", "md_README.html#autotoc_md36", null ],
       [ "AtrbButtons", "namespaceGLOBAL.html#a5df186de50f9aaf1e4e6de2edcc5d60c", null ],
       [ "AtrbDT", "namespaceGLOBAL.html#aef71da39d13ab23ba3f2db699882d986", null ],
       [ "AtrbInputBox", "namespaceGLOBAL.html#a2fa4e642d534694ce32f87c96ffa7bf9", null ],

@@ -57,7 +57,8 @@ var NAVTREE =
         ] ]
       ] ],
       [ "Demonstration", "md_README.html#autotoc_md27", null ],
-      [ "Documentation", "md_README.html#autotoc_md28", null ]
+      [ "Files/folders structures", "md_README.html#autotoc_md28", null ],
+      [ "Documentation", "md_README.html#autotoc_md37", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
