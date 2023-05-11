@@ -89,6 +89,22 @@ make
 ![operator bar](docs/images/operator_bar.png)
 #### Move the cursor to the bottom, play bar will be appeared.
 ![play bar](docs/images/play_bar.png)
+### 5. Opeartor bar
+#### New operator 
+![new opeartor](docs/images/new_operator.png)
+#### Insert operator 
+![insert operator](docs/images/insert_operator.png)
+![inserting](docs/images/inserting.png)
+#### Delete operator 
+![delete operator](docs/images/delete_operator.png)
+![deleting](docs/images/deleting.png)
+#### Update operator 
+![update operator](docs/images/update_operator.png)
+![updating](docs/images/updating.png)
+#### Search operator
+![search operator](docs/images/search_operator.png) 
+![searching](docs/images/searching.png)
+### 6. Play bar 
 ## Demonstration
 
 ## Documentation
