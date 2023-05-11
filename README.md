@@ -89,6 +89,11 @@ make
 ![operator bar](docs/images/operator_bar.png)
 #### Move the cursor to the bottom, play bar will be appeared.
 ![play bar](docs/images/play_bar.png)
+1. First button will slow down animation
+2. Second button (still in developing)
+3. Third button will Pause/Continue animation 
+4. Fourth button will go to next step (when the animation is pause) 
+5. Last button will speed up the animation
 ### 5. Opeartor bar
 #### New operator 
 ![new opeartor](docs/images/new_operator.png)
@@ -104,7 +109,6 @@ make
 #### Search operator
 ![search operator](docs/images/search_operator.png) 
 ![searching](docs/images/searching.png)
-### 6. Play bar 
 ## Demonstration
 
 ## Documentation
