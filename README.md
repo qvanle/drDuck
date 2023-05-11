@@ -53,7 +53,8 @@ cd drDuck
 make 
 ```
 ## Usage
-
+### After call make, a window will pop up
+![Starting screen](docs/images/starting_screen.png)
 ## Demonstration
 
 ## Documentation
