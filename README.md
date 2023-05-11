@@ -53,8 +53,29 @@ cd drDuck
 make 
 ```
 ## Usage
-### After call make, a window will pop up
+### 1. After call make, a window will pop up
 ![Starting screen](docs/images/starting_screen.png)
+- If you don't like the sound you can turn off it (the button is on the top-left of screen).
+- Click "start" button to continue.
+- Tutorial and donate are still in developing.
+### 2. You have 3 type of data structures 
+![choose data structures](docs/images/choose_data_structures.png)
+1. Array.
+2. Linked list.
+3. In and out order (stack and queue).
+#### Array 
+![choose array](docs/images/choose_array.png)
+1. Static array.
+2. Dynamic array.
+#### Linked list 
+![choose linked list](docs/image/choose_linked_list.png)
+1. Singly linked list.
+2. Doubly linked list.
+3. Circular linked list.
+#### I/O order 
+![choose in and out order](docs/images/choose_InO_order.png)
+1. Stack.
+2. Queue.
 ## Demonstration
 
 ## Documentation
