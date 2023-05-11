@@ -83,11 +83,11 @@ make
 - Samples are in saving/
 ![open file](docs/images/open_file_input.png)
 #### Working screen 
-- After you have choose data structures or open file, this screen will be displayed.
+##### After you have choose data structures or open file, this screen will be displayed.
 ![working screen](docs/images/working_screen.png)
-- Move the cursor to the right, operator bar will be appeared.
+##### Move the cursor to the right, operator bar will be appeared.
 ![operator bar](docs/images/operator_bar.png)
-- Move the cursor to the bottom, play bar will be appeared.
+##### Move the cursor to the bottom, play bar will be appeared.
 ![play bar](docs/images/play_bar.png)
 ## Demonstration
 
